@@ -114,7 +114,7 @@ class WidgetManager  {
                 let configuration = data.dashboard;
                 this.layouts = configuration.layouts ?? null;
                 const visibleWidgets = configuration.widgets.filter(item => !this.excludedWidgetIds.has(item.id));
-                this.runtimeOptions.compactFilteredLayout = visibleWidgets.length !== configuration.widgets.length;
+                this.runtimeOptions.compactFilteredLayout = this.excludedWidgetIds.size > 0;
                 visibleWidgets.forEach(item => {
                     this.widgetConfigurations[item.id] = item;
                 });
