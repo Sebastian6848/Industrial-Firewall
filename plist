@@ -90,6 +90,7 @@
 /usr/local/etc/rc.d/captiveportal
 /usr/local/etc/rc.d/configd
 /usr/local/etc/rc.d/flowd_aggregate
+/usr/local/etc/rc.d/nclink_proxy
 /usr/local/etc/rc.d/netflow
 /usr/local/etc/rc.filter_configure
 /usr/local/etc/rc.filter_synchronize
@@ -430,6 +431,11 @@
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Monit/forms/general.xml
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Monit/forms/services.xml
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Monit/forms/tests.xml
+/usr/local/opnsense/mvc/app/controllers/OPNsense/NCLink/Api/LogController.php
+/usr/local/opnsense/mvc/app/controllers/OPNsense/NCLink/Api/ServiceController.php
+/usr/local/opnsense/mvc/app/controllers/OPNsense/NCLink/Api/SettingsController.php
+/usr/local/opnsense/mvc/app/controllers/OPNsense/NCLink/ProxyController.php
+/usr/local/opnsense/mvc/app/controllers/OPNsense/NCLink/forms/general.xml
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Ntpd/Api/ServiceController.php
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Ntpd/StatusController.php
 /usr/local/opnsense/mvc/app/controllers/OPNsense/OpenVPN/Api/ClientOverwritesController.php
@@ -779,6 +785,7 @@
 /usr/local/opnsense/mvc/app/models/OPNsense/Firewall/Migrations/MFP1_0_3.php
 /usr/local/opnsense/mvc/app/models/OPNsense/Firewall/Migrations/MFP1_0_4.php
 /usr/local/opnsense/mvc/app/models/OPNsense/Firewall/static_aliases/core.json
+/usr/local/opnsense/mvc/app/models/OPNsense/Firewall/static_aliases/industrial.json
 /usr/local/opnsense/mvc/app/models/OPNsense/Hostdiscovery/ACL/ACL.xml
 /usr/local/opnsense/mvc/app/models/OPNsense/Hostdiscovery/Hostwatch.php
 /usr/local/opnsense/mvc/app/models/OPNsense/Hostdiscovery/Hostwatch.xml
@@ -870,6 +877,10 @@
 /usr/local/opnsense/mvc/app/models/OPNsense/Monit/Migrations/M1_0_8.php
 /usr/local/opnsense/mvc/app/models/OPNsense/Monit/Monit.php
 /usr/local/opnsense/mvc/app/models/OPNsense/Monit/Monit.xml
+/usr/local/opnsense/mvc/app/models/OPNsense/NCLink/ACL/ACL.xml
+/usr/local/opnsense/mvc/app/models/OPNsense/NCLink/Menu/Menu.xml
+/usr/local/opnsense/mvc/app/models/OPNsense/NCLink/Proxy.php
+/usr/local/opnsense/mvc/app/models/OPNsense/NCLink/Proxy.xml
 /usr/local/opnsense/mvc/app/models/OPNsense/Ntpd/ACL/ACL.xml
 /usr/local/opnsense/mvc/app/models/OPNsense/Ntpd/Menu/Menu.xml
 /usr/local/opnsense/mvc/app/models/OPNsense/OpenVPN/Export.php
@@ -1022,6 +1033,7 @@
 /usr/local/opnsense/mvc/app/views/OPNsense/Kea/leases6.volt
 /usr/local/opnsense/mvc/app/views/OPNsense/Monit/index.volt
 /usr/local/opnsense/mvc/app/views/OPNsense/Monit/status.volt
+/usr/local/opnsense/mvc/app/views/OPNsense/NCLink/proxy.volt
 /usr/local/opnsense/mvc/app/views/OPNsense/Ntpd/status.volt
 /usr/local/opnsense/mvc/app/views/OPNsense/OpenVPN/cso.volt
 /usr/local/opnsense/mvc/app/views/OPNsense/OpenVPN/export.volt
@@ -1321,6 +1333,13 @@
 /usr/local/opnsense/scripts/monit/carp_status.php
 /usr/local/opnsense/scripts/monit/gateway_alert.php
 /usr/local/opnsense/scripts/monit/setup.sh
+/usr/local/opnsense/scripts/nclink/README.md
+/usr/local/opnsense/scripts/nclink/decode.py
+/usr/local/opnsense/scripts/nclink/lib/__init__.py
+/usr/local/opnsense/scripts/nclink/lib/decoder.py
+/usr/local/opnsense/scripts/nclink/proxy.py
+/usr/local/opnsense/scripts/nclink/tests/decoder_tests.py
+/usr/local/opnsense/scripts/nclink/tests/proxy_tests.py
 /usr/local/opnsense/scripts/netflow/dump_log.py
 /usr/local/opnsense/scripts/netflow/export_details.py
 /usr/local/opnsense/scripts/netflow/flowctl_stats.py
@@ -1376,6 +1395,7 @@
 /usr/local/opnsense/scripts/suricata/lib/__init__.py
 /usr/local/opnsense/scripts/suricata/lib/downloader.py
 /usr/local/opnsense/scripts/suricata/lib/metadata.py
+/usr/local/opnsense/scripts/suricata/lib/nclink.py
 /usr/local/opnsense/scripts/suricata/lib/rulecache.py
 /usr/local/opnsense/scripts/suricata/listAlertLogs.py
 /usr/local/opnsense/scripts/suricata/listInstallableRulesets.py
@@ -1387,6 +1407,7 @@
 /usr/local/opnsense/scripts/suricata/queryInstalledRules.py
 /usr/local/opnsense/scripts/suricata/rule-updater.py
 /usr/local/opnsense/scripts/suricata/setup.sh
+/usr/local/opnsense/scripts/suricata/tests/nclink_tests.py
 /usr/local/opnsense/scripts/syslog/clearlog.php
 /usr/local/opnsense/scripts/syslog/generate_certs.php
 /usr/local/opnsense/scripts/syslog/list_applications.php
@@ -1465,6 +1486,7 @@
 /usr/local/opnsense/service/conf/actions.d/actions_ipsec.conf
 /usr/local/opnsense/service/conf/actions.d/actions_kea.conf
 /usr/local/opnsense/service/conf/actions.d/actions_monit.conf
+/usr/local/opnsense/service/conf/actions.d/actions_nclink.conf
 /usr/local/opnsense/service/conf/actions.d/actions_netflow.conf
 /usr/local/opnsense/service/conf/actions.d/actions_ntpd.conf
 /usr/local/opnsense/service/conf/actions.d/actions_openssh.conf
@@ -1549,6 +1571,8 @@
 /usr/local/opnsense/service/templates/OPNsense/Monit/+TARGETS
 /usr/local/opnsense/service/templates/OPNsense/Monit/monitrc
 /usr/local/opnsense/service/templates/OPNsense/Monit/rc.conf.d
+/usr/local/opnsense/service/templates/OPNsense/NCLink/+TARGETS
+/usr/local/opnsense/service/templates/OPNsense/NCLink/rc.conf.d
 /usr/local/opnsense/service/templates/OPNsense/Netflow/+TARGETS
 /usr/local/opnsense/service/templates/OPNsense/Netflow/flowd.conf
 /usr/local/opnsense/service/templates/OPNsense/Netflow/flowd.rc.conf.d
@@ -1618,6 +1642,7 @@
 /usr/local/opnsense/site-python/daemonize.py
 /usr/local/opnsense/site-python/duckdb_helper.py
 /usr/local/opnsense/site-python/log_helper.py
+/usr/local/opnsense/site-python/nclink_semantics.py
 /usr/local/opnsense/site-python/sqlite3_helper.py
 /usr/local/opnsense/site-python/tls_helper.py
 /usr/local/opnsense/site-python/watchers/__init__.py

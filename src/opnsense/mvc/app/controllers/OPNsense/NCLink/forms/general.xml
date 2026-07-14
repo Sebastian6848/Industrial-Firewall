@@ -1,0 +1,43 @@
+<form>
+    <field>
+        <type>header</type>
+        <label>NC-Link Proxy</label>
+    </field>
+    <field>
+        <id>nclink.general.enabled</id>
+        <label>Enabled</label>
+        <type>checkbox</type>
+        <help>Enable the NC-Link MQTT forwarding and observer proxy.</help>
+    </field>
+    <field>
+        <id>nclink.general.listen_host</id>
+        <label>Listen address</label>
+        <type>text</type>
+        <help>Local address where clients connect to the observer proxy.</help>
+    </field>
+    <field>
+        <id>nclink.general.listen_port</id>
+        <label>Listen port</label>
+        <type>text</type>
+        <help>Local TCP port where clients connect to the observer proxy.</help>
+    </field>
+    <field>
+        <id>nclink.general.target_host</id>
+        <label>Target broker</label>
+        <type>text</type>
+        <help>MQTT broker address to forward NC-Link traffic to.</help>
+    </field>
+    <field>
+        <id>nclink.general.target_port</id>
+        <label>Target port</label>
+        <type>text</type>
+        <help>MQTT broker TCP port. MQTT over TLS is forwarded but cannot be decoded by this observer.</help>
+    </field>
+    <field>
+        <id>nclink.general.log_file</id>
+        <label>Log file</label>
+        <type>text</type>
+        <help>JSON lines file where decoded NC-Link/MQTT metadata is written.</help>
+        <advanced>true</advanced>
+    </field>
+</form>

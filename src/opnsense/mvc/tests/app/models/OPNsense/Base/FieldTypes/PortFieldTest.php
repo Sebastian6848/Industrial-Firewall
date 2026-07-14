@@ -79,7 +79,7 @@ class PortFieldTest extends Field_Framework_TestCase
         $field->setEnableRanges("Y");
         $field->setEnableWellKnown("Y");
         $field->eventPostLoading();
-        foreach (['80', '443', 'https', '80-100'] as $value) {
+        foreach (['80', '443', 'https', 'mqtt', 'secure-mqtt', '80-100'] as $value) {
             $field->setValue($value);
             $this->assertEmpty($this->validate($field));
         }
@@ -95,7 +95,7 @@ class PortFieldTest extends Field_Framework_TestCase
         $field->setEnableWellKnown("Y");
         $field->setMultiple("Y");
         $field->eventPostLoading();
-        $field->setValue("80,443,https,80-100");
+        $field->setValue("80,443,https,mqtt,secure-mqtt,80-100");
         $this->assertEmpty($this->validate($field));
     }
 

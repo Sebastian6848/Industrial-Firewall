@@ -285,7 +285,8 @@ abstract class FilterBaseController extends ApiMutableModelControllerBase
         foreach (Alias::getCachedData()['aliases']['alias'] ?? [] as $alias) {
             switch ($alias['type']) {
                 case 'port':
-                    $aliases[$alias['name']] = $alias['name'];
+                    $aliases[$alias['name']] = !empty($alias['description']) ?
+                        sprintf('%s (%s)', $alias['name'], $alias['description']) : $alias['name'];
                     break;
                 default:
                     break;

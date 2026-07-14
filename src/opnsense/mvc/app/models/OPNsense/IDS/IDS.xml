@@ -306,6 +306,12 @@
                         </OptionValues>
                     </custom>
                 </tls>
+                <mqtt>
+                    <enable type="BooleanField">
+                        <Default>0</Default>
+                        <Required>Y</Required>
+                    </enable>
+                </mqtt>
             </eveLog>
         </general>
     </items>

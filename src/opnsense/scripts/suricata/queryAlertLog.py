@@ -35,6 +35,7 @@ import ujson
 sys.path.insert(0, "/usr/local/opnsense/site-python")
 from log_helper import reverse_log_reader
 from lib import suricata_alert_log
+from lib import nclink
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -83,6 +84,7 @@ if __name__ == '__main__':
 
             # only process valid alert items
             if 'alert' in record:
+                nclink.enrich(record)
                 # add position in file
                 record['filepos'] = line['pos']
                 record['fileid'] = args.fileid

@@ -22,6 +22,7 @@ vars:
   port-groups:
     HTTP_PORTS: "80"
     SHELLCODE_PORTS: "!80"
+    MQTT_PORTS: "1883"
     ORACLE_PORTS: 1521
     SSH_PORTS: 22
     DNP3_PORTS: 20000
@@ -82,6 +83,9 @@ outputs:
 
         - ssh
 
+{%      if not helpers.empty('OPNsense.IDS.general.eveLog.mqtt.enable') %}
+        - mqtt
+{%      endif %}
 {% if not helpers.empty('OPNsense.IDS.general.syslog_eve') %}
   - eve-log:
       enabled: yes
@@ -140,6 +144,8 @@ app-layer:
         dp: 5900, 5901, 5902, 5903, 5904, 5905, 5906, 5907, 5908, 5909
     mqtt:
       enabled: yes
+      detection-ports:
+        dp: $MQTT_PORTS
     krb5:
       enabled: yes
     bittorrent-dht:
@@ -151,7 +157,7 @@ app-layer:
     tls:
       enabled: yes
       detection-ports:
-        dp: 443
+        dp: 443,8883
       ja3-fingerprints: yes
       ja4-fingerprints: yes
 
