@@ -55,11 +55,11 @@ EOF
 	${PKG} query "%n|||%v|||%c|||%sh|||%k|||%a|||%L|||%R|||%o"
 	;;
 remote)
-	${PKG} update -q && ${PKG} rquery -U "%n|||%v|||%c|||%sh|||0|||0|||%L|||%R|||%o"
+	${PKG} rquery -U "%n|||%v|||%c|||%sh|||0|||0|||%L|||%R|||%o"
 	;;
 tiers)
-	# fetching annotations is not as easy to query so always ask for annotations from remote end
-	${PKG} update -q && ${PKG} rquery '%n|||%At|||%Av' | grep '|||product_tier|||'
+	# The dedicated plugin refresh action updates the catalogue before this query.
+	${PKG} rquery '%n|||%At|||%Av' | grep '|||product_tier|||'
 	;;
 *)
 	;;

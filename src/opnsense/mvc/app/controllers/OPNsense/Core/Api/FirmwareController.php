@@ -575,6 +575,45 @@ class FirmwareController extends ApiMutableModelControllerBase
     }
 
     /**
+     * Refresh repository configuration and package catalogue for plugin listing.
+     * This does not invoke the firmware check or update workflow.
+     *
+     * @return array status and command output
+     * @throws \Exception
+     */
+    public function refreshPluginsAction()
+    {
+        $response = ['status' => 'failure'];
+
+        if (!$this->request->isPost()) {
+            $response['status_msg'] = gettext('The plugin catalogue refresh requires a POST request.');
+            return $response;
+        }
+
+        $this->getLogger('audit')->notice(
+            sprintf("[Firmware] User %s refreshed the official plugin catalogue", $this->getUserName())
+        );
+
+        $backend = new Backend();
+        $output = trim($backend->configdRun('firmware plugins.refresh'));
+        $response['output'] = trim(str_replace(
+            ['__PLUGIN_REFRESH_OK__', '__PLUGIN_REFRESH_ERROR__:'],
+            '',
+            $output
+        ));
+
+        if (strpos($output, '__PLUGIN_REFRESH_OK__') !== false) {
+            $response['status'] = 'ok';
+        } else {
+            $response['status_msg'] = !empty($response['output'])
+                ? $response['output']
+                : gettext('Unable to refresh the official plugin catalogue.');
+        }
+
+        return $response;
+    }
+
+    /**
      * install missing configured plugins
      * @return array status
      * @throws \Exception
@@ -874,15 +913,6 @@ class FirmwareController extends ApiMutableModelControllerBase
             }
         }
 
-        uksort($packages, function ($a, $b) {
-            return strnatcasecmp($a, $b);
-        });
-
-        $response['package'] = [];
-        foreach ($packages as $package) {
-            $response['package'][] = $package;
-        }
-
         foreach ($configPlugins as $missing) {
             if (!array_key_exists($missing, $plugins)) {
                 $plugins[$missing] = [];
@@ -920,40 +950,6 @@ class FirmwareController extends ApiMutableModelControllerBase
 
             $response['plugin'][] = $plugin;
         }
-
-        /* also pull in changelogs from here */
-        $changelogs = json_decode(trim($backend->configdRun('firmware changelog list')), true);
-        if ($changelogs == null) {
-            $changelogs = [];
-        } else {
-            /* development strategy for changelog slightly differs from above */
-            $devel = preg_match('/^\d+\.\d+\.[a-z]/i', $response['product_version']) ? true : false;
-
-            foreach ($changelogs as $index => &$changelog) {
-                /* skip development items */
-                if (!$devel && preg_match('/^\d+\.\d+\.[a-z]/i', $changelog['version'])) {
-                    unset($changelogs[$index]);
-                    continue;
-                }
-
-                /* rewrite dates as ISO */
-                $date = date_parse($changelog['date']);
-                $changelog['date'] = sprintf('%04d-%02d-%02d', $date['year'], $date['month'], $date['day']);
-            }
-            /* sort in reverse */
-            usort($changelogs, function ($a, $b) {
-                return strcmp($b['date'], $a['date']);
-            });
-        }
-
-        $response['changelog'] = $changelogs;
-
-        $product = json_decode(trim($backend->configdRun('firmware product')), true);
-        if ($product == null) {
-            $product = [];
-        }
-
-        $response['product'] = $product;
 
         return $response;
     }
