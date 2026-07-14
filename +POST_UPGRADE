@@ -1,0 +1,2 @@
+echo "Flushing web GUI caches"
+/usr/local/sbin/pluginctl -cq cache_flush

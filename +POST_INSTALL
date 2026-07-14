@@ -34,3 +34,6 @@ rm -f /etc/rc.shutdown.bak
 /usr/local/etc/rc.d/configd start
 
 /usr/local/etc/rc.syshook update
+
+echo "Flushing web GUI caches"
+/usr/local/sbin/pluginctl -cq cache_flush

@@ -1185,6 +1185,11 @@ function system_cache_flush($verbose = false)
 
     (new OPNsense\Base\Menu\MenuSystem())->invalidateCache();
 
+    /* discard compiled Volt templates so updated layouts are rendered immediately */
+    foreach (glob('/var/lib/php/cache/*.php') as $filename) {
+        @unlink($filename);
+    }
+
     /* clears ALL model caches, not just model specific ones via flushCacheData() */
     foreach (glob('/var/lib/php/tmp/mdl_cache_*.json') as $filename) {
         @unlink($filename);
