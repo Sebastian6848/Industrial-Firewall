@@ -26,8 +26,6 @@
 
 . /usr/local/opnsense/scripts/firmware/config.sh
 
-CHANGED=
-
 for PACKAGE in $(/usr/local/sbin/pluginctl -g system.firmware.plugins | \
     /usr/bin/sed 's/,/ /g'); do
 	if [ "${PACKAGE#os-}" = "${PACKAGE}" ]; then
@@ -36,10 +34,5 @@ for PACKAGE in $(/usr/local/sbin/pluginctl -g system.firmware.plugins | \
 	if ! ${PKG} query %n ${PACKAGE} > /dev/null; then
 		output_cmd ${PKG} install -y "${PACKAGE}"
 		output_cmd ${BASEDIR}/register.php install "${PACKAGE}"
-		CHANGED=yes
 	fi
 done
-
-if [ -n "${CHANGED}" ]; then
-	output_cmd ${PKG} autoremove -y
-fi

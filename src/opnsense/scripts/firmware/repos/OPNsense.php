@@ -28,13 +28,43 @@
  */
 
 require_once('util.inc');
+require_once('script/load_phalcon.php');
+
+use OPNsense\Core\Config;
+
+$config = Config::getInstance()->object();
+$url_sub = '';
+
 /* canonically handles OPNsense.conf, OPNsense-aux.conf and FreeBSD.conf */
 
 $frmt = ['/usr/local/sbin/opnsense-update -sd -A %s'];
 $args = [shell_safe('opnsense-version -x')]; /* calculate the effective ABI */
 
-/* system and plugin download channels are frozen */
-@unlink('/usr/local/opnsense/version/core.license');
+if (strpos((string)$config->system->firmware->subscription, '-') !== false) {
+    /*
+     * Append the subscription to the URL here since it is not part
+     * of the mirror selection. Also check for a viable candidate
+     * with a dash as special values could also be the case.
+     */
+    $url_sub = '/' . $config->system->firmware->subscription;
+} else {
+    /* clear the license file when no subscription key is set */
+    @unlink('/usr/local/opnsense/version/core.license');
+}
 
-/* rewrite the repository config without accepting runtime mirror overrides */
+if (!empty($config->system->firmware->mirror)) {
+    $frmt[] = '-m %s';
+    $args[] = $config->system->firmware->mirror . $url_sub;
+}
+
+if (!empty($config->system->firmware->flavour)) {
+    $frmt[] = '-n %s';
+    $args[] = (string)$config->system->firmware->flavour;
+}
+
+if (!empty($config->system->firmware->aux)) {
+    $frmt[] = '-E';
+}
+
+/* rewrite the config via the defaults and possible arguments */
 shell_safe($frmt, $args);

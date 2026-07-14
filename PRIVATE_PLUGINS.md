@@ -1,8 +1,19 @@
-# Offline plugin workflow
+# Plugin-only repository policy
 
-This core tree disables every remote system and plugin package channel. No HTTP/HTTPS package repository, repository signing key, or package catalogue is required.
+This core tree uses the official signed OPNsense package repository for plugin discovery and installation while keeping normal system updates disabled.
 
-## Plugin source repository
+## Effective policy
+
+- The OPNsense repository is enabled with its official fingerprint verification.
+- The web API accepts install, reinstall, remove, lock, and unlock operations only for package names beginning with `os-`.
+- The Plugins page lists remote official plugins and locally installed plugins.
+- Firmware check, package update, major upgrade, changelog download, automatic update, and console-triggered update actions remain disabled.
+- The upstream pre-install check that required the local core package to match the newest repository core version is intentionally omitted.
+- pkg signature, package ABI, dependency, and conflict validation remains active and must not be bypassed.
+
+Installing a plugin can also install or update packages required by that plugin. Review the pkg transaction output before using the same procedure on a production firewall. A plugin built for a different FreeBSD ABI or a materially newer OPNsense release is not made compatible by skipping the core version gate.
+
+## Maintained plugin source repository
 
 The maintained source repository is checked out at `/home/sebastian/plugins`:
 
@@ -11,54 +22,25 @@ origin    https://gitee.com/xwy6848/plugins.git
 upstream  https://github.com/opnsense/plugins.git
 ```
 
-`origin` is writable. Push access to `upstream` is disabled locally.
-
-To merge future official source changes:
-
-```sh
-cd /home/sebastian/plugins
-git fetch upstream
-git checkout master
-git merge upstream/master
-git push origin master
-```
-
-## Recommended: install a local package file
-
-On a compatible FreeBSD/OPNsense build machine, build the selected plugin:
+The source workflow remains available for plugins that are not compatible with the frozen binary repository:
 
 ```sh
 cd /home/sebastian/plugins/<category>/<plugin>
 make package
+pkg add /path/to/os-example.pkg
 ```
 
-Copy the resulting `os-*.pkg` file to the firewall by SCP, USB storage, or another local transfer method. Install it without contacting a repository:
+Local packages must still target the firewall's FreeBSD ABI and have compatible dependencies.
+
+## Runtime verification
+
+After installing this core build on a test firewall:
 
 ```sh
-pkg add /root/packages/os-example.pkg
+configctl firmware reload
+service configd restart
+pkg update
+pkg rquery '%n-%v' 'os-*'
 ```
 
-To replace an installed plugin with a newer local build:
-
-```sh
-pkg add -f /root/packages/os-example.pkg
-```
-
-The package must be built for the same FreeBSD and OPNsense ABI as the target firewall. All dependencies must already be installed or copied as local package files and installed explicitly with `pkg add`.
-
-## Direct source installation
-
-The plugin framework also supports an `install` target:
-
-```sh
-cd /path/to/plugins/<category>/<plugin>
-make install
-```
-
-This is useful during development, but `make package` followed by local `pkg add` is preferred because the installed files remain tracked by the package database. Direct source installation does not bypass missing build tools or dependencies and must be performed on a compatible OPNsense system.
-
-## Offline policy
-
-The generated `OPNsense`, `OPNsense-aux`, and FreeBSD pkg repositories are disabled. Web API and configd actions for remote install, reinstall, sync, repository queries, update, and upgrade are disabled. The Firmware page only lists locally installed `os-*` plugins and can remove them.
-
-An administrator with root access can still deliberately rewrite pkg repository configuration. The product's normal Web, console, API, and background update paths do not enable or use a remote download channel.
+Use the Plugins page for normal installation. System update and upgrade endpoints should continue to report that updates are disabled.

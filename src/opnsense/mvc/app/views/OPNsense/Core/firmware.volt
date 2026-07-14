@@ -88,6 +88,50 @@
         $('.act-details').click(function () {
             showPluginDetails($(this).data('package'));
         });
+        $('.act-install').click(function () {
+            const packageName = $(this).data('package');
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_WARNING,
+                title: "{{ lang._('Confirm installation') }}",
+                message: "{{ lang._('Install this plugin and its required packages from the official signed repository?') }}" +
+                    ' <strong>' + escapeHtml(packageName) + '</strong>',
+                buttons: [{
+                    label: "{{ lang._('Install') }}",
+                    cssClass: 'btn-primary',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                        runPluginAction('install', packageName);
+                    }
+                }, {
+                    label: "{{ lang._('Cancel') }}",
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }]
+            });
+        });
+        $('.act-reinstall').click(function () {
+            const packageName = $(this).data('package');
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_WARNING,
+                title: "{{ lang._('Confirm reinstallation') }}",
+                message: "{{ lang._('Reinstall this plugin from the official signed repository?') }}" +
+                    ' <strong>' + escapeHtml(packageName) + '</strong>',
+                buttons: [{
+                    label: "{{ lang._('Reinstall') }}",
+                    cssClass: 'btn-primary',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                        runPluginAction('reinstall', packageName);
+                    }
+                }, {
+                    label: "{{ lang._('Cancel') }}",
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }]
+            });
+        });
         $('.act-remove').click(function () {
             const packageName = $(this).data('package');
             BootstrapDialog.show({
@@ -120,10 +164,22 @@
 
             $.each(data.plugin || [], function (index, plugin) {
                 const installed = plugin.installed === '1';
+                const provided = plugin.provided === '1';
                 const installedVersion = installed ? plugin.version : "{{ lang._('N/A') }}";
+                const availableVersion = provided ? plugin.remote_version : "{{ lang._('N/A') }}";
                 let actions = '<button class="btn btn-default btn-xs act-details" data-package="' +
                     escapeHtml(plugin.name) + '" data-toggle="tooltip" title="{{ lang._('Info') }}">' +
                     '<i class="fa fa-info-circle fa-fw"></i></button>';
+
+                if (!installed && provided) {
+                    actions += '<button class="btn btn-default btn-xs act-install" data-package="' +
+                        escapeHtml(plugin.name) + '" data-toggle="tooltip" title="{{ lang._('Install') }}">' +
+                        '<i class="fa fa-plus fa-fw"></i></button>';
+                } else if (installed && provided) {
+                    actions += '<button class="btn btn-default btn-xs act-reinstall" data-package="' +
+                        escapeHtml(plugin.name) + '" data-toggle="tooltip" title="{{ lang._('Reinstall') }}">' +
+                        '<i class="fa fa-repeat fa-fw"></i></button>';
+                }
 
                 if (installed) {
                     actions += '<button class="btn btn-default btn-xs act-remove" data-package="' +
@@ -135,6 +191,7 @@
                     '<tr class="plugin-entry">' +
                     '<td>' + escapeHtml(plugin.name) + (installed ? " <b>({{ lang._('installed') }})</b>" : '') + '</td>' +
                     '<td>' + escapeHtml(installedVersion) + '</td>' +
+                    '<td>' + escapeHtml(availableVersion) + '</td>' +
                     '<td>' + escapeHtml(plugin.flatsize) + '</td>' +
                     '<td>' + escapeHtml(plugin.repository) + '</td>' +
                     '<td>' + escapeHtml(plugin.comment) + '</td>' +
@@ -144,7 +201,7 @@
             });
 
             if (tbody.children().length === 0) {
-                tbody.append('<tr><td colspan="6">{{ lang._('No locally installed plugins were found.') }}</td></tr>');
+                tbody.append('<tr><td colspan="7">{{ lang._('No plugins were returned by the configured repository.') }}</td></tr>');
             }
 
             $('#plugin_progress').removeClass('fa fa-spinner fa-pulse');
@@ -179,11 +236,11 @@
             <div class="content-box table-responsive">
                 <div style="padding: 10px 8px;">
                     <button class="btn btn-primary" id="refresh_plugins">
-                        <i class="fa fa-refresh"></i> {{ lang._('Reload installed plugins') }}
+                        <i class="fa fa-refresh"></i> {{ lang._('Refresh official plugins') }}
                     </button>
                     <i id="plugin_progress"></i>
                     <span class="text-muted" style="margin-left:10px;">
-                        {{ lang._('All remote downloads are disabled. Install local os-* package files with pkg add from the console.') }}
+                        {{ lang._('System updates remain disabled. Only os-* plugins and their dependencies can be installed from the official signed repository.') }}
                     </span>
                 </div>
                 <table class="table table-striped table-condensed" id="pluginlist">
@@ -191,6 +248,7 @@
                         <tr>
                             <th><input type="text" class="input-sm" autocomplete="off" id="plugin_search" placeholder="{{ lang._('Name') }}"></th>
                             <th>{{ lang._('Version') }}</th>
+                            <th>{{ lang._('Available') }}</th>
                             <th>{{ lang._('Size') }}</th>
                             <th>{{ lang._('Repository') }}</th>
                             <th>{{ lang._('Comment') }}</th>

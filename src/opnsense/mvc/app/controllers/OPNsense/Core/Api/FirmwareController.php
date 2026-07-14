@@ -556,10 +556,22 @@ class FirmwareController extends ApiMutableModelControllerBase
      */
     public function reinstallAction($pkg_name)
     {
-        return [
-            'status' => 'disabled',
-            'status_msg' => gettext('Remote plugin installation is disabled. Use pkg add with a local package file.'),
-        ];
+        $backend = new Backend();
+        $response = [];
+        $pkg_name = $this->request->isPost() ? $this->sanitizePluginName($pkg_name) : null;
+
+        if (!empty($pkg_name)) {
+            $this->getLogger('audit')->notice(
+                sprintf("[Firmware] User %s executed a reinstall of plugin %s", $this->getUserName(), $pkg_name)
+            );
+            $response['status'] = 'ok';
+            $response['msg_uuid'] = trim($backend->configdpRun("firmware reinstall", [$pkg_name], true));
+        } else {
+            $response['status'] = 'failure';
+            $response['status_msg'] = gettext('Only os-* plugin packages can be reinstalled.');
+        }
+
+        return $response;
     }
 
     /**
@@ -569,7 +581,17 @@ class FirmwareController extends ApiMutableModelControllerBase
      */
     public function syncPluginsAction()
     {
-        return ['status' => 'disabled'];
+        $backend = new Backend();
+        $response = [];
+
+        if ($this->request->isPost()) {
+            $this->getLogger('audit')->notice(sprintf("[Firmware] User %s executed a plugins sync", $this->getUserName()));
+            $response['status'] = strtolower(trim($backend->configdRun('firmware sync')));
+        } else {
+            $response['status'] = 'failure';
+        }
+
+        return $response;
     }
 
     /**
@@ -579,7 +601,16 @@ class FirmwareController extends ApiMutableModelControllerBase
      */
     public function resyncPluginsAction()
     {
-        return ['status' => 'disabled'];
+        $backend = new Backend();
+        $response = [];
+
+        if ($this->request->isPost()) {
+            $response['status'] = strtolower(trim($backend->configdRun('firmware resync')));
+        } else {
+            $response['status'] = 'failure';
+        }
+
+        return $response;
     }
 
     /**
@@ -590,10 +621,22 @@ class FirmwareController extends ApiMutableModelControllerBase
      */
     public function installAction($pkg_name)
     {
-        return [
-            'status' => 'disabled',
-            'status_msg' => gettext('Remote plugin installation is disabled. Use pkg add with a local package file.'),
-        ];
+        $backend = new Backend();
+        $response = [];
+        $pkg_name = $this->request->isPost() ? $this->sanitizePluginName($pkg_name) : null;
+
+        if (!empty($pkg_name)) {
+            $this->getLogger('audit')->notice(
+                sprintf("[Firmware] User %s executed an install of plugin %s", $this->getUserName(), $pkg_name)
+            );
+            $response['status'] = 'ok';
+            $response['msg_uuid'] = trim($backend->configdpRun("firmware install", [$pkg_name], true));
+        } else {
+            $response['status'] = 'failure';
+            $response['status_msg'] = gettext('Only os-* plugin packages can be installed.');
+        }
+
+        return $response;
     }
 
     /**
@@ -745,7 +788,7 @@ class FirmwareController extends ApiMutableModelControllerBase
     }
 
     /**
-     * list locally installed packages
+     * list local packages and remotely available plugins
      * @return array
      */
     public function infoAction()
@@ -765,12 +808,25 @@ class FirmwareController extends ApiMutableModelControllerBase
             $response[$result] = !empty($version[$index]) ? $version[$index] : 'unknown';
         }
 
-        /* only local packages are queried; every remote repository is disabled */
+        /* allows us to select UI features based on product state */
+        $devel = explode('-', $response['product_id']);
+        $devel = count($devel) == 2 ? $devel[1] == 'devel' : false;
+
         $packages = [];
         $plugins = [];
+        $tiers = [];
+
+        $current = $backend->configdRun('firmware tiers');
+        $current = explode("\n", trim($current ?? ''));
+        foreach ($current as $line) {
+            $expanded = explode('|||', $line);
+            if (count($expanded) == 3) {
+                $tiers[$expanded[0]] = $expanded[2];
+            }
+        }
 
         /* package infos are flat lists with 3 pipes as delimiter */
-        foreach (array('local') as $type) {
+        foreach (array('remote', 'local') as $type) {
             $current = $backend->configdRun("firmware {$type}");
             $current = explode("\n", trim($current ?? ''));
 
@@ -790,7 +846,7 @@ class FirmwareController extends ApiMutableModelControllerBase
                     }
                 }
 
-                /* offline mode only returns locally installed packages */
+                /* mark remote packages as provided and local packages as installed */
                 $translated['provided'] = $type == 'remote' ? '1' : '0';
                 $translated['installed'] = $type == 'local' ? '1' : '0';
                 $translated['remote_version'] = $type == 'remote' ? $translated['version'] : gettext('N/A');
@@ -803,11 +859,14 @@ class FirmwareController extends ApiMutableModelControllerBase
                 $translated['configured'] = in_array($translated['name'], $configPlugins) || $translated['automatic'] == '1' ? '1' : '0';
                 $packages[$translated['name']] = $translated;
 
-                /* select locally installed plugins */
+                /* select local and remotely available plugins */
                 $plugin = explode('-', $translated['name']);
                 if (count($plugin)) {
                     if ($plugin[0] == 'os') {
-                        if ($type == 'local') {
+                        if (
+                            $type == 'local' || ($type == 'remote' &&
+                            ($devel || end($plugin) != 'devel'))
+                        ) {
                             $plugins[$translated['name']] = $translated;
                         }
                     }
@@ -850,6 +909,14 @@ class FirmwareController extends ApiMutableModelControllerBase
         foreach ($plugins as $plugin) {
             /* for any community repository, orphaned package or otherwise unknown force the lowest tier */
             $plugin['tier'] = '4';
+
+            if (
+                in_array($plugin['repository'], ['OPNsense', 'SunnyValley']) &&
+                $plugin['provided'] == '1' &&
+                isset($tiers[$plugin['name']])
+            ) {
+                $plugin['tier'] = $tiers[$plugin['name']];
+            }
 
             $response['plugin'][] = $plugin;
         }

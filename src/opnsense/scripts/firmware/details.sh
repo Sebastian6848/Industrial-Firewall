@@ -27,5 +27,7 @@
 . /usr/local/opnsense/scripts/firmware/config.sh
 
 PACKAGE=${1}
+FORMAT="%c\n\n%e\n\nMaintainer: %m"
 
-${PKG} query "%c\n\n%e\n\nMaintainer: %m" ${PACKAGE}
+${PKG} rquery -U "${FORMAT}" "${PACKAGE}" 2> /dev/null || \
+    ${PKG} query "${FORMAT}" "${PACKAGE}"
