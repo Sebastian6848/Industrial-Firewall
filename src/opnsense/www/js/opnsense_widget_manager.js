@@ -70,6 +70,8 @@ class WidgetManager  {
     constructor(gridStackOptions = {}, gettext = {}, appearanceOptions = {}) {
         this.gridStackOptions = gridStackOptions;
         this.excludedWidgetIds = new Set(appearanceOptions.excludedWidgetIds ?? []);
+        this.layoutProfile = appearanceOptions.layoutProfile ?? null;
+        this.preferredLayouts = appearanceOptions.preferredLayouts ?? {};
         this.runtimeOptions = {}; // non-persisted runtime options
         this.persistedOptions = {}; // persisted options
         this.gettext = gettext;
@@ -113,8 +115,11 @@ class WidgetManager  {
             try {
                 let configuration = data.dashboard;
                 this.layouts = configuration.layouts ?? null;
+                this.persistedOptions = configuration.options ?? {};
+                this.runtimeOptions.usePreferredLayout = this.layoutProfile !== null &&
+                    this.persistedOptions.layoutProfile !== this.layoutProfile;
                 const visibleWidgets = configuration.widgets.filter(item => !this.excludedWidgetIds.has(item.id));
-                this.runtimeOptions.compactFilteredLayout = this.excludedWidgetIds.size > 0;
+                this.runtimeOptions.compactFilteredLayout = this.runtimeOptions.usePreferredLayout;
                 visibleWidgets.forEach(item => {
                     this.widgetConfigurations[item.id] = item;
                 });
@@ -124,8 +129,6 @@ class WidgetManager  {
                         this.excludedWidgetIds.forEach(id => delete layout[id]);
                     });
                 }
-
-                this.persistedOptions = configuration.options;
             } catch (error) {
                 // persisted config likely out of date, reset to defaults
                 this.__restoreDefaults();
@@ -243,6 +246,13 @@ class WidgetManager  {
                     }
                 }
             });
+        }
+
+        if (this.runtimeOptions.usePreferredLayout) {
+            const preferredLayout = this.preferredLayouts[this.grid.getColumn()]?.[id];
+            if (preferredLayout !== undefined) {
+                gridElement = {...gridElement, ...preferredLayout};
+            }
         }
 
         this.widgetConfigurations[id] = gridElement;
@@ -735,7 +745,10 @@ class WidgetManager  {
         }));
 
         const payload = {
-            options: {...this.persistedOptions},
+            options: {
+                ...this.persistedOptions,
+                ...(this.layoutProfile !== null ? {layoutProfile: this.layoutProfile} : {})
+            },
             widgets: items,
             layouts: this.layouts
         };

@@ -79,7 +79,30 @@ $( document ).ready(function() {
         'options': "{{ lang._('Options') }}",
         'edit': "{{ lang._('Edit Dashboard') }}",
     }, {
-        excludedWidgetIds: ['systeminformation', 'announcements']
+        excludedWidgetIds: ['systeminformation', 'announcements'],
+        layoutProfile: 'firewall-balanced-v1',
+        preferredLayouts: {
+            12: {
+                cpu: {x: 0, y: 0, w: 4},
+                memory: {x: 4, y: 0, w: 2},
+                disk: {x: 6, y: 0, w: 2},
+                gateways: {x: 8, y: 0, w: 4},
+                interfacestatistics: {x: 0, y: 1, w: 6},
+                firewall: {x: 6, y: 1, w: 6},
+                services: {x: 0, y: 2, w: 6},
+                traffic: {x: 6, y: 2, w: 6}
+            },
+            6: {
+                cpu: {x: 0, y: 0, w: 3},
+                memory: {x: 3, y: 0, w: 3},
+                disk: {x: 0, y: 1, w: 3},
+                gateways: {x: 3, y: 1, w: 3},
+                interfacestatistics: {x: 0, y: 2, w: 6},
+                firewall: {x: 0, y: 3, w: 6},
+                services: {x: 0, y: 4, w: 6},
+                traffic: {x: 0, y: 5, w: 6}
+            }
+        }
     });
     widgetManager.initialize();
 });
