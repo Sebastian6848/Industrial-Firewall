@@ -55,12 +55,24 @@ EOF
 	${PKG} query "%n|||%v|||%c|||%sh|||%k|||%a|||%L|||%R|||%o"
 	;;
 remote)
-	${PKG} update -fq -r OPNsense && \
-	    ${PKG} rquery -U "%n|||%v|||%c|||%sh|||0|||0|||%L|||%R|||%o"
+	# Keep output visible so the plugin-only page can report repository,
+	# signature, DNS and ABI errors instead of an empty catalogue message.
+	if ! ${PKG} update -f -r OPNsense 2>&1; then
+		echo "Official plugin catalogue update failed."
+		exit 0
+	fi
+	REMOTE_OUTPUT=$(${PKG} rquery -U "%n|||%v|||%c|||%sh|||0|||0|||%L|||%R|||%o" 2>&1)
+	REMOTE_STATUS=${?}
+	if [ ${REMOTE_STATUS} -ne 0 ]; then
+		printf '%s\n' "${REMOTE_OUTPUT}"
+		exit 0
+	fi
+	printf '%s\n' "${REMOTE_OUTPUT}" | grep '^os-'
+	exit 0
 	;;
 tiers)
-	# The dedicated plugin refresh action updates the catalogue before this query.
-	${PKG} rquery '%n|||%At|||%Av' | grep '|||product_tier|||'
+	# The remote query updates the catalogue before annotations are requested.
+	${PKG} rquery '%n|||%At|||%Av' | grep '|||product_tier|||' || true
 	;;
 *)
 	;;
