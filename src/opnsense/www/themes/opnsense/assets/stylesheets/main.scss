@@ -205,6 +205,26 @@ body{
     }
 }
 
+.firewall-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+    white-space: nowrap;
+
+    .fa {
+        font-size: 0.95em;
+        line-height: 1;
+        transform: translateY(-0.02em);
+    }
+}
+
+.navbar-brand.firewall-brand {
+    height: 60px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .col-sm-disable-spacer{
     @media (min-width: $screen-sm-min) {
         padding-top: 0 !important;
@@ -254,9 +274,13 @@ body{
         height: 75px !important;
         padding: 0 20px;
         .navbar-brand {
-          padding: 7px 0px !important;
+          padding: 7px 0 !important;
           img {
             height: 60px ;
+          }
+          &.firewall-brand {
+            height: 75px;
+            padding: 0 !important;
           }
         }
     }

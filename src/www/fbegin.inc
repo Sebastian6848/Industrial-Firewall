@@ -37,17 +37,8 @@ $aclObj = new \OPNsense\Core\ACL();
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/index.php">
-<?php if (get_themed_filename('/images/default-logo.svg', true)): ?>
-        <img class="brand-logo" src="<?= cache_safe(get_themed_filename('/images/default-logo.svg')) ?>" height="30" alt="logo" />
-<?php else: ?>
-        <img class="brand-logo" src="<?= cache_safe(get_themed_filename('/images/default-logo.png')) ?>" height="30" alt="logo" />
-<?php endif ?>
-<?php if (get_themed_filename('/images/icon-logo.svg', true)): ?>
-        <img class="brand-icon" src="<?= cache_safe(get_themed_filename('/images/icon-logo.svg')) ?>" height="30" alt="icon" />
-<?php else: ?>
-        <img class="brand-icon" src="<?= cache_safe(get_themed_filename('/images/icon-logo.png')) ?>" height="30" alt="icon" />
-<?php endif ?>
+        <a class="navbar-brand firewall-brand" href="/ui/core/dashboard">
+          <i class="fa fa-shield-alt" aria-hidden="true"></i> Firewall
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
           <span class="sr-only">Toggle navigation</span>

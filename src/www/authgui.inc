@@ -369,6 +369,8 @@ function display_login_form($Login_Error)
     <title><?= gettext('Login') ?> | <?= $product->name() ?></title>
 
     <link href="<?= cache_safe(get_themed_filename('/css/main.css')) ?>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= cache_safe("/ui/assets/fontawesome/css/all.min.css") ?>">
+    <link rel="stylesheet" type="text/css" href="<?= cache_safe("/ui/assets/fontawesome/css/v4-shims.min.css") ?>">
     <link href="<?= cache_safe(get_themed_filename('/images/favicon.png')) ?>" rel="shortcut icon">
 
     <script src="/ui/js/jquery-3.5.1.min.js"></script>
@@ -383,12 +385,8 @@ function display_login_form($Login_Error)
   <div class="container">
     <main class="login-modal-container">
       <header class="login-modal-head" style="height:50px;">
-        <div class="navbar-brand">
-    <?php if (get_themed_filename('/images/default-logo.svg', true)) : ?>
-          <img src="<?= cache_safe(get_themed_filename('/images/default-logo.svg')) ?>" height="30" alt="logo" />
-    <?php else : ?>
-          <img src="<?= cache_safe(get_themed_filename('/images/default-logo.png')) ?>" height="30" alt="logo" />
-    <?php endif ?>
+        <div class="navbar-brand firewall-brand">
+          <i class="fa fa-shield-alt" aria-hidden="true"></i> Firewall
         </div>
       </header>
 
@@ -428,11 +426,6 @@ function display_login_form($Login_Error)
           </div>
 
       </main>
-      <div class="login-foot text-center">
-        <a target="_blank" href="<?= $product->website() ?>"><?= $product->name() ?></a> (c) <?= $product->copyright_years() ?>
-        <a target="_blank" href="<?= $product->copyright_url() ?>"><?= $product->copyright_owner() ?></a>
-      </div>
-
     </div>
 
     </body>

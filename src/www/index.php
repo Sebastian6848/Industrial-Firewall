@@ -62,18 +62,16 @@ if (isset($config['trigger_initial_wizard']) || isset($_GET['wizard_done'])):
           <section class="col-xs-12">
             <div class="content-box" style="padding: 20px;">
               <div class="table-responsive">
-  <?php if (get_themed_filename('/images/default-logo.svg', true)): ?>
-                <img src="<?= cache_safe(get_themed_filename('/images/default-logo.svg')) ?>" border="0" alt="logo" style="max-width:380px;" />
-  <?php else: ?>
-                <img src="<?= cache_safe(get_themed_filename('/images/default-logo.png')) ?>" border="0" alt="logo" style="max-width:380px;" />
-  <?php endif ?>
+                <div class="firewall-brand" style="font-size:32px; margin-bottom:10px;">
+                  <i class="fa fa-shield-alt" aria-hidden="true"></i> Firewall
+                </div>
                 <br />
                 <div class="content-box-main" style="padding-bottom:0px;">
                   <?php
                       if (isset($config['trigger_initial_wizard'])) {
                           echo '<p>' . sprintf(gettext('Welcome to %s!'), $product->name()) . "</p>\n";
                           echo '<p>' . gettext('One moment while we start the initial setup wizard.') . "</p>\n";
-                          echo '<p class="__nomb">' . gettext('To bypass the wizard, click on the logo in the upper left corner.') . "</p>\n";
+                          echo '<p class="__nomb">' . gettext('To bypass the wizard, use the Abort button in the initial setup wizard.') . "</p>\n";
                       } else {
                           echo '<p>' . sprintf(gettext('Congratulations! %s is now configured.'), $product->name()) . "</p>\n";
                           echo '<p>' . sprintf(gettext(
