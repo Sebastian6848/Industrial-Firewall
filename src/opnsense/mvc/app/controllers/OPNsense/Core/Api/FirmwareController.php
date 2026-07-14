@@ -575,45 +575,6 @@ class FirmwareController extends ApiMutableModelControllerBase
     }
 
     /**
-     * Refresh repository configuration and package catalogue for plugin listing.
-     * This does not invoke the firmware check or update workflow.
-     *
-     * @return array status and command output
-     * @throws \Exception
-     */
-    public function refreshPluginsAction()
-    {
-        $response = ['status' => 'failure'];
-
-        if (!$this->request->isPost()) {
-            $response['status_msg'] = gettext('The plugin catalogue refresh requires a POST request.');
-            return $response;
-        }
-
-        $this->getLogger('audit')->notice(
-            sprintf("[Firmware] User %s refreshed the official plugin catalogue", $this->getUserName())
-        );
-
-        $backend = new Backend();
-        $output = trim($backend->configdRun('firmware plugins.refresh'));
-        $response['output'] = trim(str_replace(
-            ['__PLUGIN_REFRESH_OK__', '__PLUGIN_REFRESH_ERROR__:'],
-            '',
-            $output
-        ));
-
-        if (strpos($output, '__PLUGIN_REFRESH_OK__') !== false) {
-            $response['status'] = 'ok';
-        } else {
-            $response['status_msg'] = !empty($response['output'])
-                ? $response['output']
-                : gettext('Unable to refresh the official plugin catalogue.');
-        }
-
-        return $response;
-    }
-
-    /**
      * install missing configured plugins
      * @return array status
      * @throws \Exception
@@ -854,19 +815,18 @@ class FirmwareController extends ApiMutableModelControllerBase
         $packages = [];
         $plugins = [];
         $tiers = [];
+        $remotePluginCount = 0;
+        $remoteOutput = '';
 
-        $current = $backend->configdRun('firmware tiers');
-        $current = explode("\n", trim($current ?? ''));
-        foreach ($current as $line) {
-            $expanded = explode('|||', $line);
-            if (count($expanded) == 3) {
-                $tiers[$expanded[0]] = $expanded[2];
-            }
-        }
+        /* regenerate repository configuration without running a firmware check */
+        $backend->configdRun('firmware reload');
 
         /* package infos are flat lists with 3 pipes as delimiter */
         foreach (array('remote', 'local') as $type) {
             $current = $backend->configdRun("firmware {$type}");
+            if ($type == 'remote') {
+                $remoteOutput = trim($current ?? '');
+            }
             $current = explode("\n", trim($current ?? ''));
 
             foreach ($current as $line) {
@@ -902,6 +862,9 @@ class FirmwareController extends ApiMutableModelControllerBase
                 $plugin = explode('-', $translated['name']);
                 if (count($plugin)) {
                     if ($plugin[0] == 'os') {
+                        if ($type == 'remote') {
+                            $remotePluginCount++;
+                        }
                         if (
                             $type == 'local' || ($type == 'remote' &&
                             ($devel || end($plugin) != 'devel'))
@@ -911,6 +874,29 @@ class FirmwareController extends ApiMutableModelControllerBase
                     }
                 }
             }
+        }
+
+        /* query annotations after remote refreshed the catalogue */
+        $current = $backend->configdRun('firmware tiers');
+        $current = explode("\n", trim($current ?? ''));
+        foreach ($current as $line) {
+            $expanded = explode('|||', $line);
+            if (count($expanded) == 3) {
+                $tiers[$expanded[0]] = $expanded[2];
+            }
+        }
+
+        if ($remotePluginCount > 0) {
+            $response['catalogue_status'] = 'ok';
+            $response['catalogue_message'] = sprintf(
+                gettext('%d plugins are available from the configured repository.'),
+                $remotePluginCount
+            );
+        } else {
+            $response['catalogue_status'] = 'error';
+            $response['catalogue_message'] = !empty($remoteOutput)
+                ? substr($remoteOutput, 0, 2000)
+                : gettext('The official plugin catalogue is empty or could not be downloaded.');
         }
 
         foreach ($configPlugins as $missing) {

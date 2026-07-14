@@ -156,9 +156,11 @@
         });
     }
 
-    function loadPlugins() {
+    function loadPlugins(showError) {
+        $('#refresh_plugins').prop('disabled', true);
         $('#plugin_progress').addClass('fa fa-spinner fa-pulse');
-        ajaxGet('/api/core/firmware/info', {}, function (data) {
+        $('#plugin_refresh_status').text("{{ lang._('Refreshing the signed plugin catalogue...') }}");
+        ajaxGet('/api/core/firmware/info', {v: Date.now()}, function (data) {
             const tbody = $('#pluginlist > tbody');
             tbody.empty();
 
@@ -208,40 +210,38 @@
                 tbody.append('<tr><td colspan="8">{{ lang._('No plugins were returned by the configured repository.') }}</td></tr>');
             }
 
+            $('#refresh_plugins').prop('disabled', false);
             $('#plugin_progress').removeClass('fa fa-spinner fa-pulse');
+
+            if (data.catalogue_status === 'ok') {
+                $('#plugin_refresh_status').text(
+                    data.catalogue_message || "{{ lang._('Plugin catalogue refreshed.') }}"
+                );
+            } else {
+                const message = data.catalogue_message ||
+                    "{{ lang._('Unable to refresh the official plugin catalogue.') }}";
+                $('#plugin_refresh_status').text(message);
+                if (showError === true) {
+                    stdDialogInform(
+                        "{{ lang._('Plugin catalogue') }}",
+                        escapeHtml(message),
+                        "{{ lang._('Close') }}",
+                        undefined,
+                        'danger'
+                    );
+                }
+            }
+
             bindPluginActions();
             filterPlugins();
         });
     }
 
-    function refreshPlugins() {
-        $('#refresh_plugins').prop('disabled', true);
-        $('#plugin_progress').addClass('fa fa-spinner fa-pulse');
-        $('#plugin_refresh_status').text("{{ lang._('Refreshing the signed plugin catalogue...') }}");
-
-        ajaxCall('/api/core/firmware/refreshPlugins', {}, function (data) {
-            $('#refresh_plugins').prop('disabled', false);
-
-            if (data.status === 'ok') {
-                $('#plugin_refresh_status').text("{{ lang._('Plugin catalogue refreshed.') }}");
-            } else {
-                $('#plugin_refresh_status').text("{{ lang._('Plugin catalogue refresh failed; showing cached entries.') }}");
-                stdDialogInform(
-                    "{{ lang._('Plugin catalogue') }}",
-                    data.status_msg || "{{ lang._('Unable to refresh the official plugin catalogue.') }}",
-                    "{{ lang._('Close') }}",
-                    undefined,
-                    'danger'
-                );
-            }
-
-            loadPlugins();
-        });
-    }
-
     $(document).ready(function () {
         $('#plugin_search').keyup(filterPlugins);
-        $('#refresh_plugins').click(refreshPlugins);
+        $('#refresh_plugins').click(function () {
+            loadPlugins(true);
+        });
         $('#plugin_output_copy').click(function (event) {
             event.preventDefault();
             $('#plugin_output').select();
@@ -254,7 +254,7 @@
                 $('#plugin_output_container').show();
                 trackPluginAction();
             } else {
-                refreshPlugins();
+                loadPlugins(false);
             }
         });
     });

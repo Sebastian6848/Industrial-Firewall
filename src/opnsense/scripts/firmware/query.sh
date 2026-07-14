@@ -55,7 +55,8 @@ EOF
 	${PKG} query "%n|||%v|||%c|||%sh|||%k|||%a|||%L|||%R|||%o"
 	;;
 remote)
-	${PKG} rquery -U "%n|||%v|||%c|||%sh|||0|||0|||%L|||%R|||%o"
+	${PKG} update -fq -r OPNsense && \
+	    ${PKG} rquery -U "%n|||%v|||%c|||%sh|||0|||0|||%L|||%R|||%o"
 	;;
 tiers)
 	# The dedicated plugin refresh action updates the catalogue before this query.
