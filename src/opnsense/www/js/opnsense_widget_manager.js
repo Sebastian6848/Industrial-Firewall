@@ -67,8 +67,9 @@ class ResizeObserverWrapper {
 }
 
 class WidgetManager  {
-    constructor(gridStackOptions = {}, gettext = {}) {
+    constructor(gridStackOptions = {}, gettext = {}, appearanceOptions = {}) {
         this.gridStackOptions = gridStackOptions;
+        this.excludedWidgetIds = new Set(appearanceOptions.excludedWidgetIds ?? []);
         this.runtimeOptions = {}; // non-persisted runtime options
         this.persistedOptions = {}; // persisted options
         this.gettext = gettext;
@@ -112,9 +113,17 @@ class WidgetManager  {
             try {
                 let configuration = data.dashboard;
                 this.layouts = configuration.layouts ?? null;
-                configuration.widgets.forEach(item => {
+                const visibleWidgets = configuration.widgets.filter(item => !this.excludedWidgetIds.has(item.id));
+                this.runtimeOptions.compactFilteredLayout = visibleWidgets.length !== configuration.widgets.length;
+                visibleWidgets.forEach(item => {
                     this.widgetConfigurations[item.id] = item;
                 });
+
+                if (this.layouts != null) {
+                    Object.values(this.layouts).forEach(layout => {
+                        this.excludedWidgetIds.forEach(id => delete layout[id]);
+                    });
+                }
 
                 this.persistedOptions = configuration.options;
             } catch (error) {
@@ -122,17 +131,19 @@ class WidgetManager  {
                 this.__restoreDefaults();
             }
 
-            const promises = data.modules.map(async (item) => {
-                try {
-                    const mod = await import('/ui/js/widgets/' + item.module + '?t='+Date.now());
-                    this.loadedModules[item.id] = mod.default;
-                } catch (error) {
-                    console.error('Could not import module', item.module, error);
-                } finally {
-                    this.breakoutLinks[item.id] = item.link;
-                    this.widgetTranslations[item.id] = item.translations;
-                }
-            });
+            const promises = data.modules
+                .filter(item => !this.excludedWidgetIds.has(item.id))
+                .map(async (item) => {
+                    try {
+                        const mod = await import('/ui/js/widgets/' + item.module + '?t='+Date.now());
+                        this.loadedModules[item.id] = mod.default;
+                    } catch (error) {
+                        console.error('Could not import module', item.module, error);
+                    } finally {
+                        this.breakoutLinks[item.id] = item.link;
+                        this.widgetTranslations[item.id] = item.translations;
+                    }
+                });
 
             // Load all modules simultaneously - this shouldn't take long
             await Promise.all(promises);
@@ -267,6 +278,12 @@ class WidgetManager  {
         // render to the DOM
         this.grid.load(Object.values(this.widgetConfigurations));
 
+        // Close gaps left by dashboard widgets intentionally hidden by the UI.
+        // List compaction keeps widget order and produces a balanced row layout.
+        if (this.runtimeOptions.compactFilteredLayout) {
+            this.grid.compact('list');
+        }
+
         this.grid.on('change', (event, items) => {
             const curCount = this.grid.getColumn();
             if (this.curColCount != curCount) {
@@ -289,6 +306,9 @@ class WidgetManager  {
 
                     // load a known layout based on the current column count
                     this.grid.load(Object.values({...this.widgetConfigurations, ...this.layouts[this.curColCount]}));
+                    if (this.runtimeOptions.compactFilteredLayout) {
+                        this.grid.compact('list');
+                    }
                 } else {
                     this.grid.compact();
                 }

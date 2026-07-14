@@ -11,7 +11,7 @@ if (isset($extraBreadcrumb)) {
 }
 
 $pagetitle = html_safe(gentitle(array_reverse($menuBreadcrumbs), ' | '));
-$pagetitle .= html_safe(sprintf(' | %s.%s', $config['system']['hostname'], $config['system']['domain']));
+$pagetitle .= ' | Firewall';
 
 ?><!doctype html>
 <html lang="<?= get_current_lang() ?>" class="no-js">
@@ -63,7 +63,7 @@ $pagetitle .= html_safe(sprintf(' | %s.%s', $config['system']['hostname'], $conf
     </style>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?= cache_safe(get_themed_filename('/images/favicon.png')) ?>">
+    <link rel="icon" type="image/svg+xml" href="<?= cache_safe(get_themed_filename('/images/firewall-shield.svg')) ?>">
 
     <!-- legacy browser functions -->
     <script src="<?= cache_safe("/ui/js/polyfills.js") ?>"></script>

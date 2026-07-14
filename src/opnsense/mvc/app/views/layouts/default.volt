@@ -13,11 +13,11 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>{{headTitle|default("OPNsense") }} | {{system_hostname}}.{{system_domain}}</title>
+    <title>{{headTitle|default("Firewall") }} | Firewall</title>
     {% set theme_name = ui_theme|default('opnsense') %}
 
     <!-- Favicon -->
-    <link href="{{ cache_safe('/ui/themes/%s/build/images/favicon.png' | format(theme_name)) }}" rel="shortcut icon">
+    <link href="{{ cache_safe('/ui/themes/%s/build/images/firewall-shield.svg' | format(theme_name)) }}" rel="icon" type="image/svg+xml">
 
     <!-- css imports -->
     {% for filename in css_files -%}
@@ -234,9 +234,6 @@
         <button class="toggle-sidebar" data-toggle="tooltip right" title="{{ lang._('Toggle sidebar') }}" style="display:none;"><i class="fa fa-chevron-left"></i></button>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li id="menu_messages">
-              <span class="navbar-text">{{session_username}}@{{system_hostname}}.{{system_domain}}</span>
-            </li>
             <li>
               <span class="navbar-text" style="margin-left: 0">
                 <i id="system_status" data-toggle="tooltip left" title="{{ lang._('Show system status') }}" style="cursor:pointer" class="fa fa-circle text-muted"></i>

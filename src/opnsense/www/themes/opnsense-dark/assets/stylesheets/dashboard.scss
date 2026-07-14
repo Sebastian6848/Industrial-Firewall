@@ -53,8 +53,17 @@
   text-align: center;
   border-style: solid;
   border-color: transparentize(map-get($colors, brand-primary), 0.85);
-  border-width: 2px;
+  border-width: 1px;
+  border-radius: 12px;
   background-color: map-get($colors, page-content-head-background);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-stack-item-content:hover {
+  border-color: transparentize(map-get($colors, brand-primary), 0.6);
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.38);
 }
 
 .widget-error {
@@ -66,14 +75,14 @@
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 1px;
+    padding: 6px 8px 10px;
     cursor: default;
 }
 
 .widget-header {
-    margin-top: 0.5em;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 0;
+    min-height: 40px;
+    padding: 4px 8px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,6 +126,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    letter-spacing: 0.01em;
 }
 
 .panel-divider {
@@ -137,9 +147,10 @@ td {
 .line {
     display: inline-block;
     height: 1px;
-    width: 70%;
+    width: 64%;
     background: map-get($colors, brand-primary);
-    margin: 5px;
+    margin: 4px;
+    opacity: 0.65;
 }
 
 .canvas-container-noaspectratio {

@@ -56,12 +56,12 @@ $( document ).ready(function() {
     let widgetManager = new WidgetManager({
         float: false,
         columnOpts: {
-            breakpoints: [{w: 500, c:1}, {w:900, c:3}, {w:9999, c:12}]
+            breakpoints: [{w: 620, c:1}, {w:1100, c:6}, {w:9999, c:12}]
         },
         disableDrag: true,
         disableResize: true,
         columns: 12,
-        margin: 5,
+        margin: 10,
         alwaysShowResizeHandle: false,
         sizeToContent: true,
         resizable: {
@@ -78,6 +78,8 @@ $( document ).ready(function() {
         'failed': "{{ lang._('Failed to load widget') }}",
         'options': "{{ lang._('Options') }}",
         'edit': "{{ lang._('Edit Dashboard') }}",
+    }, {
+        excludedWidgetIds: ['systeminformation', 'announcements']
     });
     widgetManager.initialize();
 });

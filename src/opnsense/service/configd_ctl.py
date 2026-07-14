@@ -146,17 +146,26 @@ if args.e:
             stashed_lines = list()
 else:
     # normal execution mode
-    for exec_command in exec_commands:
-        if args.f:
-            exec_command = '!' + exec_command
-        if args.d:
-            exec_command = '&' + exec_command
-        endmarker = (chr(0), chr(0), chr(0))
-        for block in exec_config_cmd(exec_command=exec_command):
-            if block is None:
-                sys.exit(-1)
-            elif not args.q:
-                if block.endswith(endmarker):
-                    print(block[:-3].rstrip())
-                else:
-                    print(block, end="")
+    try:
+        for exec_command in exec_commands:
+            if args.f:
+                exec_command = '!' + exec_command
+            if args.d:
+                exec_command = '&' + exec_command
+            endmarker = (chr(0), chr(0), chr(0))
+            for block in exec_config_cmd(exec_command=exec_command):
+                if block is None:
+                    sys.exit(-1)
+                elif not args.q:
+                    if block.endswith(endmarker):
+                        print(block[:-3].rstrip())
+                    else:
+                        print(block, end="")
+    except BrokenPipeError:
+        # A pipeline consumer such as head may exit before configd has
+        # finished sending its response. Redirect stdout to /dev/null to
+        # prevent a second BrokenPipeError during Python's final flush.
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        os.close(devnull)
+        sys.exit(0)

@@ -325,10 +325,10 @@ function display_error_form($text)
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title><?= gettext('Error') ?> | <?= $product->name() ?></title>
+    <title><?= gettext('Error') ?> | Firewall</title>
 
     <link href="<?= cache_safe(get_themed_filename('/css/main.css')) ?>" rel="stylesheet">
-    <link href="<?= cache_safe(get_themed_filename('/images/favicon.png')) ?>" rel="shortcut icon">
+    <link href="<?= cache_safe(get_themed_filename('/images/firewall-shield.svg')) ?>" rel="icon" type="image/svg+xml">
 
     <script src="/ui/js/jquery-3.5.1.min.js"></script>
 
@@ -366,12 +366,12 @@ function display_login_form($Login_Error)
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title><?= gettext('Login') ?> | <?= $product->name() ?></title>
+    <title><?= gettext('Login') ?> | Firewall</title>
 
     <link href="<?= cache_safe(get_themed_filename('/css/main.css')) ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= cache_safe("/ui/assets/fontawesome/css/all.min.css") ?>">
     <link rel="stylesheet" type="text/css" href="<?= cache_safe("/ui/assets/fontawesome/css/v4-shims.min.css") ?>">
-    <link href="<?= cache_safe(get_themed_filename('/images/favicon.png')) ?>" rel="shortcut icon">
+    <link href="<?= cache_safe(get_themed_filename('/images/firewall-shield.svg')) ?>" rel="icon" type="image/svg+xml">
 
     <script src="/ui/js/jquery-3.5.1.min.js"></script>
 
