@@ -55,10 +55,6 @@ export default class SystemInformation extends BaseTableWidget {
                 continue;
             }
 
-            if (key === 'updates') {
-                value = $('<a>').attr('href', '/ui/core/firmware#checkupdate').text(value).prop('outerHTML');
-            }
-
             rows.push([[this.translations[key]], value]);
         }
 

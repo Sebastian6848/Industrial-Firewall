@@ -31,14 +31,14 @@ REQUEST="UNLOCK"
 
 PACKAGE=${1}
 
-if [ "${PACKAGE}" = "base" ]; then
-	output_txt "Unlocking base set"
-	output_cmd opnsense-update -bU
-elif [ "${PACKAGE}" = "kernel" ]; then
-	output_txt "Unlocking kernel set"
-	output_cmd opnsense-update -kU
-else
+case "${PACKAGE}" in
+os-*)
 	output_cmd ${PKG} unlock -y "${PACKAGE}"
-fi
+	;;
+*)
+	output_txt "Only plugin packages with the os- prefix can be unlocked."
+	output_done
+	;;
+esac
 
 output_done

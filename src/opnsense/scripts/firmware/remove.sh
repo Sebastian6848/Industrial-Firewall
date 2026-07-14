@@ -31,6 +31,11 @@ REQUEST="REMOVE"
 
 PACKAGE=${1}
 
+if [ "${PACKAGE#os-}" = "${PACKAGE}" ]; then
+	output_txt "Only plugin packages with the os- prefix can be removed."
+	output_done
+fi
+
 output_cmd ${PKG} remove -y "${PACKAGE}"
 output_cmd ${BASEDIR}/register.php remove "${PACKAGE}"
 output_cmd ${PKG} autoremove -y

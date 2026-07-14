@@ -31,14 +31,14 @@ REQUEST="LOCK"
 
 PACKAGE=${1}
 
-if [ "${PACKAGE}" = "base" ]; then
-	output_txt "Locking base set"
-	output_cmd opnsense-update -bL
-elif [ "${PACKAGE}" = "kernel" ]; then
-	output_txt "Locking kernel set"
-	output_cmd opnsense-update -kL
-else
+case "${PACKAGE}" in
+os-*)
 	output_cmd ${PKG} lock -y "${PACKAGE}"
-fi
+	;;
+*)
+	output_txt "Only plugin packages with the os- prefix can be locked."
+	output_done
+	;;
+esac
 
 output_done

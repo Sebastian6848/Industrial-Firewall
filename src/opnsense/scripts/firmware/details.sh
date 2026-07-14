@@ -28,4 +28,4 @@
 
 PACKAGE=${1}
 
-${PKG} rquery -U "%c\n\n%e\n\nMaintainer: %m" ${PACKAGE}
+${PKG} query "%c\n\n%e\n\nMaintainer: %m" ${PACKAGE}

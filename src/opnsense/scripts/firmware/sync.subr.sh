@@ -26,30 +26,20 @@
 
 . /usr/local/opnsense/scripts/firmware/config.sh
 
-MUSTCHECK="yes"
+CHANGED=
 
 for PACKAGE in $(/usr/local/sbin/pluginctl -g system.firmware.plugins | \
     /usr/bin/sed 's/,/ /g'); do
+	if [ "${PACKAGE#os-}" = "${PACKAGE}" ]; then
+		continue
+	fi
 	if ! ${PKG} query %n ${PACKAGE} > /dev/null; then
-		if [ -n "${MUSTCHECK}" ] ; then
-			COREPKG=$(opnsense-version -n)
-			COREVER=$(opnsense-version -v)
-			REPOVER=$(${PKG} rquery %v ${COREPKG})
-
-			# plugins must pass a version check on up-to-date core package
-			if [ "$(${PKG} version -t ${COREVER} ${REPOVER})" = "<" ]; then
-				output_txt "Installation out of date. The update to ${COREPKG}-${REPOVER} is required."
-				break
-			fi
-
-			MUSTCHECK=
-		fi
-
 		output_cmd ${PKG} install -y "${PACKAGE}"
 		output_cmd ${BASEDIR}/register.php install "${PACKAGE}"
+		CHANGED=yes
 	fi
 done
 
-if [ -z "${MUSTCHECK}" ]; then
+if [ -n "${CHANGED}" ]; then
 	output_cmd ${PKG} autoremove -y
 fi

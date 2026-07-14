@@ -78,8 +78,7 @@ if (isset($config['trigger_initial_wizard']) || isset($_GET['wizard_done'])):
                               'Please consider donating to the project to help us with our overhead costs. ' .
                               'See %sour website%s to donate or purchase available %s support services.'),
                               '<a target="_new" href="' . $product->website() . '">', '</a>', $product->name()) . "</p>\n";
-                          echo '<p class="__nomb">' . sprintf(gettext('Click to %scontinue to the dashboard%s.'), '<a href="/">', '</a>') . ' ';
-                          echo sprintf(gettext('Or click to %scheck for updates%s.'), '<a href="/ui/core/firmware#checkupdate">', '</a>'). "</p>\n";
+                          echo '<p class="__nomb">' . sprintf(gettext('Click to %scontinue to the dashboard%s.'), '<a href="/">', '</a>') . "</p>\n";
                       }
                   ?>
                 </div>

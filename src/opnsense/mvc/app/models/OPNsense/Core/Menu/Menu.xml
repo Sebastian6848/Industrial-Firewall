@@ -31,16 +31,7 @@
             <History url="/ui/core/backup/history/this"/>
             <Wizard url="/ui/core/initial_setup"/>
         </Configuration>
-        <Firmware cssClass="fa fa-building-o fa-fw">
-            <Status order="10" url="/ui/core/firmware#status"/>
-            <Settings order="20" url="/ui/core/firmware#settings"/>
-            <Changelog order="30" url="/ui/core/firmware#changelog"/>
-            <Updates order="40" url="/ui/core/firmware#updates"/>
-            <Plugins order="50" url="/ui/core/firmware#plugins"/>
-            <Packages order="60" url="/ui/core/firmware#packages"/>
-            <Reporter order="70" url="/crash_reporter.php"/>
-            <LogFile order="80" VisibleName="Log File" url="/ui/diagnostics/log/core/pkg"/>
-        </Firmware>
+        <Plugins url="/ui/core/firmware" cssClass="fa fa-puzzle-piece fa-fw"/>
         <Gateways cssClass="fa fa-location-arrow fa-fw">
             <Configuration order="10" url="/ui/routing/configuration"/>
             <Group order="20" url="/system_gateway_groups.php">

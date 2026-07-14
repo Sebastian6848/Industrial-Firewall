@@ -31,16 +31,9 @@ REQUEST="INSTALL"
 
 PACKAGE=${1}
 
-if [ "${PACKAGE#os-}" != "${PACKAGE}" ]; then
-	COREPKG=$(opnsense-version -n)
-	COREVER=$(opnsense-version -v)
-	REPOVER=$(${PKG} rquery %v ${COREPKG})
-
-	# plugins must pass a version check on up-to-date core package
-	if [ "$(${PKG} version -t ${COREVER} ${REPOVER})" = "<" ]; then
-		output_txt "Installation out of date. The update to ${COREPKG}-${REPOVER} is required."
-		output_done
-	fi
+if [ "${PACKAGE#os-}" = "${PACKAGE}" ]; then
+	output_txt "Only plugin packages with the os- prefix can be installed."
+	output_done
 fi
 
 output_cmd ${PKG} install -y "${PACKAGE}"
