@@ -387,17 +387,6 @@
                                             alert_fields['tls.version'] = "{{ lang._('tls version') }}";
                                             alert_fields['tls.notbefore'] = "{{ lang._('tls notbefore') }}";
                                             alert_fields['tls.notafter'] = "{{ lang._('tls notafter') }}";
-                                            alert_fields['nclink_topic'] = "{{ lang._('NC-Link topic') }}";
-                                            alert_fields['nclink_client_id'] = "{{ lang._('NC-Link client id') }}";
-                                            alert_fields['nclink_markers'] = "{{ lang._('NC-Link markers') }}";
-                                            alert_fields['nclink_message_types'] = "{{ lang._('NC-Link message types') }}";
-                                            alert_fields['nclink_message_class'] = "{{ lang._('NC-Link message class') }}";
-                                            alert_fields['nclink_interface'] = "{{ lang._('NC-Link interface') }}";
-                                            alert_fields['nclink_device_id'] = "{{ lang._('NC-Link device id') }}";
-                                            alert_fields['nclink_machine_id'] = "{{ lang._('NC-Link machine id') }}";
-                                            alert_fields['nclink_cnc_id'] = "{{ lang._('NC-Link CNC id') }}";
-                                            alert_fields['nclink_data_points'] = "{{ lang._('NC-Link data points') }}";
-                                            alert_fields['nclink_alarms'] = "{{ lang._('NC-Link alarms') }}";
 
                                             $.each( alert_fields, function( fieldname, fielddesc ) {
                                                 var data_ptr = data;

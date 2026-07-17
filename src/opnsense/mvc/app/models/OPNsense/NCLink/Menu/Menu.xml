@@ -1,5 +1,0 @@
-<menu>
-    <Services>
-        <NCLinkProxy VisibleName="NC-Link Proxy" cssClass="fa fa-industry fa-fw" url="/ui/nclink/proxy"/>
-    </Services>
-</menu>

@@ -1,3 +1,0 @@
-"""
-NC-Link decoder helpers.
-"""

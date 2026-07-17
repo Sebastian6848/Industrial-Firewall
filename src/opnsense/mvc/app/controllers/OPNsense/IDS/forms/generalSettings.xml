@@ -180,11 +180,4 @@
         <help>Custom TLS fields to include in eve-log for TLS. (Overrides extended if non-empty).</help>
         <advanced>true</advanced>
     </field>
-    <field>
-        <id>ids.general.eveLog.mqtt.enable</id>
-        <label>Enable eve MQTT/NC-Link logging</label>
-        <type>checkbox</type>
-        <help>Send plaintext MQTT application metadata, including NC-Link traffic, to eve-log for further analysis.</help>
-        <advanced>true</advanced>
-    </field>
 </form>

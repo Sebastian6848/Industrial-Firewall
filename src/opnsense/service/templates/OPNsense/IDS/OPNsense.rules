@@ -4,13 +4,6 @@
 # User defined rules
 #
 
-# -- NC-Link application detection rules (plaintext MQTT only)
-alert mqtt any any -> any any (msg:"OPNsense NC-Link MQTT publish topic observed"; mqtt.type:PUBLISH; mqtt.publish.topic; content:"nclink"; nocase; classtype:protocol-command-decode; sid:9001001; rev:1; metadata: app NC-Link, protocol MQTT, category industrial-control;)
-alert mqtt any any -> any any (msg:"OPNsense NC-Link registration topic observed"; mqtt.type:PUBLISH; mqtt.publish.topic; content:"Register/"; nocase; classtype:protocol-command-decode; sid:9001002; rev:1; metadata: app NC-Link, protocol MQTT, category industrial-control;)
-alert mqtt any any -> any any (msg:"OPNsense NC-Link data topic observed"; mqtt.type:PUBLISH; mqtt.publish.topic; pcre:"/^(?:Query|Set|Sample|Notify|Method|Event|Discovery|Probe)\//i"; classtype:protocol-command-decode; sid:9001003; rev:1; metadata: app NC-Link, protocol MQTT, category industrial-control;)
-alert mqtt any any -> any any (msg:"OPNsense NC-Link MQTT client identifier observed"; mqtt.type:CONNECT; mqtt.connect.clientid; content:"nclink"; nocase; classtype:protocol-command-decode; sid:9001004; rev:1; metadata: app NC-Link, protocol MQTT, category industrial-control;)
-alert mqtt any any -> any any (msg:"OPNsense NC-Link MQTT payload marker observed"; mqtt.type:PUBLISH; mqtt.publish.message; pcre:"/(?:NC[-_ ]?Link|REGMSG|REMSG|PRK|SPSK)/i"; classtype:protocol-command-decode; sid:9001005; rev:1; metadata: app NC-Link, protocol MQTT, category industrial-control;)
-
 # -- User defined rules
 {% if helpers.exists('OPNsense.IDS.userDefinedRules.rule') %}
 {%      for rule in helpers.toList('OPNsense.IDS.userDefinedRules.rule') %}
