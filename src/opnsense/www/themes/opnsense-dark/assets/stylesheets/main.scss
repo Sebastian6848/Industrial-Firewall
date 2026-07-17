@@ -270,7 +270,7 @@ body{
 
     &-head{
         background: map-get($colors, login-modal-head-background);
-        height: 75px !important;
+        height: 90px !important;
         padding: 0 20px;
         .navbar-brand {
           padding: 7px 0 !important;
@@ -278,8 +278,14 @@ body{
             height: 60px ;
           }
           &.firewall-brand {
-            height: 75px;
+            height: 90px;
             padding: 0 !important;
+            gap: 12px;
+            font-size: 30px;
+
+            .fa {
+              font-size: 1.15em;
+            }
           }
         }
     }
@@ -288,6 +294,17 @@ body{
         padding: 0px 20px 20px 20px;
         form.clearfix {
           margin-right: 9px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .login-modal-head {
+        padding: 0 14px;
+
+        .navbar-brand.firewall-brand {
+            gap: 8px;
+            font-size: 24px;
         }
     }
 }

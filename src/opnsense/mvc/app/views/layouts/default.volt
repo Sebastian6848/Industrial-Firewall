@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>{{headTitle|default("Firewall") }} | Firewall</title>
+    <title>{{headTitle|default("工业安全可信防火墙") }} | 工业安全可信防火墙</title>
     {% set theme_name = ui_theme|default('opnsense') %}
 
     <!-- Favicon -->
@@ -222,7 +222,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand firewall-brand" href="/ui/core/dashboard">
-            <i class="fa fa-shield-alt" aria-hidden="true"></i> Firewall
+            <i class="fa fa-shield-alt" aria-hidden="true"></i> 工业安全可信防火墙
           </a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
             <span class="sr-only">{{ lang._('Toggle navigation') }}</span>

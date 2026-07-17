@@ -63,7 +63,7 @@ if (isset($config['trigger_initial_wizard']) || isset($_GET['wizard_done'])):
             <div class="content-box" style="padding: 20px;">
               <div class="table-responsive">
                 <div class="firewall-brand" style="font-size:32px; margin-bottom:10px;">
-                  <i class="fa fa-shield-alt" aria-hidden="true"></i> Firewall
+                  <i class="fa fa-shield-alt" aria-hidden="true"></i> 工业安全可信防火墙
                 </div>
                 <br />
                 <div class="content-box-main" style="padding-bottom:0px;">

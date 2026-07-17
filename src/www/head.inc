@@ -11,7 +11,7 @@ if (isset($extraBreadcrumb)) {
 }
 
 $pagetitle = html_safe(gentitle(array_reverse($menuBreadcrumbs), ' | '));
-$pagetitle .= ' | Firewall';
+$pagetitle .= ' | 工业安全可信防火墙';
 
 ?><!doctype html>
 <html lang="<?= get_current_lang() ?>" class="no-js">

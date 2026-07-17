@@ -325,7 +325,7 @@ function display_error_form($text)
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title><?= gettext('Error') ?> | Firewall</title>
+    <title><?= gettext('Error') ?> | 工业安全可信防火墙</title>
 
     <link href="<?= cache_safe(get_themed_filename('/css/main.css')) ?>" rel="stylesheet">
     <link href="<?= cache_safe(get_themed_filename('/images/firewall-shield.svg')) ?>" rel="icon" type="image/svg+xml">
@@ -366,7 +366,7 @@ function display_login_form($Login_Error)
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title><?= gettext('Login') ?> | Firewall</title>
+    <title><?= gettext('Login') ?> | 工业安全可信防火墙</title>
 
     <link href="<?= cache_safe(get_themed_filename('/css/main.css')) ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= cache_safe("/ui/assets/fontawesome/css/all.min.css") ?>">
@@ -384,9 +384,9 @@ function display_login_form($Login_Error)
 
   <div class="container">
     <main class="login-modal-container">
-      <header class="login-modal-head" style="height:50px;">
+      <header class="login-modal-head">
         <div class="navbar-brand firewall-brand">
-          <i class="fa fa-shield-alt" aria-hidden="true"></i> Firewall
+          <i class="fa fa-shield-alt" aria-hidden="true"></i> 工业安全可信防火墙
         </div>
       </header>
 

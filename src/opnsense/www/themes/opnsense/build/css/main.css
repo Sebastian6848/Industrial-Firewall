@@ -6854,7 +6854,7 @@ body {
 }
 .login-modal-head {
   background: #fff;
-  height: 75px !important;
+  height: 90px !important;
   padding: 0 20px;
 }
 .login-modal-head .navbar-brand {
@@ -6864,14 +6864,29 @@ body {
   height: 60px;
 }
 .login-modal-head .navbar-brand.firewall-brand {
-  height: 75px;
+  height: 90px;
   padding: 0 !important;
+  gap: 12px;
+  font-size: 30px;
+}
+.login-modal-head .navbar-brand.firewall-brand .fa {
+  font-size: 1.15em;
 }
 .login-modal-content {
   padding: 0px 20px 20px 20px;
 }
 .login-modal-content form.clearfix, .login-modal-content form.content-box {
   margin-right: 9px;
+}
+
+@media (max-width: 480px) {
+  .login-modal-head {
+    padding: 0 14px;
+  }
+  .login-modal-head .navbar-brand.firewall-brand {
+    gap: 8px;
+    font-size: 24px;
+  }
 }
 
 @media (min-width: 768px) {

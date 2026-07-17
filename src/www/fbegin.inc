@@ -38,7 +38,7 @@ $aclObj = new \OPNsense\Core\ACL();
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand firewall-brand" href="/ui/core/dashboard">
-          <i class="fa fa-shield-alt" aria-hidden="true"></i> Firewall
+          <i class="fa fa-shield-alt" aria-hidden="true"></i> 工业安全可信防火墙
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
           <span class="sr-only">Toggle navigation</span>
