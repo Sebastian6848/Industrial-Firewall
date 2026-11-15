@@ -290,7 +290,7 @@
     });
 </script>
 
-<link rel="stylesheet" href="{{ cache_safe('/css/industrial-ui.css') }}">
+<link rel="stylesheet" href="{{ cache_safe('/ui/css/industrial-ui.css') }}">
 <script>document.body.classList.add('if-console-view');</script>
 <div class="if-ui">
  <header class="if-page-header">
