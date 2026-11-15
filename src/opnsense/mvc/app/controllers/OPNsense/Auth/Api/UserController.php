@@ -259,8 +259,8 @@ class UserController extends ApiMutableModelControllerBase
     public function delApiKeyAction($id)
     {
         /* id is a base64 encoded string, we need to encode 'key' to prevent mangling data in the request */
-        $key = base64_decode($id);
-        if ($key !== null && $this->request->isPost()) {
+        $key = base64_decode(rawurldecode($id), true);
+        if ($key !== false && $this->request->isPost()) {
             Config::getInstance()->lock();
             $user = $this->getModel()->getUserByApiKey($key);
             if ($user !== null) {
