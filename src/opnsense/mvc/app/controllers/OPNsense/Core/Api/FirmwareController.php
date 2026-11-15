@@ -560,6 +560,10 @@ class FirmwareController extends ApiMutableModelControllerBase
         $response = [];
         $pkg_name = $this->request->isPost() ? $this->sanitizePluginName($pkg_name) : null;
 
+        if (in_array($pkg_name, Firmware::LOCAL_PLUGINS, true)) {
+            return ['status' => 'failure', 'status_msg' => gettext('本地定制插件由项目部署流程维护，不能从上游重装。')];
+        }
+
         if (!empty($pkg_name)) {
             $this->getLogger('audit')->notice(
                 sprintf("[Firmware] User %s executed a reinstall of plugin %s", $this->getUserName(), $pkg_name)
@@ -624,6 +628,10 @@ class FirmwareController extends ApiMutableModelControllerBase
         $backend = new Backend();
         $response = [];
         $pkg_name = $this->request->isPost() ? $this->sanitizePluginName($pkg_name) : null;
+
+        if (in_array($pkg_name, Firmware::LOCAL_PLUGINS, true)) {
+            return ['status' => 'failure', 'status_msg' => gettext('本地定制插件由项目部署流程维护。')];
+        }
 
         if (!empty($pkg_name)) {
             $this->getLogger('audit')->notice(
@@ -757,6 +765,8 @@ class FirmwareController extends ApiMutableModelControllerBase
 
         if ($cmd_result == null) {
             $result['status'] = 'error';
+        } elseif (strpos($cmd_result, '***ERROR***') !== false) {
+            $result['status'] = 'error';
         } elseif (strpos($cmd_result, '***DONE***') !== false) {
             $result['status'] = 'done';
         } elseif (strpos($cmd_result, '***REBOOT***') !== false) {
@@ -791,7 +801,7 @@ class FirmwareController extends ApiMutableModelControllerBase
      * list local packages and remotely available plugins
      * @return array
      */
-    public function infoAction()
+    public function infoAction($refresh = null)
     {
         $config = Config::getInstance()->object();
         $configPlugins = [];
@@ -816,17 +826,17 @@ class FirmwareController extends ApiMutableModelControllerBase
         $plugins = [];
         $tiers = [];
         $remotePluginCount = 0;
-        $remoteOutput = '';
+        $refreshOutput = '';
 
         /* regenerate repository configuration without running a firmware check */
         $backend->configdRun('firmware reload');
+        if ($refresh === '1') {
+            $refreshOutput = trim($backend->configdRun('firmware catalogue_refresh') ?? '');
+        }
 
         /* package infos are flat lists with 3 pipes as delimiter */
         foreach (array('remote', 'local') as $type) {
             $current = $backend->configdRun("firmware {$type}");
-            if ($type == 'remote') {
-                $remoteOutput = trim($current ?? '');
-            }
             $current = explode("\n", trim($current ?? ''));
 
             foreach ($current as $line) {
@@ -887,16 +897,16 @@ class FirmwareController extends ApiMutableModelControllerBase
         }
 
         if ($remotePluginCount > 0) {
-            $response['catalogue_status'] = 'ok';
+            $response['catalogue_status'] = $refresh !== '1' || str_contains($refreshOutput, 'CATALOGUE_REFRESH_OK') ? 'ok' : 'stale';
             $response['catalogue_message'] = sprintf(
-                gettext('%d plugins are available from the configured repository.'),
+                $response['catalogue_status'] === 'ok'
+                    ? gettext('已加载软件源目录，共 %d 个插件。')
+                    : gettext('联网刷新失败，继续显示缓存目录中的 %d 个插件；请检查镜像与代理配置。'),
                 $remotePluginCount
             );
         } else {
             $response['catalogue_status'] = 'error';
-            $response['catalogue_message'] = !empty($remoteOutput)
-                ? substr($remoteOutput, 0, 2000)
-                : gettext('The official plugin catalogue is empty or could not be downloaded.');
+            $response['catalogue_message'] = gettext('尚未取得插件目录，请检查镜像与代理配置后点击刷新。');
         }
 
         foreach ($configPlugins as $missing) {
@@ -923,6 +933,11 @@ class FirmwareController extends ApiMutableModelControllerBase
 
         $response['plugin'] = [];
         foreach ($plugins as $plugin) {
+            $plugin['local_custom'] = in_array($plugin['name'], Firmware::LOCAL_PLUGINS, true) ? '1' : '0';
+            $plugin['catalogue_known'] = $remotePluginCount > 0 ? '1' : '0';
+            if ($plugin['local_custom'] === '1') {
+                $plugin['repository'] = gettext('本地构建');
+            }
             /* for any community repository, orphaned package or otherwise unknown force the lowest tier */
             $plugin['tier'] = '4';
 
@@ -938,6 +953,43 @@ class FirmwareController extends ApiMutableModelControllerBase
         }
 
         return $response;
+    }
+
+    /** Connection settings for plugin repositories, independent of system updates. */
+    public function pluginSettingsAction()
+    {
+        $model = $this->getModel();
+        $options = $model->getRepositoryOptions();
+        if (!$this->request->isPost()) {
+            $mirrors = [];
+            foreach ($options['mirrors'] as $url => $label) {
+                if (str_starts_with($url, 'https://') && !in_array($url, $options['mirrors_has_subscription'], true)) {
+                    $mirrors[$url] = $label;
+                }
+            }
+            return ['mirror' => (string)$model->mirror, 'plugin_proxy' => (string)$model->plugin_proxy, 'mirrors' => $mirrors];
+        }
+        $values = $this->request->getPost('connection');
+        if (!is_array($values)) {
+            return ['status' => 'failure'];
+        }
+        $mirror = $values['mirror'] ?? '';
+        $proxy = $values['plugin_proxy'] ?? '';
+        if (
+            !is_string($mirror) || !isset($options['mirrors'][$mirror]) || !str_starts_with($mirror, 'https://') ||
+            in_array($mirror, $options['mirrors_has_subscription'], true) || !is_string($proxy) || !Firmware::validPluginProxy($proxy)
+        ) {
+            return ['status' => 'failure', 'status_msg' => gettext('请选择 HTTPS 镜像；代理应为 http://主机:端口，留空直接连接。')];
+        }
+        $model->mirror = $mirror;
+        $model->plugin_proxy = $proxy;
+        $validation = $this->validate();
+        if (!empty($validation['result'])) {
+            return ['status' => 'failure', 'status_msg' => implode(' ', array_values($validation['validations'] ?? []))];
+        }
+        $this->save();
+        (new Backend())->configdRun('firmware reload');
+        return ['status' => 'ok'];
     }
 
     /**

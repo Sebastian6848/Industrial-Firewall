@@ -36,7 +36,15 @@ if [ "${PACKAGE#os-}" = "${PACKAGE}" ]; then
 	output_done
 fi
 
-output_cmd ${PKG} install -y "${PACKAGE}"
-output_cmd ${BASEDIR}/register.php install "${PACKAGE}"
+if ${BASEDIR}/plugin-env.php managed "${PACKAGE}"; then
+	output_txt "This product plugin is maintained by the local deployment pipeline."
+	output_done
+fi
+
+if output_cmd ${PKG} install -y "${PACKAGE}"; then
+	output_cmd ${BASEDIR}/register.php install "${PACKAGE}"
+else
+	output_txt "***ERROR*** Plugin installation failed."
+fi
 
 output_done

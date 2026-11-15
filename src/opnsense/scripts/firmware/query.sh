@@ -55,12 +55,7 @@ EOF
 	${PKG} query "%n|||%v|||%c|||%sh|||%k|||%a|||%L|||%R|||%o"
 	;;
 remote)
-	# Keep output visible so the plugin-only page can report repository,
-	# signature, DNS and ABI errors instead of an empty catalogue message.
-	if ! ${PKG} update -f -r OPNsense 2>&1; then
-		echo "Official plugin catalogue update failed."
-		exit 0
-	fi
+	# Listing must work offline. Refresh is an explicit, bounded operation.
 	REMOTE_OUTPUT=$(${PKG} rquery -U "%n|||%v|||%c|||%sh|||0|||0|||%L|||%R|||%o" 2>&1)
 	REMOTE_STATUS=${?}
 	if [ ${REMOTE_STATUS} -ne 0 ]; then
@@ -71,8 +66,14 @@ remote)
 	exit 0
 	;;
 tiers)
-	# The remote query updates the catalogue before annotations are requested.
-	${PKG} rquery '%n|||%At|||%Av' | grep '|||product_tier|||' || true
+	${PKG} rquery -U '%n|||%At|||%Av' | grep '|||product_tier|||' || true
+	;;
+refresh)
+	if /usr/bin/timeout -k 2 25 ${PKG} -o FETCH_TIMEOUT=8 -o FETCH_RETRY=1 update -f -r OPNsense 2>&1; then
+		echo 'CATALOGUE_REFRESH_OK'
+	else
+		echo 'CATALOGUE_REFRESH_FAILED'
+	fi
 	;;
 *)
 	;;

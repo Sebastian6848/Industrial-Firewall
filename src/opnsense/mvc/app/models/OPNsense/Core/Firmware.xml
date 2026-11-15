@@ -1,9 +1,10 @@
 <model>
     <mount>//system/firmware</mount>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <description>Firmware settings</description>
     <items>
         <mirror type="TextField"/>
+        <plugin_proxy type="TextField"/>
         <flavour type="TextField"/>
         <plugins type="TextField"/>
         <type type="TextField"/>

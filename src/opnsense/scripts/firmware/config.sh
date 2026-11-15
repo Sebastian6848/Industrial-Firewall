@@ -200,3 +200,15 @@ for COMMAND in ${COMMANDS}; do
 		break;
 	fi
 done
+
+# configd has an isolated environment; interactive shell/Git proxies do not
+# reach plugin operations. Read only the explicitly configured package proxy.
+case "${SELF}" in
+query|install|reinstall)
+	PLUGIN_PROXY=$(/usr/local/opnsense/scripts/firmware/plugin-env.php)
+	if [ -n "${PLUGIN_PROXY}" ]; then
+		export http_proxy="${PLUGIN_PROXY}" https_proxy="${PLUGIN_PROXY}"
+		export HTTP_PROXY="${PLUGIN_PROXY}" HTTPS_PROXY="${PLUGIN_PROXY}"
+	fi
+	;;
+esac

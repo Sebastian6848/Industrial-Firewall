@@ -40,6 +40,8 @@ git -C /usr/plugins merge --ff-only "$plugin_revision"
 test "$(git -C /root/core-review rev-parse HEAD)" = "$core_revision"
 test "$(git -C /usr/plugins rev-parse HEAD)" = "$plugin_revision"
 make -C /root/core-review install CORE_VERSION=26.1.11 CORE_REVISION=6 > "$backup/core-install.log" 2>&1
+# Plugin dependency resolution must not replace the customized product core.
+pkg lock -y opnsense
 for plugin in net/app-identification security/icsguard security/industrial-suite security/clamav; do
     source=/usr/plugins/$plugin
     name=$(basename "$plugin")

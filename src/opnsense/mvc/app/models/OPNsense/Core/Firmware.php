@@ -37,6 +37,23 @@ use OPNsense\Base\Messages\Message;
  */
 class Firmware extends BaseModel
 {
+    /** Packages maintained by this product must not be overwritten from upstream. */
+    public const LOCAL_PLUGINS = ['os-app-identification', 'os-clamav', 'os-indproto', 'os-industrial-suite'];
+
+    public static function validPluginProxy(string $value): bool
+    {
+        if ($value === '') {
+            return true;
+        }
+        $parts = parse_url($value);
+        return $parts !== false && ($parts['scheme'] ?? '') === 'http' &&
+            !empty($parts['host']) && isset($parts['port']) && $parts['port'] > 0 && $parts['port'] <= 65535 &&
+            !isset($parts['user']) && !isset($parts['pass']) &&
+            !isset($parts['query']) && !isset($parts['fragment']) &&
+            in_array($parts['path'] ?? '', ['', '/'], true) &&
+            !preg_match('/[\x00-\x20\x7f]/', $value);
+    }
+
     /**
      * helper function to list firmware mirror and flavour options
      * @return array
@@ -100,6 +117,10 @@ class Firmware extends BaseModel
         $validOptions = $this->getRepositoryOptions();
 
         $messages = parent::performValidation($validateFullModel);
+
+        if (!self::validPluginProxy((string)$this->plugin_proxy)) {
+            $messages->appendMessage(new Message(gettext('请输入 HTTP 代理地址与端口，例如 http://192.168.255.1:12450；留空直接连接。'), 'plugin_proxy'));
+        }
 
         if (!isset($validOptions['families'][$this->type->getValue()])) {
             $messages->appendMessage(new Message(gettext('Unable to set invalid firmware release type'), 'type'));
