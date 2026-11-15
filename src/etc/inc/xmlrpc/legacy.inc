@@ -206,6 +206,10 @@ function restore_config_section_xmlrpc($new_config)
     $mergedkeys = implode(",", array_merge(array_keys($new_config)));
     write_config(sprintf('Merged %s config sections from XMLRPC client.', $mergedkeys));
 
+    // Let plugins materialize their synchronized configuration before the
+    // following filter reload. Runtime state files are not part of XMLRPC.
+    plugins_configure('xmlrpc_sync', false, [$new_config]);
+
     /*
      * Handle virtual ips
      */
