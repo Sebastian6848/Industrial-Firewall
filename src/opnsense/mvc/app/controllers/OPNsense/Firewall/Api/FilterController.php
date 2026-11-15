@@ -400,7 +400,7 @@ class FilterController extends FilterBaseController
         }
 
         // All rules
-        $result['any']['items'][] = $makeItem('__any', gettext('All rules'), 'any');
+        $result['any']['items'][] = $makeItem('__any', gettext('全部规则'), 'any');
 
         foreach ($result as &$section) {
             usort($section['items'], fn($a, $b) => strnatcasecmp($a['label'], $b['label']));

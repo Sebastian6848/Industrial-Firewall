@@ -134,7 +134,7 @@ abstract class BaseListField extends BaseField
     protected function getNodeOptions()
     {
         if (empty($this->internalEmptyDescription)) {
-            $this->internalEmptyDescription = gettext('None');
+            $this->internalEmptyDescription = gettext('未选择');
         }
         $result = [];
         // if option is not required, add empty placeholder

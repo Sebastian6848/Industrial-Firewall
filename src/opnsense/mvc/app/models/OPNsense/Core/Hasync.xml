@@ -26,8 +26,8 @@
             <Required>Y</Required>
             <Default>1400</Default>
             <OptionValues>
-                <v1301 value="1301">OPNsense 24.1 or below</v1301>
-                <v1400 value="1400">OPNsense 24.7 or above</v1400>
+                <v1301 value="1301">24.1 及更早版本</v1301>
+                <v1400 value="1400">24.7 及更新版本</v1400>
             </OptionValues>
         </pfsyncversion>
         <pfsyncdefer type="BooleanField"/>

@@ -40,6 +40,47 @@ class HasyncController extends ApiMutableModelControllerBase
     protected static $internalModelName = 'hasync';
     protected static $internalModelClass = 'OPNsense\Core\Hasync';
 
+    public function getAction()
+    {
+        $result = parent::getAction();
+        $labels = [
+            'Aliases' => '地址与端口别名',
+            'Authentication Servers' => '认证服务器',
+            'Captive Portal' => '认证门户',
+            'Certificates and Authorities' => '证书与证书机构',
+            'Cron' => '定时任务',
+            'DHCRelay' => 'DHCP 中继',
+            'Dnsmasq DNS/DHCP' => 'DNS 与 DHCP 服务',
+            'Firewall Categories' => '防火墙分类',
+            'Firewall Groups' => '防火墙组',
+            'Firewall Log Templates' => '防火墙日志模板',
+            'Firewall Rules' => '防火墙规则',
+            'Firewall Schedules' => '防火墙时间计划',
+            'Host discovery service' => '主机发现服务',
+            'Industrial isolation policies' => '工业隔离策略',
+            'Industrial protocol policies' => '工业协议策略',
+            'Intrusion Detection' => '入侵检测',
+            'Monit System Monitoring' => '系统监控',
+            'Netflow / Insight' => '流量统计与分析',
+            'Network Time' => '网络时间',
+            'Router Advertisements' => '路由通告',
+            'Shaper' => '流量整形',
+            'Squid Web Proxy' => 'Web 代理',
+            'Static Routes' => '静态路由',
+            'System logging' => '系统日志',
+            'System Tunables' => '系统调优参数',
+            'Users and Groups' => '用户与用户组',
+            'Virtual IPs' => '虚拟地址',
+            'Web GUI' => '管理界面',
+        ];
+        foreach ($result['hasync']['syncitems'] ?? [] as $key => $option) {
+            if (isset($option['value'])) {
+                $result['hasync']['syncitems'][$key]['value'] = $labels[$option['value']] ?? gettext($option['value']);
+            }
+        }
+        return $result;
+    }
+
     public function reconfigureAction()
     {
         $result = ["status" => "failed"];

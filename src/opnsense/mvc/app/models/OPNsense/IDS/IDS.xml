@@ -138,9 +138,9 @@
                 <Required>Y</Required>
                 <Default>pcap</Default>
                 <OptionValues>
-                    <pcap>PCAP live mode (IDS)</pcap>
-                    <netmap>Netmap (IPS)</netmap>
-                    <divert>Divert (IPS)</divert>
+                    <pcap>报文检测（IDS）</pcap>
+                    <netmap>接口防御（Netmap IPS）</netmap>
+                    <divert>规则防御（Divert IPS）</divert>
                 </OptionValues>
                 <ValidationMessage>Please select a valid mode.</ValidationMessage>
             </mode>

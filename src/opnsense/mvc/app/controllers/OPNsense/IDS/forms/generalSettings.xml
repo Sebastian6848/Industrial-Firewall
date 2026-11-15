@@ -11,7 +11,7 @@
     </field>
     <field>
         <id>ids.general.mode</id>
-        <label>Capture mode</label>
+        <label>检测模式</label>
         <type>dropdown</type>
         <help>Choose PCAP live capture mode for inspection only (IDS), Netmap to filter all traffic on the selected interfaces in IPS mode and Divert to integrate IPS in firewall rules.</help>
     </field>

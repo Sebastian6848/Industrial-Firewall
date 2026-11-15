@@ -329,7 +329,7 @@
         });
 
         $.fn.selectpicker.defaults = $.fn.selectpicker.defaults || {};
-        $.extend($.fn.selectpicker.defaults, {noneSelectedText: '{{ lang._('Nothing selected') }}'});
+        $.extend($.fn.selectpicker.defaults, {noneSelectedText: '{{ lang._('未选择') }}'});
     </script>
 
   </body>

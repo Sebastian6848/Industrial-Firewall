@@ -82,7 +82,7 @@
 
         const ruleTypeMap = [
             { idx: 100000, uuid: "auto0", label: "{{ lang._('Automatically generated rules') }}", icon: "fa-magic", tooltip: "{{ lang._('Automatically generated rules') }}", color: "text-secondary" },
-            { idx: 400000, uuid: "interface", label: "{{ lang._('Interface rules') }}", icon: "fa-ethernet", tooltip: "{{ lang._('Interface rule') }}", color: "text-info" },
+            { idx: 400000, uuid: "interface", label: "{{ lang._('接口规则') }}", icon: "fa-ethernet", tooltip: "{{ lang._('接口规则') }}", color: "text-info" },
             { idx: 500000, uuid: "auto1", label: "{{ lang._('Automatically generated rules') }}", icon: "fa-magic", tooltip: "{{ lang._('Automatically generated rules') }}", color: "text-secondary" },
         ];
 

@@ -129,7 +129,7 @@
         <style>port_selector</style>
         <help>Source port or port range.</help>
         <grid_view>
-            <label>Port</label>
+            <label>端口</label>
             <sequence>60</sequence>
             <formatter>alias</formatter>
             <min-width>60</min-width>
@@ -171,7 +171,7 @@
         <style>port_selector</style>
         <help>Destination port or port range.</help>
         <grid_view>
-            <label>Port</label>
+            <label>端口</label>
             <sequence>80</sequence>
             <formatter>alias</formatter>
             <min-width>60</min-width>

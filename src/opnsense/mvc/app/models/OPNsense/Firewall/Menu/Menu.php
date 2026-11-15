@@ -54,7 +54,7 @@ class Menu extends MenuContainer
         if ($has_legacy_fw || $has_legacy_outbound_nat) {
             $this->appendItem('Firewall', 'Migration', [
                 'url' => '/ui/firewall/migration',
-                'fixedname' => gettext('Migration assistant'),
+                'fixedname' => gettext('规则迁移'),
                 'cssClass' => 'fa fa-gears fa-fw',
                 'order' => 0,
             ]);

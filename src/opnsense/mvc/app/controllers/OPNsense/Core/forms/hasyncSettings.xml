@@ -47,7 +47,7 @@
     </field>
     <field>
         <type>header</type>
-        <label><![CDATA[Configuration Synchronization Settings (XMLRPC Sync) <a href="/ui/core/hasync_status">Perform synchronization </a>]]></label>
+        <label><![CDATA[配置同步设置（XMLRPC） <a href="/ui/core/hasync_status">立即同步</a>]]></label>
     </field>
     <field>
         <id>hasync.synchronizetoip</id>

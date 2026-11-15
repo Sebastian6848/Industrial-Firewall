@@ -215,7 +215,7 @@
         <help>Source port number or well known name (imap, imaps, http, https, ...), for ranges use a dash</help>
         <style>port_selector</style>
         <grid_view>
-            <label>Port</label>
+            <label>端口</label>
             <sequence>60</sequence>
             <formatter>alias</formatter>
             <min-width>60</min-width>
@@ -248,7 +248,7 @@
         <help>Destination port number or well known name (imap, imaps, http, https, ...), for ranges use a dash</help>
         <style>port_selector</style>
         <grid_view>
-            <label>Port</label>
+            <label>端口</label>
             <sequence>80</sequence>
             <formatter>alias</formatter>
             <min-width>60</min-width>

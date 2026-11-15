@@ -80,7 +80,7 @@
             { idx: 0, uuid: "auto0", label: "{{ lang._('Automatically generated rules') }}", icon: "fa-magic", tooltip: "{{ lang._('Automatically generated rules') }}", color: "text-secondary", groupType: null },
             { idx: 2, uuid: "floating", label: "{{ lang._('Floating rules') }}", icon: "fa-layer-group", tooltip: "{{ lang._('Floating rule') }}", color: "text-primary", groupType: "floating" },
             { idx: 3, uuid: "group", label: "{{ lang._('Group rules') }}", icon: "fa-sitemap", tooltip: "{{ lang._('Group rule') }}", color: "text-warning", groupType: "groups" },
-            { idx: 4, uuid: "interface", label: "{{ lang._('Interface rules') }}", icon: "fa-ethernet", tooltip: "{{ lang._('Interface rule') }}", color: "text-info", groupType: "interfaces" },
+            { idx: 4, uuid: "interface", label: "{{ lang._('接口规则') }}", icon: "fa-ethernet", tooltip: "{{ lang._('接口规则') }}", color: "text-info", groupType: "interfaces" },
             { idx: 5, uuid: "auto1", label: "{{ lang._('Automatically generated rules') }}", icon: "fa-magic", tooltip: "{{ lang._('Automatically generated rules') }}", color: "text-secondary", groupType: null },
         ];
 
