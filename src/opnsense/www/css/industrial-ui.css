@@ -1,9 +1,9 @@
 /* Industrial Firewall console components. Scoped to the product feature pages. */
-body.if-console-view{font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:#f3f5f8}
+body.if-console-view{font-family:"Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:#f3f5f8}
 .if-console-view .page-content-head{background:transparent;border:0;padding-bottom:0}
 .if-console-view .page-content-head h1{font-family:inherit;font-size:13px;font-weight:400;color:#64748b;margin:16px 0 4px}
 .if-console-view .page-content-main{padding-top:10px}
-.if-ui{--if-ink:#20324b;--if-muted:#63748b;--if-line:#e0e7ef;--if-soft:#f3f6fa;--if-surface:#fff;--if-accent:#285db2;--if-good:#187765;color:var(--if-ink);font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;font-size:13px;line-height:1.65}
+.if-ui{--if-ink:#20324b;--if-muted:#63748b;--if-line:#e0e7ef;--if-soft:#f3f6fa;--if-surface:#fff;--if-accent:#285db2;--if-good:#187765;color:var(--if-ink);font-family:"Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;font-size:13px;line-height:1.65}
 .if-ui *{box-sizing:border-box}
 .if-ui .if-page-header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:4px 0 24px}
 .if-ui .if-heading{display:flex;align-items:center;gap:14px;min-width:0}
@@ -145,3 +145,7 @@ body.if-console-view{font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang 
 .if-ui .help-block.has-error{color:#a73535}
 .if-ui .if-panel .appident-section-tools{margin-bottom:12px}
 .if-ui .if-panel .appident-section-title{font-weight:600;margin-top:0}
+/* Native selects need a single explicit indicator; the inherited theme uses a tiled image. */
+.if-ui select.form-control{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%2363748b' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:12px 8px;padding-right:34px}
+.if-ui select.form-control[multiple]{background-image:none;padding-right:11px;min-height:90px}
+.if-console-view .modal-backdrop.in{background:#162b45;opacity:.36}
