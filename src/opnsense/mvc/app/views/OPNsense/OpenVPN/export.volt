@@ -80,7 +80,7 @@
          */
         $("#openvpn_export\\.template").change(function () {
             $(".export_option").closest('tr').hide();
-            var selected_options = $(this).find('option:selected').data('options');
+            var selected_options = $(this).find('option:selected').data('options') || [];
             for (var i=0; i < selected_options.length; ++i) {
                 $("#row_openvpn_export\\."+selected_options[i]).show();
             }
@@ -94,6 +94,12 @@
         $("#openvpn_export\\.servers").change(function () {
             var selected_opt = $(this).find('option:selected');
             var record = selected_opt.data('presets');
+            $("#accounts_table > tbody").empty();
+            if (!record || !selected_opt.val()) {
+                $("#exportEmptyState").show();
+                return;
+            }
+            $("#exportEmptyState").hide();
             Object.keys(record).map(function(key) {
                 // server_opt.data(key, record[key]);
                 var target = $("#openvpn_export\\."+key);
@@ -199,6 +205,9 @@
 <div class="content-box">
     {{ partial("layout_partials/base_form",['fields':exportForm,'id':'frm_ExportSettings'])}}
     <br/>
+    <div id="exportEmptyState" class="alert alert-info" style="display:none" role="status">
+        {{ lang._('No exportable OpenVPN servers are configured.') }}
+    </div>
     <div class="table-responsive">
         <table class="table table-striped table-condensed table-responsive table-hover" id="accounts_table">
             <thead>
