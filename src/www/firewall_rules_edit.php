@@ -32,6 +32,11 @@ require_once("guiconfig.inc");
 require_once("interfaces.inc");
 require_once("filter.inc");
 
+if (empty($config['filter']['rule'])) {
+    header('Location: /ui/firewall/filter/');
+    exit;
+}
+
 /* TCP flags */
 $tcpflags = array("syn", "ack", "fin", "rst", "psh", "urg", "ece", "cwr");
 

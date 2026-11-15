@@ -49,8 +49,13 @@ class Menu extends MenuContainer
 
         // add interfaces to "Firewall: Rules" menu tab...
         $has_legacy_fw = !empty($config->filter?->rule?->count());
-        $has_mvc_fw = !empty($config->OPNsense?->Firewall?->Filter?->rules?->count());
         $has_legacy_outbound_nat = !empty($config->nat?->outbound?->rule?->count());
+        // The unified manager owns the normal rule entry. Only expose the old
+        // editor when imported/restored legacy rules still require it.
+        $this->appendItem('Firewall', 'Rules', [
+            'fixedname' => gettext('兼容规则'),
+            'visibility' => $has_legacy_fw ? 'all' : 'delete',
+        ]);
         if ($has_legacy_fw || $has_legacy_outbound_nat) {
             $this->appendItem('Firewall', 'Migration', [
                 'url' => '/ui/firewall/migration',
@@ -59,7 +64,7 @@ class Menu extends MenuContainer
                 'order' => 0,
             ]);
         }
-        $iftargets = array_merge(['FloatingRules' => gettext('Floating')], $iftargets);
+        $iftargets = $has_legacy_fw ? array_merge(['FloatingRules' => gettext('Floating')], $iftargets) : [];
         $ordid = 1;
         foreach ($iftargets as $key => $descr) {
             $this->appendItem('Firewall.Rules', $key, [

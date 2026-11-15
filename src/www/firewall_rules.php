@@ -32,6 +32,11 @@ require_once("guiconfig.inc");
 require_once("filter.inc");
 require_once("system.inc");
 
+if (empty($config['filter']['rule'])) {
+    header('Location: /ui/firewall/filter/');
+    exit;
+}
+
 /***********************************************************************************************************
  * format functions for this page
  ***********************************************************************************************************/
