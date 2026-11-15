@@ -1,0 +1,21 @@
+{
+  "name": "json-scada-nclink-driver",
+  "version": "1.1.0",
+  "description": "NC-Link protocol driver for json-scada",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js 1 1 ../../conf/json-scada.json",
+    "debug": "node index.js 1 3 ../../conf/json-scada.json",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.0.0",
+    "mqtt": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "aedes": "0.51.3"
+  }
+}
