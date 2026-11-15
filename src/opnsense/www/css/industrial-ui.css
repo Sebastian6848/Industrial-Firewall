@@ -145,7 +145,12 @@ body.if-console-view{font-family:"Noto Sans CJK SC","Source Han Sans SC","Micros
 .if-ui .help-block.has-error{color:#a73535}
 .if-ui .if-panel .appident-section-tools{margin-bottom:12px}
 .if-ui .if-panel .appident-section-title{font-weight:600;margin-top:0}
-/* Native selects need a single explicit indicator; the inherited theme uses a tiled image. */
-.if-ui select.form-control{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%2363748b' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:12px 8px;padding-right:34px}
-.if-ui select.form-control[multiple]{background-image:none;padding-right:11px;min-height:90px}
-.if-console-view .modal-backdrop.in{background:#162b45;opacity:.36}
+/* Keep native select affordances and override the theme's important caret image. */
+.if-ui select.form-control{appearance:auto;-webkit-appearance:auto;background-image:none!important;padding-right:28px}
+.if-ui select.form-control[multiple]{padding-right:11px;min-height:90px}
+.if-modal{background:rgba(22,43,69,.36)}
+.if-ui code{color:#426183;background:#edf2f8;border-radius:4px;padding:2px 4px}
+.if-ui .text-success{color:var(--if-good)}
+.if-ui .label-success{background:#e8f5ee;color:#146753;font-weight:500}
+.if-ui .label-info{background:#edf2f8;color:#4b607c;font-weight:500}
+.if-console-view .page-foot{display:none}
