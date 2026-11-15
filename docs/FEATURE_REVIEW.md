@@ -9,7 +9,7 @@
 | 入口 | 功能 |
 | --- | --- |
 | 防火墙 → 工业安全 | 软件完整性、设备分组、网关访问矩阵、基础集中管理 |
-| 防火墙 → 工业协议白名单 | Modbus TCP、S7comm、DNP3、MQTT、NC-Link 策略与日志 |
+| 防火墙 → 工业协议白名单 | 11 类协议/协议族、操作码与 NC-Link 完整主题策略 |
 | 服务 → 应用识别 | 实时流量、应用统计、自定义匹配、内置应用/服务识别库 |
 | 服务 → 入侵检测 | Suricata 原生 IDS/IPS、规则、告警 |
 | 服务 → 防病毒 → 防病毒配置与诊断 | 一次配置下载防病毒、病毒库更新和诊断 |
@@ -54,11 +54,21 @@
 | DNP3 | 功能码；默认拒绝模式下暂不支持对象组条件的允许规则 |
 | S7comm | 基本 TPKT/COTP S7 Job 的读/写操作；不涵盖 S7comm Plus、加密会话和全部 COTP 变体 |
 | MQTT | CONNECT、PUBLISH、SUBSCRIBE、UNSUBSCRIBE、主题、身份及 QoS |
-| NC-Link | MQTT 主题对应的操作、设备 UUID、审计；不包含机床适配器及 SCADA 数据库驱动 |
+| NC-Link | 16 类 MQTT 业务主题、请求/响应、设备 UUID、客户端/通道及发布/订阅；不包含完整业务模型和机床驱动 |
+| EtherNet/IP / CIP | 原生封装命令及基础 CIP 服务码，不代表完整嵌套/多服务授权 |
+| IEC 60870-5-104 | BETA：I 帧 ASDU 类型 |
+| OMRON FINS/TCP | BETA：请求命令码，不覆盖 UDP |
+| MELSEC MC / SLMP | BETA：3E 二进制 TCP 命令，不覆盖 ASCII、1E/4E |
+| BACnet/IP | BETA：IPv4 原始单播/广播、本地 NPDU、未分段 APDU 服务 |
+| OPC UA TCP | BETA：传输消息类型，不解析加密服务体或节点权限 |
 
 允许规则记录事务，不使用 Suricata `pass` 绕过后续请求。MQTT/NC-Link 的明文内容可检查；TLS 未终止时只能进行网络层控制。
 
 当前虚拟机的在线 Suricata 使用 LAN **IDS/PCAP** 模式，便于在唯一管理网卡上审核。离线 IPS 回放已验证五类协议的阻断判定，包括 Modbus 连接复用、拆分及合并报文。生产流量的在线 IPS 阻断必须在合适的接口与拓扑中启用 Netmap/Divert 并验证，不把 IDS 告警当作实际丢包。
+
+新协议编辑器提供操作码说明、读写预设及默认端口按钮。NC-Link 支持 `Query/Request/<device>/<ex_cid>`、`Sample/<device>/<channel>` 等完整主题，同时兼容原来的设备级主题。可按业务方向和 PUBLISH/SUBSCRIBE 分别约束，默认拒绝会覆盖所选报文中未知或未授权的主题；不要把无关 MQTT 客户端放入相同范围。日志分开显示“策略动作”和引擎记录的“实际处置”。
+
+新增六类协议和完整 NC-Link 主题的 39 个离线流量场景验证通过，加上原五协议的 10 个场景共 49 个；包括未知主题、错误设备/端点、通配订阅、连接复用、TCP 拆分和合并。报文特征 BETA 规则不替代完整帧解析器，支持边界及协议参考见插件 `security/icsguard/README.md`。
 
 ## 应用识别
 
