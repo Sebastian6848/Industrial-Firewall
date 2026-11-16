@@ -4,3 +4,5 @@
 # set ships its own motd.template, so apply this after mounting a writable
 # runtime filesystem as well as on an installed system.
 printf 'Industrial Security Firewall\n' > /etc/motd.template
+# login(1) reads a cached message; the base image may already contain it.
+install -m 0644 /etc/motd.template /var/run/motd
