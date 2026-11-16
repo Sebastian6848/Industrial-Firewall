@@ -23,3 +23,6 @@
 .idea/
 .vscode/
 /src/opnsense/www/.htrouter.php
+
+# Local development instructions
+/AGENTS.md

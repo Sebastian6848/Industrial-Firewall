@@ -1,6 +1,6 @@
 # 工业可信防火墙镜像构建
 
-源代码统一从 [Gitee core](https://gitee.com/xwy6848/core) 获取。根目录是 core，`plugins/` 是插件，`tools/` 是镜像工具，`contrib/` 包含 NC-Link 驱动与适配器参考源码。插件原始快照为 `106b7fdd922a4ca6c52be45998006060ba74611e`，工具快照为 `4722ec6a73d286d333ee54f467d318fb96b881fb`；其来源与上游许可证保留在相应目录。NC-Link 适配器和观察代理不打入发布 ISO。产品安装器的定制源码位于 `contrib/installer/`。
+源码位于 [GitHub](https://github.com/Sebastian6848/Industrial-Firewall)，[Gitee](https://gitee.com/xwy6848/core)提供镜像。根目录是 core，`plugins/` 是插件，`tools/` 是镜像工具，`contrib/` 包含 NC-Link 驱动与适配器参考源码。插件原始快照为 `106b7fdd922a4ca6c52be45998006060ba74611e`，工具快照为 `4722ec6a73d286d333ee54f467d318fb96b881fb`；其来源与上游许可证保留在相应目录。NC-Link 适配器和观察代理不打入发布 ISO。产品安装器的定制源码位于 `contrib/installer/`。
 
 ## 构建准备
 
@@ -16,13 +16,13 @@ cd /absolute/core
 sh tools/release/build-iso.sh /absolute/inputs /absolute/output /absolute/new-work-dir
 ```
 
-脚本用受信系统包创建全新根文件系统，再安装本仓库构建的产品安装器、core、Squid、ClamAV、应用识别、工业白名单、工业安全包。引导与安装由上游 DVD/media 工具驱动；不复制审核机凭据、网络配置和数据库。出厂规则来自 `src/etc/config.xml.sample` 与 `examples/app-identification/`。输出 ISO、构建提交号、包清单和原始 ISO 校验值。随机种子和文件打包时间等因素会影响字节级哈希，构建记录用提交和输入清单追踪。
+脚本用受信系统包创建全新根文件系统，再安装本仓库构建的产品安装器、core、Squid、ClamAV、应用识别、工业白名单、工业安全包。引导与安装由上游 DVD/media 工具驱动；不复制运行设备的凭据、网络配置和数据库。出厂规则来自 `src/etc/config.xml.sample` 与 `examples/app-identification/`。输出 ISO、构建提交号、包清单和原始 ISO 校验值。随机种子和文件打包时间等因素会影响字节级哈希，构建记录用提交和输入清单追踪。
 
 ## 发布与维护
 
-先用空白虚拟机完成启动、安装、卸载光驱、系统盘重启和 Web 登录。验证功能和回归范围后，再通过 Gitee Release 发布。交付使用单个 ISO 和同名 SHA-256 文件，不再生成分卷。本次镜像从本地交付；Gitee 维护源码、说明书及小型附件。见 [安装与使用说明](../../docs/manual/安装与使用说明.md) 与 [测试报告](../../docs/RELEASE_TEST_REPORT.md)。
+先用空白虚拟机完成启动、安装、卸载光驱、系统盘重启和 Web 登录。验证功能和回归范围后，再通过 GitHub Release 发布。镜像以单个 .iso.bz2 文件提供，同时发布压缩镜像与原始 ISO 的 SHA-256。见 [安装与使用说明](../../docs/manual/安装与使用说明.md) 与 [测试报告](../../docs/RELEASE_TEST_REPORT.md)。
 
-审核机热部署使用根目录 `Scripts/deploy-review.py`，直接读取本仓库已提交的 core 和 `plugins/`。生产环境不使用源码挂载或审核机脚本。若要升级底层依赖、系统内核、定制包或规则库，先创建测试构建并按测试报告复验。
+实验环境的部署辅助脚本位于 `Scripts/`，使用前需核对主机、目录与备份配置。生产环境应使用经过验证的镜像或软件包升级流程。若要升级底层依赖、系统内核、定制包或规则库，先创建测试构建并按测试报告复验。
 
 ## 生成带截图的 PDF 说明书
 
@@ -34,4 +34,4 @@ python3 tools/release/render-manual.py \
   /absolute/output/Industrial-Firewall-Installation-and-User-Manual.pdf
 ```
 
-使用系统 Chromium 时设置 `CHROMIUM_PATH` 为可执行文件的绝对路径。渲染器验证每张图片均加载成功；PDF 中的跨文档链接指向 Gitee。发布前另行检查页数、中文文本提取和打印版截图。
+使用系统 Chromium 时设置 `CHROMIUM_PATH` 为可执行文件的绝对路径。渲染器验证每张图片均加载成功；PDF 中的跨文档链接指向项目仓库。发布前另行检查页数、中文文本提取和打印版截图。

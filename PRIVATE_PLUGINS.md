@@ -15,7 +15,7 @@ Installing a plugin can also install or update packages required by that plugin.
 
 ## Maintained plugin source
 
-The main [Gitee core repository](https://gitee.com/xwy6848/core) contains plugin
+The [Industrial Firewall repository](https://github.com/Sebastian6848/Industrial-Firewall) contains plugin
 source in `plugins/`. Build against the target firewall's FreeBSD ABI and
 compatible dependencies.
 

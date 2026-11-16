@@ -17,7 +17,7 @@ def remote_link(match):
     if link.startswith(('https://','http://','#','mailto:')):
         return match.group(0)
     relative=(md.parent/link).resolve().relative_to(md.parents[2])
-    return '<a href="https://gitee.com/xwy6848/core/blob/master/' + quote(relative.as_posix()) + '"'
+    return '<a href="https://github.com/Sebastian6848/Industrial-Firewall/blob/master/' + quote(relative.as_posix()) + '"'
 body=re.sub(r'<a href="([^"]+)"',remote_link,body)
 
 html.write_text('''<!doctype html><html lang="zh-CN"><meta charset="utf-8">
