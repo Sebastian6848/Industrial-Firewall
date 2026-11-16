@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Keep the login message aligned with the appliance UI.  The signed base
+# set ships its own motd.template, so apply this after mounting a writable
+# runtime filesystem as well as on an installed system.
+printf 'Industrial Security Firewall\n' > /etc/motd.template
