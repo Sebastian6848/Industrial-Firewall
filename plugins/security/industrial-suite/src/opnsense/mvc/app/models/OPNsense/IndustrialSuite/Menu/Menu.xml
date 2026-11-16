@@ -1,0 +1,7 @@
+<menu>
+    <Firewall>
+        <IndustrialSuite VisibleName="工业安全" order="85" cssClass="fa fa-industry fa-fw">
+            <Overview VisibleName="完整性、微隔离与集中管理" url="/ui/industrialsuite/" order="10" />
+        </IndustrialSuite>
+    </Firewall>
+</menu>

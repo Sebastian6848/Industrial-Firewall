@@ -1,0 +1,32 @@
+<form>
+    <field>
+        <id>general.rest_scheme</id>
+        <label>采集连接协议</label>
+        <type>dropdown</type>
+        <help>选择连接流量采集服务使用的协议。</help>
+    </field>
+    <field>
+        <id>general.rest_host</id>
+        <label>采集服务地址</label>
+        <type>text</type>
+        <help>填写流量采集服务的地址，本机服务可填写 127.0.0.1。</help>
+    </field>
+    <field>
+        <id>general.rest_port</id>
+        <label>采集服务端口</label>
+        <type>text</type>
+        <help>填写采集服务的接口端口。</help>
+    </field>
+    <field>
+        <id>general.ifid</id>
+        <label>采集接口编号</label>
+        <type>text</type>
+        <help>填写需要查询的采集接口编号，第一个接口通常为 1。</help>
+    </field>
+    <field>
+        <id>general.auth_token</id>
+        <label>访问令牌</label>
+        <type>password</type>
+        <help>在采集服务的用户菜单中生成访问令牌后填入。</help>
+    </field>
+</form>

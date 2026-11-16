@@ -1,0 +1,4 @@
+Integrated antivirus proxy for OPNsense using Squid, c-icap and ClamAV.
+
+This plugin renders a c-icap virus scanning service and a Squid ICAP include
+so proxied HTTP traffic can be scanned by ClamAV.

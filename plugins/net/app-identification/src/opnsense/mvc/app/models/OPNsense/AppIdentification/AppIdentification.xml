@@ -1,0 +1,58 @@
+<model>
+	<mount>//OPNsense/AppIdentification/general</mount>
+	<description>AppIdentification ntopng configuration</description>
+	<version>1.2.0</version>
+	<items>
+		<rest_scheme type="OptionField">
+			<Required>N</Required>
+			<Default>http</Default>
+			<OptionValues>
+				<Option0 value="http">HTTP</Option0>
+				<Option1 value="https">HTTPS</Option1>
+			</OptionValues>
+		</rest_scheme>
+		<rest_host type="TextField">
+			<Required>Y</Required>
+		</rest_host>
+		<rest_port type="PortField">
+			<Required>Y</Required>
+			<Default>3000</Default>
+		</rest_port>
+		<ifid type="IntegerField">
+			<Required>Y</Required>
+			<Default>1</Default>
+			<MinimumValue>1</MinimumValue>
+		</ifid>
+		<auth_token type="TextField">
+			<Required>Y</Required>
+		</auth_token>
+		<rules>
+			<rule type="ArrayField">
+				<enabled type="BooleanField">
+					<Default>1</Default>
+					<Required>Y</Required>
+				</enabled>
+				<description type="TextField">
+					<Required>N</Required>
+				</description>
+				<match_type type="OptionField">
+					<Required>Y</Required>
+					<Default>domain</Default>
+					<OptionValues>
+						<domain value="domain">域名</domain>
+						<ip value="ip">IP 地址</ip>
+						<cidr value="cidr">网段</cidr>
+						<port value="port">目标端口</port>
+						<protocol value="protocol">应用协议</protocol>
+					</OptionValues>
+				</match_type>
+				<match_value type="TextField">
+					<Required>Y</Required>
+				</match_value>
+				<app_label type="TextField">
+					<Required>Y</Required>
+				</app_label>
+			</rule>
+		</rules>
+	</items>
+</model>

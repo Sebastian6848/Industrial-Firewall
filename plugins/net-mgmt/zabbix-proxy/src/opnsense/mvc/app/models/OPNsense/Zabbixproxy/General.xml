@@ -1,0 +1,113 @@
+<model>
+    <mount>//OPNsense/zabbixproxy/general</mount>
+    <description>Zabbix Proxy configuration</description>
+    <version>2.0.4</version>
+    <items>
+        <enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </enabled>
+        <proxymode type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </proxymode>
+        <remotecommands type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </remotecommands>
+        <server type="TextField"/>
+        <serverport type="TextField"/>
+        <hostname type="TextField">
+            <Default>Zabbix proxy</Default>
+            <Required>Y</Required>
+        </hostname>
+        <listenport type="TextField"/>
+        <listenip type="NetworkField">
+            <AsList>Y</AsList>
+        </listenip>
+        <sourceip type="NetworkField"/>
+        <listenbacklog type="IntegerField">
+            <MinimumValue>0</MinimumValue>
+            <MaximumValue>2147483647</MaximumValue>
+        </listenbacklog>
+        <startpollers type="TextField"/>
+        <startipmipollers type="IntegerField"/>
+        <startpollersunreachable type="IntegerField"/>
+        <startagentpollers type="IntegerField">
+            <MinimumValue>0</MinimumValue>
+            <MaximumValue>1000</MaximumValue>
+        </startagentpollers>
+        <maxconcurrentchecksperpoller type="IntegerField">
+            <MinimumValue>1</MinimumValue>
+            <MaximumValue>1000</MaximumValue>
+        </maxconcurrentchecksperpoller>
+        <starttrappers type="IntegerField"/>
+        <startpingers type="IntegerField"/>
+        <startdiscoverers type="IntegerField"/>
+        <startvmwarecollectors type="IntegerField"/>
+        <starthttppollers type="IntegerField"/>
+        <cachesize type="TextField"/>
+        <historycachesize type="TextField"/>
+        <historyindexcachesize type="TextField"/>
+        <proxyofflinebuffer type="IntegerField">
+            <MinimumValue>1</MinimumValue>
+            <MaximumValue>720</MaximumValue>
+            <ValidationMessage>Set a number between 1 and 720.</ValidationMessage>
+        </proxyofflinebuffer>
+        <timeout type="IntegerField"/>
+        <configfrequency type="IntegerField"/>
+        <datasenderfrequency type="IntegerField"/>
+        <statsip type="NetworkField">
+            <AsList>Y</AsList>
+        </statsip>
+        <vmwarecachesize type="TextField">
+            <Mask>/^\d+[KMG]$/</Mask>
+        </vmwarecachesize>
+        <vmwarefrequency type="IntegerField">
+            <MinimumValue>10</MinimumValue>
+            <MaximumValue>86400</MaximumValue>
+        </vmwarefrequency>
+        <vmwareperffrequency type="IntegerField">
+            <MinimumValue>10</MinimumValue>
+            <MaximumValue>86400</MaximumValue>
+        </vmwareperffrequency>
+        <vmwaretimeout type="IntegerField">
+            <MinimumValue>1</MinimumValue>
+            <MaximumValue>300</MaximumValue>
+        </vmwaretimeout>
+        <syslogEnable type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </syslogEnable>
+        <logFileSize type="IntegerField">
+            <Default>100</Default>
+            <MinimumValue>1</MinimumValue>
+            <MaximumValue>1024</MaximumValue>
+            <Required>Y</Required>
+        </logFileSize>
+        <debugLevel type="OptionField">
+            <Default>val_3</Default>
+            <OptionValues>
+                <val_0>basic information (0)</val_0>
+                <val_1>critical information (1)</val_1>
+                <val_2>error information (2)</val_2>
+                <val_3>warnings (3, default)</val_3>
+                <val_4>debugging (4)</val_4>
+                <val_5>extended debugging (5)</val_5>
+            </OptionValues>
+            <Required>Y</Required>
+        </debugLevel>
+        <encryption type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </encryption>
+        <encryptionidentity type="TextField">
+            <Mask>/^.{1,128}$/</Mask>
+            <ValidationMessage>Should be a string between 1 and 128 characters.</ValidationMessage>
+        </encryptionidentity>
+        <encryptionpsk type="TextField">
+            <Mask>/^[A-Fa-f0-9]{32,512}$/</Mask>
+            <ValidationMessage>Should be a hexadecimal string between 32 and 512 characters.</ValidationMessage>
+        </encryptionpsk>
+    </items>
+</model>

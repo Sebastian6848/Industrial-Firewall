@@ -1,0 +1,39 @@
+<form>
+    <field>
+        <id>rule.enabled</id>
+        <label>启用</label>
+        <type>checkbox</type>
+        <help>启用此应用识别规则。</help>
+        <grid_view>
+            <width>6em</width>
+            <type>boolean</type>
+            <formatter>rowtoggle</formatter>
+        </grid_view>
+    </field>
+    <field>
+        <id>rule.description</id>
+        <label>描述</label>
+        <type>text</type>
+        <help>填写规则用途，便于后续维护。</help>
+    </field>
+    <field>
+        <id>rule.match_type</id>
+        <label>匹配方式</label>
+        <type>dropdown</type>
+        <help>选择按域名、地址、网段、端口或应用层协议匹配。</help>
+    </field>
+    <field>
+        <id>rule.match_value</id>
+        <label>匹配内容</label>
+        <type>textbox</type>
+        <style>form-control</style>
+        <height>6</height>
+        <help>每行一个匹配值，命中任意一行即视为匹配。Domain 类型：填写完整域名或域名后缀，如 le.com 可匹配 le.com、www.le.com，但不会匹配 google.com。IP 类型：每行一个 IP 地址。CIDR 类型：每行一个 CIDR 段，如 10.10.0.0/24。Port 类型：每行一个端口号。Protocol 类型：每行一个 L7 协议名，如 TLS.WeChat。</help>
+    </field>
+    <field>
+        <id>rule.app_label</id>
+        <label>应用名称</label>
+        <type>text</type>
+        <help>匹配成功后，在实时流量中显示此应用名称。</help>
+    </field>
+</form>

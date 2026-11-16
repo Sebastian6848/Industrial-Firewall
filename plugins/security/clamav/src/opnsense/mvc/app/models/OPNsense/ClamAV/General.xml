@@ -1,0 +1,154 @@
+<model>
+    <mount>//OPNsense/clamav/general</mount>
+    <description>ClamAV configuration</description>
+    <version>1.0.1</version>
+    <items>
+        <fc_proxyhost type="HostnameField">
+            <Required>N</Required>
+        </fc_proxyhost>
+        <fc_proxyport type="PortField">
+            <Required>Y</Required>
+            <Default>12450</Default>
+        </fc_proxyport>
+        <enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </enabled>
+        <fc_enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </fc_enabled>
+        <enabletcp type="BooleanField">
+            <Default>1</Default>
+            <Required>Y</Required>
+        </enabletcp>
+        <maxthreads type="IntegerField">
+            <Default>10</Default>
+            <Required>N</Required>
+        </maxthreads>
+        <maxqueue type="IntegerField">
+            <Default>100</Default>
+            <Required>N</Required>
+        </maxqueue>
+        <idletimeout type="IntegerField">
+            <Default>30</Default>
+            <Required>N</Required>
+        </idletimeout>
+        <maxdirrecursion type="IntegerField">
+            <Default>20</Default>
+            <Required>N</Required>
+        </maxdirrecursion>
+        <followdirsym type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </followdirsym>
+        <followfilesym type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </followfilesym>
+        <disablecache type="TextField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </disablecache>
+        <scanpe type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanpe>
+        <scanelf type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanelf>
+        <detectbroken type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </detectbroken>
+        <scanole2 type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanole2>
+        <ole2blockmarcros type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </ole2blockmarcros>
+        <scanpdf type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanpdf>
+        <scanswf type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanswf>
+        <scanxmldocs type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanxmldocs>
+        <scanhwp3 type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanhwp3>
+        <scanmailfiles type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanmailfiles>
+        <scanhtml type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanhtml>
+        <scanarchive type="BooleanField">
+            <Default>1</Default>
+            <Required>N</Required>
+        </scanarchive>
+        <arcblockenc type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </arcblockenc>
+        <maxscansize type="TextField">
+            <Default>100M</Default>
+            <Required>N</Required>
+        </maxscansize>
+        <maxfilesize type="TextField">
+            <Default>25M</Default>
+            <Required>N</Required>
+        </maxfilesize>
+        <maxrecursion type="IntegerField">
+            <Default>16</Default>
+            <Required>N</Required>
+        </maxrecursion>
+        <maxfiles type="IntegerField">
+            <Default>10000</Default>
+            <Required>N</Required>
+        </maxfiles>
+        <logverbose type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </logverbose>
+        <fc_logverbose type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </fc_logverbose>
+        <fc_databasemirror type="TextField">
+            <Default>database.clamav.net</Default>
+            <Required>Y</Required>
+        </fc_databasemirror>
+        <fc_timeout type="TextField">
+            <Default>60</Default>
+            <Required>Y</Required>
+        </fc_timeout>
+        <fc_malwareexpert type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </fc_malwareexpert>
+        <fc_blurl type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </fc_blurl>
+        <fc_jurlbla type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </fc_jurlbla>
+        <fc_bofhland type="BooleanField">
+            <Default>0</Default>
+            <Required>N</Required>
+        </fc_bofhland>
+    </items>
+</model>

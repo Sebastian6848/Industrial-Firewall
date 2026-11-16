@@ -1,0 +1,228 @@
+<form>
+    <field>
+        <type>header</type>
+        <label>策略</label>
+        <static>true</static>
+    </field>
+    <field>
+        <id>rule.enabled</id>
+        <label>启用</label>
+        <type>checkbox</type>
+        <help>启用该规则。</help>
+        <grid_view>
+            <width>6em</width>
+            <type>boolean</type>
+            <formatter>rowtoggle</formatter>
+        </grid_view>
+    </field>
+    <field>
+        <id>rule.description</id>
+        <label>描述</label>
+        <type>text</type>
+        <help>支持中英文描述，请勿使用尖括号或换行。</help>
+    </field>
+    <field>
+        <id>rule.protocol</id>
+        <label>协议</label>
+        <type>dropdown</type>
+        <help>选择此规则适用的工业协议。</help>
+    <grid_view><formatter>protocolName</formatter></grid_view>
+    </field>
+    <field>
+        <id>rule.src_ip</id>
+        <label>源</label>
+        <type>text</type>
+        <style>net_selector</style>
+        <help>选择接口网络、接口地址或别名，也可直接填写主机地址或网段。</help>
+    </field>
+    <field>
+        <id>rule.dst_ip</id>
+        <label>目标</label>
+        <type>text</type>
+        <style>net_selector</style>
+        <help>选择接口网络、接口地址或别名，也可直接填写主机地址或网段。</help>
+    </field>
+    <field>
+        <id>rule.dst_port</id>
+        <label>目标端口</label>
+        <type>text</type>
+        <style>port_selector</style>
+        <help>可选，填写端口、服务名、端口别名或范围，例如 1000-2000；留空表示任意端口。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.action</id>
+        <label>动作</label>
+        <type>dropdown</type>
+        <help>允许操作时保留审计，后续报文继续检查；阻断操作需在防御模式下生效。</help>
+    <grid_view><formatter>policyAction</formatter></grid_view>
+    </field>
+    <field>
+        <id>rule.access</id>
+        <label>操作权限</label>
+        <type>dropdown</type>
+        <help>选择只读、只写或读写权限，也可按协议指定操作码。</help>
+        <grid_view>
+            <formatter>protocolOperation</formatter>
+        </grid_view>
+    </field>
+
+    <field>
+        <type>header</type>
+        <label>协议设置</label>
+        <style>protocol-settings-section</style>
+    </field>
+    <field>
+        <id>rule.modbus_function_codes</id>
+        <label>Modbus 功能码</label>
+        <type>select_multiple</type>
+        <help>可选择多个功能码；留空时使用操作权限预设。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.modbus_unit_id</id>
+        <label>Modbus 单元编号</label>
+        <type>text</type>
+        <help>填写单元编号或范围，例如 1-10。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.dnp3_function_codes</id>
+        <label>DNP3 功能码</label>
+        <type>select_multiple</type>
+        <help>可选择多个功能码；留空时使用操作权限预设。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.dnp3_object_group</id>
+        <label>DNP3 对象组</label>
+        <type>text</type>
+        <help>填写 DNP3 对象组编号，多个编号以逗号分隔。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+
+    <field><id>rule.protocol_operations</id><label>协议操作码</label><type>text</type>
+        <help>用逗号分隔。留空使用读写预设，操作码及边界见下方协议说明。</help><grid_view><visible>false</visible></grid_view></field>
+    <field><id>rule.enip_services</id><label>CIP 服务码</label><type>text</type>
+        <help>十进制 0..127，逗号分隔。留空使用读取/写入预设；不代表可授权全部嵌套 CIP 服务。</help><grid_view><visible>false</visible></grid_view></field>
+    <field>
+        <type>header</type>
+        <label>MQTT 设置</label>
+        <style>protocol-mqtt-section</style>
+    </field>
+
+    <field>
+        <id>rule.mqtt_allow_connect</id>
+        <label>允许建立连接</label>
+        <type>checkbox</type>
+        <help>允许建立 MQTT 连接。仅在需要阻断连接本身时取消勾选。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.mqtt_operations</id>
+        <label>操作类型</label>
+        <type>select_multiple</type>
+        <help>选择此规则控制的 MQTT 操作。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.mqtt_topic</id>
+        <label>消息主题</label>
+        <type>text</type>
+        <help>精确匹配发布主题或订阅过滤器；此处的 + 和 # 按字面值处理。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+
+    <field>
+        <type>header</type>
+        <label>MQTT 高级选项</label>
+        <collapse>true</collapse>
+        <style>protocol-mqtt-advanced-section</style>
+    </field>
+    <field>
+        <id>rule.mqtt_client_id</id>
+        <label>客户端ID</label>
+        <type>text</type>
+        <help>可选，精确匹配建立连接时的客户端标识。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.mqtt_username</id>
+        <label>用户名</label>
+        <type>text</type>
+        <help>可选，精确匹配建立连接时的用户名；不匹配密码。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.mqtt_qos</id>
+        <label>发布服务质量</label>
+        <type>dropdown</type>
+        <help>可选，仅限制发布操作的服务质量等级。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.mqtt_tls</id>
+        <label>加密 MQTT</label>
+        <type>checkbox</type>
+        <help>加密通信仅按地址和端口控制，无法检查加密后的消息内容。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+
+    <field>
+        <type>header</type>
+        <label>NC-Link 设置</label>
+        <style>protocol-nclink-section</style>
+    </field>
+    <field>
+        <id>rule.nclink_operations</id>
+        <label>业务操作</label>
+        <type>select_multiple</type>
+        <help>选择此规则允许或阻断的 NC-Link 业务操作。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field><id>rule.nclink_topic_root</id><label>主题根前缀</label><type>text</type>
+        <help>可选，例如 nclink 或 factory/line1。不要填写末尾斜杠；留空使用原来的裸主题。</help><grid_view><visible>false</visible></grid_view></field>
+    <field><id>rule.nclink_subscribe_filters</id><label>额外订阅过滤器</label><type>text</type>
+        <help>仅授权订阅，不授权发布。逗号分隔，如 Probe/#,Sample/#；自动添加主题根前缀。通配订阅须单独建规则并留空设备与通道条件。</help><grid_view><visible>false</visible></grid_view></field>
+    <field><id>rule.nclink_direction</id><label>NC-Link 业务方向</label><type>dropdown</type>
+        <help>按主题中的 Request/Response 区分，采样与事件上报不受方向过滤。</help><grid_view><visible>false</visible></grid_view></field>
+    <field><id>rule.nclink_packets</id><label>NC-Link MQTT 报文</label><type>dropdown</type>
+        <help>可约束发布及订阅。固定设备时，订阅 + 或 # 不会绕过设备条件。</help><grid_view><visible>false</visible></grid_view></field>
+    <field><id>rule.nclink_endpoint</id><label>客户端 / 采样通道</label><type>text</type>
+        <help>可选 ex_cid 或 sample_channel_id，需先指定设备 UUID。留空兼容设备主题及设备/端点主题。</help><grid_view><visible>false</visible></grid_view></field>
+    <field>
+        <id>rule.nclink_device_uuid</id>
+        <label>设备标识</label>
+        <type>text</type>
+        <help>可选，填写设备标识；留空时匹配所有设备。注册请求为全局操作。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+
+    <field>
+        <type>header</type>
+        <label>高级选项</label>
+        <collapse>true</collapse>
+        <style>common-advanced-section</style>
+    </field>
+    <field>
+        <id>rule.time_range_start</id>
+        <label>开始时间</label>
+        <type>text</type>
+        <help>可选，填写规则生效的开始时间，格式为 HH:MM。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.time_range_end</id>
+        <label>结束时间</label>
+        <type>text</type>
+        <help>可选，填写规则生效的结束时间，格式为 HH:MM。</help>
+        <grid_view><visible>false</visible></grid_view>
+    </field>
+    <field>
+        <id>rule.log_only</id>
+        <label>仅记录日志</label>
+        <type>checkbox</type>
+        <help>仅记录告警，不执行此规则选择的阻断动作。</help>
+    <grid_view><formatter>logOnly</formatter></grid_view>
+    </field>
+</form>

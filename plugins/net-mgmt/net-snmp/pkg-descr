@@ -1,0 +1,26 @@
+Simple Network Management Protocol (SNMP) is a widely used
+protocol for monitoring the health and welfare of network
+equipment (eg. routers), computer equipment and even devices
+like UPSs.
+Net-SNMP is a suite of applications used to implement
+SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6.
+
+WWW: http://www.net-snmp.org
+
+
+Plugin Changelog
+----------------
+
+1.6
+
+* Add support for Observium (contributed by Patrick M. Hausen)
+* Fix sysServices value in case "Layer 3 Visibility" option is unchecked (contributed by Patrick M. Hausen)
+
+1.5
+
+* Add support for agentx
+* Fixed directory mismatch in setup.sh (contributed by doktornotor)
+
+1.4
+
+* Include installed version number in extended OID

@@ -1,0 +1,9 @@
+<menu>
+    <Services>
+        <ClamAV VisibleName="防病毒" cssClass="fa fa-shield">
+            <Gateway VisibleName="防病毒配置与诊断" order="5" url="/ui/clamav/gateway/"/>
+            <Configuration VisibleName="扫描引擎高级配置" order="10" url="/ui/clamav/general/index"/>
+            <LogFile VisibleName="Log File" order="20" url="/ui/diagnostics/log/core/clamd"/>
+        </ClamAV>
+    </Services>
+</menu>

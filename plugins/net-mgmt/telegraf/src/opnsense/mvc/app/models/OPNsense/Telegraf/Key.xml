@@ -1,0 +1,23 @@
+<model>
+    <mount>//OPNsense/telegraf/key</mount>
+    <description>Telegraf key configuration</description>
+    <version>1.0.0</version>
+    <items>
+        <keys>
+            <key type="ArrayField">
+                <enabled type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </enabled>
+                <name type="TextField">
+                    <Mask>/^([0-9a-zA-Z._\-]){1,128}$/u</Mask>
+                    <ValidationMessage>Only characters, numbers, a dot, underscore and hyphen allowed. Do not use more than 128 characters.</ValidationMessage>
+                </name>
+                <value type="TextField">
+                    <Mask>/^([0-9a-zA-Z._\-]){1,128}$/u</Mask>
+                    <ValidationMessage>Only characters, numbers, a dot, underscore and hyphen allowed. Do not use more than 128 characters.</ValidationMessage>
+                </value>
+            </key>
+        </keys>
+    </items>
+</model>

@@ -1,0 +1,8 @@
+PLUGIN_NAME=		clamav
+PLUGIN_VERSION=		1.8.1
+PLUGIN_REVISION=	6
+PLUGIN_COMMENT=		Antivirus engine for detecting malicious threats
+PLUGIN_DEPENDS=		clamav os-c-icap os-squid
+PLUGIN_MAINTAINER=	m.muenz@gmail.com
+
+.include "../../Mk/plugins.mk"

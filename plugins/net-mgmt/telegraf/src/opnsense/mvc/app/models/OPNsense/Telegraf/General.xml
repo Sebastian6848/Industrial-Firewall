@@ -1,0 +1,56 @@
+<model>
+    <mount>//OPNsense/telegraf/general</mount>
+    <description>Telegraf general configuration</description>
+    <version>1.0.2</version>
+    <items>
+        <enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </enabled>
+        <wheelgroup type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </wheelgroup>
+        <interval type="IntegerField">
+            <Default>10</Default>
+            <Required>Y</Required>
+        </interval>
+        <roundinterval type="BooleanField">
+            <Default>1</Default>
+            <Required>Y</Required>
+        </roundinterval>
+        <metric_batch_size type="IntegerField">
+            <Default>1000</Default>
+            <Required>Y</Required>
+        </metric_batch_size>
+        <metric_buffer_limit type="IntegerField">
+            <Default>10000</Default>
+            <Required>Y</Required>
+        </metric_buffer_limit>
+        <collection_jitter type="IntegerField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </collection_jitter>
+        <flush_interval type="IntegerField">
+            <Default>10</Default>
+            <Required>Y</Required>
+        </flush_interval>
+        <flush_jitter type="IntegerField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </flush_jitter>
+        <hostname type="TextField"/>
+        <omit_hostname type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </omit_hostname>
+        <quiet type="BooleanField">
+            <Default>1</Default>
+            <Required>Y</Required>
+        </quiet>
+        <debug type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </debug>
+    </items>
+</model>

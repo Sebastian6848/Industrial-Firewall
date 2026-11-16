@@ -1,0 +1,9 @@
+<menu>
+    <Services>
+        <AppIdentification order="500" VisibleName="应用识别" cssClass="fa fa-bar-chart fa-fw">
+            <Settings order="10" VisibleName="连接设置" url="/ui/appidentification/" />
+            <ActiveFlows order="20" VisibleName="实时流量" url="/ui/appidentification/flows/" />
+            <Applications order="30" VisibleName="应用与识别库" url="/ui/appidentification/applications/" />
+        </AppIdentification>
+    </Services>
+</menu>

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# restart service to make sure c-icap starts after clamav is ready
+/usr/local/etc/rc.d/c-icap restart

@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ -x /usr/local/etc/rc.d/industrial_suite ]; then
+    /usr/local/etc/rc.d/industrial_suite onestop
+fi

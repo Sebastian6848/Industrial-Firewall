@@ -1,0 +1,262 @@
+<model>
+    <mount>//OPNsense/IndProto</mount>
+        <version>1.6.0</version>
+    <description>Industrial protocol whitelist rules</description>
+    <items>
+        <general>
+            <enabled type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </enabled>
+            <default_action type="OptionField">
+                <Default>pass</Default>
+                <Required>Y</Required>
+                <OptionValues>
+                    <pass>允许</pass>
+                    <block>阻断</block>
+                </OptionValues>
+            </default_action>
+            <interface type="InterfaceField">
+                <Required>N</Required>
+            </interface>
+        </general>
+        <rules>
+            <rule type="ArrayField">
+                <enabled type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </enabled>
+                <description type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[^&lt;&gt;\r\n]{0,255}$/u</Mask>
+                    <ValidationMessage>请使用单行描述，不要包含尖括号。</ValidationMessage>
+                </description>
+                <protocol type="OptionField">
+                    <Default>modbus</Default>
+                    <Required>Y</Required>
+                    <OptionValues>
+                        <modbus>Modbus</modbus>
+                        <nclink>NC-Link over MQTT</nclink>
+                        <dnp3>DNP3</dnp3>
+                        <s7comm>S7comm</s7comm>
+                        <mqtt>MQTT</mqtt>
+                        <enip>EtherNet/IP / CIP</enip>
+                        <iec104>IEC 60870-5-104</iec104>
+                        <fins>OMRON FINS/TCP</fins>
+                        <melsec>MELSEC MC / SLMP 3E</melsec>
+                        <bacnet>BACnet/IP</bacnet>
+                        <opcua>OPC UA TCP</opcua>
+                    </OptionValues>
+                </protocol>
+                <src_ip type="NetworkAliasField">
+                    <Default>any</Default>
+                    <Required>Y</Required>
+                </src_ip>
+                <dst_ip type="NetworkAliasField">
+                    <Default>any</Default>
+                    <Required>Y</Required>
+                </dst_ip>
+                <dst_port type="PortField">
+                    <Required>N</Required>
+                    <EnableWellKnown>Y</EnableWellKnown>
+                    <EnableRanges>Y</EnableRanges>
+                    <EnableAlias>Y</EnableAlias>
+                    <ValidationMessage>请输入有效的端口、服务名、别名或端口范围。</ValidationMessage>
+                </dst_port>
+                <action type="OptionField">
+                    <Default>pass</Default>
+                    <Required>Y</Required>
+                    <OptionValues>
+                        <pass>允许</pass>
+                        <block>阻断</block>
+                    </OptionValues>
+                </action>
+                <access type="OptionField">
+                    <Default>readwrite</Default>
+                    <Required>Y</Required>
+                    <OptionValues>
+                        <read>只读</read>
+                        <write>只写</write>
+                        <readwrite>读写</readwrite>
+                    </OptionValues>
+                </access>
+                <!-- Legacy shared field retained for existing Modbus and DNP3 configurations. -->
+                <function_codes type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[0-9,]*$/</Mask>
+                </function_codes>
+                <modbus_function_codes type="OptionField">
+                    <Required>N</Required>
+                    <Multiple>Y</Multiple>
+                    <OptionValues>
+                        <fc1 value="1">1 - 读取线圈</fc1>
+                        <fc2 value="2">2 - 读取离散输入</fc2>
+                        <fc3 value="3">3 - 读取保持寄存器</fc3>
+                        <fc4 value="4">4 - 读取输入寄存器</fc4>
+                        <fc5 value="5">5 - 写入单个线圈</fc5>
+                        <fc6 value="6">6 - 写入单个寄存器</fc6>
+                        <fc7 value="7">7 - 读取异常状态</fc7>
+                        <fc8 value="8">8 - 诊断</fc8>
+                        <fc11 value="11">11 - 读取通信事件计数</fc11>
+                        <fc12 value="12">12 - 读取通信事件日志</fc12>
+                        <fc15 value="15">15 - 写入多个线圈</fc15>
+                        <fc16 value="16">16 - 写入多个寄存器</fc16>
+                        <fc17 value="17">17 - 报告服务标识</fc17>
+                        <fc20 value="20">20 - 读取文件记录</fc20>
+                        <fc21 value="21">21 - 写入文件记录</fc21>
+                        <fc22 value="22">22 - 掩码写入寄存器</fc22>
+                        <fc23 value="23">23 - 读写多个寄存器</fc23>
+                        <fc24 value="24">24 - 读取先进先出队列</fc24>
+                        <fc43 value="43">43 - 封装接口传输</fc43>
+                    </OptionValues>
+                </modbus_function_codes>
+                <dnp3_function_codes type="OptionField">
+                    <Required>N</Required>
+                    <Multiple>Y</Multiple>
+                    <OptionValues>
+                        <fc0 value="0">0 - 确认</fc0>
+                        <fc1 value="1">1 - 读取</fc1>
+                        <fc2 value="2">2 - 写入</fc2>
+                        <fc3 value="3">3 - 选择</fc3>
+                        <fc4 value="4">4 - 执行</fc4>
+                        <fc5 value="5">5 - 直接执行</fc5>
+                        <fc6 value="6">6 - 直接执行（无响应）</fc6>
+                        <fc7 value="7">7 - 立即冻结</fc7>
+                        <fc8 value="8">8 - 立即冻结（无响应）</fc8>
+                        <fc9 value="9">9 - 冻结并清除</fc9>
+                        <fc10 value="10">10 - 冻结并清除（无响应）</fc10>
+                        <fc13 value="13">13 - 冷重启</fc13>
+                        <fc14 value="14">14 - 热重启</fc14>
+                        <fc20 value="20">20 - 启用主动上报</fc20>
+                        <fc21 value="21">21 - 禁用主动上报</fc21>
+                        <fc23 value="23">23 - 延迟测量</fc23>
+                    </OptionValues>
+                </dnp3_function_codes>
+                <dnp3_object_group type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[0-9,]*$/</Mask>
+                    <ValidationMessage>DNP3 对象组编号需为十进制数字，多个编号以逗号分隔。</ValidationMessage>
+                </dnp3_object_group>
+                <modbus_unit_id type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[0-9-]*$/</Mask>
+                    <ValidationMessage>请填写有效的 Modbus 单元编号或范围，例如 1-10。</ValidationMessage>
+                </modbus_unit_id>
+                <time_range_start type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^$|^([01][0-9]|2[0-3]):[0-5][0-9]$/</Mask>
+                    <ValidationMessage>请使用 HH:MM 时间格式。</ValidationMessage>
+                </time_range_start>
+                <time_range_end type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^$|^([01][0-9]|2[0-3]):[0-5][0-9]$/</Mask>
+                    <ValidationMessage>请使用 HH:MM 时间格式。</ValidationMessage>
+                </time_range_end>
+                <log_only type="BooleanField">
+                    <Default>0</Default>
+                    <Required>Y</Required>
+                </log_only>
+                <mqtt_allow_connect type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </mqtt_allow_connect>
+                <mqtt_operations type="OptionField">
+                    <Required>N</Required>
+                    <Multiple>Y</Multiple>
+                    <Default>publish,subscribe,unsubscribe</Default>
+                    <OptionValues>
+                        <publish>发布</publish>
+                        <subscribe>订阅</subscribe>
+                        <unsubscribe>取消订阅</unsubscribe>
+                    </OptionValues>
+                </mqtt_operations>
+                <mqtt_topic type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[^\x00]{0,65535}$/u</Mask>
+                    <ValidationMessage>消息主题不能包含空字符。</ValidationMessage>
+                </mqtt_topic>
+                <mqtt_client_id type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[^\x00]{0,1024}$/u</Mask>
+                    <ValidationMessage>客户端标识不能包含空字符。</ValidationMessage>
+                </mqtt_client_id>
+                <mqtt_username type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[^\x00]{0,1024}$/u</Mask>
+                    <ValidationMessage>用户名不能包含空字符。</ValidationMessage>
+                </mqtt_username>
+                <mqtt_qos type="OptionField">
+                    <Required>N</Required>
+                    <OptionValues>
+                        <qos0 value="0">QoS 0</qos0>
+                        <qos1 value="1">QoS 1</qos1>
+                        <qos2 value="2">QoS 2</qos2>
+                    </OptionValues>
+                </mqtt_qos>
+                <mqtt_tls type="BooleanField">
+                    <Default>0</Default>
+                    <Required>Y</Required>
+                </mqtt_tls>
+                <nclink_operations type="OptionField">
+                    <Required>N</Required>
+                    <Multiple>Y</Multiple>
+                    <Default>register,version_probe,model_query,model_set,data_query,data_set,sample,sample_register,sample_unregister</Default>
+                    <OptionValues>
+                        <register>设备注册</register>
+                        <version_probe>版本探测</version_probe>
+                        <model_query>模型查询</model_query>
+                        <model_set>模型设置</model_set>
+                        <data_query>数据查询</data_query>
+                        <data_set>数据设置</data_set>
+                        <sample>采样上报</sample>
+                        <sample_register>采样注册</sample_register>
+                        <sample_unregister>采样注销</sample_unregister>
+                        <method_call>方法调用</method_call>
+                        <method_control>方法控制</method_control>
+                        <method_status>方法进度</method_status>
+                        <method_result>方法结果</method_result>
+                        <event_register>事件注册</event_register>
+                        <event_unregister>事件注销</event_unregister>
+                        <event>事件上报</event>
+                        <state_notify>状态通知</state_notify>
+                        <discovery>终端发现</discovery>
+                    </OptionValues>
+                </nclink_operations>
+                <nclink_topic_root type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^(?:[^\/+#\x00\r\n,]+(?:\/[^\/+#\x00\r\n,]+)*)?$/u</Mask>
+                    <ValidationMessage>主题根前缀不能含通配符、逗号或空路径段。</ValidationMessage>
+                </nclink_topic_root>
+                <nclink_subscribe_filters type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[^\x00\r\n]{0,2048}$/u</Mask>
+                </nclink_subscribe_filters>
+                <protocol_operations type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[0-9A-Za-z_,]*$/</Mask>
+                </protocol_operations>
+                <enip_services type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[0-9,]*$/</Mask>
+                </enip_services>
+                <nclink_endpoint type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[^\/+#\x00]{0,255}$/u</Mask>
+                </nclink_endpoint>
+                <nclink_direction type="OptionField">
+                    <Required>Y</Required><Default>request</Default>
+                    <OptionValues><request>请求与数据上报</request><response>响应与数据上报</response><both>双向</both></OptionValues>
+                </nclink_direction>
+                <nclink_packets type="OptionField">
+                    <Required>Y</Required><Default>publish</Default>
+                    <OptionValues><publish>发布</publish><subscribe>订阅</subscribe><both>发布与订阅</both></OptionValues>
+                </nclink_packets>
+                <nclink_device_uuid type="TextField">
+                    <Required>N</Required>
+                    <Mask>/^[^\/+#\x00]{0,255}$/u</Mask>
+                    <ValidationMessage>设备标识不能包含斜杠、加号、井号或空字符。</ValidationMessage>
+                </nclink_device_uuid>
+            </rule>
+        </rules>
+    </items>
+</model>

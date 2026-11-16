@@ -1,0 +1,19 @@
+<acl>
+    <page-industrial-suite>
+        <name>Industrial security: administration</name>
+        <patterns>
+            <pattern>ui/industrialsuite/*</pattern>
+            <pattern>api/industrialsuite/settings/*</pattern>
+            <pattern>api/industrialsuite/service/*</pattern>
+        </patterns>
+    </page-industrial-suite>
+    <api-industrial-agent>
+        <name>Industrial security: managed node</name>
+        <patterns>
+            <pattern>api/industrialsuite/agent/status</pattern>
+            <pattern>api/industrialsuite/agent/logs</pattern>
+            <pattern>api/industrialsuite/agent/preview</pattern>
+            <pattern>api/industrialsuite/agent/deploy</pattern>
+        </patterns>
+    </api-industrial-agent>
+</acl>

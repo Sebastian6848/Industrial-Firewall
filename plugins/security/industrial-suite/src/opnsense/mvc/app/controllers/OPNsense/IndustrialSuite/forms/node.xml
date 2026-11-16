@@ -1,0 +1,48 @@
+<form>
+    <field>
+        <id>node.enabled</id>
+        <label>启用</label>
+        <type>checkbox</type>
+        <grid_view>
+            <type>boolean</type>
+            <formatter>rowtoggle</formatter>
+        </grid_view>
+    </field>
+    <field>
+        <id>node.name</id>
+        <label>设备名称</label>
+        <type>text</type>
+        <grid_view />
+    </field>
+    <field>
+        <id>node.url</id>
+        <label>管理地址</label>
+        <type>text</type>
+        <help>使用HTTPS地址；接收节点需要安装工业安全插件。</help>
+        <grid_view />
+    </field>
+    <field>
+        <id>node.key</id>
+        <label>API 访问标识</label>
+        <type>password</type>
+        <grid_view>
+            <visible>false</visible>
+        </grid_view>
+    </field>
+    <field>
+        <id>node.secret</id>
+        <label>API 访问密钥</label>
+        <type>password</type>
+        <help>使用仅拥有工业安全受管节点权限的专用账号。</help>
+        <grid_view>
+            <visible>false</visible>
+        </grid_view>
+    </field>
+    <field>
+        <id>node.verify_tls</id>
+        <label>验证TLS证书</label>
+        <type>checkbox</type>
+        <help>默认启用。自签名证书应先安装信任链。</help>
+        <grid_view />
+    </field>
+</form>

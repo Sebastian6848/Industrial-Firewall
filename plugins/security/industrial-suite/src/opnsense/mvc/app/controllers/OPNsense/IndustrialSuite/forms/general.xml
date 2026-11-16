@@ -1,0 +1,26 @@
+<form>
+    <field>
+        <id>suite.integrity.enabled</id>
+        <label>定时完整性检查</label>
+        <type>checkbox</type>
+        <help>每五分钟检查一次已建立的文件基线。</help>
+    </field>
+    <field>
+        <id>suite.integrity.files</id>
+        <label>保护文件</label>
+        <type>textbox</type>
+        <help>每行一个绝对文件路径；修改后需要管理员重新建立基线。</help>
+    </field>
+    <field>
+        <id>suite.isolation.enabled</id>
+        <label>启用网关微隔离</label>
+        <type>checkbox</type>
+        <help>仅控制经过本网关的纳管设备间流量；现有连接正常到期后使用新策略。</help>
+    </field>
+    <field>
+        <id>suite.isolation.management</id>
+        <label>管理来源网络</label>
+        <type>textbox</type>
+        <help>启用隔离前必须指定管理主机或网络，例如192.168.255.0/24；保留到防火墙22、80、443端口的访问。</help>
+    </field>
+</form>

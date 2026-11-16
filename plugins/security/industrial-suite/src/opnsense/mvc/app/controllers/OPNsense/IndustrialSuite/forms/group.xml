@@ -1,0 +1,24 @@
+<form>
+    <field>
+        <id>group.enabled</id>
+        <label>启用</label>
+        <type>checkbox</type>
+        <grid_view>
+            <type>boolean</type>
+            <formatter>rowtoggle</formatter>
+        </grid_view>
+    </field>
+    <field>
+        <id>group.name</id>
+        <label>设备组</label>
+        <type>text</type>
+        <grid_view />
+    </field>
+    <field>
+        <id>group.members</id>
+        <label>地址与网络</label>
+        <type>textbox</type>
+        <help>每行一个IP地址或CIDR；设备组之间不能重叠。</help>
+        <grid_view />
+    </field>
+</form>

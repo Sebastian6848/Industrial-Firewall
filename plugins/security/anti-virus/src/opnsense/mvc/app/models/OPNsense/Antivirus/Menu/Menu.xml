@@ -1,0 +1,8 @@
+<menu>
+    <Services>
+        <Antivirus cssClass="fa fa-stethoscope">
+            <Configuration order="10" url="/ui/antivirus/general/index"/>
+            <Logs order="20" url="/ui/antivirus/logs/index"/>
+        </Antivirus>
+    </Services>
+</menu>

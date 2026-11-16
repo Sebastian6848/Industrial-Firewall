@@ -1,0 +1,1318 @@
+{#
+
+Copyright (C) 2026 Deciso B.V.
+All rights reserved.
+
+#}
+
+<link rel="stylesheet" href="{{ cache_safe('/ui/css/industrial-ui.css') }}">
+<div class="feature-ui">
+<style>
+/* 修复操作列下拉菜单被表格裁切的问题 */
+.bootgrid-table {
+	overflow: visible !important;
+}
+.bootgrid-table td {
+	overflow: visible !important;
+}
+.table-responsive {
+	overflow: visible !important;
+}
+#flow_filters,
+#flow_filters .content-box,
+#flow_filters .bootgrid-header,
+#flow_filters .bootgrid-footer {
+	overflow: visible !important;
+}
+#flow_filters {
+	padding: 20px 22px 16px;
+}
+#flow_filters .flow-filter-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 12px 10px;
+	margin-bottom: 18px !important;
+}
+#flow_filters .flow-filter-toolbar .form-group {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0 !important;
+}
+#flow_filters .flow-filter-toolbar label {
+	margin: 0;
+	white-space: nowrap;
+}
+#flow_filters .bootgrid-header {
+	padding-top: 10px;
+}
+@media (max-width: 767px) {
+	#flow_filters {
+		padding: 16px;
+	}
+	#flow_filters .flow-filter-toolbar .form-group {
+		width: 100%;
+	}
+	#flow_filters .flow-filter-toolbar .form-control,
+	#flow_filters .flow-filter-toolbar .bootstrap-select {
+		width: 100% !important;
+	}
+}
+/* 确保下拉菜单始终在最顶层 */
+.dropdown-menu {
+	z-index: 1035 !important;
+}
+.flow-dropdown-menu-detached {
+	display: block !important;
+	position: absolute !important;
+	z-index: 1035 !important;
+}
+.flow-actions-dropdown {
+	display: inline-block;
+}
+.flow-actions-menu,
+.flow-dropdown-menu-detached.flow-actions-menu {
+	float: none !important;
+	min-width: 116px !important;
+	width: auto !important;
+	max-width: 150px !important;
+	padding: 4px 0 !important;
+	font-size: 12px;
+	line-height: 1.4;
+	border-radius: 4px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.flow-actions-menu > li > a {
+	padding: 5px 12px !important;
+	white-space: nowrap;
+}
+.flow-actions-menu > li.disabled > a,
+.flow-actions-menu > li.disabled > a:hover,
+.flow-actions-menu > li.disabled > a:focus {
+	color: #999;
+	cursor: not-allowed;
+	background: transparent;
+}
+.flow-detail-dialog .modal-dialog {
+	width: calc(100vw - 80px);
+	max-width: 1280px;
+}
+.flow-detail-dialog .modal-body {
+	max-height: calc(100vh - 170px);
+	overflow: auto;
+	padding: 0;
+}
+.flow-detail-title {
+	font-weight: 600;
+}
+.flow-detail-wrap {
+	padding: 8px 10px 12px;
+}
+.flow-detail-table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+.flow-detail-table th,
+.flow-detail-table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	vertical-align: top;
+	word-break: break-word;
+}
+.flow-detail-table th {
+	width: 210px;
+	background: #f1f1f1;
+	color: #111;
+}
+.flow-detail-table td {
+	background: #fff;
+}
+.flow-detail-table tr:nth-child(even) td {
+	background: #f7f7f7;
+}
+.flow-detail-peer {
+	color: #06f;
+}
+.flow-detail-badge {
+	display: inline-block;
+	min-width: 18px;
+	padding: 1px 5px;
+	margin-left: 4px;
+	border-radius: 3px;
+	background: #159957;
+	color: #fff;
+	font-size: 11px;
+	text-align: center;
+}
+.flow-detail-bar {
+	display: flex;
+	height: 14px;
+	margin-top: 6px;
+	overflow: hidden;
+	border-radius: 4px;
+	background: #e5e5e5;
+}
+.flow-detail-bar span {
+	color: #fff;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	white-space: nowrap;
+}
+.flow-detail-bar-client {
+	background: #f0ad00;
+}
+.flow-detail-bar-server {
+	background: #159957;
+}
+.flow-detail-extra-title {
+	background: #e8e8e8 !important;
+	font-weight: 600;
+}
+.flow-detail-value-list {
+	margin: 0;
+	padding-left: 18px;
+}
+.flow-detail-pre {
+	margin: 0;
+	white-space: pre-wrap;
+	word-break: break-word;
+	background: transparent;
+	border: 0;
+	padding: 0;
+	font-size: 12px;
+}
+#grid-flows .bootgrid-overlay {
+	top: 8px !important;
+	right: 8px !important;
+	left: auto !important;
+	bottom: auto !important;
+	width: auto !important;
+	height: auto !important;
+	min-width: 0 !important;
+	padding: 4px 8px !important;
+	background: rgba(255, 255, 255, 0.88) !important;
+	border: 1px solid #ddd !important;
+	border-radius: 3px !important;
+	pointer-events: none !important;
+}
+</style>
+
+<script>
+	$(document).ready(function () {
+		'use strict';
+
+		let autoRefreshTimer = null;
+		let customApplicationRules = [];
+		let flowRefreshMode = 'manual';
+		let lastGoodFlowResponse = null;
+		let currentFlowSnapshot = {};
+		let searchResumeTimer = null;
+		let autoRefreshPausedByInteraction = false;
+
+		function showApiError(title, message, retryFn) {
+			const buttons = [{
+				label: "{{ lang._('关闭') }}",
+				action: function (dialog) {
+					dialog.close();
+				}
+			}];
+
+			if (typeof retryFn === 'function') {
+				buttons.unshift({
+					label: "{{ lang._('重试') }}",
+					cssClass: 'btn-primary',
+					action: function (dialog) {
+						dialog.close();
+						retryFn();
+					}
+				});
+			}
+
+			BootstrapDialog.show({
+				type: BootstrapDialog.TYPE_DANGER,
+				title: title,
+				message: bootstrapSafe(message || "{{ lang._('未知错误') }}"),
+				buttons: buttons
+			});
+		}
+
+		function readFilters() {
+			return {
+				host: $('#flow_filter_host').val() || '',
+				protocol: $('#flow_filter_protocol').val() || '',
+				l7_proto: $('#flow_filter_application').val() || '',
+				status: $('#flow_filter_status').val() || '',
+				traffic_type: $('#flow_filter_traffic_type').val() || '',
+				host_pool: $('#flow_filter_host_pool').val() || '',
+				network: $('#flow_filter_network').val() || ''
+			};
+		}
+
+		function setAutoRefresh(enabled) {
+			if (autoRefreshTimer !== null) {
+				clearInterval(autoRefreshTimer);
+				autoRefreshTimer = null;
+			}
+
+			if (enabled) {
+				autoRefreshTimer = setInterval(function () {
+					if (autoRefreshPausedByInteraction || getFlowGridPage() > 1) {
+						updateFlowRefreshStatus();
+						return;
+					}
+					refreshFlows('auto');
+				}, 5000);
+			}
+			updateFlowRefreshStatus();
+		}
+
+		function getFlowGridInstance() {
+			return $('#grid-flows').data('UIBootgrid');
+		}
+
+		function getFlowGridPage() {
+			const instance = getFlowGridInstance();
+			if (instance && instance.table && typeof instance.table.getPage === 'function') {
+				return Number(instance.table.getPage() || 1);
+			}
+			return 1;
+		}
+
+		function refreshFlows(mode) {
+			const instance = getFlowGridInstance();
+			flowRefreshMode = mode || 'manual';
+			showFlowRefreshStatus('loading', "{{ lang._('更新中...') }}");
+			if (instance && typeof instance._reload === 'function') {
+				instance._reload(true);
+			} else {
+				$('#grid-flows').bootgrid('reload');
+			}
+		}
+
+		function showFlowRefreshStatus(state, message) {
+			const status = $('#flow_refresh_status');
+			status.removeClass('text-muted text-danger text-success');
+			status.find('.fa').removeClass('fa-refresh fa-spin fa-exclamation-triangle fa-check');
+
+			if (state === 'loading') {
+				status.addClass('text-muted');
+				status.find('.fa').addClass('fa-refresh fa-spin');
+			} else if (state === 'error') {
+				status.addClass('text-danger');
+				status.find('.fa').addClass('fa-exclamation-triangle');
+			} else {
+				status.addClass('text-success');
+				status.find('.fa').addClass('fa-check');
+			}
+
+			status.find('.flow-refresh-text').text(message || '');
+			status.show();
+			if (state === 'ok') {
+				window.setTimeout(function () {
+					status.fadeOut(300);
+				}, 1200);
+			}
+		}
+
+		function updateFlowRefreshStatus() {
+			const autoEnabled = $('#flow_auto_refresh').is(':checked');
+			const page = getFlowGridPage();
+			let text = autoEnabled ? "{{ lang._('自动刷新：5秒') }}" : "{{ lang._('自动刷新：暂停') }}";
+			if (autoEnabled && page > 1) {
+				text = "{{ lang._('非首页暂停自动刷新') }}";
+			}
+			if (autoEnabled && autoRefreshPausedByInteraction) {
+				text = "{{ lang._('操作中，暂停自动刷新') }}";
+			}
+			$('#flow_refresh_hint').text(text);
+		}
+
+		function pauseAutoRefreshForInteraction(delay) {
+			autoRefreshPausedByInteraction = true;
+			updateFlowRefreshStatus();
+			if (searchResumeTimer !== null) {
+				clearTimeout(searchResumeTimer);
+			}
+			searchResumeTimer = window.setTimeout(function () {
+				autoRefreshPausedByInteraction = false;
+				updateFlowRefreshStatus();
+			}, delay || 3000);
+		}
+
+		function buildSnapshotDetail(row) {
+			return {
+				key: row.flow_key || '',
+				hash_id: row.hash_id || '',
+				duration: row.duration || 0,
+				bytes: row.bytes_raw || 0,
+				breakdown: row.breakdown || {},
+				protocol: {
+					l4: row.l4_proto || '',
+					l7: row.l7_proto || row.info || ''
+				},
+				client: {
+					ip: row.client_ip || '',
+					name: row.client_name || row.client || '',
+					port: row.client_port || ''
+				},
+				server: {
+					ip: row.server_ip || '',
+					name: row.server_name || row.server || '',
+					port: row.server_port || ''
+				}
+			};
+		}
+
+		function showFlowDetailDialog(payload, warning) {
+			const detailView = renderFlowDetail(payload);
+			const body = warning ?
+				'<div class="alert alert-warning" style="margin: 10px;">' + bootstrapSafe(warning) + '</div>' + detailView.body :
+				detailView.body;
+
+			BootstrapDialog.show({
+				type: BootstrapDialog.TYPE_INFO,
+				cssClass: 'flow-detail-dialog',
+				title: detailView.title,
+				message: body,
+				buttons: [{
+					label: "{{ lang._('关闭') }}",
+					action: function (dialog) {
+						dialog.close();
+					}
+				}],
+				onhide: function () {
+					autoRefreshPausedByInteraction = false;
+					updateFlowRefreshStatus();
+				}
+			});
+		}
+
+		function bootstrapSafe(value) {
+			return $('<div/>').text(value === null || value === undefined ? '' : String(value)).html();
+		}
+
+		function humanBytes(bytes) {
+			let value = Number(bytes || 0);
+			const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+			let idx = 0;
+			while (value >= 1024 && idx < units.length - 1) {
+				value /= 1024;
+				idx += 1;
+			}
+			return value.toFixed(idx === 0 ? 0 : 2) + ' ' + units[idx];
+		}
+
+		function humanDuration(seconds) {
+			let value = Number(seconds || 0);
+			if (value < 1) {
+				return '< 1 sec';
+			}
+			value = Math.round(value);
+			const hours = Math.floor(value / 3600);
+			const minutes = Math.floor((value % 3600) / 60);
+			const remain = value % 60;
+			if (hours > 0) {
+				return hours + 'h ' + minutes + 'm ' + remain + 's';
+			}
+			if (minutes > 0) {
+				return minutes + 'm ' + remain + 's';
+			}
+			return remain + ' sec';
+		}
+
+		function humanTime(timestamp) {
+			const value = Number(timestamp || 0);
+			if (value <= 0) {
+				return '';
+			}
+			return new Date(value * 1000).toLocaleString();
+		}
+
+		function loadCustomApplicationRules() {
+			ajaxCall('/api/appidentification/rule/list', {}, function (data) {
+				customApplicationRules = data && Array.isArray(data.rules) ? data.rules : [];
+				if ($('#grid-flows').data('UIBootgrid')) {
+					refreshFlows('manual');
+				}
+			});
+		}
+
+		function normalizeDomain(value) {
+			let text = String(value || '').trim().toLowerCase();
+			if (text === '') {
+				return '';
+			}
+
+			try {
+				if (text.indexOf('://') !== -1) {
+					text = new URL(text).hostname || text;
+				} else if (text.indexOf('/') !== -1) {
+					text = new URL('http://' + text).hostname || text;
+				}
+			} catch (err) {
+			}
+
+			const bracketMatch = text.match(/^\[([^\]]+)\](?::\d+)?$/);
+			if (bracketMatch) {
+				text = bracketMatch[1];
+			} else if ((text.match(/:/g) || []).length === 1) {
+				const parts = text.split(':');
+				if (/^\d+$/.test(parts[1])) {
+					text = parts[0];
+				}
+			}
+
+			return text.trim().replace(/\.+$/, '');
+		}
+
+		function domainRuleMatches(host, ruleDomain) {
+			const rawRule = String(ruleDomain || '').trim().toLowerCase();
+			if (host === '' || rawRule === '') {
+				return false;
+			}
+
+			if (rawRule.indexOf('*.') === 0) {
+				const base = normalizeDomain(rawRule.slice(2));
+				return base !== '' && host !== base && host.endsWith('.' + base);
+			}
+
+			if (rawRule.indexOf('.') === 0) {
+				const base = normalizeDomain(rawRule.slice(1));
+				return base !== '' && (host === base || host.endsWith('.' + base));
+			}
+
+			const base = normalizeDomain(rawRule);
+			return base !== '' && (host === base || host.endsWith('.' + base));
+		}
+
+		function domainSpecificity(value) {
+			let text = String(value || '').trim().toLowerCase();
+			if (text.indexOf('*.') === 0) {
+				text = text.slice(2);
+			} else if (text.indexOf('.') === 0) {
+				text = text.slice(1);
+			}
+			const domain = normalizeDomain(text);
+			return {
+				labels: domain === '' ? 0 : domain.split('.').length,
+				length: domain.length
+			};
+		}
+
+		function ipv4ToNumber(ip) {
+			const parts = String(ip || '').split('.');
+			if (parts.length !== 4) {
+				return null;
+			}
+
+			let value = 0;
+			for (let idx = 0; idx < parts.length; idx++) {
+				if (!/^\d+$/.test(parts[idx])) {
+					return null;
+				}
+				const octet = Number(parts[idx]);
+				if (octet < 0 || octet > 255) {
+					return null;
+				}
+				value = (value * 256) + octet;
+			}
+
+			return value >>> 0;
+		}
+
+		function ipInCidr(ip, cidr) {
+			const bits = String(cidr || '').split('/');
+			if (bits.length !== 2 || !/^\d+$/.test(bits[1])) {
+				return false;
+			}
+
+			const ipValue = ipv4ToNumber(ip);
+			const networkValue = ipv4ToNumber(bits[0]);
+			const prefix = Number(bits[1]);
+			if (ipValue === null || networkValue === null || prefix < 0 || prefix > 32) {
+				return false;
+			}
+
+			const mask = prefix === 0 ? 0 : (0xffffffff << (32 - prefix)) >>> 0;
+			return (ipValue & mask) === (networkValue & mask);
+		}
+
+		function splitRuleMatchValues(rule) {
+			if (Array.isArray(rule.match_values)) {
+				return rule.match_values.map(function (item) {
+					return String(item || '').trim();
+				}).filter(function (item) {
+					return item !== '';
+				});
+			}
+
+			return String(rule.match_value || '').split(/\r?\n/).map(function (item) {
+				return String(item || '').trim();
+			}).filter(function (item) {
+				return item !== '';
+			});
+		}
+
+		function matchCustomRule(row) {
+			const serverName = normalizeDomain(row.server_name || '');
+			const serverIp = String(row.server_ip || '');
+			const clientIp = String(row.client_ip || '');
+			const serverPort = String(row.server_port || '');
+			const protocol = String(row.protocol || row.l7_proto || row.info || '').toLowerCase();
+
+			let bestRule = null, bestSpecificity = {labels: 0, length: 0};
+			for (let idx = 0; idx < customApplicationRules.length; idx++) {
+				const rule = customApplicationRules[idx] || {};
+				const type = String(rule.match_type || '');
+				const values = splitRuleMatchValues(rule);
+				if (values.length === 0) {
+					continue;
+				}
+
+				if (type === 'domain') {
+					for (let i = 0; i < values.length; i++) {
+						if (domainRuleMatches(serverName, values[i])) {
+							const current = domainSpecificity(values[i]);
+							if (current.labels > bestSpecificity.labels ||
+								(current.labels === bestSpecificity.labels && current.length > bestSpecificity.length)) {
+								bestRule = rule;
+								bestSpecificity = current;
+							}
+						}
+					}
+				}
+			}
+
+			if (bestRule !== null) {
+				return bestRule;
+			}
+
+			for (let idx = 0; idx < customApplicationRules.length; idx++) {
+				const rule = customApplicationRules[idx] || {};
+				const type = String(rule.match_type || '');
+				const values = splitRuleMatchValues(rule);
+				if (values.length === 0 || type === 'domain') {
+					continue;
+				}
+
+				if (type === 'ip') {
+					for (let i = 0; i < values.length; i++) {
+						if (serverIp === values[i] || clientIp === values[i]) {
+							return rule;
+						}
+					}
+				}
+				if (type === 'cidr') {
+					for (let i = 0; i < values.length; i++) {
+						if (ipInCidr(serverIp, values[i]) || ipInCidr(clientIp, values[i])) {
+							return rule;
+						}
+					}
+				}
+				if (type === 'port') {
+					for (let i = 0; i < values.length; i++) {
+						if (serverPort === values[i]) {
+							return rule;
+						}
+					}
+				}
+				if (type === 'protocol') {
+					for (let i = 0; i < values.length; i++) {
+						if (protocol === values[i].toLowerCase()) {
+							return rule;
+						}
+					}
+				}
+			}
+
+			return null;
+		}
+
+		function renderProtocol(row) {
+			return bootstrapSafe(row.protocol || row.l7_proto || row.info || '-');
+		}
+
+		function applicationLabelFromProtocol(protocol) {
+			const value = String(protocol || '').trim();
+			if (value === '') {
+				return '';
+			}
+
+			const parts = value.split('.');
+			if (parts.length > 1) {
+				const label = parts.slice(1).join('.').trim();
+				if (label !== '') {
+					return label;
+				}
+			}
+
+			return value;
+		}
+
+		function renderApplicationInfo(row) {
+			const original = row.l7_proto || row.info || '';
+			const rule = matchCustomRule(row);
+			const label = rule ? String(rule.app_label || '') : (row.application || applicationLabelFromProtocol(original));
+
+			if (label === '') {
+				return '';
+			}
+
+			let labelClass = 'label-warning';
+			if (rule) {
+				labelClass = 'label-danger';
+				} else if (label === 'TLS' || label === 'DNS') {
+					labelClass = 'label-default';
+				}
+				const titlePrefix = "{{ lang._('底层协议') }}";
+				return '<span class="label ' + labelClass + '" title="' + bootstrapSafe(titlePrefix + ': ' + (original || '-')) + '">' +
+					bootstrapSafe(label) +
+					'</span>';
+			}
+
+		function endpointLabel(endpoint) {
+			if (!endpoint || typeof endpoint !== 'object') {
+				return '';
+			}
+			const name = endpoint.name || endpoint.ip || '';
+			const port = endpoint.port ? ':' + endpoint.port : '';
+			return bootstrapSafe(name + port);
+		}
+
+		function restoreDetachedFlowMenu(dropdown) {
+			if (!dropdown || dropdown.length === 0) {
+				return;
+			}
+
+			const menu = dropdown.data('detached-menu');
+			const placeholder = dropdown.data('menu-placeholder');
+			if (menu && menu.length > 0 && placeholder && placeholder.length > 0) {
+				menu.removeClass('flow-dropdown-menu-detached').removeAttr('style');
+				menu.removeData('owning-dropdown');
+				placeholder.replaceWith(menu);
+			}
+
+			dropdown.removeClass('open');
+			dropdown.removeData('detached-menu');
+			dropdown.removeData('menu-placeholder');
+		}
+
+		function closeFlowActionMenu(link) {
+			const owner = $(link).closest('.dropdown-menu').data('owning-dropdown');
+			if (owner && owner.length > 0) {
+				restoreDetachedFlowMenu(owner);
+			}
+		}
+
+		function closeAllFlowActionMenus() {
+			gridFlows.find('.dropdown.open').each(function () {
+				restoreDetachedFlowMenu($(this));
+			});
+			$('body > .flow-dropdown-menu-detached').each(function () {
+				const owner = $(this).data('owning-dropdown');
+				if (owner && owner.length > 0) {
+					restoreDetachedFlowMenu(owner);
+				} else {
+					$(this).remove();
+				}
+			});
+		}
+
+		function positionDetachedFlowMenu(dropdown) {
+			const menu = dropdown.data('detached-menu');
+			if (!menu || menu.length === 0) {
+				return;
+			}
+
+			const button = dropdown.find('.dropdown-toggle');
+			const offset = button.offset();
+			const menuWidth = menu.outerWidth();
+			const left = Math.max(8, offset.left + button.outerWidth() - menuWidth);
+
+			menu.css({
+				top: offset.top + button.outerHeight(),
+				left: left
+			});
+		}
+
+		function installDetachedFlowDropdowns() {
+			gridFlows.off('show.bs.dropdown.flowmenu').on('show.bs.dropdown.flowmenu', '.dropdown', function () {
+				const dropdown = $(this);
+				const menu = dropdown.children('.dropdown-menu');
+				const placeholder = $('<span class="flow-dropdown-placeholder" style="display:none;"></span>');
+
+				dropdown.data('menu-placeholder', placeholder);
+				dropdown.data('detached-menu', menu);
+				menu.data('owning-dropdown', dropdown);
+				menu.after(placeholder);
+				menu.addClass('flow-dropdown-menu-detached').appendTo('body');
+				positionDetachedFlowMenu(dropdown);
+			});
+
+			gridFlows.off('hidden.bs.dropdown.flowmenu').on('hidden.bs.dropdown.flowmenu', '.dropdown', function () {
+				restoreDetachedFlowMenu($(this));
+			});
+		}
+
+		function isPlainObject(value) {
+			return value !== null && typeof value === 'object' && !Array.isArray(value);
+		}
+
+		function formatDetailLabel(key) {
+			return String(key || '')
+				.replace(/_/g, ' ')
+				.replace(/\b\w/g, function (letter) {
+					return letter.toUpperCase();
+				});
+		}
+
+		function renderPrimitiveDetailValue(value) {
+			if (value === null || value === undefined || value === '') {
+				return '-';
+			}
+			if (typeof value === 'boolean') {
+				return value ? 'true' : 'false';
+			}
+			return bootstrapSafe(value);
+		}
+
+		function renderDetailValue(value, depth) {
+			if (Array.isArray(value)) {
+				if (value.length === 0) {
+					return '-';
+				}
+				const primitiveOnly = value.every(function (item) {
+					return item === null || typeof item !== 'object';
+				});
+				if (primitiveOnly) {
+					return '<ul class="flow-detail-value-list">' + value.map(function (item) {
+						return '<li>' + renderPrimitiveDetailValue(item) + '</li>';
+					}).join('') + '</ul>';
+				}
+				return '<pre class="flow-detail-pre">' + bootstrapSafe(JSON.stringify(value, null, 2)) + '</pre>';
+			}
+
+			if (isPlainObject(value)) {
+				const keys = Object.keys(value);
+				if (keys.length === 0) {
+					return '-';
+				}
+				if (depth >= 2) {
+					return '<pre class="flow-detail-pre">' + bootstrapSafe(JSON.stringify(value, null, 2)) + '</pre>';
+				}
+				return keys.map(function (key) {
+					return '<div><strong>' + bootstrapSafe(formatDetailLabel(key)) + ':</strong> ' + renderDetailValue(value[key], depth + 1) + '</div>';
+				}).join('');
+			}
+
+			return renderPrimitiveDetailValue(value);
+		}
+
+		function renderExtraDetailRows(detail) {
+			const consumed = {
+				breakdown: true,
+				bytes: true,
+				client: true,
+				duration: true,
+				first_seen: true,
+				flow_key: true,
+				hash_id: true,
+				key: true,
+				last_seen: true,
+				protocol: true,
+				score: true,
+				server: true,
+				tcp_flags: true,
+				thpt: true,
+				vlan: true
+			};
+			const priority = [
+				'tcp_fingerprint',
+				'rtt',
+				'application_latency',
+				'packet_interarrival_time',
+				'tcp_goodput',
+				'tcp_stats',
+				'tcp_flags_analysis',
+				'issues',
+				'alerts',
+				'community_id',
+				'goodput',
+				'actual_peak_throughput',
+				'http',
+				'tls',
+				'ja3',
+				'ja4',
+				'dns',
+				'payload'
+			];
+			const keys = Object.keys(detail || {}).filter(function (key) {
+				return !consumed[key];
+			}).sort(function (left, right) {
+				const li = priority.indexOf(left);
+				const ri = priority.indexOf(right);
+				if (li !== -1 || ri !== -1) {
+					return (li === -1 ? 999 : li) - (ri === -1 ? 999 : ri);
+				}
+				return left.localeCompare(right);
+			});
+
+			let rows = '';
+			keys.forEach(function (key) {
+				const value = detail[key];
+				if (value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0)) {
+					return;
+				}
+				rows += '<tr><th>' + bootstrapSafe(formatDetailLabel(key)) + '</th><td colspan="2">' + renderDetailValue(value, 0) + '</td></tr>';
+			});
+
+			return rows;
+		}
+
+		function renderObjectRemainderRow(title, value, consumedKeys) {
+			if (!isPlainObject(value)) {
+				return '';
+			}
+
+			const consumed = {};
+			consumedKeys.forEach(function (key) {
+				consumed[key] = true;
+			});
+
+			const remainder = {};
+			Object.keys(value).forEach(function (key) {
+				if (!consumed[key] && value[key] !== null && value[key] !== undefined && value[key] !== '') {
+					remainder[key] = value[key];
+				}
+			});
+
+			if (Object.keys(remainder).length === 0) {
+				return '';
+			}
+
+			return '<tr><th>' + bootstrapSafe(title) + '</th><td colspan="2">' + renderDetailValue(remainder, 0) + '</td></tr>';
+		}
+
+		function renderFlowDetail(data) {
+			const detail = data.detail || {};
+			const row = data.row || {};
+			const client = detail.client || {};
+			const server = detail.server || {};
+			const protocol = detail.protocol || {};
+			const thpt = detail.thpt || {};
+			const breakdown = detail.breakdown || {};
+			const clientPct = Math.max(0, Math.min(100, Number(breakdown.cli2srv || 0)));
+			const serverPct = Math.max(0, Math.min(100, Number(breakdown.srv2cli || (100 - clientPct))));
+			const totalBytes = Number(detail.bytes || row.bytes_raw || 0);
+			const l4 = protocol.l4 || row.l4_proto || '';
+			const l7 = protocol.l7 || row.l7_proto || row.info || '';
+			const title = (endpointLabel(client) || row.client || '') + ' ⇄ ' + (endpointLabel(server) || row.server || '');
+			const clientBytes = Math.round(totalBytes * clientPct / 100);
+			const serverBytes = Math.max(0, totalBytes - clientBytes);
+
+			let html = '';
+			html += '<div class="flow-detail-wrap">';
+			html += '<table class="flow-detail-table">';
+			html += '<tbody>';
+			html += '<tr><th>{{ lang._("流 Peers [客户端/服务器]") }}</th><td colspan="2"><span class="flow-detail-peer">' + title + '</span></td></tr>';
+			html += '<tr><th>{{ lang._("协议 / 应用程序") }}</th><td colspan="2">' + bootstrapSafe(l4 || '-') + ' / <span class="flow-detail-peer">' + bootstrapSafe(l7 || '-') + '</span><span class="flow-detail-badge">DPI</span></td></tr>';
+			html += '<tr><th>{{ lang._("首先/最后查看") }}</th><td>' + bootstrapSafe(humanTime(detail.first_seen)) + '</td><td>' + bootstrapSafe(humanTime(detail.last_seen)) + '</td></tr>';
+			html += '<tr><th>Flow Duration</th><td colspan="2">' + bootstrapSafe(humanDuration(detail.duration)) + '</td></tr>';
+			html += '<tr><th>{{ lang._("总流量") }}</th><td>{{ lang._("总计") }}: ' + bootstrapSafe(humanBytes(totalBytes)) + '</td><td>' + bootstrapSafe(Number(thpt.bps || 0).toFixed(2)) + ' bps</td></tr>';
+			html += '<tr><th></th><td>{{ lang._("客户端") }} ➜ {{ lang._("服务器") }}: ' + bootstrapSafe(humanBytes(clientBytes)) + '</td><td>{{ lang._("服务器") }} ➜ {{ lang._("客户端") }}: ' + bootstrapSafe(humanBytes(serverBytes)) + '</td></tr>';
+			html += '<tr><th></th><td colspan="2"><div class="flow-detail-bar">';
+			html += '<span class="flow-detail-bar-client" style="width:' + clientPct + '%">' + bootstrapSafe(endpointLabel(client) || row.client || '') + '</span>';
+			html += '<span class="flow-detail-bar-server" style="width:' + serverPct + '%">' + bootstrapSafe(endpointLabel(server) || row.server || '') + '</span>';
+			html += '</div></td></tr>';
+			html += '<tr><th>VLAN / Hash</th><td>' + bootstrapSafe(detail.vlan || 0) + '</td><td>' + bootstrapSafe(detail.hash_id || detail.key || row.flow_key || '') + '</td></tr>';
+			html += '<tr><th>{{ lang._("吞吐量") }}</th><td colspan="2">' + bootstrapSafe(row.throughput || (Number(thpt.bps || 0).toFixed(2) + ' bps')) + ' / ' + bootstrapSafe(Number(thpt.pps || 0).toFixed(2)) + ' pps</td></tr>';
+			html += '<tr><th>TCP Flags</th><td colspan="2">' + bootstrapSafe(detail.tcp_flags || '-') + '</td></tr>';
+			html += '<tr><th>{{ lang._("客户端") }}</th><td colspan="2">' + endpointLabel(client) + ' | IP: ' + bootstrapSafe(client.ip || '') + ' | Port: ' + bootstrapSafe(client.port || '') + '</td></tr>';
+			html += '<tr><th>{{ lang._("服务器") }}</th><td colspan="2">' + endpointLabel(server) + ' | IP: ' + bootstrapSafe(server.ip || '') + ' | Port: ' + bootstrapSafe(server.port || '') + '</td></tr>';
+			html += renderObjectRemainderRow('{{ lang._("客户端详细信息") }}', client, ['ip', 'name', 'port']);
+			html += renderObjectRemainderRow('{{ lang._("服务器详细信息") }}', server, ['ip', 'name', 'port']);
+			html += renderObjectRemainderRow('{{ lang._("协议详细信息") }}', protocol, ['l4', 'l7']);
+			html += renderObjectRemainderRow('{{ lang._("吞吐量详细信息") }}', thpt, ['bps', 'pps']);
+			html += renderObjectRemainderRow('{{ lang._("流量方向详细信息") }}', breakdown, ['cli2srv', 'srv2cli']);
+			html += renderExtraDetailRows(detail);
+			html += '</tbody>';
+			html += '</table>';
+			html += '</div>';
+			return {
+				title: '<span class="flow-detail-title"><span class="fa fa-navicon"></span> {{ lang._("流") }}: ' + title + ' | {{ lang._("概述") }}</span>',
+				body: html
+			};
+		}
+
+		function loadApplicationOptions() {
+			ajaxCall('/api/appidentification/applications/list', {}, function (data) {
+				if (!data || data.status === 'error') {
+					showApiError("{{ lang._('加载应用筛选失败') }}", (data && data.message) ? data.message : "{{ lang._('无法加载应用筛选项') }}", loadApplicationOptions);
+					return;
+				}
+
+				const select = $('#flow_filter_application');
+				const current = select.val() || '';
+				select.find('option:not([value=""])').remove();
+
+				if (data && data.status === 'ok' && Array.isArray(data.rows)) {
+					const known = {};
+					data.rows.forEach(function (row) {
+						const appName = (row.name || '').trim();
+						if (appName !== '' && !known[appName]) {
+							known[appName] = true;
+							select.append('<option value="' + bootstrapSafe(appName) + '">' + bootstrapSafe(appName === 'Other' ? '其他' : appName) + '</option>');
+						}
+					});
+				}
+
+				select.val(current);
+				$('.selectpicker').selectpicker('refresh');
+			});
+		}
+
+		function showFlowDetail(flowKey) {
+			if (!flowKey) {
+				showApiError("{{ lang._('获取流详情失败') }}", "{{ lang._('流已过期') }}");
+				return;
+			}
+
+			closeAllFlowActionMenus();
+			ajaxCall('/api/appidentification/flows/getFlowDetail', {flow_key: flowKey}, function (data) {
+				if (!data || data.status === 'error') {
+					const cached = currentFlowSnapshot[String(flowKey)] || null;
+					if (cached !== null) {
+						showFlowDetailDialog({
+							status: 'ok',
+							flow_key: flowKey,
+							detail: buildSnapshotDetail(cached),
+							row: cached
+						}, "{{ lang._('此流量已结束，仅显示快照数据') }}");
+						return;
+					}
+					const backendMessage = (data && data.message) ? data.message : "{{ lang._('无法获取流量详情') }}";
+					const userMessage = backendMessage.indexOf('expired') !== -1 ? "{{ lang._('流已过期') }}" : backendMessage;
+					showApiError("{{ lang._('获取流详情失败') }}", userMessage);
+					return;
+				}
+
+				showFlowDetailDialog(data);
+			});
+		}
+
+		const gridFlows = $('#grid-flows').UIBootgrid({
+			search: '/api/appidentification/flows/search',
+			commands: {
+				refresh: {
+					footer: false,
+					classname: 'fa fa-fw fa-refresh',
+					title: "{{ lang._('刷新') }}",
+					method: function (event) {
+						event.preventDefault();
+						refreshFlows('manual');
+					},
+					sequence: 40
+				}
+			},
+			options: {
+				ajax: true,
+				selection: false,
+				rowSelect: false,
+				multiSelect: false,
+				keepSelection: false,
+				rowCount: [10, 25, 50, 100],
+				searchSettings: {
+					delay: 300,
+					characters: 1
+				},
+				requestHandler: function (request) {
+					const filters = readFilters();
+					request.host = filters.host;
+					request.l7_proto = filters.l7_proto;
+					request.traffic_type = filters.traffic_type;
+					request.host_pool = filters.host_pool;
+					request.network = filters.network;
+
+					if (filters.protocol !== '') {
+						request.searchPhrase = ((request.searchPhrase || '') + ' ' + filters.protocol).trim();
+					}
+					if (filters.status !== '') {
+						request.searchPhrase = ((request.searchPhrase || '') + ' ' + filters.status).trim();
+					}
+
+					return request;
+				},
+				responseHandler: function (data) {
+					if (data && data.status === 'error') {
+						const message = flowRefreshMode === 'auto'
+							? "{{ lang._('上次刷新失败，显示的是缓存数据') }}"
+							: (data.message || "{{ lang._('刷新失败') }}");
+						showFlowRefreshStatus('error', message);
+						if (lastGoodFlowResponse !== null) {
+							return $.extend(true, {}, lastGoodFlowResponse);
+						}
+						return data;
+					}
+
+					if (data && Array.isArray(data.rows)) {
+						if (data.rows.length > 0) {
+							currentFlowSnapshot = {};
+							data.rows.forEach(function (row) {
+								if (row.flow_key) {
+									currentFlowSnapshot[String(row.flow_key)] = $.extend(true, {}, row);
+								}
+							});
+							lastGoodFlowResponse = $.extend(true, {}, data);
+							showFlowRefreshStatus('ok', "{{ lang._('已更新') }}");
+							return data;
+						}
+
+						if (flowRefreshMode === 'auto' && lastGoodFlowResponse !== null) {
+							showFlowRefreshStatus('error', "{{ lang._('本次刷新为空，保留当前数据') }}");
+							return $.extend(true, {}, lastGoodFlowResponse);
+						}
+					}
+
+					showFlowRefreshStatus('ok', "{{ lang._('已更新') }}");
+					return data;
+				},
+				formatters: {
+					commands: function (column, row) {
+						const flowKey = bootstrapSafe(row.flow_key || '');
+						let buttons = '';
+						buttons += '<div class="dropdown flow-actions-dropdown">';
+						buttons += '<button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+						buttons += '<span class="fa fa-navicon"></span> <span class="caret"></span>';
+						buttons += '</button>';
+						buttons += '<ul class="dropdown-menu flow-actions-menu" role="menu">';
+						if (flowKey !== '') {
+							buttons += '<li><a href="#" class="flow-info-btn" data-action="detail" data-flow-key="' + flowKey + '"><span class="fa fa-info-circle"></span> {{ lang._("信息") }}</a></li>';
+							buttons += '<li class="disabled"><a href="#" class="flow-chart-btn" data-action="chart" data-flow-key="' + flowKey + '"><span class="fa fa-bar-chart"></span> {{ lang._("图表") }}</a></li>';
+						} else {
+							buttons += '<li><a href="#" data-action="expired"><span class="fa fa-clock-o"></span> {{ lang._("流已过期") }}</a></li>';
+						}
+						buttons += '</ul>';
+						buttons += '</div>';
+						return buttons;
+					},
+					flow_path: function (column, row) {
+						return '<span>' + bootstrapSafe(row.client || '') + '</span> <span class="fa fa-exchange"></span> <span>' + bootstrapSafe(row.server || '') + '</span>';
+					},
+					protocol: function (column, row) {
+						return renderProtocol(row);
+					},
+					info: function (column, row) {
+						return renderApplicationInfo(row);
+					}
+				}
+			}
+		}).on('loaded.rs.jquery.bootgrid', function () {
+			$(this).closest('.table-responsive').css('overflow', 'visible');
+			$(this).closest('.bootgrid-table').css('overflow', 'visible');
+			installDetachedFlowDropdowns();
+			updateFlowRefreshStatus();
+
+			gridFlows.find('a[data-action=detail]').off('click').on('click', function (event) {
+				event.preventDefault();
+				pauseAutoRefreshForInteraction(30000);
+				closeFlowActionMenu(this);
+				showFlowDetail($(this).data('flow-key'));
+			});
+
+			gridFlows.find('a[data-action=chart]').off('click').on('click', function (event) {
+				event.preventDefault();
+				if ($(this).parent().hasClass('disabled')) {
+					return;
+				}
+				const flowKey = $(this).data('flow-key');
+				closeFlowActionMenu(this);
+				BootstrapDialog.show({
+					type: BootstrapDialog.TYPE_INFO,
+					title: "{{ lang._('图表') }}",
+					message: "{{ lang._('此流的图表视图将在后续版本提供。') }}<br/>" + bootstrapSafe(flowKey),
+					buttons: [{
+						label: "{{ lang._('关闭') }}",
+						action: function (dialog) {
+							dialog.close();
+						}
+					}]
+				});
+			});
+
+			gridFlows.find('a[data-action=expired]').off('click').on('click', function (event) {
+				event.preventDefault();
+				closeFlowActionMenu(this);
+				showApiError("{{ lang._('获取流详情失败') }}", "{{ lang._('流已过期') }}");
+			});
+		});
+
+		gridFlows.on('load.rs.jquery.bootgrid', function () {
+			showFlowRefreshStatus('loading', "{{ lang._('更新中...') }}");
+		});
+
+		$(window).on('scroll.flowmenu resize.flowmenu', function () {
+			gridFlows.find('.dropdown.open').each(function () {
+				positionDetachedFlowMenu($(this));
+			});
+		});
+
+		$('#flow_apply_filters').on('click', function () {
+			refreshFlows('manual');
+		});
+
+		$('#flow_reset_filters').on('click', function () {
+			$('#flow_filter_host').val('');
+			$('#flow_filter_protocol').val('');
+			$('#flow_filter_application').val('');
+			$('#flow_filter_status').val('');
+			$('#flow_filter_traffic_type').val('');
+			$('#flow_filter_host_pool').val('');
+			$('#flow_filter_network').val('');
+			$('.selectpicker').selectpicker('refresh');
+			refreshFlows('manual');
+		});
+
+		$('#flow_refresh').on('click', function () {
+			refreshFlows('manual');
+		});
+
+		$('#flow_auto_refresh').on('change', function () {
+			setAutoRefresh($(this).is(':checked'));
+		});
+
+		$('#flow_filters input').on('keypress', function (event) {
+			if (event.which === 13) {
+				event.preventDefault();
+				refreshFlows('manual');
+			}
+		});
+
+		$('#flow_filters select').on('change', function () {
+			refreshFlows('manual');
+		});
+
+		$('#flow_filters input, #grid-flows-search-field').on('input keydown', function () {
+			pauseAutoRefreshForInteraction(3000);
+		});
+
+		loadCustomApplicationRules();
+		loadApplicationOptions();
+		$('.selectpicker').selectpicker('refresh');
+		setAutoRefresh(true);
+
+		$(document).ajaxError(function (event, xhr, settings) {
+			if (settings && settings.url && settings.url.indexOf('/api/appidentification/') === 0) {
+				const msg = xhr.responseJSON ? xhr.responseJSON.message : "{{ lang._('网络请求失败') }}";
+				showApiError("{{ lang._('加载失败') }}", msg);
+			}
+		});
+	});
+</script>
+
+<div class="content-box" id="flow_filters">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-inline flow-filter-toolbar">
+				<div class="form-group" style="margin-right: 8px; margin-bottom: 6px;">
+					<label for="flow_filter_host">{{ lang._('主机') }}</label>
+					<input id="flow_filter_host" type="text" class="form-control" placeholder="{{ lang._('主机 / 地址') }}" style="width: 140px;"/>
+				</div>
+				<div class="form-group" style="margin-right: 8px; margin-bottom: 6px;">
+					<label for="flow_filter_protocol">{{ lang._('协议') }}</label>
+					<select id="flow_filter_protocol" class="selectpicker" data-width="120px">
+						<option value="">{{ lang._('全部') }}</option>
+						<option value="TCP">TCP</option>
+						<option value="UDP">UDP</option>
+						<option value="ICMP">ICMP</option>
+					</select>
+				</div>
+				<div class="form-group" style="margin-right: 8px; margin-bottom: 6px;">
+					<label for="flow_filter_application">{{ lang._('应用') }}</label>
+					<select id="flow_filter_application" class="selectpicker" data-live-search="true" data-width="160px">
+						<option value="">{{ lang._('全部') }}</option>
+					</select>
+				</div>
+				<div class="form-group" style="margin-right: 8px; margin-bottom: 6px;">
+					<label for="flow_filter_status">{{ lang._('状态') }}</label>
+					<select id="flow_filter_status" class="selectpicker" data-width="120px">
+						<option value="">{{ lang._('全部') }}</option>
+						<option value="OK">正常</option>
+						<option value="ALERT">告警</option>
+					</select>
+				</div>
+				<div class="form-group" style="margin-right: 8px; margin-bottom: 6px;">
+					<label for="flow_filter_traffic_type">{{ lang._('流量类型') }}</label>
+					<select id="flow_filter_traffic_type" class="selectpicker" data-width="130px">
+						<option value="">{{ lang._('全部') }}</option>
+						<option value="local">{{ lang._('本地') }}</option>
+						<option value="remote">{{ lang._('远程') }}</option>
+					</select>
+				</div>
+				<div class="form-group" style="margin-right: 8px; margin-bottom: 6px;">
+					<label for="flow_filter_host_pool">{{ lang._('主机组') }}</label>
+					<input id="flow_filter_host_pool" type="text" class="form-control" placeholder="主机组编号" style="width: 120px;"/>
+				</div>
+				<div class="form-group" style="margin-right: 8px; margin-bottom: 6px;">
+					<label for="flow_filter_network">{{ lang._('网络') }}</label>
+					<input id="flow_filter_network" type="text" class="form-control" placeholder="Network" style="width: 120px;"/>
+				</div>
+				<div class="form-group" style="margin-right: 6px; margin-bottom: 6px;">
+					<button id="flow_apply_filters" class="btn btn-primary" type="button">{{ lang._('应用') }}</button>
+				</div>
+				<div class="form-group" style="margin-right: 6px; margin-bottom: 6px;">
+					<button id="flow_reset_filters" class="btn btn-default" type="button">{{ lang._('重置') }}</button>
+				</div>
+				<div class="form-group" style="margin-right: 6px; margin-bottom: 6px;">
+					<button id="flow_refresh" class="btn btn-default" type="button" title="{{ lang._('刷新') }}">
+						<span class="fa fa-refresh"></span>
+					</button>
+				</div>
+				<div class="form-group" style="margin-bottom: 6px;">
+					<label class="btn btn-default" style="font-weight: normal; margin-bottom: 0;">
+						<input type="checkbox" id="flow_auto_refresh" checked="checked"/> {{ lang._('自动刷新') }}
+					</label>
+				</div>
+				<div class="form-group" style="margin-left: 8px; margin-bottom: 6px;">
+					<small id="flow_refresh_hint" class="text-muted">{{ lang._('自动刷新：5秒') }}</small>
+				</div>
+				<div class="form-group" style="margin-left: 8px; margin-bottom: 6px;">
+					<small id="flow_refresh_status" class="text-muted" style="display:none;">
+						<span class="fa"></span>
+						<span class="flow-refresh-text"></span>
+					</small>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<table id="grid-flows" class="table table-condensed table-hover table-striped table-responsive">
+				<thead>
+				<tr>
+					<th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="70">{{ lang._('操作') }}</th>
+					<th data-column-id="last_seen" data-type="string">{{ lang._('最后见到') }}</th>
+					<th data-column-id="duration" data-type="string">{{ lang._('持续时间') }}</th>
+					<th data-column-id="protocol" data-formatter="protocol" data-type="string">{{ lang._('协议') }}</th>
+					<th data-column-id="info" data-formatter="info" data-type="string">{{ lang._('信息') }}</th>
+					<th data-column-id="flow_path" data-formatter="flow_path" data-sortable="false">{{ lang._('流（客户端→服务器）') }}</th>
+					<th data-column-id="throughput" data-type="string">{{ lang._('实际值') }}</th>
+					<th data-column-id="total_bytes" data-type="string">{{ lang._('总字节数') }}</th>
+					<th data-column-id="client" data-visible="false">client</th>
+					<th data-column-id="server" data-visible="false">server</th>
+					<th data-column-id="client_ip" data-visible="false">client_ip</th>
+					<th data-column-id="server_ip" data-visible="false">server_ip</th>
+					<th data-column-id="server_name" data-visible="false">server_name</th>
+					<th data-column-id="server_port" data-visible="false">server_port</th>
+				</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+</div>

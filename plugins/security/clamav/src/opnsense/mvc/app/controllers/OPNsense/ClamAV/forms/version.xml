@@ -1,0 +1,27 @@
+<form>
+    <field>
+        <id>version.clamav</id>
+        <label>ClamAV引擎版本</label>
+        <type>info</type>
+    </field>
+    <field>
+        <id>version.main</id>
+        <label>主要</label>
+        <type>info</type>
+    </field>
+    <field>
+        <id>version.daily</id>
+        <label>每日</label>
+        <type>info</type>
+    </field>
+    <field>
+        <id>version.bytecode</id>
+        <label>字节码</label>
+        <type>info</type>
+    </field>
+    <field>
+        <id>version.signatures</id>
+        <label>签名总数</label>
+        <type>info</type>
+    </field>
+</form>

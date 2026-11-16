@@ -1,0 +1,23 @@
+<model>
+    <mount>//OPNsense/clamav/url</mount>
+    <description>ClamAV List configuration</description>
+    <version>0.0.1</version>
+    <items>
+        <lists>
+            <list type="ArrayField">
+                <enabled type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </enabled>
+                <name type="TextField">
+                    <Required>Y</Required>
+                </name>
+                <link type="TextField">
+                    <Required>Y</Required>
+                    <Mask>/^https?:\/\/.*$/i</Mask>
+                    <ValidationMessage>网址必须以http:// 或https://开头</ValidationMessage>
+                </link>
+            </list>
+        </lists>
+    </items>
+</model>

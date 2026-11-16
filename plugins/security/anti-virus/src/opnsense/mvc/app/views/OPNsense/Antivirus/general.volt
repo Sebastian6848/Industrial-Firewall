@@ -1,0 +1,294 @@
+{#
+
+OPNsense® is Copyright © 2014 – 2017 by Deciso B.V.
+This file is Copyright © 2026
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+1.  Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+
+2.  Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+#}
+
+<div class="alert alert-warning" role="alert" id="dl_sig_alert" style="display:none;min-height:65px;">
+    <button class="btn btn-primary pull-right" id="dl_sig" type="button">{{ lang._('Download signatures') }} <i id="dl_sig_progress"></i></button>
+    <div style="margin-top: 8px;">{{ lang._('No signature database found, please download before use. The download will take several minutes and this message will disappear when it has been completed.') }}</div>
+</div>
+
+<ul class="nav nav-tabs" data-tabs="tabs" id="maintabs">
+    <li class="active"><a data-toggle="tab" href="#general">{{ lang._('General') }}</a></li>
+    <li><a data-toggle="tab" href="#lists">{{ lang._('Signatures') }}</a></li>
+    <li><a data-toggle="tab" href="#versions">{{ lang._('Versions') }}</a></li>
+</ul>
+
+<div class="tab-content content-box tab-content">
+    <div id="general" class="tab-pane fade in active">
+        <div class="content-box" style="padding-bottom: 1.5em;">
+            <div class="table-responsive" style="padding: 8px 10px 0 10px;">
+                <strong>{{ lang._('Status') }}</strong>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>{{ lang._('ClamAV Engine') }}</td>
+                            <td><span id="clamd_status" class="label label-danger">{{ lang._('stopped') }}</span></td>
+                            <td><button class="btn btn-xs btn-default antivirus-component-start" data-service="clamd" type="button">{{ lang._('Start') }} <i></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang._('ICAP Service') }}</td>
+                            <td><span id="cicap_status" class="label label-danger">{{ lang._('stopped') }}</span></td>
+                            <td><button class="btn btn-xs btn-default antivirus-component-start" data-service="cicap" type="button">{{ lang._('Start') }} <i></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang._('Freshclam Service') }}</td>
+                            <td><span id="freshclam_status" class="label label-danger">{{ lang._('stopped') }}</span></td>
+                            <td><button class="btn btn-xs btn-default antivirus-component-start" data-service="freshclam" type="button">{{ lang._('Start') }} <i></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang._('Squid ICAP') }}</td>
+                            <td><span id="squid_icap_status" class="label label-danger">{{ lang._('inactive') }}</span></td>
+                            <td><button class="btn btn-xs btn-default antivirus-component-start" data-service="squid_icap" type="button">{{ lang._('Apply') }} <i></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang._('SSL Inspection') }}</td>
+                            <td><span id="ssl_bump_status" class="label label-danger">{{ lang._('disabled') }}</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang._('SSL Mode') }}</td>
+                            <td><span id="ssl_mode">-</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang._('SSL CA') }}</td>
+                            <td><span id="ssl_ca_status" class="label label-danger">{{ lang._('missing') }}</span></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="alert alert-info" role="alert" id="https_scan_hint" style="display:none;">
+                {{ lang._('HTTPS scanning uses the existing Squid SSL inspection configuration. Enable SSL inspection in the web proxy and install its CA certificate on clients to scan HTTPS response content.') }}
+            </div>
+        </div>
+        <div class="content-box" style="padding-bottom: 1.5em;">
+            <div class="table-responsive" style="padding: 8px 10px 0 10px;">
+                <strong>{{ lang._('Configuration') }}</strong>
+            </div>
+            {{ partial("layout_partials/base_form",['fields':generalForm,'id':'frm_general_settings'])}}
+            <div class="col-md-12">
+                <hr />
+                <button class="btn btn-primary" id="saveAct" type="button"><b>{{ lang._('Save') }}</b> <i id="saveAct_progress"></i></button>
+                <button class="btn btn-primary" id="applyAct" type="button"><b>{{ lang._('Apply') }}</b> <i id="applyAct_progress"></i></button>
+                <button class="btn btn-primary" id="restartAct" type="button"><b>{{ lang._('Restart') }}</b> <i id="restartAct_progress"></i></button>
+            </div>
+        </div>
+    </div>
+    <div id="versions" class="tab-pane fade in">
+        <div class="content-box">
+            {{ partial("layout_partials/base_form",['fields':versionForm,'id':'frm_version'])}}
+            <div class="col-md-12">
+                <hr />
+                <button class="btn btn-primary" id="update_sig" type="button"><b>{{ lang._('Download signatures') }}</b> <i id="update_sig_progress"></i></button>
+            </div>
+        </div>
+    </div>
+    <div id="lists" class="tab-pane fade in">
+        <table id="grid-lists" class="table table-responsive" data-editDialog="dialogEditAntivirusUrl">
+            <thead>
+                <tr>
+                    <th data-column-id="enabled" data-type="string" data-formatter="rowtoggle">{{ lang._('Enabled') }}</th>
+                    <th data-column-id="name" data-type="string" data-visible="true">{{ lang._('Name') }}</th>
+                    <th data-column-id="link" data-type="string" data-visible="true">{{ lang._('URL') }}</th>
+                    <th data-column-id="uuid" data-type="string" data-identifier="true" data-visible="false">{{ lang._('ID') }}</th>
+                    <th data-column-id="commands" data-formatter="commands" data-sortable="false">{{ lang._('Commands') }}</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5"></td>
+                    <td>
+                        <button data-action="add" type="button" class="btn btn-xs btn-default"><span class="fa fa-plus"></span></button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="col-md-12">
+            <hr />
+            <button class="btn btn-primary" id="saveAct_url" type="button"><b>{{ lang._('Save') }}</b> <i id="saveAct_url_progress"></i></button>
+            <br /><br />
+        </div>
+    </div>
+</div>
+
+{{ partial("layout_partials/base_dialog",['fields':formDialogEditAntivirusUrl,'id':'dialogEditAntivirusUrl','label':lang._('Edit Signature URLs')])}}
+
+<script>
+function timeoutCheck() {
+    ajaxCall(url="/api/antivirus/service/freshclam", sendData={}, callback=function(data,status) {
+        if (data['status'] == 'done') {
+            $("#dl_sig_progress").removeClass("fa fa-spinner fa-pulse");
+            $("#update_sig_progress").removeClass("fa fa-spinner fa-pulse");
+            $("#dl_sig").prop("disabled", false);
+            $("#update_sig").prop("disabled", false);
+            $('#dl_sig_alert').hide();
+            var version_get_map = {'frm_version':"/api/antivirus/service/version"};
+            mapDataToFormUI(version_get_map).done(function(data){
+                formatTokenizersUI();
+                $('.selectpicker').selectpicker('refresh');
+            });
+            refreshAntivirusStatus();
+        } else {
+            setTimeout(timeoutCheck, 2500);
+        }
+    });
+}
+
+function updateAntivirusStatus(data) {
+    var clamd = data['clamd'] == 'running' ? 'running' : 'stopped';
+    var cicap = data['cicap'] == 'running' ? 'running' : 'stopped';
+    var freshclam = data['freshclam'] == 'running' ? 'running' : 'stopped';
+    var squid_icap = data['squid_icap'] == 'active' ? 'active' : 'inactive';
+    var ssl_bump = data['ssl_bump'] == 'enabled' ? 'enabled' : 'disabled';
+    var ssl_ca = data['ssl_ca'] == 'present' ? 'present' : 'missing';
+    $("#clamd_status").text(clamd).removeClass("label-success label-danger").addClass(clamd == 'running' ? "label-success" : "label-danger");
+    $("#cicap_status").text(cicap).removeClass("label-success label-danger").addClass(cicap == 'running' ? "label-success" : "label-danger");
+    $("#freshclam_status").text(freshclam).removeClass("label-success label-danger").addClass(freshclam == 'running' ? "label-success" : "label-danger");
+    $("#squid_icap_status").text(squid_icap).removeClass("label-success label-danger").addClass(squid_icap == 'active' ? "label-success" : "label-danger");
+    $("#ssl_bump_status").text(ssl_bump).removeClass("label-success label-danger").addClass(ssl_bump == 'enabled' ? "label-success" : "label-danger");
+    $("#ssl_mode").text(data['ssl_mode'] == 'sni_only' ? 'SNI only' : 'inspection');
+    $("#ssl_ca_status").text(ssl_ca).removeClass("label-success label-danger").addClass(ssl_ca == 'present' ? "label-success" : "label-danger");
+    if (ssl_bump != 'enabled' || data['ssl_mode'] == 'sni_only' || ssl_ca != 'present') {
+        $("#https_scan_hint").show();
+    } else {
+        $("#https_scan_hint").hide();
+    }
+}
+
+function refreshAntivirusStatus() {
+    ajaxCall(url="/api/antivirus/service/status", sendData={}, callback=function(data,status) {
+        updateAntivirusStatus(data);
+        updateServiceControlUI('antivirus');
+    });
+}
+
+$( document ).ready(function() {
+    var data_get_map = {'frm_general_settings':"/api/antivirus/settings/get"};
+    mapDataToFormUI(data_get_map).done(function(data){
+        formatTokenizersUI();
+        $('.selectpicker').selectpicker('refresh');
+    });
+
+    var version_get_map = {'frm_version':"/api/antivirus/service/version"};
+    mapDataToFormUI(version_get_map).done(function(data){
+        formatTokenizersUI();
+        $('.selectpicker').selectpicker('refresh');
+    });
+
+    $("#grid-lists").UIBootgrid(
+        {   'search':'/api/antivirus/url/search_url',
+            'get':'/api/antivirus/url/get_url/',
+            'set':'/api/antivirus/url/set_url/',
+            'add':'/api/antivirus/url/add_url/',
+            'del':'/api/antivirus/url/del_url/',
+            'toggle':'/api/antivirus/url/toggle_url/'
+        }
+    );
+
+    refreshAntivirusStatus();
+
+    ajaxCall(url="/api/antivirus/service/freshclam", sendData={}, callback=function(data,status) {
+        if (data['status'] != 'done') {
+            if (data['status'] == 'running') {
+                $("#dl_sig_progress").addClass("fa fa-spinner fa-pulse");
+                $("#dl_sig").prop("disabled", true);
+                setTimeout(timeoutCheck, 2500);
+            }
+            $('#dl_sig_alert').show();
+        }
+    });
+
+    $("#saveAct").click(function(){
+        saveFormToEndpoint(url="/api/antivirus/settings/set", formid='frm_general_settings', callback_ok=function(){
+            $("#saveAct_progress").addClass("fa fa-spinner fa-pulse");
+            $("#saveAct_progress").removeClass("fa fa-spinner fa-pulse");
+        });
+    });
+
+    $("#applyAct").click(function(){
+        saveFormToEndpoint(url="/api/antivirus/settings/set", formid='frm_general_settings', callback_ok=function(){
+            $("#applyAct_progress").addClass("fa fa-spinner fa-pulse");
+            var endpoint = $("#general\\.enabled").is(":checked") ? "/api/antivirus/service/start" : "/api/antivirus/service/stop";
+            ajaxCall(url=endpoint, sendData={}, callback=function(data,status) {
+                refreshAntivirusStatus();
+                $("#applyAct_progress").removeClass("fa fa-spinner fa-pulse");
+            });
+        });
+    });
+
+    $("#restartAct").click(function(){
+        $("#restartAct_progress").addClass("fa fa-spinner fa-pulse");
+        ajaxCall(url="/api/antivirus/service/restart", sendData={}, callback=function(data,status) {
+            refreshAntivirusStatus();
+            $("#restartAct_progress").removeClass("fa fa-spinner fa-pulse");
+        });
+    });
+
+    $(".antivirus-component-start").click(function(){
+        var button = $(this);
+        var service = button.data("service");
+        var progress = button.find("i");
+        button.prop("disabled", true);
+        progress.addClass("fa fa-spinner fa-pulse");
+        ajaxCall(url="/api/antivirus/service/start_service/" + service, sendData={}, callback=function(data,status) {
+            refreshAntivirusStatus();
+            progress.removeClass("fa fa-spinner fa-pulse");
+            button.prop("disabled", false);
+        });
+    });
+
+    $("#saveAct_url").click(function(){
+        $("#saveAct_url_progress").addClass("fa fa-spinner fa-pulse");
+        ajaxCall(url="/api/antivirus/service/reconfigure", sendData={}, callback=function(data,status) {
+            refreshAntivirusStatus();
+            $("#saveAct_url_progress").removeClass("fa fa-spinner fa-pulse");
+        });
+    });
+
+    $("#dl_sig, #update_sig").click(function(){
+        $("#dl_sig_progress").addClass("fa fa-spinner fa-pulse");
+        $("#update_sig_progress").addClass("fa fa-spinner fa-pulse");
+        $("#dl_sig").prop("disabled", true);
+        $("#update_sig").prop("disabled", true);
+        ajaxCall(url="/api/antivirus/service/freshclam", sendData={action:1}, callback_ok=function(){
+            setTimeout(timeoutCheck, 2500);
+        });
+    });
+
+    if(window.location.hash != "") {
+        $('a[href="' + window.location.hash + '"]').click()
+    }
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+        history.pushState(null, null, e.target.hash);
+    });
+});
+</script>

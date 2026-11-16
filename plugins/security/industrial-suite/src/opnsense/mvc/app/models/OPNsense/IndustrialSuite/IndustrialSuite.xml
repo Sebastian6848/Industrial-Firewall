@@ -1,0 +1,121 @@
+<model>
+    <mount>//OPNsense/IndustrialSuite</mount>
+    <version>1.0.0</version>
+    <description>Industrial security functions</description>
+    <items>
+        <integrity>
+            <enabled type="BooleanField">
+                <Required>Y</Required>
+                <Default>0</Default>
+            </enabled>
+            <files type="TextField">
+                <Required>Y</Required>
+                <Default>/usr/local/www/index.php
+/usr/local/etc/inc/filter.inc
+/usr/local/opnsense/scripts/industrialsuite/suite.py</Default>
+            </files>
+        </integrity>
+        <isolation>
+            <enabled type="BooleanField">
+                <Required>Y</Required>
+                <Default>0</Default>
+            </enabled>
+            <management type="TextField">
+                <Required>N</Required>
+            </management>
+            <groups>
+                <group type="ArrayField">
+                    <enabled type="BooleanField">
+                        <Required>Y</Required>
+                        <Default>1</Default>
+                    </enabled>
+                    <name type="TextField">
+                        <Required>Y</Required>
+                        <Mask>/^[^&lt;&gt;\r\n]{1,80}$/u</Mask>
+                    </name>
+                    <members type="TextField">
+                        <Required>Y</Required>
+                    </members>
+                </group>
+            </groups>
+            <rules>
+                <rule type="ArrayField">
+                    <enabled type="BooleanField">
+                        <Required>Y</Required>
+                        <Default>1</Default>
+                    </enabled>
+                    <description type="TextField">
+                        <Required>N</Required>
+                    </description>
+                    <source type="ModelRelationField">
+                        <Required>Y</Required>
+                        <Model>
+                            <groups>
+                                <source>OPNsense.IndustrialSuite.IndustrialSuite</source>
+                                <items>isolation.groups.group</items>
+                                <display>name</display>
+                            </groups>
+                        </Model>
+                    </source>
+                    <destination type="ModelRelationField">
+                        <Required>Y</Required>
+                        <Model>
+                            <groups>
+                                <source>OPNsense.IndustrialSuite.IndustrialSuite</source>
+                                <items>isolation.groups.group</items>
+                                <display>name</display>
+                            </groups>
+                        </Model>
+                    </destination>
+                    <protocol type="OptionField">
+                        <Required>Y</Required>
+                        <Default>tcp</Default>
+                        <OptionValues>
+                            <tcp>TCP</tcp>
+                            <udp>UDP</udp>
+                            <icmp>ICMP</icmp>
+                            <any>任意</any>
+                        </OptionValues>
+                    </protocol>
+                    <ports type="TextField">
+                        <Required>N</Required>
+                        <Mask>/^[0-9,-]*$/</Mask>
+                    </ports>
+                    <action type="OptionField">
+                        <Required>Y</Required>
+                        <Default>pass</Default>
+                        <OptionValues>
+                            <pass>允许</pass>
+                            <block>阻断</block>
+                        </OptionValues>
+                    </action>
+                </rule>
+            </rules>
+        </isolation>
+        <nodes>
+            <node type="ArrayField">
+                <enabled type="BooleanField">
+                    <Required>Y</Required>
+                    <Default>1</Default>
+                </enabled>
+                <name type="TextField">
+                    <Required>Y</Required>
+                </name>
+                <url type="TextField">
+                    <Required>Y</Required>
+                    <Mask>/^https:\/\/[^\s?#@]+$/</Mask>
+                </url>
+                <key type="TextField">
+                    <Required>Y</Required>
+                </key>
+                <secret type="TextField">
+                    <Required>Y</Required>
+                </secret>
+                <verify_tls type="BooleanField">
+                    <Required>Y</Required>
+                    <Default>1</Default>
+                </verify_tls>
+            </node>
+        </nodes>
+    </items>
+</model>

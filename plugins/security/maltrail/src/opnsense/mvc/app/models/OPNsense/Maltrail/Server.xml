@@ -1,0 +1,30 @@
+<model>
+    <mount>//OPNsense/maltrail/server</mount>
+    <description>Maltrail server configuration</description>
+    <version>0.0.2</version>
+    <items>
+        <enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </enabled>
+        <addblocklistalias type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </addblocklistalias>
+        <listenaddress type="HostnameField">
+            <Default>0.0.0.0</Default>
+            <Required>Y</Required>
+            <ValidationMessage>Please provide a valid hostname or IP address.</ValidationMessage>
+        </listenaddress>
+        <listenport type="PortField">
+            <Default>8338</Default>
+            <Required>Y</Required>
+        </listenport>
+        <loglistenaddress type="HostnameField">
+            <Required>N</Required>
+        </loglistenaddress>
+        <loglistenport type="PortField">
+            <Required>N</Required>
+        </loglistenport>
+    </items>
+</model>

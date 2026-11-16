@@ -1,0 +1,34 @@
+<model>
+    <mount>//OPNsense/lldpd/general</mount>
+    <description>Lldpd configuration</description>
+    <version>1.0.1</version>
+    <items>
+        <enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </enabled>
+        <cdp type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </cdp>
+        <fdp type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </fdp>
+        <edp type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </edp>
+        <sonmp type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </sonmp>
+        <agentx type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </agentx>
+        <interface type="TextField">
+            <Required>N</Required>
+        </interface>
+    </items>
+</model>

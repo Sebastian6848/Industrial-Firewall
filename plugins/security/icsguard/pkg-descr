@@ -1,0 +1,3 @@
+INDPROTO adds industrial protocol policy rules to OPNsense's native Suricata
+configuration. It generates an isolated ruleset and configuration fragment
+without taking ownership of the system IDS configuration.

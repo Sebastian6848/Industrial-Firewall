@@ -1,0 +1,20 @@
+<form>
+    <field>
+        <id>indproto.general.enabled</id>
+        <label>启用</label>
+        <type>checkbox</type>
+        <help>启用工业协议白名单。</help>
+    </field>
+    <field>
+        <id>indproto.general.default_action</id>
+        <label>默认动作</label>
+        <type>dropdown</type>
+        <help>设置规则范围内未授权操作的默认处理方式。</help>
+    </field>
+    <field>
+        <id>indproto.general.interface</id>
+        <label>接口</label>
+        <type>dropdown</type>
+        <help>记录此策略使用的接口，实际检测接口在入侵检测中设置。</help>
+    </field>
+</form>

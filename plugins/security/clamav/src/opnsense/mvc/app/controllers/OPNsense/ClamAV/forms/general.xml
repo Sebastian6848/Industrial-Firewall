@@ -1,0 +1,222 @@
+<form>
+    <field>
+        <id>general.fc_proxyhost</id>
+        <label>病毒库更新代理地址</label>
+        <type>text</type>
+        <help>可选，填写代理主机名或地址，不含协议前缀；仅用于病毒库下载。</help>
+    </field>
+    <field>
+        <id>general.fc_proxyport</id>
+        <label>病毒库更新代理端口</label>
+        <type>text</type>
+        <help>填写代理端口；代理地址留空时直接下载。</help>
+    </field>
+    <field>
+        <id>general.enabled</id>
+        <label>启用clamd服务</label>
+        <type>checkbox</type>
+        <help>激活clamd服务。</help>
+    </field>
+    <field>
+        <id>general.fc_enabled</id>
+        <label>启用freshclam服务</label>
+        <type>checkbox</type>
+        <help>激活freshclam服务。</help>
+    </field>
+    <field>
+        <id>general.enabletcp</id>
+        <label>启用TCP 端口</label>
+        <type>checkbox</type>
+        <help>除了本地套接字之外，同时启用TCP端口3310。</help>
+    </field>
+    <field>
+        <id>general.maxthreads</id>
+        <label>最大运行线程数</label>
+        <type>text</type>
+        <help>同时运行的最大线程数。</help>
+    </field>
+    <field>
+        <id>general.maxqueue</id>
+        <label>最大排队项目数</label>
+        <type>text</type>
+        <help>排队的最大项目数(包括MaxThreads线程正在处理的项目)。 如果可能，建议将此值至少设置为MaxThreads(最大线程)的两倍。</help>
+    </field>
+    <field>
+        <id>general.idletimeout</id>
+        <label>空闲超时</label>
+        <type>text</type>
+        <help>等待新作业的时间在指定秒数后将会超时。</help>
+    </field>
+    <field>
+        <id>general.maxdirrecursion</id>
+        <label>最大目录递归</label>
+        <type>text</type>
+        <help>扫描最大目录深度。</help>
+    </field>
+    <field>
+        <id>general.followdirsym</id>
+        <label>按照目录符号链接</label>
+        <type>checkbox</type>
+    </field>
+    <field>
+        <id>general.followfilesym</id>
+        <label>按照常规文件符号链接</label>
+        <type>checkbox</type>
+    </field>
+    <field>
+        <id>general.disablecache</id>
+        <label>禁用缓存</label>
+        <type>checkbox</type>
+        <help>此选项使可以禁用引擎的缓存功能。</help>
+    </field>
+    <field>
+        <id>general.scanpe</id>
+        <label>扫描可移植的执行文件</label>
+        <type>checkbox</type>
+        <help>PE代表Portable Executable - 它是一种可执行文件格式，用于所有32位和64位版本的Windows操作系统。</help>
+    </field>
+    <field>
+        <id>general.scanelf</id>
+        <label>扫描可执行文件和链接格式</label>
+        <type>checkbox</type>
+        <help>可执行和链接格式是UN * X可执行文件的标准格式。</help>
+    </field>
+    <field>
+        <id>general.detectbroken</id>
+        <label>检测损坏的可执行文件</label>
+        <type>checkbox</type>
+        <help>使用此选项，ClamAV 将对损坏的可执行文件（PE 和 ELF）发出警报并将其标记为损坏。</help>
+    </field>
+    <field>
+        <id>general.scanole2</id>
+        <label>扫描 OLE2</label>
+        <type>checkbox</type>
+        <help>此选项可以扫描OLE2文件，例如Microsoft Office文档和.msi文件。</help>
+    </field>
+    <field>
+        <id>general.ole2blockmarcros</id>
+        <label>OLE2 阻止宏命令</label>
+        <type>checkbox</type>
+        <help>启用此选项后，带有签名未检测到的带有VBA宏的OLE2文件会被标记为" Heuristics.OLE2.ContainsMacros"。</help>
+    </field>
+    <field>
+        <id>general.scanpdf</id>
+        <label>扫描 PDF文件</label>
+        <type>checkbox</type>
+        <help>此选项可在PDF文件中进行扫描。</help>
+    </field>
+    <field>
+        <id>general.scanswf</id>
+        <label>扫描 SWF</label>
+        <type>checkbox</type>
+        <help>此选项可在SWF文件中进行扫描。</help>
+    </field>
+    <field>
+        <id>general.scanxmldocs</id>
+        <label>扫描 XMLDOCS</label>
+        <type>checkbox</type>
+        <help>此选项启用扫描libclamav支持的基于xml的文档文件。</help>
+    </field>
+    <field>
+        <id>general.scanhwp3</id>
+        <label>扫描 HWP3</label>
+        <type>checkbox</type>
+        <help>此选项可以扫描HWP3文件。</help>
+    </field>
+    <field>
+        <id>general.scanmailfiles</id>
+        <label>解码邮件文件</label>
+        <type>checkbox</type>
+        <help>如果关闭此选项，仍会扫描原始文件，但不解析单个邮件/附件。</help>
+    </field>
+    <field>
+        <id>general.scanhtml</id>
+        <label>扫描 HTML</label>
+        <type>checkbox</type>
+        <help>执行HTML规范和MS Script Encoder代码的解密。</help>
+    </field>
+    <field>
+        <id>general.scanarchive</id>
+        <label>扫描压缩文件</label>
+        <type>checkbox</type>
+        <help>ClamAV会扫描存档和压缩文件。</help>
+    </field>
+    <field>
+        <id>general.arcblockenc</id>
+        <label>阻止加密存档</label>
+        <type>checkbox</type>
+        <help>标记来自病毒的加密存档(Encrypted.Zip，Encrypted.RAR)。</help>
+    </field>
+    <field>
+        <id>general.maxscansize</id>
+        <label>最大扫描尺寸</label>
+        <type>text</type>
+        <help>此选项设置每个输入文件要扫描的最大数据量。递归提取档案和其他容器，并扫描到此值。</help>
+    </field>
+     <field>
+        <id>general.maxfilesize</id>
+        <label>档案大小上限</label>
+        <type>text</type>
+        <help>大于此限制的文件不会被扫描。</help>
+    </field>
+     <field>
+        <id>general.maxrecursion</id>
+        <label>最大递归</label>
+        <type>text</type>
+        <help>Nested档案会以递归方式扫描，例如如果Zip存档包含RAR文件，则其中的所有文件也会被扫描。</help>
+    </field>
+     <field>
+        <id>general.maxfiles</id>
+        <label>最大档案</label>
+        <type>text</type>
+        <help>存档，文档或任何其他容器文件中要扫描的文件数。</help>
+    </field>
+    <field>
+        <id>general.logverbose</id>
+        <label>ClamAV详细记录</label>
+        <type>checkbox</type>
+        <help>启用ClamAV详细记录。</help>
+    </field>
+    <field>
+        <id>general.fc_logverbose</id>
+        <label>Freshclam详细记录</label>
+        <type>checkbox</type>
+        <help>启用Freshclam详细记录。</help>
+    </field>
+    <field>
+        <id>general.fc_databasemirror</id>
+        <label>Freshclam数据库镜像</label>
+        <type>text</type>
+        <help>database.clamav.net是一个循环记录，指向最可靠的镜像。 除非您知道自己在做什么，否则请勿触碰以下行。</help>
+    </field>
+    <field>
+        <id>general.fc_timeout</id>
+        <label>Freshclam连接超时</label>
+        <type>text</type>
+        <help>连接到数据库服务器时超时(秒)。</help>
+    </field>
+    <field>
+        <id>general.fc_malwareexpert</id>
+        <label>添加恶意软件专家签名</label>
+        <type>checkbox</type>
+        <help>从Malware Expert激活第三方签名。使用风险自负。</help>
+    </field>
+    <field>
+        <id>general.fc_blurl</id>
+        <label>添加BLURL签名</label>
+        <type>checkbox</type>
+        <help>从BLURL激活第三方签名。使用风险自负。</help>
+    </field>
+    <field>
+        <id>general.fc_jurlbla</id>
+        <label>添加JURLBLA签名</label>
+        <type>checkbox</type>
+        <help>从Sanesecurtiy JURLBLA激活第三方签名。使用风险自负。</help>
+    </field>
+    <field>
+        <id>general.fc_bofhland</id>
+        <label>添加BOFHL和签名</label>
+        <type>checkbox</type>
+        <help>从Sanesecurtiy BOFHLand激活第三方签名。使用风险自负。</help>
+    </field>
+</form>

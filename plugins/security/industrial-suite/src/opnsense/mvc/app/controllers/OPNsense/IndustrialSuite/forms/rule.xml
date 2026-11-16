@@ -1,0 +1,49 @@
+<form>
+    <field>
+        <id>rule.enabled</id>
+        <label>启用</label>
+        <type>checkbox</type>
+        <grid_view>
+            <type>boolean</type>
+            <formatter>rowtoggle</formatter>
+        </grid_view>
+    </field>
+    <field>
+        <id>rule.description</id>
+        <label>说明</label>
+        <type>text</type>
+        <grid_view />
+    </field>
+    <field>
+        <id>rule.source</id>
+        <label>源设备组</label>
+        <type>dropdown</type>
+        <grid_view />
+    </field>
+    <field>
+        <id>rule.destination</id>
+        <label>目标设备组</label>
+        <type>dropdown</type>
+        <grid_view />
+    </field>
+    <field>
+        <id>rule.protocol</id>
+        <label>协议</label>
+        <type>dropdown</type>
+        <grid_view />
+    </field>
+    <field>
+        <id>rule.ports</id>
+        <label>目标端口</label>
+        <type>text</type>
+        <help>TCP/UDP端口，支持逗号分隔和范围，如502,1883,8000-8010。</help>
+        <grid_view />
+    </field>
+    <field>
+        <id>rule.action</id>
+        <label>动作</label>
+        <type>dropdown</type>
+        <help>显式拒绝优先于允许；其余纳管设备间流量默认拒绝。</help>
+        <grid_view><formatter>policyAction</formatter></grid_view>
+    </field>
+</form>

@@ -1,0 +1,47 @@
+<model>
+    <mount>//OPNsense/nrpe/general</mount>
+    <description>NRPE configuration</description>
+    <version>0.0.1</version>
+    <items>
+        <enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </enabled>
+        <server_port type="PortField">
+            <Default>5666</Default>
+            <Required>Y</Required>
+        </server_port>
+        <server_address type="NetworkField">
+            <Default>127.0.0.1</Default>
+            <Required>Y</Required>
+            <AsList>Y</AsList>
+        </server_address>
+        <allowed_hosts type="NetworkField">
+            <Default>127.0.0.1,::1</Default>
+            <Required>Y</Required>
+            <AsList>Y</AsList>
+        </allowed_hosts>
+        <dont_blame_nrpe type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </dont_blame_nrpe>
+        <allow_bash_command_substitution type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </allow_bash_command_substitution>
+        <command_timeout type="IntegerField">
+            <Default>60</Default>
+            <Required>Y</Required>
+            <MinimumValue>1</MinimumValue>
+            <MaximumValue>900</MaximumValue>
+            <ValidationMessage>Value must be between 1 and 900.</ValidationMessage>
+        </command_timeout>
+        <connection_timeout type="IntegerField">
+            <Default>300</Default>
+            <Required>Y</Required>
+            <MinimumValue>1</MinimumValue>
+            <MaximumValue>900</MaximumValue>
+            <ValidationMessage>Value must be between 1 and 900.</ValidationMessage>
+        </connection_timeout>
+    </items>
+</model>

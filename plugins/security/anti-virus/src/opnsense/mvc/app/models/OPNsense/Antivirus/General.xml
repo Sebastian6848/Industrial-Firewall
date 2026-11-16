@@ -1,0 +1,58 @@
+<model>
+    <mount>//OPNsense/antivirus/general</mount>
+    <description>Antivirus configuration</description>
+    <version>1.0.0</version>
+    <items>
+        <enabled type="BooleanField">
+            <Default>0</Default>
+            <Required>Y</Required>
+        </enabled>
+        <max_scan_size type="TextField">
+            <Default>5M</Default>
+            <Required>Y</Required>
+        </max_scan_size>
+        <proxy_port type="PortField">
+            <Default>3128</Default>
+            <Required>Y</Required>
+        </proxy_port>
+        <icap_port type="PortField">
+            <Default>1344</Default>
+            <Required>Y</Required>
+        </icap_port>
+        <clamd_port type="PortField">
+            <Default>3310</Default>
+            <Required>Y</Required>
+        </clamd_port>
+        <scan_options type="OptionField">
+            <Multiple>Y</Multiple>
+            <Default>pe,elf,ole2,pdf,swf,xmldocs,hwp3,mail,html,archive</Default>
+            <OptionValues>
+                <pe>Portable executable files</pe>
+                <elf>Executable and linking format</elf>
+                <broken>Detect broken executables</broken>
+                <ole2>OLE2 documents</ole2>
+                <pdf>PDF files</pdf>
+                <swf>SWF files</swf>
+                <xmldocs>XML documents</xmldocs>
+                <hwp3>HWP3 files</hwp3>
+                <mail>Mail files</mail>
+                <html>HTML files</html>
+                <archive>Archive files</archive>
+                <encrypted_archive>Block encrypted archives</encrypted_archive>
+            </OptionValues>
+        </scan_options>
+        <scan_file_types type="OptionField">
+            <Multiple>Y</Multiple>
+            <Default>text,data,executable,archive,gif,jpeg,msoffice</Default>
+            <OptionValues>
+                <text>TEXT</text>
+                <data>DATA</data>
+                <executable>EXECUTABLE</executable>
+                <archive>ARCHIVE</archive>
+                <gif>GIF</gif>
+                <jpeg>JPEG</jpeg>
+                <msoffice>MSOFFICE</msoffice>
+            </OptionValues>
+        </scan_file_types>
+    </items>
+</model>
