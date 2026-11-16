@@ -13,24 +13,17 @@ This core tree uses the official signed OPNsense package repository for plugin d
 
 Installing a plugin can also install or update packages required by that plugin. Review the pkg transaction output before using the same procedure on a production firewall. A plugin built for a different FreeBSD ABI or a materially newer OPNsense release is not made compatible by skipping the core version gate.
 
-## Maintained plugin source repository
+## Maintained plugin source
 
-The maintained source repository is checked out at `/home/sebastian/plugins`:
-
-```text
-origin    https://gitee.com/xwy6848/plugins.git
-upstream  https://github.com/opnsense/plugins.git
-```
-
-The source workflow remains available for plugins that are not compatible with the frozen binary repository:
+The main [Gitee core repository](https://gitee.com/xwy6848/core) contains plugin
+source in `plugins/`. Build against the target firewall's FreeBSD ABI and
+compatible dependencies.
 
 ```sh
-cd /home/sebastian/plugins/<category>/<plugin>
+cd /path/to/core/plugins/<category>/<plugin>
 make package
 pkg add /path/to/os-example.pkg
 ```
-
-Local packages must still target the firewall's FreeBSD ABI and have compatible dependencies.
 
 ## Runtime verification
 

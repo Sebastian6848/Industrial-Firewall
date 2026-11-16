@@ -2,7 +2,7 @@
 
 Firewall 是面向网络边界和工业网络场景的防火墙系统，提供网络接口管理、访问控制、地址转换、入侵检测、VPN、流量监控、服务管理和插件扩展等能力。
 
-本仓库是 Firewall 的核心代码仓库，主要包含 Web 管理界面、配置模型、系统脚本、配置生成模板、后台服务动作和运行时管理逻辑。本文档面向部署人员和开发人员，介绍镜像构建、基础配置、实时开发、调试、打包和发布流程。
+本仓库集中维护核心系统、插件、构建工具和 NC-Link 参考源码。交付入口：[安装与使用说明（含截图）](docs/manual/安装与使用说明.md) · [交付测试报告](docs/RELEASE_TEST_REPORT.md) · [镜像构建](tools/release/README.md) · [下载发布版本](https://gitee.com/xwy6848/core/releases)。
 
 > [!WARNING]
 > 请先在测试虚拟机中验证源码和插件修改。对接口、防火墙规则、认证、Web 管理服务或软件包的错误操作，可能导致设备失联。
@@ -47,7 +47,9 @@ Web 管理界面使用现代浏览器访问，默认应通过 LAN 或专用管�
 | `src/www` | 传统 PHP 页面、公共前端资源和页面入口 |
 | `src/etc/rc.d` | 系统服务启动脚本 |
 | `src/opnsense/mvc/tests` | MVC 单元测试 |
-| `contrib` | 构建所需的辅助组件 |
+| `plugins/` | 插件生态及项目定制插件 |
+| `tools/` | 构建工具和交付 ISO 构建流程 |
+| `contrib/` | 构建辅助组件及 NC-Link 参考源码 |
 
 典型的数据流如下：
 
@@ -64,65 +66,15 @@ Web 页面或 API
 
 ## 3. 构建安装镜像
 
-### 3.1 获取构建环境
-
-构建仓库建议放在 `/usr` 下：
+发布 ISO 使用签名校验通过的上游基础系统、内核和依赖包集，从同一 Git 提交构建 core 与定制插件。按 [镜像构建说明](tools/release/README.md) 取得锁定的输入并运行：
 
 ```sh
-pkg install -y git
-git clone https://github.com/Sebastian6848/tools /usr/tools
-cd /usr/tools
-make update
+git clone https://gitee.com/xwy6848/core.git
+cd core
+sh tools/release/build-iso.sh /absolute/inputs /absolute/output /absolute/new-work-dir
 ```
 
-`make update` 会根据 `tools` 仓库中的配置获取 core、plugins、src 和 ports 等构建源。执行后应检查各仓库的远程地址、分支和版本是否符合本次发布要求。
-
-### 3.2 推荐构建流程
-
-为了缩短测试镜像的构建时间，可以预取基础系统、内核和软件包，再构建核心代码和镜像：
-
-```sh
-cd /usr/tools
-make prefetch-base,kernel,packages
-make core
-make dvd
-```
-
-不要在没有必要时直接从头编译基础系统、内核和全部第三方软件包。完整构建会占用较多时间和磁盘空间。
-
-构建完成后，镜像通常位于：
-
-```text
-/usr/local/opnsense/build/<版本>/amd64/images/
-```
-
-如需从构建虚拟机下载大文件，可以在镜像目录临时启动 HTTP 服务：
-
-```sh
-cd /usr/local/opnsense/build/<版本>/amd64/images
-python3 -m http.server 8888
-```
-
-然后通过 `http://<构建机IP>:8888/` 下载。传输完成后使用 `Ctrl+C` 停止临时服务，不要长期暴露该端口。
-
-### 3.3 常见构建问题
-
-如果构建过程中提示本机 `pkg` 与 ports 版本不兼容，可以在构建机上重新构建并安装包管理器：
-
-```sh
-make -C /usr/ports/ports-mgmt/pkg clean all reinstall
-```
-
-再次构建前建议确认：
-
-```sh
-freebsd-version
-uname -m
-df -h
-git -C /usr/tools status --short
-```
-
-不要在存在未确认源码修改时执行会自动更新或替换仓库内容的操作。
+`tools/` 也保留了上游构建工具，供维护人员研究基础系统和 ports 的完整构建。发布过程以 `tools/release/` 中的记录为准。
 
 ## 4. 安装与基础配置
 
@@ -471,12 +423,7 @@ make upgrade
 
 ### 8.3 插件开发和安装
 
-插件源码由独立仓库维护：
-
-```sh
-git clone https://gitee.com/xwy6848/plugins.git /usr/plugins
-cd /usr/plugins/<分类>/<插件>
-```
+插件与 core 使用同一仓库。进入 `plugins/<分类>/<插件>` 开发，提交和发布沿用 core 的分支及标签。
 
 开发环境可以在插件目录构建和部署：
 

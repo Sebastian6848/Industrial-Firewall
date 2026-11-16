@@ -1,6 +1,6 @@
 # 功能审核版使用说明
 
-本轮交付为 Gitee 源码及虚拟机热部署版本。ISO 在功能审核通过后另行构建。
+本页是热部署审核阶段的环境记录。正式交付见 [安装与使用说明](manual/安装与使用说明.md) 和 [交付测试报告](RELEASE_TEST_REPORT.md)。
 
 ## 页面入口
 
@@ -125,15 +125,15 @@ configctl indproto apply
 
 本次旧 unionfs 在卸载时发生卡死，已通过 VMware 重置恢复，并按软件包清单校验恢复了原本仅存在于覆盖层的依赖文件。当前不再挂载 unionfs。不要在这台审核机执行 `make mount`。
 
-Ubuntu 提交并推送 core/plugins 到 Gitee 后运行：
+Ubuntu 提交并推送合并后的 core 仓库（包括 `plugins/`）到 Gitee 后运行：
 
 ```sh
 python3 Scripts/deploy-review.py
 ```
 
-脚本创建备份与 ZFS 快照，按本地两个提交部署并保存日志。仅更新已提交的版本，遇到源目录的已跟踪修改或 unionfs 挂载会停止。默认不更新完整性基线；明确接受该版本时可使用 `--accept-baseline`。备份和证据保存在虚拟机 `/root/backups/`，包含敏感设备配置，不纳入 Git。
+脚本创建备份与 ZFS 快照，按本地同一个提交部署并保存日志。仅更新已提交的版本，遇到源目录的已跟踪修改或 unionfs 挂载会停止。默认不更新完整性基线；明确接受该版本时可使用 `--accept-baseline`。备份和证据保存在虚拟机 `/root/backups/`，包含敏感设备配置，不纳入 Git。
 
-审核通过之后再进行 ISO 构建和干净安装验收。
+发布构建与验收流程见 [镜像构建说明](../tools/release/README.md)。
 
 ## 本轮验证记录
 
