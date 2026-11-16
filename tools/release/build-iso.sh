@@ -109,7 +109,15 @@ done
 "$pkg" -c "$stage" check -d -a
 "$pkg" -c "$stage" lock -y opnsense os-squid os-clamav
 "$pkg" -c "$stage" query '%n %v %o' | LC_ALL=C sort > "$output/$media.packages.txt"
-cp "$output/$media.packages.txt" "$stage/usr/local/opnsense/version/pkgs"
+"$pkg" -c "$stage" query '%v' opnsense > "$stage/usr/local/opnsense/version/pkgs"
+# pkg add is offline and does not assign a repository. Preserve the signed
+# vendor origin so installed upstream plugins retain their catalogue identity.
+for name in $("$pkg" -c "$stage" query '%n'); do
+    case "$name" in
+        opnsense|os-app-identification|os-indproto|os-industrial-suite|os-clamav|os-squid) continue ;;
+    esac
+    "$pkg" -c "$stage" annotate -qyA "$name" repository OPNsense
+done
 rm -rf "$stage/tmp/iso-packages" "$stage/var/cache/pkg"
 rm "$stage/etc/rc.conf.local"
 umount "$stage/dev"
