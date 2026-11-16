@@ -150,7 +150,6 @@
 /usr/local/etc/rc.syshook.d/stop/99-config
 /usr/local/etc/rc.syshook.d/update/10-refresh.sh
 /usr/local/etc/rc.syshook.d/upgrade/10-sanity.sh
-/usr/local/etc/ssh/sshd_config.d/README
 /usr/local/etc/ssl/ext_sources/README
 /usr/local/etc/ssl/opnsense.cnf
 /usr/local/etc/strongswan.opnsense.d/README
@@ -1213,6 +1212,7 @@
 /usr/local/opnsense/scripts/firmware/launcher.sh
 /usr/local/opnsense/scripts/firmware/license.sh
 /usr/local/opnsense/scripts/firmware/lock.sh
+/usr/local/opnsense/scripts/firmware/plugin-env.php
 /usr/local/opnsense/scripts/firmware/plugin.sh
 /usr/local/opnsense/scripts/firmware/product.php
 /usr/local/opnsense/scripts/firmware/query.sh
@@ -1228,6 +1228,7 @@
 /usr/local/opnsense/scripts/firmware/security.sh
 /usr/local/opnsense/scripts/firmware/sync.sh
 /usr/local/opnsense/scripts/firmware/sync.subr.sh
+/usr/local/opnsense/scripts/firmware/tests/test_plugin_catalogue.py
 /usr/local/opnsense/scripts/firmware/unlock.sh
 /usr/local/opnsense/scripts/firmware/update.sh
 /usr/local/opnsense/scripts/firmware/upgrade.sh
@@ -1654,6 +1655,7 @@
 /usr/local/opnsense/www/css/bootstrap-datepicker3.min.css
 /usr/local/opnsense/www/css/bootstrap-select.css
 /usr/local/opnsense/www/css/chart.css
+/usr/local/opnsense/www/css/dashboard-layout.css
 /usr/local/opnsense/www/css/dashboard.css
 /usr/local/opnsense/www/css/dns-overview.css
 /usr/local/opnsense/www/css/flags/1x1/ad.svg
@@ -2176,6 +2178,7 @@
 /usr/local/opnsense/www/css/flags/flag-icon.scss
 /usr/local/opnsense/www/css/gridstack-extra.min.css
 /usr/local/opnsense/www/css/gridstack.min.css
+/usr/local/opnsense/www/css/industrial-ui.css
 /usr/local/opnsense/www/css/jqtree.css
 /usr/local/opnsense/www/css/jquery.bootgrid.css
 /usr/local/opnsense/www/css/nv.d3.css
@@ -2388,6 +2391,7 @@
 /usr/local/opnsense/www/themes/opnsense-dark/build/images/caret.png
 /usr/local/opnsense/www/themes/opnsense-dark/build/images/default-logo.svg
 /usr/local/opnsense/www/themes/opnsense-dark/build/images/favicon.png
+/usr/local/opnsense/www/themes/opnsense-dark/build/images/firewall-shield.svg
 /usr/local/opnsense/www/themes/opnsense-dark/build/images/icon-logo.svg
 /usr/local/opnsense/www/themes/opnsense/LICENSE
 /usr/local/opnsense/www/themes/opnsense/assets/fonts/SourceSansPro-Bold/SourceSansPro-Bold.eot
@@ -2506,6 +2510,7 @@
 /usr/local/opnsense/www/themes/opnsense/build/images/caret.png
 /usr/local/opnsense/www/themes/opnsense/build/images/default-logo.svg
 /usr/local/opnsense/www/themes/opnsense/build/images/favicon.png
+/usr/local/opnsense/www/themes/opnsense/build/images/firewall-shield.svg
 /usr/local/opnsense/www/themes/opnsense/build/images/icon-logo.svg
 /usr/local/sbin/carp_service_status
 /usr/local/sbin/configctl
