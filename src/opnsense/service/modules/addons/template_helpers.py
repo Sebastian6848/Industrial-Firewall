@@ -29,6 +29,7 @@ import datetime
 import glob
 import collections
 import ipaddress
+import subprocess
 
 class SortKeyHelper:
     """ generate item key for sort function
@@ -150,6 +151,23 @@ class Helpers(object):
         for name in names:
             result.append(self.getNodeByTag('interfaces.'+name+'.if'))
         return list(filter(None, result))
+
+    def interface_ipv4_address(self, name):
+        """Return the current primary IPv4 address for an assigned device."""
+        device = self.getNodeByTag('interfaces.' + name + '.if')
+        if not device or device.startswith('-'):
+            return ''
+        try:
+            result = subprocess.run(['/sbin/ifconfig', device, 'inet'], capture_output=True,
+                                    text=True, check=True, timeout=3)
+            for line in result.stdout.splitlines():
+                fields = line.split()
+                if len(fields) > 1 and fields[0] == 'inet':
+                    address = ipaddress.IPv4Address(fields[1])
+                    return '' if address.is_unspecified else str(address)
+        except (OSError, ValueError, subprocess.SubprocessError):
+            pass
+        return ''
 
     def host_for_port(self, host_tag: str):
         return self.host_with_port(
