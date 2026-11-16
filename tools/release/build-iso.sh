@@ -99,7 +99,7 @@ for dir in www/squid security/clamav net/app-identification security/icsguard se
     plugin=$repo/plugins/$dir
     make -C "$plugin" package PLUGIN_DEVEL= PKG="$work/image-pkg" \
         WRKDIR="$work/${dir##*/}" PKGDIR="$custom"
-    name=$(make -C "$plugin" -V NAME PLUGIN_DEVEL=)
+    name=$(make -C "$plugin" -V PLUGIN_PKGNAME PLUGIN_DEVEL=)
     set -- "$custom/$name"-[0-9]*.pkg
     [ "$#" = 1 ] && [ -f "$1" ]
     name=${1##*/}
@@ -107,7 +107,7 @@ for dir in www/squid security/clamav net/app-identification security/icsguard se
 done
 
 "$pkg" -c "$stage" check -d -a
-"$pkg" -c "$stage" lock -y opnsense
+"$pkg" -c "$stage" lock -y opnsense os-squid os-clamav
 "$pkg" -c "$stage" query '%n %v %o' | LC_ALL=C sort > "$output/$media.packages.txt"
 cp "$output/$media.packages.txt" "$stage/usr/local/opnsense/version/pkgs"
 rm -rf "$stage/tmp/iso-packages" "$stage/var/cache/pkg"
