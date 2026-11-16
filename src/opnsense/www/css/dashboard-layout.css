@@ -128,7 +128,8 @@
 }
 
 .dashboard-grid #interface-statistics-table > :is(.grid-header-container, .grid-row) {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: minmax(0, .7fr) repeat(2, minmax(0, 1fr))
+        repeat(2, minmax(0, 1.25fr)) repeat(2, minmax(0, 1fr)) minmax(0, .7fr);
 }
 
 .dashboard-grid #fw-top-table > :is(.grid-header-container, .grid-row) {
