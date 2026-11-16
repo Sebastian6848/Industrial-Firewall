@@ -23,3 +23,15 @@ sh tools/release/build-iso.sh /absolute/inputs /absolute/output /absolute/new-wo
 先用空白虚拟机完成启动、安装、卸载光驱、系统盘重启和 Web 登录。验证功能和回归范围后，再通过 Gitee Release 发布。分卷用于附件传输，保留原始 ISO 和压缩后完整文件的 SHA-256。见 [安装与使用说明](../../docs/manual/安装与使用说明.md) 与 [测试报告](../../docs/RELEASE_TEST_REPORT.md)。
 
 审核机热部署使用根目录 `Scripts/deploy-review.py`，直接读取本仓库已提交的 core 和 `plugins/`。生产环境不使用源码挂载或审核机脚本。若要升级底层依赖、系统内核、定制包或规则库，先创建测试构建并按测试报告复验。
+
+## 生成带截图的 PDF 说明书
+
+Markdown 原稿及截图位于 `docs/manual/`。本机安装 Python 包 `playwright`、`markdown-it-py`、Chromium 和简体中文字体（例如 Source Han Sans SC）后执行：
+
+```sh
+python3 tools/release/render-manual.py \
+  docs/manual/安装与使用说明.md \
+  /absolute/output/Industrial-Firewall-Installation-and-User-Manual.pdf
+```
+
+使用系统 Chromium 时设置 `CHROMIUM_PATH` 为可执行文件的绝对路径。渲染器验证每张图片均加载成功；PDF 中的跨文档链接指向 Gitee。发布前另行检查页数、中文文本提取和打印版截图。
