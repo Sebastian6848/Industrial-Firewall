@@ -77,7 +77,7 @@ $( document ).ready(function() {
         disableResize: true,
         columns: 12,
         margin: 8,
-        alwaysShowResizeHandle: false,
+        alwaysShowResizeHandle: true,
         sizeToContent: true,
         resizable: {
             handles: 'all'
@@ -98,21 +98,21 @@ $( document ).ready(function() {
         preferredLayouts: {
             12: layoutFromRows([
                 [202, [['cpu', 4], ['memory', 2], ['disk', 2], ['gateways', 4]]],
-                [248, [['interfacestatistics', 6], ['firewall', 6]]],
-                [358, [['services', 6], ['traffic', 6]]]
+                [314, [['interfacestatistics', 6], ['firewall', 6]]],
+                [438, [['services', 6], ['traffic', 6]]]
             ]),
             6: layoutFromRows([
                 [202, [['cpu', 3], ['memory', 3]]],
                 [202, [['disk', 3], ['gateways', 3]]],
-                [228, [['interfacestatistics', 6]]],
-                [248, [['firewall', 6]]],
-                [334, [['services', 6]]],
-                [358, [['traffic', 6]]]
+                [270, [['interfacestatistics', 6]]],
+                [314, [['firewall', 6]]],
+                [412, [['services', 6]]],
+                [438, [['traffic', 6]]]
             ]),
             1: layoutFromRows([
                 [202, [['cpu', 1]]], [206, [['memory', 1]]], [206, [['disk', 1]]],
-                [158, [['gateways', 1]]], [228, [['interfacestatistics', 1]]],
-                [248, [['firewall', 1]]], [334, [['services', 1]]], [358, [['traffic', 1]]]
+                [158, [['gateways', 1]]], [256, [['interfacestatistics', 1]]],
+                [282, [['firewall', 1]]], [398, [['services', 1]]], [410, [['traffic', 1]]]
             ])
         }
     });
@@ -120,4 +120,5 @@ $( document ).ready(function() {
 });
 </script>
 
+<p class="dashboard-edit-hint text-muted" id="dashboard-edit-hint" hidden>{{ lang._('拖动卡片底部的橙色手柄调整高度，完成后点击保存。') }}</p>
 <div class="grid-stack dashboard-grid"></div>

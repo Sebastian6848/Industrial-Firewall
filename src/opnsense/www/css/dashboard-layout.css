@@ -3,6 +3,27 @@
     --dashboard-rule: color-mix(in srgb, currentColor 15%, transparent);
 }
 
+.dashboard-edit-hint {
+    margin: 12px 8px 0;
+}
+
+.dashboard-grid.dashboard-editing > .grid-stack-item > .ui-resizable-s {
+    bottom: 1px;
+    height: 16px;
+    opacity: 1 !important;
+}
+
+.dashboard-grid.dashboard-editing > .grid-stack-item > .ui-resizable-s::before {
+    content: "";
+    position: absolute;
+    width: 32px;
+    height: 6px;
+    top: 5px;
+    left: calc(50% - 16px);
+    border-block: 2px solid #c03e14;
+    border-radius: 1px;
+}
+
 .dashboard-grid > .grid-stack-item > .grid-stack-item-content {
     border: 1px solid var(--dashboard-rule);
     border-radius: 6px;
@@ -158,6 +179,31 @@
 
 .dashboard-grid .traffic-charts-container .canvas-container-noaspectratio:last-child {
     margin-bottom: 0;
+}
+
+.dashboard-grid .grid-stack-item:not(.size-to-content) .widget-traffic,
+.dashboard-grid .grid-stack-item:not(.size-to-content) .widget-traffic .widget-content {
+    height: 100%;
+}
+
+.dashboard-grid .grid-stack-item:not(.size-to-content) .widget-traffic .widget-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-grid .widget-traffic .widget-header {
+    flex-shrink: 0;
+}
+
+.dashboard-grid .grid-stack-item:not(.size-to-content) .traffic-charts-container {
+    display: grid;
+    flex: 1;
+    grid-template-rows: auto minmax(100px, 1fr) auto minmax(100px, 1fr);
+}
+
+.dashboard-grid .grid-stack-item:not(.size-to-content) .traffic-charts-container .canvas-container-noaspectratio {
+    min-height: 0;
+    height: auto;
 }
 
 .dashboard-grid .service-controls {

@@ -285,6 +285,19 @@ class WidgetManager  {
             });
         }
 
+        this.grid.el.addEventListener('pointerdown', (event) => {
+            if (!this.runtimeOptions.editMode || event.button !== 0 ||
+                !event.target.closest('.ui-resizable-s, .ui-resizable-se, .ui-resizable-sw')) {
+                return;
+            }
+            const item = event.target.closest('.grid-stack-item');
+            if (item?.gridstackNode && item.gridstackNode.sizeToContent !== false) {
+                // Switch away from auto sizing before GridStack reads the resize options.
+                this.grid.update(item, {sizeToContent: false});
+                item.classList.remove('size-to-content', 'size-to-content-max');
+            }
+        }, true);
+
         // render to the DOM
         this.grid.load(Object.values(this.widgetConfigurations));
 
@@ -454,9 +467,12 @@ class WidgetManager  {
 
         $('#edit-grid').on('click', () => {
             $('#edit-grid').toggleClass('active');
-            $('#edit-grid').attr('aria-pressed', String($('#edit-grid').hasClass('active')));
+            const editing = $('#edit-grid').hasClass('active');
+            $('#edit-grid').attr('aria-pressed', String(editing));
+            $('#dashboard-edit-hint').prop('hidden', !editing);
+            this.grid.el.classList.toggle('dashboard-editing', editing);
 
-            if ($('#edit-grid').hasClass('active')) {
+            if (editing) {
                 this.runtimeOptions.editMode = true;
                 this.runtimeOptions.usePreferredLayout = false;
                 this.grid.enableMove(true);
