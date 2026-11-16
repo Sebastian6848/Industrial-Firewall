@@ -57,6 +57,7 @@ export default class Traffic extends BaseWidget {
                 pointDot: true,
                 scaleShowGridLines: true,
                 responsive: true,
+                maintainAspectRatio: false,
                 normalized: true,
                 elements: {
                     line: {

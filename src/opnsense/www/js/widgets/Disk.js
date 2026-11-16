@@ -64,9 +64,8 @@ export default class Disk extends BaseGaugeWidget {
                 <div class="canvas-container">
                     <canvas id="${this.id}-chart" style="display: inline-block"></canvas>
                 </div>
-                <div class="canvas-container">
+                <div class="canvas-container disk-volumes-chart">
                     <canvas id="${this.id}-detailed-chart" style="display: inline-block"></canvas>
-                </div>
                 </div>
             </div>
         `);
@@ -194,15 +193,10 @@ export default class Disk extends BaseGaugeWidget {
     }
 
     onWidgetResize(elem, width, height) {
-        let gsItem = elem.closest('[gs-w]');
-        let gsW = gsItem ? parseInt(gsItem.getAttribute('gs-w'), 10) : null;
-        if (gsW === null || gsW < 3) {
-            $('#disk-chart').show();
-            $('#disk-detailed-chart').hide();
-        } else {
-            $('#disk-chart').hide();
-            $('#disk-detailed-chart').show();
-        }
+        const showVolumes = width >= 420;
+        $('#disk-chart').parent().toggle(!showVolumes);
+        $('#disk-detailed-chart').parent().toggle(showVolumes);
+        return true;
     }
 
     onWidgetClose() {

@@ -119,7 +119,7 @@ export default class Firewall extends BaseTableWidget {
         });
 
         $tableContainer.append($top_table);
-        $tableContainer.append(`<div style="margin-top: 2em"><b>${this.translations.events}</b><div>`);
+        $tableContainer.append(`<div style="margin-top: 12px"><b>${this.translations.events}</b></div>`);
         $tableContainer.append($rule_table);
 
         $container.append($tableContainer);
@@ -350,12 +350,9 @@ export default class Firewall extends BaseTableWidget {
     }
 
     onWidgetResize(elem, width, height) {
-        if (width < 700) {
-            $('#fw-chart').show();
-            $('#fw-table-container').hide();
-        } else {
-            $('#fw-chart').hide();
-            $('#fw-table-container').show();
-        }
+        const showTable = width >= 510;
+        $('.fw-chart-container').toggle(!showTable);
+        $('#fw-table-container').toggle(showTable);
+        return true;
     }
 }

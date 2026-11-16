@@ -42,6 +42,7 @@
 <script src="{{ cache_safe('/ui/js/widgets/BaseTableWidget.js') }}"></script>
 <script src="{{ cache_safe('/ui/js/widgets/BaseGaugeWidget.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ cache_safe(theme_file_or_default('/css/dashboard.css', theme_name)) }}" rel="stylesheet" />
+<link rel="stylesheet" href="{{ cache_safe('/ui/css/dashboard-layout.css') }}">
 
 <script>
 $( document ).ready(function() {
@@ -53,6 +54,20 @@ $( document ).ready(function() {
     if (chartBorderColor) Chart.defaults.borderColor = chartBorderColor;
     if (chartFontColor) Chart.defaults.color = chartFontColor;
 
+    function layoutFromRows(rows) {
+        const layout = {};
+        let y = 0;
+        for (const [height, widgets] of rows) {
+            let x = 0;
+            for (const [id, width] of widgets) {
+                layout[id] = {x, y, w: width, h: height, sizeToContent: false};
+                x += width;
+            }
+            y += height;
+        }
+        return layout;
+    }
+
     let widgetManager = new WidgetManager({
         float: false,
         columnOpts: {
@@ -61,7 +76,7 @@ $( document ).ready(function() {
         disableDrag: true,
         disableResize: true,
         columns: 12,
-        margin: 10,
+        margin: 8,
         alwaysShowResizeHandle: false,
         sizeToContent: true,
         resizable: {
@@ -77,35 +92,32 @@ $( document ).ready(function() {
         'cancel': "{{ lang._('Cancel') }}",
         'failed': "{{ lang._('Failed to load widget') }}",
         'options': "{{ lang._('Options') }}",
-        'edit': "{{ lang._('Edit Dashboard') }}",
+        'edit': "{{ lang._('Edit') }}",
     }, {
         excludedWidgetIds: ['systeminformation', 'announcements'],
-        layoutProfile: 'firewall-balanced-v1',
         preferredLayouts: {
-            12: {
-                cpu: {x: 0, y: 0, w: 4},
-                memory: {x: 4, y: 0, w: 2},
-                disk: {x: 6, y: 0, w: 2},
-                gateways: {x: 8, y: 0, w: 4},
-                interfacestatistics: {x: 0, y: 1, w: 6},
-                firewall: {x: 6, y: 1, w: 6},
-                services: {x: 0, y: 2, w: 6},
-                traffic: {x: 6, y: 2, w: 6}
-            },
-            6: {
-                cpu: {x: 0, y: 0, w: 3},
-                memory: {x: 3, y: 0, w: 3},
-                disk: {x: 0, y: 1, w: 3},
-                gateways: {x: 3, y: 1, w: 3},
-                interfacestatistics: {x: 0, y: 2, w: 6},
-                firewall: {x: 0, y: 3, w: 6},
-                services: {x: 0, y: 4, w: 6},
-                traffic: {x: 0, y: 5, w: 6}
-            }
+            12: layoutFromRows([
+                [202, [['cpu', 4], ['memory', 2], ['disk', 2], ['gateways', 4]]],
+                [248, [['interfacestatistics', 6], ['firewall', 6]]],
+                [358, [['services', 6], ['traffic', 6]]]
+            ]),
+            6: layoutFromRows([
+                [202, [['cpu', 3], ['memory', 3]]],
+                [202, [['disk', 3], ['gateways', 3]]],
+                [228, [['interfacestatistics', 6]]],
+                [248, [['firewall', 6]]],
+                [334, [['services', 6]]],
+                [358, [['traffic', 6]]]
+            ]),
+            1: layoutFromRows([
+                [202, [['cpu', 1]]], [206, [['memory', 1]]], [206, [['disk', 1]]],
+                [158, [['gateways', 1]]], [228, [['interfacestatistics', 1]]],
+                [248, [['firewall', 1]]], [334, [['services', 1]]], [358, [['traffic', 1]]]
+            ])
         }
     });
     widgetManager.initialize();
 });
 </script>
 
-<div class="grid-stack"></div>
+<div class="grid-stack dashboard-grid"></div>

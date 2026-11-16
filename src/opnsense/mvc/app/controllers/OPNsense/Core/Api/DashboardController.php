@@ -108,7 +108,8 @@ class DashboardController extends ApiControllerBase
             $dashboard = $node->dashboard->deserialize();
         }
 
-        if (empty($dashboard)) {
+        $result['default_layout'] = empty($dashboard);
+        if ($result['default_layout']) {
             $dashboard = $this->getDefaultDashboard();
         }
 

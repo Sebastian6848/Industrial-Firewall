@@ -1,0 +1,180 @@
+/* Layout refinements shared by the dashboard's themes. */
+.dashboard-grid {
+    --dashboard-rule: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.dashboard-grid > .grid-stack-item > .grid-stack-item-content {
+    border: 1px solid var(--dashboard-rule);
+    border-radius: 6px;
+    box-shadow: none;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    transition: none;
+}
+
+.dashboard-grid .widget,
+.dashboard-grid .widget-content {
+    background: inherit;
+}
+
+.dashboard-grid .widget-content {
+    height: auto;
+    padding: 0 14px 10px;
+}
+
+.dashboard-grid .widget-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: inherit;
+    min-height: 44px;
+    margin: 0 0 10px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--dashboard-rule);
+    gap: 8px;
+}
+
+.dashboard-grid .widget-header-left {
+    display: none;
+}
+
+.dashboard-grid .widget-title {
+    justify-content: flex-start;
+    text-align: start;
+    font-size: 15px;
+    letter-spacing: normal;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.dashboard-grid :is(.widget-cpu, .widget-memory, .widget-disk) .widget-title {
+    padding-inline-start: 8px;
+    border-inline-start: 2px solid #c03e14;
+}
+
+.dashboard-grid .widget-command-container {
+    flex: 0 0 auto;
+    margin-inline-start: auto;
+}
+
+.dashboard-grid .link-handle > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    min-height: 28px;
+    font-size: inherit;
+}
+
+.dashboard-grid .panel-divider {
+    height: 0;
+    margin: 0;
+}
+
+.dashboard-grid .panel-divider .line {
+    display: none;
+}
+
+.dashboard-grid .widget-error {
+    margin: 16px;
+}
+
+.dashboard-grid .cpu-type {
+    margin: 0 0 8px;
+    text-align: start;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dashboard-grid .smoothie-container > b {
+    display: block;
+    text-align: start;
+    margin-bottom: 4px;
+}
+
+.dashboard-grid .smoothie-container canvas {
+    height: 72px !important;
+}
+
+.dashboard-grid :is(.memory-chart-container, .disk-chart-container) .canvas-container:not(.disk-volumes-chart) {
+    max-width: 240px;
+    margin-inline: auto;
+}
+
+.dashboard-grid :is(.interface-statistics-chart-container, .fw-chart-container, .disk-volumes-chart) {
+    max-width: 340px;
+    margin-inline: auto;
+}
+
+.dashboard-grid :is(#gateway-table, #services-table) {
+    width: 100%;
+    margin: 0;
+}
+
+.dashboard-grid :is(.grid-row, .grid-header, .flextable-row, .column .flex-cell) {
+    border-color: var(--dashboard-rule);
+}
+
+.dashboard-grid .grid-header {
+    background: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+.dashboard-grid .grid-item {
+    padding: 6px 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.dashboard-grid #interface-statistics-table > :is(.grid-header-container, .grid-row) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.dashboard-grid #fw-top-table > :is(.grid-header-container, .grid-row) {
+    grid-template-columns: .7fr .85fr .8fr 1.8fr 1.8fr .65fr;
+}
+
+.dashboard-grid #fw-rule-table > :is(.grid-header-container, .grid-row) {
+    grid-template-columns: minmax(0, 1fr) 5rem;
+}
+
+.dashboard-grid #fw-table-container,
+.dashboard-grid .traffic-charts-container {
+    text-align: start;
+}
+
+.dashboard-grid .traffic-charts-container h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.dashboard-grid .traffic-charts-container .canvas-container-noaspectratio {
+    height: 112px;
+    margin-bottom: 10px;
+}
+
+.dashboard-grid .traffic-charts-container .canvas-container-noaspectratio:last-child {
+    margin-bottom: 0;
+}
+
+.dashboard-grid .service-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.dashboard-grid .service-controls .btn {
+    min-width: 26px;
+    min-height: 25px;
+}
+
+.dashboard-grid a:focus-visible,
+.dashboard-grid button:focus-visible,
+#edit-grid:focus-visible {
+    outline: 2px solid #c03e14;
+    outline-offset: 2px;
+}

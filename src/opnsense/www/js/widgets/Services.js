@@ -80,7 +80,7 @@ export default class Services extends BaseTableWidget {
             }
 
             let $buttonContainer = $(`
-                <div style="margin-left: 45%">
+                <div class="service-controls">
                 <span class="label label-opnsense label-opnsense-xs
                              label-${service.running ? 'success' : 'danger'}
                              service-status"

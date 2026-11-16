@@ -70,7 +70,6 @@ class WidgetManager  {
     constructor(gridStackOptions = {}, gettext = {}, appearanceOptions = {}) {
         this.gridStackOptions = gridStackOptions;
         this.excludedWidgetIds = new Set(appearanceOptions.excludedWidgetIds ?? []);
-        this.layoutProfile = appearanceOptions.layoutProfile ?? null;
         this.preferredLayouts = appearanceOptions.preferredLayouts ?? {};
         this.runtimeOptions = {}; // non-persisted runtime options
         this.persistedOptions = {}; // persisted options
@@ -116,10 +115,8 @@ class WidgetManager  {
                 let configuration = data.dashboard;
                 this.layouts = configuration.layouts ?? null;
                 this.persistedOptions = configuration.options ?? {};
-                this.runtimeOptions.usePreferredLayout = this.layoutProfile !== null &&
-                    this.persistedOptions.layoutProfile !== this.layoutProfile;
+                this.runtimeOptions.usePreferredLayout = data.default_layout === true;
                 const visibleWidgets = configuration.widgets.filter(item => !this.excludedWidgetIds.has(item.id));
-                this.runtimeOptions.compactFilteredLayout = this.runtimeOptions.usePreferredLayout;
                 visibleWidgets.forEach(item => {
                     this.widgetConfigurations[item.id] = item;
                 });
@@ -220,7 +217,9 @@ class WidgetManager  {
 
         let options = widget.getGridOptions();
 
-        if ('sizeToContent' in options && 'h' in persistedConfig) {
+        if (persistedConfig.sizeToContent === false) {
+            options.sizeToContent = false;
+        } else if ('sizeToContent' in options && 'h' in persistedConfig) {
             // override the sizeToContent option with the persisted height to allow for manual resizing with scrollbar
             options.sizeToContent = persistedConfig.h;
         }
@@ -265,7 +264,8 @@ class WidgetManager  {
         // XXX runtimeConfig can be populated with additional options based on the persistedOptions
         // structure to accomodate for persisted (gridstack) configuration options in the future.
 
-        this.grid = GridStack.init({...this.gridStackOptions, ...runtimeConfig});
+        // Widget sizes and user layouts are expressed in CSS pixels.
+        this.grid = GridStack.init({...this.gridStackOptions, ...runtimeConfig, cellHeight: 1});
         this.curColCount = this.grid.getColumn();
 
         // prepare widget markup
@@ -288,18 +288,17 @@ class WidgetManager  {
         // render to the DOM
         this.grid.load(Object.values(this.widgetConfigurations));
 
-        // Close gaps left by dashboard widgets intentionally hidden by the UI.
-        // List compaction keeps widget order and produces a balanced row layout.
-        if (this.runtimeOptions.compactFilteredLayout) {
-            this.grid.compact('list');
-        }
-
         this.grid.on('change', (event, items) => {
             const curCount = this.grid.getColumn();
             if (this.curColCount != curCount) {
                 this.curColCount = curCount;
 
-                if (this.layouts != null && this.curColCount in this.layouts) {
+                const preferred = this.runtimeOptions.usePreferredLayout && this.preferredLayouts[curCount];
+                if (preferred) {
+                    this.grid.load(this.grid.getGridItems().map(({gridstackNode: node}) => ({
+                        id: node.id, ...preferred[node.id]
+                    })), false);
+                } else if (this.layouts != null && curCount in this.layouts) {
                     // sync configurations and layouts, making sure the content
                     // of each widget isn't reset.
                     Object.values(this.widgetConfigurations).forEach(cfg => {
@@ -316,18 +315,11 @@ class WidgetManager  {
 
                     // load a known layout based on the current column count
                     this.grid.load(Object.values({...this.widgetConfigurations, ...this.layouts[this.curColCount]}));
-                    if (this.runtimeOptions.compactFilteredLayout) {
-                        this.grid.compact('list');
-                    }
                 } else {
                     this.grid.compact();
                 }
             }
         })
-
-        // force the cell height of each widget to the lowest value. The grid will adjust the height
-        // according to the content of the widget.
-        this.grid.cellHeight(1);
 
         // click handlers for widget removal.
         for (const id of Object.keys(this.widgetConfigurations)) {
@@ -362,8 +354,8 @@ class WidgetManager  {
                 <i class="fa fa-window-restore fa-fw"></i>
             </button>`));
         $btn_group.append($(`
-            <button class="btn btn-secondary" id="edit-grid" data-toggle="tooltip" title="${this.gettext.edit}">
-                <i class="fa fa-pencil fa-fw"></i>
+            <button class="btn btn-default" id="edit-grid" aria-pressed="false">
+                <i class="fa fa-pencil fa-fw" aria-hidden="true"></i> ${this.gettext.edit}
             </button>
         `));
 
@@ -372,7 +364,6 @@ class WidgetManager  {
 
         $('#add_widget').tooltip({placement: 'bottom', container: 'body'});
         $('#restore-defaults').tooltip({placement: 'bottom', container: 'body'});
-        $('#edit-grid').tooltip({placement: 'bottom', container: 'body'});
 
         // Initially hide the save button
         $('#save-grid').hide();
@@ -463,9 +454,11 @@ class WidgetManager  {
 
         $('#edit-grid').on('click', () => {
             $('#edit-grid').toggleClass('active');
+            $('#edit-grid').attr('aria-pressed', String($('#edit-grid').hasClass('active')));
 
             if ($('#edit-grid').hasClass('active')) {
                 this.runtimeOptions.editMode = true;
+                this.runtimeOptions.usePreferredLayout = false;
                 this.grid.enableMove(true);
                 this.grid.enableResize(true);
                 $('.widget-content').css('cursor', 'grab');
@@ -629,10 +622,8 @@ class WidgetManager  {
 
     // Recalculate widget/grid dimensions
     _updateGrid(elem = null) {
-        if (elem !== null) {
-            this.grid.resizeToContent(elem);
-        } else {
-            for (const item of this.grid.getGridItems()) {
+        for (const item of elem === null ? this.grid.getGridItems() : [elem]) {
+            if (item.gridstackNode?.sizeToContent !== false) {
                 this.grid.resizeToContent(item);
             }
         }
@@ -728,27 +719,16 @@ class WidgetManager  {
                 item['widget'] = widgetConfig;
             }
 
-            // XXX the gridstack save() behavior is inconsistent with the responsive columnWidth option,
-            // as the calculation will return impossible values for the x, y, w and h attributes.
-            // For now, the gs-{x,y,w,h} attributes are a better representation of the grid for layout persistence
-            let elem = $(this.widgetHTMLElements[item.id]);
-            this.layouts[colCount][item.id] = {
-                'id': item.id,
-                'x': parseInt(elem.attr('gs-x')) ?? 1,
-                'y': parseInt(elem.attr('gs-y')) ?? 1,
-                'w': parseInt(elem.attr('gs-w')) ?? 1,
-                'h': parseInt(elem.attr('gs-h')) ?? 1
-            }
+            // GridStack's serialized coordinates can belong to another breakpoint.
+            const {x, y, w, h} = this.widgetHTMLElements[item.id].gridstackNode;
+            this.layouts[colCount][item.id] = {id: item.id, x, y, w, h};
 
             delete item['callbacks'];
             return item;
         }));
 
         const payload = {
-            options: {
-                ...this.persistedOptions,
-                ...(this.layoutProfile !== null ? {layoutProfile: this.layoutProfile} : {})
-            },
+            options: {...this.persistedOptions},
             widgets: items,
             layouts: this.layouts
         };

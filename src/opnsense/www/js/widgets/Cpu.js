@@ -107,7 +107,7 @@ export default class Cpu extends BaseWidget {
 
     async onMarkupRendered() {
         const data = await this.ajaxCall(`/api/diagnostics/cpu_usage/${'getcputype'}`);
-        $('.cpu-type').text(data);
+        $('.cpu-type').text(data).attr('title', data);
 
         const config = await this.getWidgetConfig();
 

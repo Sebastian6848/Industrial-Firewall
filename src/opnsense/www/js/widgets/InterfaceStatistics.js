@@ -219,13 +219,9 @@ export default class InterfaceStatistics extends BaseTableWidget {
             }
         }
 
-        if (width < 700) {
-            $('#intf-stats').show();
-            $('#interface-statistics-table').hide();
-        } else {
-            $('#intf-stats').hide();
-            $('#interface-statistics-table').show();
-        }
+        const showTable = width >= 555;
+        $('.interface-statistics-chart-container').toggle(!showTable);
+        $('#interface-statistics-table').toggle(showTable);
 
         return true;
     }
