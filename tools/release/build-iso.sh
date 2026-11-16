@@ -132,6 +132,7 @@ mounted=no
 python3 "$repo/tools/release/factory-config.py" "$work/config.xml"
 install -m 0600 "$work/config.xml" "$stage/usr/local/etc/config.xml"
 install -m 0600 "$work/config.xml" "$stage/conf/config.xml"
+chroot "$stage" /usr/local/etc/rc.syshook.d/early/05-console-brand
 chroot "$stage" /usr/local/etc/rc.loader
 if [ -f "$stage/boot/loader.conf.local" ]; then
     sed -i '' '/# ZFS standard/,/zfs_load="YES"/d' "$stage/boot/loader.conf.local"
@@ -143,7 +144,7 @@ boot_multicons="YES"
 boot_serial="YES"
 comconsole_speed="115200"
 EOF
-printf '/dev/iso9660/OPNSENSE_INSTALL\t/\tcd9660\tro\t0\t0\ntmpfs\t/tmp\ttmpfs\trw,mode=01777\t0\t0\n' > "$stage/etc/fstab"
+printf '/dev/iso9660/INDUSTRIAL_INSTALL\t/\tcd9660\tro\t0\t0\ntmpfs\t/tmp\ttmpfs\trw,mode=01777\t0\t0\n' > "$stage/etc/fstab"
 
 printf './dev\n./tmp\n' > "$work/mtree.exclude"
 mtree -c -k uid,gid,mode,size,sha256digest -p "$stage" -X "$work/mtree.exclude" > "$work/installed_filesystem.mtree"
@@ -158,7 +159,7 @@ cp "$stage/boot/loader.efi" "$work/efi/efi/boot/bootx64.efi"
 makefs -t msdos -o fat_type=12 -o sectors_per_cluster=1 -o volume_label=EFISYS \
     -s 2048k "$work/efiboot.img" "$work/efi"
 makefs -t cd9660 -o "bootimage=i386;$stage/boot/cdboot" -o no-emul-boot \
-    -o "bootimage=i386;$work/efiboot.img" -o label=OPNSENSE_INSTALL -o rockridge \
+    -o "bootimage=i386;$work/efiboot.img" -o label=INDUSTRIAL_INSTALL -o rockridge \
     "$output/.$media.iso.incomplete" "$stage"
 mv "$output/.$media.iso.incomplete" "$output/$media.iso"
 printf '%s\n' "$commit" > "$output/$media.source-commit.txt"
