@@ -1,0 +1,4342 @@
+[
+    {
+        "enabled": "1",
+        "description": "携程旅行",
+        "match_type": "domain",
+        "match_value": "ctrip.com",
+        "app_label": "携程"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "work.weixin.qq.com\nqy.weixin.qq.com\nwecom.qq.com\nwework.qpic.cn",
+        "app_label": "企业微信"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "feishu.cn\nfeishuapp.cn\nlarksuite.com\nbyteoversea.com\nbytedance.net",
+        "app_label": "飞书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qzone.qq.com\nuser.qzone.qq.com\nqzonestyle.gtimg.cn\nqzone.gtimg.cn",
+        "app_label": "QQ空间"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "weibo.com\nweibo.cn\nm.weibo.cn\napi.weibo.cn\nsinaimg.cn\nsina.com.cn",
+        "app_label": "微博"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaohongshu.com\nxhslink.com\nxhscdn.com\nxhsurl.com\nxhs.cn",
+        "app_label": "小红书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zhihu.com\nzhimg.com\nzhstatic.zhihu.com\nzhihu-web-analytics.zhihu.com",
+        "app_label": "知乎"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "douban.com\ndoubanio.com\ndouban.fm\ndoubanio.com",
+        "app_label": "豆瓣"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tieba.baidu.com\ntiebac.baidu.com\ntb1.bdstatic.com\ntb2.bdstatic.com",
+        "app_label": "百度贴吧"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "soulapp.cn\nsoulapp.me\ngetsoul.cn\nsoulgate.cn",
+        "app_label": "Soul"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tansapp.com\ntantanapp.com\ntantanapi.com",
+        "app_label": "探探"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "immomo.com\nmomo.com\ncosmos-api.immomo.com\nmk.meituan.com",
+        "app_label": "陌陌"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jimuapp.cn\njimu.com\njimuapp.com",
+        "app_label": "积目"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "okjike.com\njellow.site\nruguoapp.com\njike.ruguoapp.com",
+        "app_label": "即刻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "izuiyou.com\nzuiyouxiuxiu.com\nxiaochuankeji.cn",
+        "app_label": "最右"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bilibili.com\nbilibili.tv\nbiliapi.com\nbiliapi.net\nbilivideo.com\nhdslb.com\nbilicdn1.com\nbiligame.com",
+        "app_label": "B站"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kuaishou.com\ngifshow.com\nksapisrv.com\nksyun.com\nkuaishouzt.com\nkwai.com",
+        "app_label": "快手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "douyin.com\ndouyinpic.com\ndouyinstatic.com\ndouyinvod.com\ndouyinliving.com\nsnssdk.com\nbyteimg.com\nbytedance.com\nbytedance.net",
+        "app_label": "抖音"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "douyin.com\ndouyinpic.com\ndouyinstatic.com\ndouyinvod.com\nsnssdk.com\nbyteimg.com",
+        "app_label": "抖音极速版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kuaishou.com\ngifshow.com\nksapisrv.com\nkwai.com",
+        "app_label": "快手极速版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pipix.com\npipixia.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "皮皮虾"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ixigua.com\nixiguavideo.com\nxgcdn.com\nsnssdk.com\nbyteimg.com",
+        "app_label": "西瓜视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "weishi.qq.com\nisee.weishi.qq.com\nvweishi.qq.com\ngtimg.cn",
+        "app_label": "腾讯微视"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "duoshan.com\nduoshanapp.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "多闪"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xirang.com\nxirang.baidu.com\nbaidu.com\nbdstatic.com",
+        "app_label": "百度希壤"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ds.163.com\ng.163.com\ngame.163.com\nn.netease.com\nnetease.com",
+        "app_label": "网易大神"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huya.com\nmsstatic.com\nhuya.com.cn\nhuyaimg.com\nhuyagame.cn",
+        "app_label": "虎牙直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "douyu.com\ndouyucdn.cn\ndouyutv.com\ndouyu.tv\ndouyuapp.com",
+        "app_label": "斗鱼直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yy.com\nyystatic.com\nduowan.com\nhiido.com",
+        "app_label": "YY直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "inke.cn\ninke.com\ninke.tv\ninkeapp.com",
+        "app_label": "映客直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huajiao.com\nhuajiao.tv\nhuajiao.com.cn\nhuajiaostatic.com",
+        "app_label": "花椒直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "6.cn\n6rooms.com\nv.6.cn",
+        "app_label": "六间房"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yizhibo.com\nyizhibo.tv\nmiaopai.com\nxunlei.com",
+        "app_label": "一直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tt.cn\nttvoice.com\nttwanjia.com\n52tt.com",
+        "app_label": "TT语音"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kookapp.cn\nkookapp.com\nkaihei.co\nkaiheila.cn\nkaiheila.com",
+        "app_label": "KOOK"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bixin.cn\nbixin.com\nbixinapp.com",
+        "app_label": "比心"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaoheihe.cn\nxiaoheihe.com\nmax-c.com\nheybox.cn",
+        "app_label": "小黑盒"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "taptap.cn\ntaptap.com\ntaptap.io\nxd.com\nxindong.com",
+        "app_label": "TapTap"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "miyoushe.com\nmihoyo.com\nhoyoverse.com\nyuanshen.com\nhonkaiimpact3.com",
+        "app_label": "米游社"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dewu.com\npoizon.com\ndwstatic.com\nshizhuang-inc.com",
+        "app_label": "得物社区"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "smzdm.com\nzhidemai.com\nres.smzdm.com\nqna.smzdm.com",
+        "app_label": "什么值得买"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaoyuzhoufm.com\nxyzcdn.net\nximalaya.com",
+        "app_label": "小宇宙"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ximalaya.com\nxmcdn.com\nximalayaos.com\nxima.tv",
+        "app_label": "喜马拉雅"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lizhi.fm\nlizhi.io\nlizhiweike.com\nlizhifm.com",
+        "app_label": "荔枝"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qingting.fm\nqtfm.cn\nqtfm.com\nqingting123.com",
+        "app_label": "蜻蜓FM"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "missevan.com\nmissevan.cn\nmissevan.com.cn",
+        "app_label": "猫耳FM"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lofter.com\nloftercdn.com\nlf127.net\nmusic.163.com",
+        "app_label": "LOFTER"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "v.qq.com\nvideo.qq.com\nfilm.qq.com\ntv.qq.com\nm.v.qq.com\nvideo.gtimg.com\nvv.video.qq.com\nqpic.cn\ngtimg.cn",
+        "app_label": "腾讯视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "iqiyi.com\nqiyi.com\npps.tv\niqiyipic.com\niqiyipic.com.cn\nqy.net\niqiyi.cn\nm.iqiyi.com\niface.iqiyi.com",
+        "app_label": "爱奇艺"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "youku.com\nykimg.com\nyouku.tv\nsoku.com\ntudou.com\ntudouui.com\nykugc.cp31.ott.cibntv.net\nvali.cp31.ott.cibntv.net",
+        "app_label": "优酷视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mgtv.com\nhunantv.com\nimgo.tv\nmgtvcdn.com\nhitv.com\nhitv.com.cn",
+        "app_label": "芒果TV"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "miguvideo.com\nmigu.cn\nmiguvideo.migu.cn\nmgcdn.com\nmigucloud.com\ncmvideo.cn",
+        "app_label": "咪咕视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tv.sohu.com\nsohu.com\nsohucs.com\nsohu-inc.com\nitc.cn\nk.sohu.com",
+        "app_label": "搜狐视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yangshipin.cn\ncctv.com\ncntv.cn\ncctv.cn\ncctvpic.com\nysapp.cn",
+        "app_label": "央视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cctv.com\ncntv.cn\ncctv.cn\ncctvpic.com\ntv.cctv.com\nm.cctv.com",
+        "app_label": "央视影音"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bilibili.com\nbiliapi.com\nbiliapi.net\nbilivideo.com\nhdslb.com\nbiliintl.com\nbilicdn1.com\nb23.tv",
+        "app_label": "哔哩哔哩"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "acfun.cn\nacfun.tv\naixifan.com\nacfun.com\nacfunimg.com\nacfunvideo.com",
+        "app_label": "AcFun"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "maiduidui.com\nmaiduidui.tv\nmddcloud.com\nmddvideo.com\ntvbanywhere.com",
+        "app_label": "埋堆堆"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "rr.tv\nrenrenvideo.com\nrrvideo.com\nrr.tv.com\nrrimg.com",
+        "app_label": "人人视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "1905.com\nm1905.com\n电影网.com\n1905.tv\nvod.1905.com",
+        "app_label": "1905电影网"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fun.tv\nfengxing.com\nfunshion.com\nfunshion.net\nfuntv.com.cn\nfxplus.com",
+        "app_label": "风行视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pptv.com\npplive.com\npptv.com.cn\nppstream.com\npplive.cn",
+        "app_label": "PP视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "le.com\nletv.com\nletv.cn\nletvimg.com\nlecloud.com\nletvcdn.com",
+        "app_label": "乐视视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tudou.com\ntudouui.com\ntdimg.com\nyouku.com\nykimg.com",
+        "app_label": "土豆视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pearvideo.com\npearvideo.net\npearvideo.cn\npearvideo.com.cn",
+        "app_label": "梨视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "haokan.baidu.com\nhaokan.com\nhk.baidu.com\nbdstatic.com\nbaidustatic.com\nbaidu.com",
+        "app_label": "好看视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "quanmin.baidu.com\nqmbd.baidu.com\nbdstatic.com\nbaidustatic.com\nbaidu.com",
+        "app_label": "全民小视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huoshan.com\nhuoshanzhibo.com\nhuoshanstatic.com\nsnssdk.com\nbyteimg.com\nbytedance.com\nbytedance.net",
+        "app_label": "火山小视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kuaishou.com\ngifshow.com\nkwai.com\nksapisrv.com\nksyun.com\nkuaishouzt.com",
+        "app_label": "快影"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jianying.com\ncapcut.cn\ncapcut.com\nulikecam.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "剪映"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "miaojian.com\nmiaojian.qq.com\nom.qq.com\ngtimg.cn\nqpic.cn\nqq.com",
+        "app_label": "秒剪"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bilibili.com\nbiliapi.com\nbiliapi.net\nhdslb.com\nbilivideo.com\nb23.tv",
+        "app_label": "必剪"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ijianji.com\naijianji.com\nijianji.cn\naijianji.cn",
+        "app_label": "爱剪辑"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "meipai.com\nmeitu.com\nmeitu.cn\nmeitudata.com\nmeitustat.com\nmeitudns.com",
+        "app_label": "美拍"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "inke.cn\ninke.com\ninke.tv\ninkeapp.com\ninkeyun.com",
+        "app_label": "映客"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "douyu.com\ndouyu.tv\ndouyutv.com\ndouyuapp.com\ndouyucdn.cn\ndouyucdn2.cn",
+        "app_label": "斗鱼"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huya.com\nhuya.com.cn\nhuyaimg.com\nmsstatic.com\nhuyagame.cn\nhuyalive.cn",
+        "app_label": "虎牙"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "egame.qq.com\npengyou.qq.com\nqgame.qq.com\ngtimg.cn\nqpic.cn\nqq.com",
+        "app_label": "企鹅电竞"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kuaishou.com\ngifshow.com\nkwai.com\nksapisrv.com\nksyun.com\nlive.kuaishou.com",
+        "app_label": "快手直播伴侣"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "douyin.com\ndouyinliving.com\ndouyinstatic.com\ndouyinvod.com\nsnssdk.com\nbyteimg.com\nbytedance.net\nvolces.com",
+        "app_label": "抖音直播伴侣"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huajiao.com\nhuajiao.tv\nhuajiao.com.cn\nhuajiaostatic.com\n360.cn\nqhimg.com",
+        "app_label": "花椒直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "now.qq.com\nnow.qq.com.cn\nilive.qq.com\ngtimg.cn\nqpic.cn\nqq.com",
+        "app_label": "NOW直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "live.bilibili.com\napi.live.bilibili.com\nbilibili.com\nbiliapi.com\nbiliapi.net\nhdslb.com\nbilivideo.com",
+        "app_label": "哔哩哔哩直播"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ixigua.com\nixiguavideo.com\nxgcdn.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "西瓜视频"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huoshan.com\nhuoshanzhibo.com\nhuoshanstatic.com\ndouyin.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "抖音火山版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "weishi.qq.com\nvweishi.qq.com\nisee.weishi.qq.com\nweishi.com\ngtimg.cn\nqpic.cn\nqq.com",
+        "app_label": "腾讯微视"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "taobao.com\nm.taobao.com\nh5.m.taobao.com\nitem.taobao.com\ns.taobao.com\nlogin.taobao.com\ntb.cn\nalicdn.com\nmmstat.com",
+        "app_label": "淘宝"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tmall.com\nwww.tmall.com\ndetail.tmall.com\nlist.tmall.com\nchaoshi.tmall.com\ntmall.hk\ntmall.ru\nalicdn.com\nmmstat.com",
+        "app_label": "天猫"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jd.com\nm.jd.com\nitem.jd.com\nsearch.jd.com\njingdong.com\n360buy.com\njd.hk\njdcloud.com\njcloud.com\njdpay.com\nyiyaojd.com\njdimg.com\n360buyimg.com",
+        "app_label": "京东"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pinduoduo.com\nyangkeduo.com\npddpic.com\npddcdn.com\npdd.net\nmobile.yangkeduo.com",
+        "app_label": "拼多多"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fxg.jinritemai.com\njinritemai.com\ndouyin.com\ndouyinec.com\ndouyinpic.com\ndouyinstatic.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "抖音商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaodian.kuaishou.com\nkuaishou.com\ngifshow.com\nksapisrv.com\nksyun.com\nkwai.com",
+        "app_label": "快手小店"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "vip.com\nvipstatic.com\nvipshop.com\nvipshop.com.cn\nvpal.com\nvipkidstatic.com",
+        "app_label": "唯品会"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "suning.com\nsuning.cn\ncnsuning.com\nsuningcloud.com\nsuningbank.com\nsnimg.com\nsnssdk.com",
+        "app_label": "苏宁易购"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gome.com.cn\ngome.com\ngomeplus.com\ngomein.net\ngomefinance.com.cn",
+        "app_label": "国美"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dewu.com\npoizon.com\ndwstatic.com\nshizhuang-inc.com\nduapp.com",
+        "app_label": "得物"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mall.xiaohongshu.com\nxiaohongshu.com\nxhslink.com\nxhscdn.com\nxhsurl.com\nxhs.cn",
+        "app_label": "小红书商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "goofish.com\n2.taobao.com\nxianyu.m.taobao.com\nxianyu.alicdn.com\nidlefish.com\ntaobao.com\nalicdn.com",
+        "app_label": "闲鱼"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zhuanzhuan.com\nzzcdn.com\nzhuanspirit.com\n58.com\n58cdn.com.cn",
+        "app_label": "转转"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "paipai.com\n拍拍严选.jd.com\npaipai.jd.com\njd.com\njdimg.com\n360buyimg.com",
+        "app_label": "拍拍严选"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kongfz.com\nbook.kongfz.com\nshop.kongfz.com\nkfimg.com\nkongfz.cn",
+        "app_label": "孔夫子旧书网"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dangdang.com\nddimg.cn\nddimg.com\ndangdangcdn.com\nbook.dangdang.com",
+        "app_label": "当当"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "amazon.cn\nz.cn\namazon.com.cn\nssl-images-amazon.cn\nmedia-amazon.cn\namazonaws.cn",
+        "app_label": "亚马逊中国"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "you.163.com\nyanxuan.nosdn.127.net\nyanxuan.163.com\n163.com\n126.net\nnetease.com",
+        "app_label": "网易严选"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mi.com\nm.mi.com\nshopapi.io.mi.com\nxiaomi.com\nxiaomiyoupin.com\nyoupin.mi.com\nmi-img.com\nmiui.com",
+        "app_label": "小米商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "vmall.com\nhuawei.com\nconsumer.huawei.com\nhuaweicloud.com\nhuaweistatic.com\ndbankcdn.com",
+        "app_label": "华为商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "honor.com\nhihonor.com\nhonormall.com\nhonor.cn\nhihonorcloud.com",
+        "app_label": "荣耀商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "oppo.com\nopposhop.cn\nopposhop.com\noppo.cn\nheytap.com\noppomobile.com",
+        "app_label": "OPPO商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "vivo.com\nshop.vivo.com.cn\nvivo.com.cn\nvivoglobal.com\nvivo.cn\nbbk.com",
+        "app_label": "vivo商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "apple.com.cn\napple.com\nstore.apple.com.cn\napple-store.cn\nmzstatic.com\nicloud.com",
+        "app_label": "苹果中国商城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "smzdm.com\nzhidemai.com\nres.smzdm.com\nqna.smzdm.com\nhaitao.smzdm.com\npost.smzdm.com",
+        "app_label": "什么值得买"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fanli.com\n51fanli.com\nfanli.net\nfliggy.com",
+        "app_label": "返利网"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "etao.com\netao.com.cn\ns.etao.com\nju.taobao.com\ntaobao.com\nalicdn.com",
+        "app_label": "一淘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "taote.com\ntejia.taobao.com\ntaobao.com\nalicdn.com\nmmstat.com",
+        "app_label": "淘特"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jingxi.com\njingxi.jd.com\nm.jingxi.com\njd.com\njdimg.com\n360buyimg.com",
+        "app_label": "京喜"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dmall.com\ndmall.com.cn\ndmallcdn.com\nwumart.com\nduodian.com",
+        "app_label": "多点"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hemaos.com\nhemafresh.com\nfreshhema.com\nh5.hemaos.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "盒马"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "samsclub.cn\nsamsclub.com.cn\nsamsclubchina.com\nwalmart.cn\nwalmartimages.cn",
+        "app_label": "山姆会员商店"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ddxq.mobi\n100.me\ndingdongxiaoqu.com\nddfresh.com\nddimg.mobi",
+        "app_label": "叮咚买菜"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pupumall.com\npupuapi.com\npupumall.cn\npupu.com\npupucdn.com",
+        "app_label": "朴朴超市"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "missfresh.cn\nmissfresh.com\nmryx.com\nmryx.cn\nmissfreshapp.com",
+        "app_label": "每日优鲜"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "meituan.com\nmaicai.meituan.com\nyouxuan.meituan.com\nsankuai.com\nmeituan.net\nmeituanimg.com",
+        "app_label": "美团优选"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pinduoduo.com\nduoduo.com\npddpic.com\npddcdn.com\nyangkeduo.com",
+        "app_label": "多多买菜"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "taocaicai.com\nm.taocaicai.com\ntaobao.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "淘菜菜"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jddj.com\njd.com\ndaojia.jd.com\nim-dj.jd.com\ndjcdn.com\njdimg.com",
+        "app_label": "京东到家"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yonghui.cn\nyonghuivip.com\nyonghui.com.cn\nbravogo.com\nyhcdn.cn",
+        "app_label": "永辉生活"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "maicai.meituan.com\nmeituan.com\nmeituan.net\nsankuai.com\nmeituanimg.com",
+        "app_label": "美团买菜"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "chengxinyouxuan.com\nchengxinmanyi.com\ndidi-food.com\ndidiglobal.com\nxiaojukeji.com",
+        "app_label": "橙心优选"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "secoo.com\nsecooimg.com\nsecoo.cn\nsecoolife.com",
+        "app_label": "寺库"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shihuo.cn\nshihuo.hupu.com\nhupu.com\nhupucdn.com\nhupu.com.cn",
+        "app_label": "识货"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaomang.com\nmgtv.com\nmgtvcdn.com\nimgo.tv\nhunantv.com",
+        "app_label": "小芒"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "beidian.com\nbeidianapp.com\nbeidianimg.com\nbeibei.com\nbeibeicdn.com",
+        "app_label": "贝店"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "miyuan.com\nmiyuanapp.com\nmiyuan.cn\nmiyuanmall.com",
+        "app_label": "蜜源"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yunjiweidian.com\nyunji.com\nyunjiapp.com\nyunjiglobal.com\nyunjicdn.com",
+        "app_label": "云集"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "alipay.com\nmapi.alipay.com\nmobilegw.alipay.com\nrender.alipay.com\nmybank.cn\nantfin.com\nalipayobjects.com\nalipaydns.com",
+        "app_label": "支付宝"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pay.weixin.qq.com\nwx.gtimg.com\ntenpay.com\nwechatpay.cn\nqpic.cn\nqq.com",
+        "app_label": "微信支付"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "unionpay.com\n95516.com\nyunshanfu.unionpay.com\nopen.unionpay.com\nunionpayintl.com\nchinaums.com\n95516.net",
+        "app_label": "云闪付"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jr.jd.com\njdpay.com\njdpays.com\njdjinrong.com\njdfcloud.com\njddglobal.com\njd.com",
+        "app_label": "京东金融"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "duxiaoman.com\ndxmstatic.com\ndxmpay.com\nbaifubao.com\nbaidu.com\nbdstatic.com",
+        "app_label": "度小满金融"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pay.meituan.com\nmpay.meituan.com\nmeituan.com\nmeituan.net\nsankuai.com\nmeituanimg.com",
+        "app_label": "美团支付"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bestpay.com.cn\nbestpay.com\n189.cn\nchinatelecom.com.cn\ntydic.com",
+        "app_label": "翼支付"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cmpay.com\ncmpay.com.cn\n10086.cn\nchinamobile.com\nchinamobileltd.com",
+        "app_label": "和包支付"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tenpay.com\npay.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "财付通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wallet.qq.com\npay.qq.com\ntenpay.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "QQ钱包"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cmbchina.com\ncmbchina.cn\ncmbimg.com\ncmbt.cn\ncmburl.cn",
+        "app_label": "招商银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "icbc.com.cn\nicbc-ltd.com\n95588.com\nicbccs.com.cn\ndccnet.com.cn",
+        "app_label": "工商银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ccb.com\nccb.cn\nccbfund.cn\nccblife.com.cn\nccbintl.com",
+        "app_label": "建设银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "abchina.com\nabchina.com.cn\n95599.cn\nabchina.cn",
+        "app_label": "农业银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "boc.cn\nbankofchina.com\nbocichina.com\nbocgi.com\nbocgins.com",
+        "app_label": "中国银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bankcomm.com\n95559.com.cn\nbankcomm.com.cn\nbocommtrust.com\nbankcomm.com.hk",
+        "app_label": "交通银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "psbc.com\npsbc.com.cn\npbank.psbc.com\n95580.cn\npsbcfund.com.cn",
+        "app_label": "邮储银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pingan.com\nbank.pingan.com\npingan.com.cn\npingan.cn\npa18.com\npinganfu.net",
+        "app_label": "平安口袋银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "spdb.com.cn\nspdb.com\n95528.com\nspdbccc.com.cn\nspdbccc.com",
+        "app_label": "浦发银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "citicbank.com\nciticbank.com.cn\necitic.com\ncitic.com\n95558.com.cn",
+        "app_label": "中信银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cib.com.cn\ncib.com\ncibfintech.com\ncibfund.com.cn\n95561.com",
+        "app_label": "兴业银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cebbank.com\ncebbank.com.cn\n95595.com\ncebbank.cn\ncebnet.com.cn",
+        "app_label": "光大银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cmbc.com.cn\ncmbc.com\ncmbchina.com\nmsxf.com\ncmbcif.com",
+        "app_label": "民生银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cgbchina.com.cn\ncgbchina.com\n95508.com\ngdb.com.cn\ncgbchina.cn",
+        "app_label": "广发银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hxb.com.cn\nhxb.com\n95577.com.cn\nhxbank.com.cn",
+        "app_label": "华夏银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jsbchina.cn\njsbchina.com\njsbchina.com.cn\n95319.com",
+        "app_label": "江苏银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "nbcb.com.cn\nnbcb.cn\n95574.com.cn\nnbcb.com",
+        "app_label": "宁波银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "njcb.com.cn\nnjcb.com\n95302.com\nnjcb.cn",
+        "app_label": "南京银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bosc.cn\nbankofshanghai.com\nsrcb.com\n95594.com",
+        "app_label": "上海银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bankofbeijing.com.cn\nbankofbeijing.com\nbob.com.cn\n95526.cn",
+        "app_label": "北京银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "czbank.com\nczbank.com.cn\n95527.com.cn\nczbank.cn",
+        "app_label": "浙商银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "webank.com\nwebank.com.cn\nwebankcdn.net\nwebankcdn.com\nwebankimg.com",
+        "app_label": "微众银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mybank.cn\nmybank.com\nmybank.com.cn\nantfin.com\nalipay.com",
+        "app_label": "网商银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "z-bank.com\nzbank.com\nz-bank.cn\nzb.cn",
+        "app_label": "众邦银行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "10jqka.com.cn\n10jqka.com\nhexin.cn\nmyhexin.com\niwencai.com\nthsi.cn",
+        "app_label": "同花顺"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "eastmoney.com\neastmoney.com.cn\nemoney.cn\ndfcfw.com\neastmoneyfutures.com\nchoice.com.cn",
+        "app_label": "东方财富"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xueqiu.com\nxqimg.imedao.com\nimedao.com\ndanjuanapp.com\ndanjuanfunds.com",
+        "app_label": "雪球"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gwdang.com\ngw.com.cn\ngwsoft.com.cn\ndzh.com.cn\ngwmicro.com",
+        "app_label": "大智慧"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "htsc.com.cn\nhtsc.com\nzhangle.com\nwinnersclub.cn\nhuatai-pb.com",
+        "app_label": "涨乐财富通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gtja.com\ngtja.com.cn\ngtjas.com\ngtjafutures.com\n95521.com",
+        "app_label": "国泰君安君弘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "htsc.com.cn\nhtsc.com\nhtsc.com.hk\nhuatai-pb.com\nzhangle.com",
+        "app_label": "华泰证券"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "citics.com\ncs.ecitic.com\nciticsec.com\nciticsf.com\ncitic.com",
+        "app_label": "中信证券"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gf.com.cn\ngffunds.com.cn\ngfqh.com.cn\n95575.com\ngfinvestment.com",
+        "app_label": "广发证券易淘金"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cmschina.com.cn\nnewone.com.cn\ncmschina.com\ncmbchina.com\n95565.com",
+        "app_label": "招商证券"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "stock.pingan.com\npingan.com\npingan.com.cn\npingansec.com\npa18.com",
+        "app_label": "平安证券"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cicc.com\ncicc.com.cn\nchina-invs.cn\nciccwm.com\nciccwealth.com",
+        "app_label": "中金财富"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "stock.qq.com\ngu.qq.com\nfinance.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯自选股"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fund123.cn\nantfortune.com\nantfin.com\nalipay.com\nalipayobjects.com",
+        "app_label": "蚂蚁财富"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "1234567.com.cn\nfund.eastmoney.com\nfund.eastmoney.com.cn\neastmoney.com\neastmoney.com.cn",
+        "app_label": "天天基金"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lu.com\nlufax.com\nlufunds.com\npingan.com\npingan.com.cn",
+        "app_label": "陆金所"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "baoxian.jd.com\njr.jd.com\njd.com\njdpay.com\njdimg.com\n360buyimg.com",
+        "app_label": "京东保险"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "amap.com\nautonavi.com\namapauto.com\nlbs.amap.com\nrestapi.amap.com\nwebapi.amap.com\namapimg.com\namapapi.com",
+        "app_label": "高德地图"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "map.baidu.com\nmaps.baidu.com\napi.map.baidu.com\nmaponline.baidu.com\nbdimg.com\nbdstatic.com\nbaidu.com\nbaidustatic.com",
+        "app_label": "百度地图"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "map.qq.com\napis.map.qq.com\nrtmap.qq.com\nmap.gtimg.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯地图"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "didiglobal.com\ndidichuxing.com\ndidi.cn\nxiaojukeji.com\nudache.com\ndidistatic.com\ndiditaxi.com.cn",
+        "app_label": "滴滴出行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "t3go.cn\nt3go.com\nt3chuxing.com\nt3go.net\nt3go.com.cn",
+        "app_label": "T3出行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "caocaokeji.cn\ncaocaokeji.com\ncaocao.com.cn\ncaocaoglobal.com\ncaocaochuxing.com",
+        "app_label": "曹操出行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "saicmobility.com\nxiangdao.com\nxiangdao.info\nxiangdaochuxing.com\nsaicmotor.com",
+        "app_label": "享道出行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hellobike.com\nhelloglobal.com\nhello-inc.com\nhellobike.cn\nhellobike.com.cn\nhaluo.com",
+        "app_label": "哈啰"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dache.meituan.com\ntaxi.meituan.com\nmeituan.com\nmeituan.net\nsankuai.com\nmeituanimg.com",
+        "app_label": "美团打车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "01zhuanche.com\nshouqiev.com\nshouqi.com\nshouqicar.com\nsqev.com",
+        "app_label": "首汽约车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "10101111.com\nucarinc.com\nzuche.com\nshenzhouzhuanche.com\nshenzhouhuoche.com",
+        "app_label": "神州专车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "didapinche.com\ndidachuxing.com\ndidapinche.cn\ndidapinche.com.cn\ndidatravel.com",
+        "app_label": "嘀嗒出行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huaxiaojuke.com\nhuaxiaozhu.com\ndidiglobal.com\nxiaojukeji.com\ndidi.cn\ndidistatic.com",
+        "app_label": "花小猪打车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ctrip.com\nctrip.com.hk\nctripcorp.com\ntripcdn.com\ntrip.com\nctcdn.cn\nctripbiz.com",
+        "app_label": "携程旅行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qunar.com\nqunarcdn.com\nqunarzz.com\nqunar.com.cn\nqunarman.com",
+        "app_label": "去哪儿旅行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fliggy.com\nalitrip.com\ntrip.taobao.com\ntravel.taobao.com\ntaobao.com\nalicdn.com",
+        "app_label": "飞猪旅行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ly.com\n17u.cn\n17u.net\ntongcheng.com\nelong.com\nelongstatic.com",
+        "app_label": "同程旅行"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mafengwo.cn\nmafengwo.com\nmfwcdn.com\nmfwstatic.com\nmfw.com",
+        "app_label": "马蜂窝"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tuniu.com\ntuniucdn.com\ntuniu.cn\ntuniu.org\ntuniuimg.com",
+        "app_label": "途牛旅游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qyer.com\nqyerstatic.com\nqyerimg.com\nqyer.com.cn\nqyer.cn",
+        "app_label": "穷游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "umetrip.com\numetrip.com.cn\numetrip.cn\ntravelsky.com\ntravelsky.com.cn",
+        "app_label": "航旅纵横"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "variflight.com\nfeeyo.com\nveryzhun.com\nvariflight.cn\nflightads.cn",
+        "app_label": "飞常准"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "12306.cn\nrailway12306.cn\nkyfw.12306.cn\notn.12306.cn\n12306.com",
+        "app_label": "铁路12306"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "suanya.cn\nsuanya.com\nzhixingapp.com\nzhixing.com\nctrip.com\ntripcdn.com",
+        "app_label": "智行火车票"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ch.com\nch.com.cn\nspringairlines.com\nchunqiu.com\nchunqiuair.com",
+        "app_label": "春秋航空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "csair.com\ncsair.com.cn\ncsairgroup.cn\ncsairholidays.com\n95539.com",
+        "app_label": "南方航空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ceair.com\nceair.com.cn\nceairgroup.com\nceairgroup.cn\neasternmiles.com",
+        "app_label": "东方航空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "airchina.com.cn\nairchina.com\nairchina.cn\nphoenixmiles.com\n95583.com",
+        "app_label": "中国国航"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hnair.com\nhainanairlines.com\nhnair.com.cn\nhnair.net\nhainan-airlines.com",
+        "app_label": "海南航空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiamenair.com\nxiamenair.com.cn\nmfair.com\nmfair.com.cn\nxiamenairlines.com",
+        "app_label": "厦门航空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shenzhenair.com\nshenzhenair.com.cn\nshenzhenairlines.com\nshenzhenairlines.com.cn\nairchina.com.cn",
+        "app_label": "深圳航空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "juneyaoair.com\njuneyaoair.com.cn\njuneyao.com\njuneyaoairlines.com\n95520.cn",
+        "app_label": "吉祥航空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "didi.cn\ndriver.didiglobal.com\ndidiglobal.com\nxiaojukeji.com\ndidistatic.com\nudache.com",
+        "app_label": "滴滴车主"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huolala.cn\nhuolala.com\nlalamove.com\nlalamove.cn\nhuolala.com.cn",
+        "app_label": "货拉拉"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kuaigou56.com\nkuaigou.com\n58.com\n58cdn.com.cn\ngo.58.com",
+        "app_label": "快狗打车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ymm56.com\nymm56.com.cn\nyunmanman.com\nfulltruckalliance.com\nfta56.com",
+        "app_label": "运满满"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ymm56.com\nhuochebang.com\nfulltruckalliance.com\nfta56.com\ntruckhome.com",
+        "app_label": "满帮司机"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "edaijia.cn\nedaijia.com\nedaijia-inc.cn\nedaijia.com.cn\nedaijiaimg.com",
+        "app_label": "e代驾"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "1hai.cn\n1hai.com\n1hai.com.cn\n1haii.com\nehicdn.com",
+        "app_label": "一嗨租车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zuche.com\nzuchecdn.com\n10101111.com\nucarinc.com\nshenzhouzuche.com",
+        "app_label": "神州租车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "atzuche.com\natzuche.cn\natzuche.com.cn\natzuche.net\nautocloud.cn",
+        "app_label": "凹凸租车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaojuchefu.com\nxjcd.com\ndidiglobal.com\nxiaojukeji.com\ndidi.cn",
+        "app_label": "小桔充电"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "teld.cn\nteld.com.cn\nteld.com\nteldcloud.com\nteldapi.com",
+        "app_label": "特来电"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "starcharge.com\nstarcharge.com.cn\nstar-charge.com\nwanbangauto.com\nstarcharge.cn",
+        "app_label": "星星充电"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ykccn.com\nyunkuaichong.com\nyunkuaichong.cn\nyunkuai.com\nykc.com",
+        "app_label": "云快充"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "nio.cn\nnio.com\nnio.com.cn\nnio.io\nnioimg.com\nnioap.com",
+        "app_label": "蔚来"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lixiang.com\nlixiang.com.cn\nlixiangauto.com\nlixiangcdn.com\nlixiangstatic.com",
+        "app_label": "理想汽车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaopeng.com\nxiaopeng.com.cn\nxpeng.com\nxpeng.com.cn\nxpengstatic.com\nxmartos.com",
+        "app_label": "小鹏汽车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "byd.com\nbydauto.com.cn\nbyd.com.cn\nbydglobal.com\nbydauto.com\nbyd.cn",
+        "app_label": "比亚迪汽车"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dongchedi.com\ndongchediapp.com\ndcarapi.com\ndcarstatic.com\nbyteimg.com\nsnssdk.com",
+        "app_label": "懂车帝"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "meituan.com\nmeituan.net\nsankuai.com\nmeituanimg.com\nmeituan.net.cn\nmeituanapi.com",
+        "app_label": "美团"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dianping.com\ndpfile.com\ndper.com\napi.dianping.com\nm.dianping.com\nmeituan.com\nsankuai.com",
+        "app_label": "大众点评"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ele.me\nelemecdn.com\neleme.io\nelemecdn.cn\nh5.ele.me\nwaimai.ele.me\nalibaba-inc.com",
+        "app_label": "饿了么"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "koubei.com\nkfc.koubei.com\nm.koubei.com\nalipay.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "口碑"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "waimai.meituan.com\nwmapi.meituan.com\ntakeaway.meituan.com\npeisong.meituan.com\nmeituan.com\nmeituan.net\nmeituanimg.com\nsankuai.com",
+        "app_label": "美团外卖"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "e.ele.me\nopenapi.ele.me\nnapos.ele.me\nmelody.ele.me\nele.me\nelemecdn.com\neleme.io",
+        "app_label": "饿了么商家版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "epassport.meituan.com\necom.meituan.com\ne.meituan.com\nshangou.meituan.com\nwaimaie.meituan.com\nmeituan.com\nsankuai.com",
+        "app_label": "美团商家"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "58.com\n58cdn.com.cn\n58pic.com\n5858.com\n58corp.com\n58uxd.com",
+        "app_label": "58同城"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ganji.com\nganjistatic1.com\nganjistatic2.com\nganji.cn\n58.com\n58cdn.com.cn",
+        "app_label": "赶集网"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "anjuke.com\nanjukestatic.com\najkimg.com\n58.com\n58cdn.com.cn\nfang.com",
+        "app_label": "安居客"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ke.com\nlianjia.com\nke-image.ljcdn.com\nljcdn.com\nkeassets.com\nbeike.cn",
+        "app_label": "贝壳找房"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lianjia.com\nljcdn.com\nke.com\nke-image.ljcdn.com\nlianjia.cn\nhomelink.com.cn",
+        "app_label": "链家"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fang.com\nsoufun.com\nfangimg.com\nsoufunimg.com\nfangcdn.com\nesf.fang.com",
+        "app_label": "房天下"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ziroom.com\nziroomapartment.com\nziroomcdn.com\nziroomstay.com\nziroom.com.cn",
+        "app_label": "自如"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dankegongyu.com\ndanke.com\ndankecdn.com\ndanke.cn\ndankecloud.com",
+        "app_label": "蛋壳公寓"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "baletu.com\nbaletu.cn\nbaletucdn.com\nbaletoo.com\nbaletuimg.com",
+        "app_label": "巴乐兔租房"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huolala.cn\nhuolala.com\nhuolala.com.cn\nlalamove.com\nlalamove.cn",
+        "app_label": "货拉拉"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sf-express.com\nsf-express.com.cn\nsf-airlines.com\nsfbest.com\nsfgy.org\nsfcdn.org",
+        "app_label": "顺丰速运"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cainiao.com\ncainiao.com.cn\ncainiaoyizhan.com\ncainiaocdn.com\n56.taobao.com\ntaobao.com\nalicdn.com",
+        "app_label": "菜鸟"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jd-ex.com\njdwl.com\njdl.com\njingdonglogistics.com\njd.com\njdimg.com",
+        "app_label": "京东快递"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zto.com\nzto.com.cn\nzt-express.com\nzto56.com\nztoglobal.com",
+        "app_label": "中通快递"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yto.net.cn\nyto56.com.cn\nytoexpress.com\nytoglobal.com\nytoxl.com",
+        "app_label": "圆通速递"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yundaex.com\nyundaex.cn\nyundasys.com\nyunda56.com\nyundasys.cn",
+        "app_label": "韵达快递"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sto.cn\nsto.com\nstoexpress.com.cn\nstoe56.com\nshentong.com",
+        "app_label": "申通快递"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jtexpress.com.cn\njtexpress.cn\njet-logistics.com\njtexpress.com\njtexpressglobal.com",
+        "app_label": "极兔速递"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "deppon.com\ndeppon.com.cn\ndeppon.net\ndeppon56.com\ndp56.com",
+        "app_label": "德邦快递"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fcbox.com\nfcbox.com.cn\nhivebox.com\nhive-box.com\nfengchao.com",
+        "app_label": "丰巢"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "guoguo-app.com\ncainiao.com\ncainiao.com.cn\ncainiaocdn.com\ncainiaoyizhan.com\ntaobao.com\nalicdn.com",
+        "app_label": "菜鸟裹裹"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ishansong.com\nshansong.com\nshansong.cn\nshansong.com.cn\nshansongimg.com",
+        "app_label": "闪送"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "imdada.cn\nimdada.com\ndadaabc.com\njddj.com\njd.com\njdimg.com",
+        "app_label": "达达快送"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "uupaotui.com\nuupt.com\nuupt.com.cn\nuupaotui.cn\nuuimg.com",
+        "app_label": "UU跑腿"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "paotui.meituan.com\npeisong.meituan.com\nmeituan.com\nmeituan.net\nmeituanimg.com\nsankuai.com",
+        "app_label": "美团跑腿"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jddj.com\ndaojia.jd.com\ndjcdn.com\nimdada.cn\nimdada.com\njd.com\njdimg.com",
+        "app_label": "京东到家"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "helijia.com\nhelijia.com.cn\nhelijia.cn\nhelijiaimg.com\nhelijiaapp.com",
+        "app_label": "河狸家"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "daojia.com\ndaojia.com.cn\nayilaile.com\n58.com\n58cdn.com.cn",
+        "app_label": "天鹅到家"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zmn.cn\nzhuomuniao.com\nzhuomuniao.cn\nzmnimg.com\nzmnapi.com",
+        "app_label": "啄木鸟家庭维修"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "daoway.cn\ndaoway.com\ndaoway.com.cn\ndaowayimg.com\ndaowaycloud.com",
+        "app_label": "到位"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "e.dianping.com\nmerchant.dianping.com\ndianping.com\ndpfile.com\nmeituan.com\nsankuai.com",
+        "app_label": "大众点评商家版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "open.koubei.com\ne.koubei.com\nkoubei.com\nalipay.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "口碑掌柜"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "peisong.meituan.com\nzhongbao.meituan.com\ncrowd.meituan.com\nmeituan.com\nmeituan.net\nsankuai.com\nmeituanimg.com",
+        "app_label": "美团众包"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fengniao.ele.me\nfn.ele.me\npeisong.ele.me\nele.me\nelemecdn.com\neleme.io\nalibaba-inc.com",
+        "app_label": "蜂鸟众包"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dada.imdada.cn\ndada.imdada.com\nimdada.cn\nimdada.com\njddj.com\njd.com",
+        "app_label": "达达骑士"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sf-cityrush.com\nsf-cityrush.com.cn\nsf-express.com\nsf-express.com.cn\nsfcdn.org",
+        "app_label": "顺丰同城骑士"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "luckincoffee.com\nluckincoffee.com.cn\nlkcoffee.com\nlkcoffee.com.cn\nxiaolucha.com\nxiaolucha.cn",
+        "app_label": "小鹿茶"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "luckincoffee.com\nluckincoffee.com.cn\nlkcoffee.com\nlkcoffee.com.cn\nluckincoffeecdn.com\nluckincoffee-img.com",
+        "app_label": "瑞幸咖啡"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "starbucks.com.cn\nstarbucks.cn\nstarbucks.com\nstarbucksstatic.cn\nstarbucksrewards.cn",
+        "app_label": "星巴克中国"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "heytea.com\nheytea.com.cn\nheytea.cn\nheyteago.com\nheyteaimg.com",
+        "app_label": "喜茶GO"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "naixuecha.com\nnaixue.com\nnayuki.com\nnayuki.cn\nnaixuecdn.com",
+        "app_label": "奈雪的茶"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kfc.com.cn\nkfchk.com\nyumchina.com\nyumc.com\n4008823823.com.cn",
+        "app_label": "肯德基中国"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wps.cn\nwps.com\nkdocs.cn\nkdocs.com\nkingsoft.com\nksord.com\ndocer.wps.cn\nmo.wps.cn",
+        "app_label": "WPS Office"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "docs.qq.com\ndocx.qq.com\ndocs.gtimg.com\ndocs.idqqimg.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯文档"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kdocs.cn\nkdocs.com\nwps.cn\nwps.com\nkingsoft.com\nksord.com",
+        "app_label": "金山文档"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shimo.im\nshimodev.com\nshimowendang.com\nshimo.run\nshimoapi.com\nshimo-cdn.com",
+        "app_label": "石墨文档"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "note.youdao.com\nynote.youdao.com\nyoudao.com\nydstatic.com\nyoudao.cn\n163.com",
+        "app_label": "有道云笔记"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yinxiang.com\nevernote.com\napp.yinxiang.com\nyinxiangbiji.com\nyinxiang.com.cn",
+        "app_label": "印象笔记中国"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "docs.feishu.cn\nfeishu.cn\nfeishuapp.cn\nlarksuite.com\nbyteoversea.com\nbytedance.net",
+        "app_label": "飞书文档"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yuque.com\nyuque.alibaba-inc.com\nyuque.antfin.com\nalibaba-inc.com\nalicdn.com\nantfin.com",
+        "app_label": "语雀"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "docs.dingtalk.com\ndingtalk.com\ndingtalkapps.com\ndingtalkcdn.com\ndingtalkcloud.com\nalicdn.com",
+        "app_label": "钉钉文档"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pan.baidu.com\nyun.baidu.com\npcs.baidu.com\nbaidupcs.com\nbaidu.com\nbdstatic.com\nbdimg.com",
+        "app_label": "百度网盘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "aliyundrive.com\nalipan.com\nalicloudccp.com\naliyuncs.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "阿里云盘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "weiyun.com\nwy.qq.com\ncloud.tencent.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯微云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jianguoyun.com\nnutstore.net\nnutstore.com\njgycdn.com\njianguoyun.cn",
+        "app_label": "坚果云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "caiyun.feixin.10086.cn\ncaiyun.139.com\nyun.139.com\n139.com\n10086.cn\nchinamobile.com",
+        "app_label": "和彩云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cloud.189.cn\ncloud189.com\n189.cn\nchinatelecom.com.cn\nctfile.cn\ntydic.com",
+        "app_label": "天翼云盘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pan.quark.cn\ndrive.quark.cn\nquark.cn\nmyquark.cn\nuc.cn\nucweb.com\nalicdn.com",
+        "app_label": "夸克网盘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "115.com\n115cdn.com\n115img.com\n115cdn.net\nanxia.com",
+        "app_label": "115网盘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yunpan.360.cn\n360yunpan.com\n360.cn\nqhimg.com\nqhres.com\nso.com",
+        "app_label": "360安全云盘"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xunlei.com\nxlpan.com\nxunlei.cn\nsandai.net\nthunderurl.com\nxunlei.net\nxlpan.kanimg.com",
+        "app_label": "迅雷"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wenku.baidu.com\nwk.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com\nbaidustatic.com",
+        "app_label": "百度文库"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zhihu.com\nzhimg.com\nzhihuishu.com\nsalt.zhihu.com\nzhstatic.zhihu.com",
+        "app_label": "知乎盐选"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dedao.cn\ndedao.com\nigetget.com\nigetget.cn\ndedao.igetget.com",
+        "app_label": "得到"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kid.ximalaya.com\nximalaya.com\nxmcdn.com\nximalayaos.com\nxima.tv",
+        "app_label": "喜马拉雅儿童"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zybang.com\nzuoyebang.com\nzybuluo.com\nzybimg.com\nzybangcdn.com",
+        "app_label": "作业帮"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yuanfudao.com\nyuanfudao.cn\nyfdimg.com\nbanmaaike.com\nfenbi.com",
+        "app_label": "猿辅导"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiaoyuan.com\nxiaoyuan.cn\nxiaoyuansouti.com\nyuanfudao.com\nyfdimg.com",
+        "app_label": "小猿搜题"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xueersi.com\nxesimg.com\ntal.com\n100tal.com\nspeiyou.com",
+        "app_label": "学而思网校"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dict.youdao.com\nfanyi.youdao.com\nyoudao.com\nydstatic.com\nyoudao.cn\n163.com",
+        "app_label": "网易有道词典"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ke.youdao.com\nstudy.youdao.com\nyoudao.com\nydstatic.com\nyoudao.cn\n163.com",
+        "app_label": "有道精品课"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ke.qq.com\nclass.qq.com\nedu.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯课堂"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "study.163.com\nicourse163.org\nopen.163.com\n163.com\n126.net\nnetease.com",
+        "app_label": "网易云课堂"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "imooc.com\nimooc.com.cn\ncoding.imooc.com\nmukewang.com\nimoocimg.com",
+        "app_label": "慕课网"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "icourse163.org\nmooc.study.163.com\ncourse.icourse163.org\nedu.cn\n163.com\nnetease.com",
+        "app_label": "中国大学MOOC"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "chaoxing.com\nxuexi365.com\nxxt.cn\nmooc1.chaoxing.com\nmooc2-ans.chaoxing.com\nchaoxingv.com",
+        "app_label": "超星学习通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zhihuishu.com\nable-elec.com\nhikeclass.com\ncourse.zhihuishu.com\nonline.zhihuishu.com",
+        "app_label": "智慧树"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yuketang.cn\nyuketang.com.cn\nxuetangx.com\nxuetangonline.com\nrainclassroom.com",
+        "app_label": "雨课堂"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "classroom.dingtalk.com\nstudy.dingtalk.com\ndingtalk.com\ndingtalkapps.com\ndingtalkcdn.com\nalicdn.com",
+        "app_label": "钉钉课堂"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "seewo.com\nseewo.com.cn\nseewoedu.com\ncvte.com\nseewoedu.cn\nseewo-cloud.com",
+        "app_label": "希沃白板"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "class123.ac\nclass123.cn\nclass123.com\nbanji123.com\nbj123.com",
+        "app_label": "班级优化大师"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "17zuoye.com\n17zuoye.cn\n17zuoye.net\n17zy.com\nuuzuoye.com",
+        "app_label": "一起作业"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "baicizhan.com\nbaicizhan.org\nbczcdn.com\nbczs.net\nchaodai.com",
+        "app_label": "百词斩"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shanbay.com\nshanbay.com.cn\nshanbayimg.com\nshanbaycdn.com\nshanbayes.com",
+        "app_label": "扇贝单词"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "maimemo.com\nmaimemo.com.cn\nmomoapp.cn\nmaimemo.cn\nmmdanci.com",
+        "app_label": "墨墨背单词"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bubeidanci.com\nbubeiapp.com\nbubei.com\nbbdanci.com\nbubei.cn",
+        "app_label": "不背单词"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "liulishuo.com\nliulishuo.cn\nllsapp.com\nllssite.com\nliulishuoapi.com",
+        "app_label": "流利说"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hujiang.com\nhjenglish.com\nhjclass.com\nhjfile.cn\ncctalk.com",
+        "app_label": "沪江网校"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ireader.com\nzhangyue.com\nireader.com.cn\nzhangyue01.com\nireader.mobi",
+        "app_label": "掌阅课外书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dushu365.com\nfandengread.com\nfdreader.com\nfandengclub.com\ndedao.cn",
+        "app_label": "樊登读书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pomotodo.com\npomotodo.cn\nfanqietodo.com\nfanqietodo.cn\ntomato-todo.com",
+        "app_label": "番茄ToDo"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "music.163.com\ninterface.music.163.com\nmusic.126.net\nm7.music.126.net\nm8.music.126.net\nnetease.com\n163.com\n126.net",
+        "app_label": "网易云音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "y.qq.com\nmusic.qq.com\nc.y.qq.com\ni.y.qq.com\nqqmusic.qq.com\nqqmusic.tc.qq.com\nqq.com\ngtimg.cn",
+        "app_label": "QQ音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kugou.com\nkgimg.com\nkugou.net\nkugou.cn\nmobilecdn.kugou.com\nm.kugou.com",
+        "app_label": "酷狗音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kuwo.cn\nkuwo.com\nkwcdn.kuwo.cn\nkuwo.com.cn\nkuwoimg.com\nkwcdn.com",
+        "app_label": "酷我音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "music.migu.cn\nmigu.cn\nmigumusic.com\nmiguvideo.com\nmgcdn.com\nmigucloud.com\nchinamobile.com",
+        "app_label": "咪咕音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qishui.com\nqishui.douyin.com\nmusic.douyin.com\ndouyin.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "汽水音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "taihe.com\nqianqian.com\nmusic.taihe.com\nting.baidu.com\nbaidu.com\nbdstatic.com",
+        "app_label": "千千音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kg.qq.com\nquanmin.qq.com\nkgimg.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "全民K歌"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "changba.com\nchangbaapi.com\nchangbaimg.com\nchangba.com.cn\ncbimg.cn",
+        "app_label": "唱吧"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "5sing.kugou.com\n5sing.com\nkugou.com\nkgimg.com\nkugou.net",
+        "app_label": "5sing原创音乐"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ximalaya.com\nxmcdn.com\nximalayaos.com\nxima.tv\nm.ximalaya.com\nmobile.ximalaya.com",
+        "app_label": "喜马拉雅"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qingting.fm\nqtfm.cn\nqtfm.com\nqingting123.com\nqtimg.cn",
+        "app_label": "蜻蜓FM"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lizhi.fm\nlizhi.io\nlizhifm.com\nlizhiweike.com\nlizhiapi.com",
+        "app_label": "荔枝FM"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lrts.me\ntingbook.com\nlazyaudio.com\nlazyaudio.cn\nlrtsapi.com",
+        "app_label": "懒人听书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "changdunovel.com\nfanqieting.com\nfanqienovel.com\nnovel.snssdk.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "番茄畅听"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "weread.qq.com\ni.weread.qq.com\nres.weread.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "微信读书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "book.qq.com\nreader.qq.com\nubook.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "QQ阅读"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qidian.com\nqdmm.com\nqidian.cn\ncmfu.com\nyuewen.com\nyuewen.com.cn",
+        "app_label": "起点读书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fanqienovel.com\nfanqieapi.com\nnovel.snssdk.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "番茄小说"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qimao.com\nqimao.com.cn\nqm989.com\nqimaoapi.com\nqimaocdn.com",
+        "app_label": "七猫免费小说"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shuqi.com\nshuqireader.com\nshuqi.com.cn\nuc.cn\nucweb.com\nalicdn.com",
+        "app_label": "书旗小说"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jjwxc.net\njinjiang.com\njinjiang.com.cn\njjwxc.com\njjwxc.cn",
+        "app_label": "晋江小说阅读"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zongheng.com\nzongheng.com.cn\nbook.zongheng.com\nzhwenxue.com\nzonghengcdn.com",
+        "app_label": "纵横小说"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "faloo.com\nb.faloo.com\nwap.faloo.com\nfaloo.cn\nfalooimg.com",
+        "app_label": "飞卢小说"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hongxiu.com\nhongxiu.com.cn\nrednovel.com\nyuewen.com\nqidian.com",
+        "app_label": "红袖读书"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yuedu.baidu.com\nwenku.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com\nbaidustatic.com",
+        "app_label": "百度阅读"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xs.qq.com\nnovel.html5.qq.com\nbookshelf.html5.qq.com\nmqqbrowser.qq.com\nqb.qq.com\nqq.com\ngtimg.cn",
+        "app_label": "QQ浏览器小说"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "toutiao.com\ntoutiaoapi.com\ntoutiaostatic.com\ntoutiaoimg.com\nsnssdk.com\nbyteimg.com\nbytedance.net",
+        "app_label": "今日头条"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "news.qq.com\nview.inews.qq.com\ninews.qq.com\nom.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "news.163.com\n3g.163.com\nc.m.163.com\n163.com\n126.net\nnetease.com",
+        "app_label": "网易新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "thepaper.cn\nthepaper.com\nthepaper.cn\nthepaperimg.com\nthepaperapi.com",
+        "app_label": "澎湃新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jiemian.com\njiemian.com.cn\njiemianimg.com\njiemianapi.com\njmedia.com.cn",
+        "app_label": "界面新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "caixin.com\ncaixinglobal.com\ncaixin.cn\ncaixinmedia.com\ncaixinimg.com",
+        "app_label": "财新"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yicai.com\nyicai.com.cn\ncbnweek.com\ndycjw.com\nyicaiglobal.com",
+        "app_label": "第一财经"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "36kr.com\n36krcdn.com\n36kr.cn\nkrcom.cn\n36krimg.com",
+        "app_label": "36氪"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huxiu.com\nhuxiu.cn\nhuxiucdn.com\nhuxiu.com.cn\ntmtpost.com",
+        "app_label": "虎嗅"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tmtpost.com\ntmtpost.com.cn\ntmtpost.cn\ntmtpostimg.com\nhuxiu.com",
+        "app_label": "钛媒体"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ifeng.com\nnews.ifeng.com\ninews.ifeng.com\nifengimg.com\nifengcdn.com",
+        "app_label": "凤凰新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "news.sina.com.cn\nsina.com.cn\nsina.cn\nsinaimg.cn\nsinajs.cn",
+        "app_label": "新浪新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "news.sohu.com\nsohu.com\nsohucs.com\nitc.cn\nk.sohu.com",
+        "app_label": "搜狐新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "news.baidu.com\nmbd.baidu.com\nbaijiahao.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com",
+        "app_label": "百度新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "people.com.cn\npeople.cn\npaper.people.com.cn\nrmrb.com.cn\npeopledaily.com.cn",
+        "app_label": "人民日报"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xinhuanet.com\nnews.cn\nxinhua-news.cn\nxhpfmapi.xinhuaxmt.com\nxinhuaxmt.com",
+        "app_label": "新华社"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xuexi.cn\nxxqg.xuexi.cn\nstudy.xuexi.cn\nd.xuexi.cn\nxuexiimg.cn",
+        "app_label": "学习强国"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cctv.com\nnews.cctv.com\ncctv.cn\ncntv.cn\ncctvpic.com\nyangshipin.cn",
+        "app_label": "央视新闻"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "inewsweek.cn\nchinanewsweek.com.cn\nchinanewsweek.cn\nchinanews.com.cn\nchinanews.com",
+        "app_label": "中国新闻周刊"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bjnews.com.cn\nbjnews.com\nynet.com\nbjd.com.cn\nbjnewsimg.com",
+        "app_label": "新京报"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "infzm.com\nnfzm.com\nnanfangdaily.com.cn\nnfdaily.cn\nsouthcn.com",
+        "app_label": "南方周末"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "baidu.com\nm.baidu.com\nwww.baidu.com\nbaidustatic.com\nbdstatic.com\nbdimg.com\nbaiducontent.com",
+        "app_label": "百度"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "m.baidu.com\nlite.baidu.com\nmbd.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com\nbaidustatic.com",
+        "app_label": "百度极速版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "quark.cn\nmyquark.cn\npan.quark.cn\ndrive.quark.cn\nquark.sm.cn\nuc.cn\nucweb.com\nalicdn.com",
+        "app_label": "夸克"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mqqbrowser.qq.com\nqb.qq.com\nbrowser.qq.com\nmb.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "QQ浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "uc.cn\nucweb.com\nucweb.com.cn\nuczzd.cn\nuc123.com\nsm.cn\nucdl.pp.uc.cn\nalicdn.com",
+        "app_label": "UC浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "browser.360.cn\nse.360.cn\n360.cn\nso.com\nqhimg.com\nqhres.com\n360safe.com",
+        "app_label": "360浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ie.sogou.com\nsogou.com\nsogo.com\nsogoucdn.com\nsogou.com.cn\nsogouimecdn.com",
+        "app_label": "搜狗浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "browser.huawei.com\nconsumer.huawei.com\nhicloud.com\nhuawei.com\nhuaweicloud.com\ndbankcdn.com\nhuaweistatic.com",
+        "app_label": "华为浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "browser.miui.com\nglobal.browser.mi.com\nmi.com\nxiaomi.com\nmiui.com\nmi-img.com\nxiaomi.net",
+        "app_label": "小米浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "browser.vivo.com.cn\nvivo.com.cn\nvivo.com\nvivoglobal.com\nvivo.cn\nbbk.com",
+        "app_label": "vivo浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "browser.oppomobile.com\nbrowser.heytapmobi.com\noppo.com\noppo.cn\nheytap.com\nheytapmobi.com\noppomobile.com",
+        "app_label": "OPPO浏览器"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shurufa.baidu.com\nime.baidu.com\ninput.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com",
+        "app_label": "百度输入法"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pinyin.sogou.com\nime.sogou.com\nshurufa.sogou.com\nsogou.com\nsogoucdn.com\nsogouimecdn.com",
+        "app_label": "搜狗输入法"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "srf.xunfei.cn\nxfyun.cn\niflytek.com\niflyrec.com\nvoicecloud.cn\nxunfei.cn",
+        "app_label": "讯飞输入法"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qq.pinyin.cn\npy.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "QQ输入法"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "z.weixin.qq.com\nweixin.qq.com\nwechat.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "微信输入法"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zhangyuyun.com\nzhangyuyun.cn\nzhangyuyun.net\noctopusinput.com\noctopusinput.cn",
+        "app_label": "章鱼输入法"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "touchpal.com\ncootek.com\ncootekservice.com\ncootek.com.cn\ntouchpal.cn",
+        "app_label": "触宝输入法"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "360.cn\n360safe.com\nsafe.360.cn\nsd.360.cn\nweishi.360.cn\nqhimg.com\nqhres.com\nso.com",
+        "app_label": "360安全卫士"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "m.qq.com\nsj.qq.com\nguanjia.qq.com\nmsm.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯手机管家"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "anquan.baidu.com\nshouji.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com\nbaidustatic.com",
+        "app_label": "百度手机卫士"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cmcm.com\nijinshan.com\nksmobile.com\nliebao.cn\nduba.net\nkingsoft.com",
+        "app_label": "猎豹清理大师"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "clean.360.cn\n360.cn\n360safe.com\nqhimg.com\nqhres.com\nso.com",
+        "app_label": "360清理大师"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huorong.cn\nhuorong.com\nhuorong.com.cn\nsysdiag.cn\nhuorongcloud.com",
+        "app_label": "火绒安全"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ludashi.com\nludashi.com.cn\nludashi.cn\nludashi.net\nludashiwifi.com",
+        "app_label": "鲁大师"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "antutu.com\nantutu.cn\nantutu.com.cn\nantutu.net\nantutulabs.com",
+        "app_label": "安兔兔评测"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sj.qq.com\nmyapp.com\nandroid.myapp.com\na.app.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "应用宝"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "appgallery.huawei.com\nappstore.huawei.com\ndeveloper.huawei.com\nhuawei.com\nhicloud.com\ndbankcdn.com\nhuaweicloud.com",
+        "app_label": "华为应用市场"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "app.mi.com\nm.app.mi.com\nmarket.xiaomi.com\nglobal.app.mi.com\nmi.com\nxiaomi.com\nmiui.com\nmi-img.com",
+        "app_label": "小米应用商店"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "store.oppomobile.com\nstore.heytapmobi.com\nappstore.oppo.com\noppo.com\noppo.cn\nheytap.com\nheytapmobi.com\noppomobile.com",
+        "app_label": "OPPO软件商店"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "appstore.vivo.com.cn\ngame.vivo.com.cn\nvivo.com.cn\nvivo.com\nvivoglobal.com\nvivo.cn\nbbk.com",
+        "app_label": "vivo应用商店"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "app.meizu.com\nflyme.cn\nmeizu.com\nmeizu.com.cn\nmeizu.cn\nmzres.com",
+        "app_label": "魅族应用商店"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wandoujia.com\nwandoujia.com.cn\nwdjcdn.com\npp.cn\nuc.cn\nalicdn.com",
+        "app_label": "豌豆荚"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "coolapk.com\ncoolapk.com.cn\ncoolapkmarket.com\ncoolapkstatic.com\ncoolapkcdn.com",
+        "app_label": "酷安"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shouji.baidu.com\nas.baidu.com\napp.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com\nbaidustatic.com",
+        "app_label": "百度手机助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zhushou.360.cn\nmsoftdl.360.cn\n360.cn\n360safe.com\nqhimg.com\nqhres.com",
+        "app_label": "360手机助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "25pp.com\npp.cn\npphelper.com\nuc.cn\nucweb.com\nalicdn.com",
+        "app_label": "PP助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "i4.cn\ni4Tools.com\ni4.cn.com\ni4img.com\ni4cdn.com",
+        "app_label": "爱思助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "joymew.com\nzhuoyi.com\nzhuoyi.com.cn\nzhuoyou.com\ndroi.com",
+        "app_label": "卓易市场"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pvp.qq.com\ngame.weixin.qq.com\ngcloud.qq.com\nieg.tencent.com\ntencentgames.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "王者荣耀"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gp.qq.com\npg.qq.com\npubgm.qq.com\ngcloud.qq.com\nieg.tencent.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "和平精英"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lolm.qq.com\nlol.qq.com\nlol手游.qq.com\ngcloud.qq.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "英雄联盟手游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cfm.qq.com\ncf.qq.com\ncfm.qq.com\ngcloud.qq.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "穿越火线枪战王者"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "speedm.qq.com\nspeed.qq.com\ngcloud.qq.com\ntencentgames.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "QQ飞车手游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hyrz.qq.com\nnaruto.qq.com\ngcloud.qq.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "火影忍者手游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jcc.qq.com\njcc.qq.com\nlol.qq.com\ngcloud.qq.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "金铲铲之战"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hlddz.qq.com\nddz.qq.com\nqqgame.qq.com\ngame.qq.com\nqq.com\ngtimg.cn",
+        "app_label": "欢乐斗地主"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hlmj.qq.com\nmj.qq.com\nqqgame.qq.com\ngame.qq.com\nqq.com\ngtimg.cn",
+        "app_label": "欢乐麻将"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "chess.qq.com\nqqgame.qq.com\ngame.qq.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "天天象棋"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ymzx.qq.com\nparty.qq.com\ngcloud.qq.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "元梦之星"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "party.163.com\neggyparty.163.com\ndanzi.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "蛋仔派对"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "h.163.com\nn.163.com\nnsh.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "逆水寒手游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "my.163.com\nxyq.163.com\nxyq.cbg.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "梦幻西游手游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dhxy.163.com\nxy2.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "大话西游手游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yys.163.com\nyys.res.netease.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "阴阳师"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "id5.163.com\nid5.res.netease.com\nidentityvgame.com\ngame.163.com\nnetease.com\n163.com",
+        "app_label": "第五人格"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mrzh.163.com\nlifeafter.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "明日之后"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "stzb.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "率土之滨"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "clx.163.com\nyym.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "一梦江湖"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qn.163.com\nqnm.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "倩女幽魂"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hs.blizzard.cn\nhearthstone.blizzard.cn\nbattlenet.com.cn\nblizzard.cn\nnetease.com\n163.com",
+        "app_label": "炉石传说国服"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sanguosha.com\nsanguosha.com.cn\nsanguosha.cn\nsanguosha.net\nonline.sanguosha.com",
+        "app_label": "三国杀"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "battleofballs.com\nball.ztgame.com\nztgame.com\ngiant.com.cn\nztgame.net",
+        "app_label": "球球大作战"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tcsdzz.com\nsnake.io\nsnakegame.cn\ntanchishe.com\ntanchishe.cn",
+        "app_label": "贪吃蛇大作战"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "coc.qq.com\nsupercell.com\nclashofclans.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "部落冲突中国版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cr.qq.com\nsupercell.com\nclashroyale.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "皇室战争中国版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ys.mihoyo.com\nyuanshen.com\nmihoyo.com\nhoyoverse.com\nhoyoverse.com.cn\nmhycdn.com\nmihoyo.com.cn",
+        "app_label": "原神"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sr.mihoyo.com\nhkrpg.mihoyo.com\nstarrails.com\nmihoyo.com\nhoyoverse.com\nmhycdn.com",
+        "app_label": "崩坏：星穹铁道"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bh3.mihoyo.com\nhonkaiimpact3.mihoyo.com\nhonkaiimpact3.com\nmihoyo.com\nhoyoverse.com\nmhycdn.com",
+        "app_label": "崩坏3"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wd.mihoyo.com\ntot.mihoyo.com\nmihoyo.com\nhoyoverse.com\nmhycdn.com",
+        "app_label": "未定事件簿"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zzz.mihoyo.com\nzenlesszonezero.com\nmihoyo.com\nhoyoverse.com\nmhycdn.com",
+        "app_label": "绝区零"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ak.hypergryph.com\narknights.hypergryph.com\nhypergryph.com\ngryphline.com\nhg-cdn.com",
+        "app_label": "明日方舟"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "azurlane-cn.com\nazurlane.com\nbilibili.com\nbiligame.com\nbiliapi.net\nhdslb.com",
+        "app_label": "碧蓝航线"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gf-cn.sunborngame.com\nsunborngame.com\ngirlfrontline.com\nmica-team.com\nsunborn.com",
+        "app_label": "少女前线"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pns.kurogame.com\ngrayraven.cn\nkurogame.com\nkurogame.net\nkurogame.com.cn",
+        "app_label": "战双帕弥什"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ht.wanmei.com\ntoweroffantasy.wanmei.com\nwanmei.com\nwanmei.net\npwrd.com",
+        "app_label": "幻塔"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cbjq.aiyukeji.com\nsnowbreak.amazingseasun.com\namazingseasun.com\nseasungames.com\nkingsoft.com",
+        "app_label": "尘白禁区"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wqmt.aisnogames.com\naisnogames.com\nwqmt.cn\npathtonowhere.com\naisno.com",
+        "app_label": "无期迷途"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "re.bluepoch.com\nbluepoch.com\n1999.bluepoch.com\nreverse1999.bluepoch.com\nbluepoch.com.cn",
+        "app_label": "重返未来：1999"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sky.163.com\nsky.netease.com\nthatskygame.com\ngame.163.com\nnetease.com\n163.com",
+        "app_label": "光·遇"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mole.61.com\nmoleweb.61.com\ntaomee.com\n61.com\ntaomee.com.cn",
+        "app_label": "摩尔庄园"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "miniworldgame.com\nmini1.cn\nminiworldplus.com\nminiworld.com\nminiplay.com",
+        "app_label": "迷你世界"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mc.163.com\nminecraft.163.com\ngame.163.com\nnetease.com\n163.com\n126.net",
+        "app_label": "我的世界中国版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ds.163.com\ng.163.com\ngame.163.com\nn.netease.com\nnetease.com\n163.com\n126.net",
+        "app_label": "网易大神"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "syzs.qq.com\ntgpa.qq.com\ngame.qq.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "腾讯手游助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wegame.com.cn\nwegame.qq.com\ntgideas.qq.com\ngame.qq.com\ntencentgames.com\nqq.com\ngtimg.cn",
+        "app_label": "WeGame"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "taptap.cn\ntaptap.com\ntaptap.io\ntap.io\nxd.com\nxindong.com",
+        "app_label": "TapTap"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "3839.com\n3839app.com\n3839apk.com\nhaoyoukuai.com\nhykb.com",
+        "app_label": "好游快爆"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "game.xiaomi.com\napp.mi.com\nmarket.xiaomi.com\nmi.com\nxiaomi.com\nmiui.com\nmi-img.com",
+        "app_label": "小米游戏中心"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gamecenter.huawei.com\nappgallery.huawei.com\nconsumer.huawei.com\nhuawei.com\nhicloud.com\ndbankcdn.com",
+        "app_label": "华为游戏中心"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gamecenter.oppo.com\ngame.heytapmobi.com\noppo.com\noppo.cn\nheytap.com\nheytapmobi.com\noppomobile.com",
+        "app_label": "OPPO游戏中心"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "game.vivo.com.cn\nappstore.vivo.com.cn\nvivo.com.cn\nvivo.com\nvivoglobal.com\nvivo.cn\nbbk.com",
+        "app_label": "vivo游戏中心"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "4399.com\n4399.cn\n4399sy.com\n4399api.com\n4399pk.com\nimg4399.com",
+        "app_label": "4399游戏盒"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "9game.cn\n9game.com\n9game.com.cn\nuc.cn\nucweb.com\nalicdn.com",
+        "app_label": "九游"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gamersky.com\ngamersky.com.cn\nali213.net\ngameres.com\ngamerskyimg.com",
+        "app_label": "游民星空"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "doubao.com\nwww.doubao.com\napi.doubao.com\ndoubao.com.cn\ndoubaocdn.com\nbyteimg.com\nsnssdk.com\nbytedance.net\nvolces.com",
+        "app_label": "豆包"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "deepseek.com\nwww.deepseek.com\nchat.deepseek.com\napi.deepseek.com\ncdn.deepseek.com\ndeepseekcdn.com",
+        "app_label": "DeepSeek"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yiyan.baidu.com\nwenxin.baidu.com\ncloud.baidu.com\nqianfan.cloud.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com\nbaidustatic.com",
+        "app_label": "文心一言"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xinghuo.xfyun.cn\nsparkdesk.xfyun.cn\nxfyun.cn\niflytek.com\niflyrec.com\nvoicecloud.cn\nxunfei.cn",
+        "app_label": "讯飞星火"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qianwen.com\ntongyi.aliyun.com\nqwen.aliyun.com\nqwenlm.github.io\naliyun.com\naliyuncs.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "通义千问"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yuanbao.tencent.com\nhunyuan.tencent.com\nhunyuan.cloud.tencent.com\ncloud.tencent.com\ntencent.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯元宝"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "kimi.moonshot.cn\nkimi.com\nmoonshot.cn\nmoonshotai.cn\nmoonshotai.com\nplatform.kimi.ai\nkimi.ai",
+        "app_label": "Kimi"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "chatglm.cn\nzhipuai.cn\nzhipuai.com\nbigmodel.cn\nbigmodel.com\nglm.ai",
+        "app_label": "智谱清言"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "metaso.cn\nmetaso.com\nmetaso.com.cn\nsearch.metaso.cn\nmitaai.com\nmita-ai.com",
+        "app_label": "秘塔AI搜索"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tiangong.cn\ntiangong.kunlun.com\nkunlun.com\nkunlunaigc.com\nskywork.ai\nskywork.cn",
+        "app_label": "天工AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hailuoai.com\nhailuoai.video\nminimax.chat\nminimax.io\nminimax.chat\nabab.chat\nminimaxi.com",
+        "app_label": "海螺AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "klingai.com\nklingai.kuaishou.com\nkling.kuaishou.com\nkwaivision.com\nkuaishou.com\ngifshow.com\nksyun.com",
+        "app_label": "可灵AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jimeng.jianying.com\njimeng.douyin.com\njimengai.com\njianying.com\ndouyin.com\nbyteimg.com\nsnssdk.com\nbytedance.net",
+        "app_label": "即梦AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jianying.com\ncapcut.cn\ncapcut.com\njimeng.jianying.com\nulikecam.com\nbyteimg.com\nsnssdk.com\nbytedance.net",
+        "app_label": "剪映AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "miaoya.cn\nmiaoya.camera\nmiaoya.com\nalibaba-inc.com\naliyuncs.com\nalicdn.com",
+        "app_label": "妙鸭相机"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xiuxiu.meitu.com\nmeitu.com\nmeitu.cn\nmeitudata.com\nmeitustat.com\nmeitudns.com\nmeituai.com",
+        "app_label": "美图秀秀AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ai.wps.cn\nwps.cn\nwps.com\nkdocs.cn\nkdocs.com\nkingsoft.com\nksord.com",
+        "app_label": "WPS AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "quark.cn\nmyquark.cn\nquark.sm.cn\nai.quark.cn\npan.quark.cn\nuc.cn\nucweb.com\nalicdn.com",
+        "app_label": "夸克AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qianfan.cloud.baidu.com\ncloud.baidu.com\nconsole.bce.baidu.com\nbce.baidu.com\nbaidu.com\nbdstatic.com\nbaidustatic.com",
+        "app_label": "百度智能云千帆"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bailian.console.aliyun.com\nbailian.aliyun.com\ndashscope.aliyun.com\nmodelstudio.console.aliyun.com\naliyun.com\naliyuncs.com\nalicdn.com",
+        "app_label": "阿里云百炼"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hunyuan.tencent.com\nhunyuan.cloud.tencent.com\ncloud.tencent.com\nconsole.cloud.tencent.com\ntencent.com\nqq.com\ngtimg.cn",
+        "app_label": "腾讯混元助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "coze.cn\ncoze.com\ncoze.com.cn\ncoze.bytedance.net\nvolces.com\nbyteimg.com\nbytedance.net",
+        "app_label": "扣子Coze中国版"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bigmodel.cn\nbigmodel.com\nzhipuai.cn\nzhipuai.com\nchatglm.cn\nglm.ai",
+        "app_label": "智谱GLM"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "minimax.chat\nminimax.io\nminimax.com\nminimaxi.com\nabab.chat\nhailuoai.com",
+        "app_label": "MiniMax星野"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ai.360.cn\nzhinao.360.cn\nso.com\n360.cn\n360.com\nqhimg.com\nqhres.com",
+        "app_label": "360智脑"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sensechat.com\nsensecore.cn\nsensecoreapi.cn\nsensetime.com\nsensetime.com.cn\nsenseauto.com",
+        "app_label": "商汤日日新"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "iflyrec.com\nmeeting.iflyrec.com\nwww.iflyrec.com\nxfyun.cn\niflytek.com\nvoicecloud.cn",
+        "app_label": "讯飞听见"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tingwu.aliyun.com\ntingwu.aliyuncs.com\naliyun.com\naliyuncs.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "通义听悟"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "minutes.feishu.cn\nmeetings.feishu.cn\nfeishu.cn\nfeishuapp.cn\nlarksuite.com\nbytedance.net\nbyteimg.com",
+        "app_label": "飞书妙记"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "meeting.tencent.com\nmeeting.qq.com\nwemeet.tencent.com\ncloud.tencent.com\ntencent.com\nqq.com\ngtimg.cn",
+        "app_label": "腾讯会议AI小助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ai.dingtalk.com\ndingtalk.com\ndingtalkapps.com\ndingtalkcdn.com\ndingtalkcloud.com\nalicdn.com\nalibaba-inc.com",
+        "app_label": "钉钉AI助理"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fanyi.youdao.com\ndict.youdao.com\nyoudao.com\nyoudao.cn\nydstatic.com\n163.com\nnetease.com",
+        "app_label": "有道翻译官"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "caiyunapp.com\ncaiyunai.com\nfanyi.caiyunapp.com\ncaiyunapp.com.cn\ncaiyunai.com.cn",
+        "app_label": "彩云小译"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fanyi.sogou.com\nsogou.com\nsogoucdn.com\nsogou.com.cn\nsogouimecdn.com",
+        "app_label": "搜狗翻译"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fanyi.baidu.com\ntranslate.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com\nbaidustatic.com",
+        "app_label": "百度翻译"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fanyi.qq.com\ntransmart.qq.com\nqq.com\ngtimg.cn\nqpic.cn\ntencent.com",
+        "app_label": "腾讯翻译君"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "camscanner.com\nintsig.net\nintsig.com\nintsig.com.cn\ncamscanner.com.cn",
+        "app_label": "扫描全能王"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "quark.cn\npan.quark.cn\nscan.quark.cn\nmyquark.cn\nuc.cn\nucweb.com\nalicdn.com",
+        "app_label": "夸克扫描王"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "baimiaoapp.com\nbaimiao.uzero.cn\nuzero.cn\nbaimiao.com\nbaimiao.cn",
+        "app_label": "白描"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "srf.xunfei.cn\nxfyun.cn\niflytek.com\nvoicecloud.cn\nxunfei.cn\niflyrec.com",
+        "app_label": "讯飞输入法AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "okjike.com\njike.ruguoapp.com\nruguoapp.com\njellow.site\njikeai.com\njikeai.cn",
+        "app_label": "即刻AI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "nhsa.gov.cn\nfuwu.nhsa.gov.cn\napp.nhsa.gov.cn\nybj.gov.cn\nsi.12333.gov.cn",
+        "app_label": "国家医保服务平台"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "12333.gov.cn\nsi.12333.gov.cn\nmohrss.gov.cn\nrsj.beijing.gov.cn\nhrss.gd.gov.cn",
+        "app_label": "电子社保卡"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "chinatax.gov.cn\netax.chinatax.gov.cn\nits.chinatax.gov.cn\netax.shanghai.chinatax.gov.cn\netax.beijing.chinatax.gov.cn",
+        "app_label": "个人所得税"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "122.gov.cn\n12123.gov.cn\ngab.122.gov.cn\ntmri.cn\nmps.gov.cn",
+        "app_label": "交管12123"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gjzwfw.gov.cn\nwww.gjzwfw.gov.cn\napp.gjzwfw.gov.cn\nzwfw.gov.cn\ngov.cn",
+        "app_label": "国家政务服务平台"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cs.mfa.gov.cn\nmfa.gov.cn\ncsm.mfa.gov.cn\nconsular.mfa.gov.cn\nocn.mfa.gov.cn",
+        "app_label": "中国领事"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "nia.gov.cn\ns.nia.gov.cn\n12367.gov.cn\nmps.gov.cn\ngjyz.mps.gov.cn",
+        "app_label": "移民局12367"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gov.cn\nwww.gov.cn\napp.www.gov.cn\nenglish.www.gov.cn\nmail.gov.cn",
+        "app_label": "国务院客户端"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "suishenban.sh.gov.cn\nzwdt.sh.gov.cn\nshanghai.gov.cn\nsh.gov.cn\napp.sh.gov.cn",
+        "app_label": "随申办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bjt.beijing.gov.cn\nbeijing.gov.cn\nzwfw.beijing.gov.cn\nrsj.beijing.gov.cn\nbjjtw.beijing.gov.cn",
+        "app_label": "北京通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gdzwfw.gov.cn\nyueshengshi.gdzwfw.gov.cn\ngdbs.gov.cn\ngd.gov.cn\ngdzwfw.gov.cn",
+        "app_label": "粤省事"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zjzwfw.gov.cn\nzj.gov.cn\nzheliban.zjzwfw.gov.cn\nzwfw.zj.gov.cn\nzjzwfw.gov.cn",
+        "app_label": "浙里办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jszwfw.gov.cn\njiangsu.gov.cn\njs.gov.cn\nzwfw.jiangsu.gov.cn\napp.jszwfw.gov.cn",
+        "app_label": "苏服办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fj12345.gov.cn\nzwfw.fujian.gov.cn\nfujian.gov.cn\nfj.gov.cn\nmztapp.fujian.gov.cn",
+        "app_label": "闽政通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ahzwfw.gov.cn\nanhui.gov.cn\nah.gov.cn\nwst.ahzwfw.gov.cn\nzwfw.ah.gov.cn",
+        "app_label": "皖事通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hbzwfw.gov.cn\nhubei.gov.cn\nhb.gov.cn\nzwfw.hubei.gov.cn\nehb.hubei.gov.cn",
+        "app_label": "鄂汇办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hnzwfw.gov.cn\nhenan.gov.cn\nha.gov.cn\nzwfw.henan.gov.cn\napp.hnzwfw.gov.cn",
+        "app_label": "豫事办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sdzwfw.gov.cn\nshandong.gov.cn\nsd.gov.cn\nzwfw.sd.gov.cn\napp.sdzwfw.gov.cn",
+        "app_label": "爱山东"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tj.gov.cn\nzwfw.tj.gov.cn\ntjzwfw.gov.cn\napp.tjzwfw.gov.cn\nrsj.tj.gov.cn",
+        "app_label": "津心办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "nmzwfw.gov.cn\nnmg.gov.cn\nneimenggu.gov.cn\nzwfw.nmg.gov.cn\napp.nmzwfw.gov.cn",
+        "app_label": "蒙速办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lnzwfw.gov.cn\nln.gov.cn\nliaoning.gov.cn\nzwfw.ln.gov.cn\napp.lnzwfw.gov.cn",
+        "app_label": "辽事通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jlzwfw.gov.cn\njl.gov.cn\njilin.gov.cn\nzwfw.jl.gov.cn\napp.jlzwfw.gov.cn",
+        "app_label": "吉事办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hljzwfw.gov.cn\nhlj.gov.cn\nheilongjiang.gov.cn\nzwfw.hlj.gov.cn\napp.hljzwfw.gov.cn",
+        "app_label": "黑龙江全省事"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jxzwfww.gov.cn\njiangxi.gov.cn\njx.gov.cn\nzwfw.jiangxi.gov.cn\napp.jxzwfww.gov.cn",
+        "app_label": "赣服通"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hnzwfw.gov.cn\nhunan.gov.cn\nhunanszwfw.gov.cn\nzwfw-new.hunan.gov.cn\napp.hnzwfw.gov.cn",
+        "app_label": "湘易办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sczwfw.gov.cn\nsc.gov.cn\nsichuan.gov.cn\ntfb.sczwfw.gov.cn\napp.sczwfw.gov.cn",
+        "app_label": "天府通办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cq.gov.cn\nzwfw.cq.gov.cn\ncqzwfw.gov.cn\nzwykb.cq.gov.cn\napp.cq.gov.cn",
+        "app_label": "渝快办"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yn.gov.cn\nynzwfw.gov.cn\nzwfw.yn.gov.cn\nylxf.yn.gov.cn\napp.ynzwfw.gov.cn",
+        "app_label": "云岭先锋"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jiankangyun.com\njiankangyun.cn\njksh.cn\nhealthcloud.sh.cn\nshhealthcloud.com",
+        "app_label": "健康云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "haodf.com\nhaodf.com.cn\nhaodfimg.com\nhaodfstatic.com\nhaodfyy.com",
+        "app_label": "好大夫在线"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "guahao.com\nweiyi.com\nwedoctor.com\nwedoctor.com.cn\nwedoctorimg.com",
+        "app_label": "微医"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jk.cn\npingan.com\npingan.com.cn\npa18.com\npinganhealth.com\npinganhealth.com.cn",
+        "app_label": "平安健康"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "dxy.com\ndxy.cn\ndingxiangyuan.com\ndxycdn.com\ndxyimg.com",
+        "app_label": "丁香医生"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "health.jd.com\nyiyaojd.com\njdhealth.com\njd.com\njdimg.com\n360buyimg.com",
+        "app_label": "京东健康"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "alihealth.cn\nalihealth.com\nalihealth.com.cn\nalijk.com\ntmall.com\nalibaba-inc.com\nalicdn.com",
+        "app_label": "阿里健康"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yao.meituan.com\nmedicine.meituan.com\nmeituan.com\nmeituan.net\nsankuai.com\nmeituanimg.com",
+        "app_label": "美团买药"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ddky.com\nddky.com.cn\nddkydrug.com\ndingdangkuaiyao.com\nddyc.com",
+        "app_label": "叮当快药"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "111.com.cn\n111yao.com\n1drugstore.com\nyao.111.com.cn\nyiyaowang.com",
+        "app_label": "1药网"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jianke.com\njianke.com.cn\njianke360.com\njk.cn\nyaofang.cn",
+        "app_label": "健客"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "drugfuture.com\nyaozh.com\ndxy.cn\ndxy.com\ndrugs.dxy.cn",
+        "app_label": "用药助手"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "xhjk.health\nxiaohe.cn\nxiaohehealth.com\nxiaoheshop.com\nbyteimg.com\nbytedance.net",
+        "app_label": "小荷健康"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "chunyuyisheng.com\nchunyu.me\nchunyu.mobi\nchunyuapp.com\nchunyuimg.com",
+        "app_label": "春雨医生"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jiankang.baidu.com\nhealth.baidu.com\nyisheng.baidu.com\nbaidu.com\nbdstatic.com\nbdimg.com",
+        "app_label": "百度健康"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yilu.com\nyilu.cn\nalihealth.cn\nalihealth.com\nalijk.com\nalicdn.com",
+        "app_label": "医鹿"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "hospital.guahao.com\nguahao.com\nweiyi.com\nwedoctor.com\nhaodf.com\njiankangyun.com",
+        "app_label": "掌上医院"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "aliyun.com\naliyun.com.cn\naliyuncs.com\nalibabacloud.com\nalibabacloud.com.cn\nconsole.aliyun.com\naccount.aliyun.com\ndeveloper.aliyun.com",
+        "app_label": "阿里云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cloud.tencent.com\nqcloud.com\ntencentcloud.com\ntencentcloudapi.com\nconsole.cloud.tencent.com\nintl.cloud.tencent.com\ndnspod.cn\ndnspod.com",
+        "app_label": "腾讯云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "huaweicloud.com\nhuaweicloud.com.cn\nconsole.huaweicloud.com\ndeveloper.huaweicloud.com\nhicloud.com\nmyhuaweicloud.com\nhuaweicloudapis.com\nobs.cn-north-4.myhuaweicloud.com",
+        "app_label": "华为云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cloud.baidu.com\nbce.baidu.com\nbcebos.com\nbaidubce.com\nconsole.bce.baidu.com\nqianfan.cloud.baidu.com\nbaidu.com\nbdstatic.com",
+        "app_label": "百度智能云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "volcengine.com\nvolces.com\nbyteplus.com\nconsole.volcengine.com\ndeveloper.volcengine.com\nbyteimg.com\nbytedance.net\nivolces.com",
+        "app_label": "火山引擎"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jdcloud.com\njcloud.com\nconsole.jdcloud.com\ndocs.jdcloud.com\njdcloud-api.com\njdcloud-oss.com\njd.com\njdimg.com",
+        "app_label": "京东云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ksyun.com\nkingsoft-cloud.com\nkingsoftcloud.com\nconsole.ksyun.com\nks3-cn-beijing.ksyun.com\nksord.com\nkingsoft.com",
+        "app_label": "金山云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qiniu.com\nqiniu.io\nqiniucdn.com\nqiniudn.com\nqbox.me\nclouddn.com\nqiniuapi.com\nportal.qiniu.com",
+        "app_label": "七牛云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ucloud.cn\nucloud.com.cn\nucloud.com\nucloudstack.com\nconsole.ucloud.cn\napi.ucloud.cn\nucloud-edm.com",
+        "app_label": "UCloud"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qingcloud.com\nqingcloud.com.cn\nyunify.com\nconsole.qingcloud.com\napi.qingcloud.com\npek3b.qingstor.com\nqingstor.com",
+        "app_label": "青云QingCloud"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ctyun.cn\nctyun.com\nctyunapi.cn\nconsole.ctyun.cn\nchinatelecom.com.cn\n189.cn\nctcdn.cn",
+        "app_label": "天翼云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ecloud.10086.cn\necloud.139.com\nchinamobile.com\nchinamobileltd.com\n10086.cn\n139.com\ncmpassport.com",
+        "app_label": "移动云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wo.cn\nchinaunicom.cn\nchinaunicom.com.cn\ncucloud.cn\ncucloud.com\nwocloud.cn\nwocloud.com.cn",
+        "app_label": "联通云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "upyun.com\nupaiyun.com\nupyunso.com\nupaiyun.com.cn\nupyun-cdn.com\nconsole.upyun.com",
+        "app_label": "又拍云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "coding.net\ncodingcorp.net\ncoding.io\ncodingapp.com\ne.coding.net\ncoding.tencent.com\ncloud.tencent.com",
+        "app_label": "Coding"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gitee.com\ngitee.io\ngitee.cn\noschina.net\ngitlife.ru\ngitee-cdn.com",
+        "app_label": "Gitee"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "gitee.com\ngitee.io\ngitee.cn\noschina.net\ngitlife.ru\ngitlife.com",
+        "app_label": "码云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "git.code.tencent.com\ngit.tencent.com\ncode.tencent.com\ngit.woa.com\ncloud.tencent.com\ntencent.com",
+        "app_label": "腾讯工蜂"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "devops.aliyun.com\nyunxiao.aliyun.com\ncodeup.aliyun.com\nflow.aliyun.com\naliyun.com\naliyuncs.com\nalibabacloud.com",
+        "app_label": "阿里云效"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "zentao.net\nzentao.pm\nzentaopm.com\neasycorp.cn\neasysoft.ltd\nchandao.com",
+        "app_label": "禅道"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tapd.cn\ntapd.tencent.com\ntapd.woa.com\ncloud.tencent.com\ntencent.com\nqq.com",
+        "app_label": "Tapd"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "teambition.com\nteambition.net\nteambition.com.cn\ntburl.in\nalibaba-inc.com\naliyun.com",
+        "app_label": "Teambition"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "project.feishu.cn\nfeishu.cn\nfeishuapp.cn\nlarksuite.com\nbytedance.net\nbyteimg.com",
+        "app_label": "飞书项目"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "ones.cn\nones.ai\nones.com\nmyones.net\nonescorp.cn\nonescorp.com",
+        "app_label": "ONES"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tower.im\ntower.im.cn\ntower.work\ntowerapp.com\ntowercdn.com",
+        "app_label": "Tower"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "worktile.com\nworktile.com.cn\nworktileapp.com\nworktilecdn.com\npingcode.com\npingcode.com.cn",
+        "app_label": "Worktile"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "shimo.im\nshimodev.com\nshimo.run\nshimoapi.com\nshimo-cdn.com\nshimowendang.com",
+        "app_label": "石墨表格"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "lanhuapp.com\nlanhuapp.com.cn\nlanhuapp.cn\nlanhu.work\nlanhuhu.com",
+        "app_label": "蓝湖"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "js.design\njs.design.cn\njsdesign.cn\njs.designstatic.com\njsdesignstatic.com",
+        "app_label": "即时设计"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "modao.cc\nmodao.io\nmodao.cc.cn\nmockingbot.com\nmockingbot.cn",
+        "app_label": "墨刀"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mockplus.cn\nmockplus.com\nmockplus.com.cn\njongde.com\nmockplusapp.com",
+        "app_label": "摹客"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "processon.com\nprocesson.com.cn\nprocesson.cn\nprocessonmy.com\nprocessonstatic.com",
+        "app_label": "ProcessOn"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wj.qq.com\nwjx.qq.com\nsurvey.tencent.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "腾讯问卷"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "wjx.cn\nwjx.com\nsojump.com\nsojump.cn\nsurvey.wjx.cn",
+        "app_label": "问卷星"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jinshuju.net\njinshuju.com\njinshuju.cn\njsform.com\njsform.cn",
+        "app_label": "金数据"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jiandaoyun.com\njiandaoyun.cn\nfanruan.com\nfinereport.com\njiandaoyunstatic.com",
+        "app_label": "简道云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mingdao.com\nmingdao.com.cn\nmingdaoyun.com\nmingdaocloud.com\nmdy.com",
+        "app_label": "明道云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "yida.alibaba-inc.com\nyida.aliyun.com\nyida.dingtalk.com\ndingtalk.com\ndingtalkapps.com\naliyun.com\nalicdn.com",
+        "app_label": "钉钉宜搭"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fanruan.com\nfinereport.com\nfinebi.com\nfinereport.com.cn\nfanruanclub.com",
+        "app_label": "帆软FineBI"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "guandata.com\nguandata.com.cn\nguandata.cn\nguandata.net\nguandataimg.com",
+        "app_label": "观远数据"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "sensorsdata.cn\nsensorsdata.com\nsensorsdata.com.cn\nsensorsdata.cloud\nsensorsdata.net",
+        "app_label": "神策数据"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "growingio.com\ngrowingio.cn\ngrowingio.com.cn\ngio.ren\ngio.ren.cn",
+        "app_label": "GrowingIO"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "umeng.com\numengcloud.com\numeng.com.cn\numengjmacs.m.taobao.com\nalibaba-inc.com\nalicdn.com",
+        "app_label": "友盟+"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "talkingdata.com\ntalkingdata.com.cn\ntalkingdata.net\ntdid.m.qq.com\ntendcloud.com",
+        "app_label": "TalkingData"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "jiguang.cn\njpush.cn\njpush.io\njiguang.com\njiguangcdn.com\naurora-mobile.com",
+        "app_label": "极光推送"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "getui.com\ngetui.cn\ngetui.net\nigexin.com\nigexin.cn\ngetuiapi.com",
+        "app_label": "个推"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "mob.com\nmobtech.com\nmobtech.cn\nmob.com.cn\nmobgi.com\nsharesdk.cn",
+        "app_label": "MobTech"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "qimai.cn\nqimai.com\nqimai.com.cn\nqimaiapi.com\nqimaidata.com",
+        "app_label": "七麦数据"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "chandashi.com\nchandashi.cn\nchandashi.com.cn\nchandashi.net\nchandashiapi.com",
+        "app_label": "蝉大师"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "pgyer.com\npgyer.cn\npgyer.com.cn\npgyerimg.com\npgyerapi.com",
+        "app_label": "蒲公英"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "bugly.qq.com\nbugly.qq.com.cn\ntencent.com\nqq.com\ngtimg.cn\nqpic.cn",
+        "app_label": "Bugly"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "tingyun.com\ntingyun.com.cn\nnetworkbench.com\nnetworkbench.com.cn\ntingyunfenxi.com",
+        "app_label": "听云"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "oneapm.com\noneapm.com.cn\noneapm.net\noneapm.io\nblueware.com",
+        "app_label": "OneAPM"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "cloudbase.net\ncloudbase.tencent.com\ntcb.cloud.tencent.com\nconsole.cloud.tencent.com\ncloud.tencent.com\ntencentcloudapi.com",
+        "app_label": "腾讯云开发"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "fc.aliyun.com\nfcnext.console.aliyun.com\nserverless.aliyun.com\naliyun.com\naliyuncs.com\nalibabacloud.com",
+        "app_label": "阿里函数计算"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "codearts.huaweicloud.com\ndevcloud.huaweicloud.com\nhuaweicloud.com\nconsole.huaweicloud.com\ndeveloper.huaweicloud.com\nhuaweicloudapis.com",
+        "app_label": "华为云CodeArts"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "coding.net\ne.coding.net\ncoding.tencent.com\ncodingcorp.net\ncloud.tencent.com\ntencent.com",
+        "app_label": "腾讯CODING"
+    },
+    {
+        "enabled": "1",
+        "description": "",
+        "match_type": "domain",
+        "match_value": "apifox.com\napifox.cn\napifox.com.cn\napifoxmock.com\napifoxmock.com.cn\napifoxcdn.com",
+        "app_label": "Apifox"
+    }
+]

@@ -61,7 +61,7 @@ lint: lint-steps lint-composite
 
 ROOTDIR?=	/usr
 
-TOOLSDIR?=	${ROOTDIR}/tools
+TOOLSDIR?=	${.CURDIR}
 TOOLSBRANCH?=	master
 
 _OS!=	uname -r
@@ -125,11 +125,11 @@ EXTRABRANCH?=	# empty
 
 COREBRANCH?=	stable/${ABI}
 COREVERSION?=	# empty
-COREDIR?=	${ROOTDIR}/core
+COREDIR?=	${TOOLSDIR}/..
 COREENV?=	CORE_PHP=${PHP} CORE_ABI=${ABI} CORE_PYTHON=${PYTHON}
 
 PLUGINSBRANCH?=	stable/${ABI}
-PLUGINSDIR?=	${ROOTDIR}/plugins
+PLUGINSDIR?=	${COREDIR}/plugins
 PLUGINSENV?=	PLUGIN_PHP=${PHP} PLUGIN_ABI=${ABI} PLUGIN_PYTHON=${PYTHON}
 
 PORTSBRANCH?=	master

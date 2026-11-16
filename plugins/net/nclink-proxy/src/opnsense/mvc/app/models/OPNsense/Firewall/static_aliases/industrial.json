@@ -1,0 +1,26 @@
+{
+  "nclink": {
+    "enabled": "1",
+    "name": "nclink",
+    "type": "port",
+    "description": "NC-Link over MQTT",
+    "expire": "",
+    "content": "1883"
+  },
+  "nclink_tls": {
+    "enabled": "1",
+    "name": "nclink_tls",
+    "type": "port",
+    "description": "NC-Link over MQTT with TLS",
+    "expire": "",
+    "content": "8883"
+  },
+  "nclink_all": {
+    "enabled": "1",
+    "name": "nclink_all",
+    "type": "port",
+    "description": "NC-Link MQTT ports",
+    "expire": "",
+    "content": "nclink\nnclink_tls"
+  }
+}

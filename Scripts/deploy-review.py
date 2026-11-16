@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: BSD-2-Clause
-"""Deploy committed core/plugin revisions to the review VM, without an ISO."""
+"""Deploy a committed monorepo revision to the review VM, without an ISO."""
 import argparse
 from pathlib import Path
 import shlex
@@ -9,8 +9,7 @@ import subprocess
 REMOTE = r'''
 set -eu
 core_revision=$1
-plugin_revision=$2
-accept_baseline=$3
+accept_baseline=$2
 if mount -p | awk '$3 == "unionfs" {found=1} END {exit !found}'; then
     echo 'Review deployment requires an unmounted system. Do not install over unionfs.' >&2
     exit 1
@@ -24,26 +23,20 @@ if [ -n "$dataset" ]; then
     zfs snapshot "$dataset@feature-review-$(date -u +%Y%m%dT%H%M%SZ)"
 fi
 test -d /root/core-review/.git || git clone https://gitee.com/xwy6848/core.git /root/core-review
-test -d /usr/plugins/.git || git clone https://gitee.com/xwy6848/plugins.git /usr/plugins
-for spec in /root/core-review /usr/plugins; do
-    if [ -n "$(git -C "$spec" status --porcelain -uno)" ]; then
-        echo "Tracked modifications in $spec; preserving them and stopping deployment." >&2
-        exit 1
-    fi
-done
+if [ -n "$(git -C /root/core-review status --porcelain -uno)" ]; then
+    echo "Tracked modifications in /root/core-review; preserving them and stopping deployment." >&2
+    exit 1
+fi
 git -C /root/core-review remote set-url origin https://gitee.com/xwy6848/core.git
-git -C /usr/plugins remote set-url origin https://gitee.com/xwy6848/plugins.git
 git -C /root/core-review fetch origin
-git -C /usr/plugins fetch origin
 git -C /root/core-review merge --ff-only "$core_revision"
-git -C /usr/plugins merge --ff-only "$plugin_revision"
 test "$(git -C /root/core-review rev-parse HEAD)" = "$core_revision"
-test "$(git -C /usr/plugins rev-parse HEAD)" = "$plugin_revision"
+plugin_tree=$(git -C /root/core-review rev-parse HEAD:plugins)
 make -C /root/core-review install CORE_VERSION=26.1.11 CORE_REVISION=6 > "$backup/core-install.log" 2>&1
 # Plugin dependency resolution must not replace the customized product core.
 pkg lock -y opnsense
 for plugin in net/app-identification security/icsguard security/industrial-suite www/squid security/clamav; do
-    source=/usr/plugins/$plugin
+    source=/root/core-review/plugins/$plugin
     name=$(basename "$plugin")
     make -C "$source" package PLUGIN_DEVEL= > "$backup/$name-build.log" 2>&1
     package_name=$(make -C "$source" -v PLUGIN_PKGNAME PLUGIN_DEVEL=)
@@ -70,9 +63,9 @@ if [ "$accept_baseline" = 1 ]; then
     configctl industrialsuite integrity_baseline e30=
 fi
 configctl industrialsuite integrity_check e30=
-printf 'Core source: %s\nPlugin source: %s\nDeployment record: %s\n' "$core_revision" "$plugin_revision" "$backup"
+printf 'Source: %s\nPlugin tree: %s\nDeployment record: %s\n' "$core_revision" "$plugin_tree" "$backup"
 printf '%s\n' "$core_revision" > "$backup/core-commit.txt"
-printf '%s\n' "$plugin_revision" > "$backup/plugins-commit.txt"
+printf '%s\n' "$plugin_tree" > "$backup/plugins-tree.txt"
 printf '%s\n' "$backup" > /root/.industrial-feature-latest-deploy
 '''
 
@@ -86,12 +79,10 @@ def revision(path):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--host', default='opnsense-dev')
-    parser.add_argument('--plugins', type=Path)
     parser.add_argument('--accept-baseline', action='store_true', help='Explicitly trust the protected files in this deployed revision')
     args = parser.parse_args()
     if args.host.startswith('-'):
         parser.error('SSH host must not be an option')
     core = Path(__file__).resolve().parents[1]
-    plugins = args.plugins or core.parent / 'plugins'
-    command = shlex.join(['/bin/sh', '-s', '--', revision(core), revision(plugins), '1' if args.accept_baseline else '0'])
+    command = shlex.join(['/bin/sh', '-s', '--', revision(core), '1' if args.accept_baseline else '0'])
     subprocess.run(['ssh', '-T', '-o', 'BatchMode=yes', args.host, command], input=REMOTE, text=True, check=True)

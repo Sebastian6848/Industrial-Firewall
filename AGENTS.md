@@ -3,7 +3,7 @@
 ## 代码托管
 
 - 本项目的主仓库为 `https://gitee.com/xwy6848/core.git`，默认分支为 `master`。
-- `origin` 的 fetch/push 均指向该 Gitee 仓库；后续 core 修改、提交和推送在此仓库中进行。
+- `origin` 的 fetch/push 均指向该 Gitee 仓库；core、`plugins/`、`tools/` 的修改、提交和推送统一在此仓库中进行。
 - 更新使用 `git fetch origin` 和 `git pull --ff-only`；保留已有的未提交及未跟踪文件。
 - 不向 OPNsense 上游仓库推送本项目修改，不使用强制推送覆盖远端历史。
 - 密码、SSH 私钥、API 密钥、设备配置和运行日志不得提交到仓库。
@@ -13,7 +13,7 @@
 - Ubuntu 工作目录：`/home/sebastian/Industrial-Firewall/core`。
 - 测试虚拟机：`192.168.255.136:22`，SSH 用户为 `root`。
 - 本机 SSH 别名为 `opnsense-dev`，密钥位于本机 `~/.ssh/id_ed25519_opnsense_dev`。
-- 活动 core 源码目录为 `/root/core-review`，插件源码为 `/usr/plugins`；原 `/root/core` 保留旧开发现场。设备为 FreeBSD 14.3、OPNsense 26.1 系列。
+- 活动源码目录为 `/root/core-review`，插件位于其中的 `plugins/`；原 `/root/core`、`/usr/plugins`、`/usr/tools` 保留旧开发现场。设备为 FreeBSD 14.3、OPNsense 26.1 系列。
 - 在 Ubuntu 编辑、提交代码，使用 SSH 在 FreeBSD 上执行系统命令和验证。
 - 远端 root 默认使用 csh；多行 POSIX shell 脚本须通过以下方式执行：
 
@@ -35,4 +35,4 @@
 - 修改 PHP 后使用虚拟机上的 `php -l` 检查；按修改内容重载 configd、清缓存或重启 Web 服务。
 - 重新生成 `src/opnsense/version/core` 时必须使用 Makefile 的变量替换规则，使运行版本对应已部署提交；该文件不纳入 Git。
 - 必须验证 SSH、Web 登录页和相关服务。直接访问虚拟机时绕过开发机 HTTP 代理，例如 `curl --noproxy '*' http://192.168.255.136/`；协议和端口以设备配置为准。
-- 本轮以功能热部署供审核；用户审核通过前不制作 ISO。参见 `docs/FEATURE_REVIEW.md`，性能容量、TPM/TPCM、真实双机 VPN/HA 联调与现有功能测试须分别记录。
+- 通过功能回归后按 `tools/release/README.md` 构建并验证 ISO。参见 `docs/FEATURE_REVIEW.md`，性能容量、TPM/TPCM、真实双机 VPN/HA 联调与现有功能测试须分别记录。

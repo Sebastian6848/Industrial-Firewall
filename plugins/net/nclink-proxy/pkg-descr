@@ -1,0 +1,11 @@
+NC-Link Proxy is a transparent MQTT forwarding and observation service for
+OPNsense. It decodes MQTT control packets, identifies NC-Link protocol
+semantics, and writes structured JSON logs while forwarding traffic to an
+upstream MQTT broker.
+
+Plugin Changelog
+================
+
+1.0
+
+* Initial plugin release
