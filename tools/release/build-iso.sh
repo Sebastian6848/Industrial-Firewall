@@ -52,6 +52,7 @@ for set in base kernel; do
     opnsense-verify -q "$inputs/sets/$set-$version-amd64.txz"
     tar -xpf "$inputs/sets/$set-$version-amd64.txz" -C "$stage"
 done
+rm -f "$stage/.abi_hint"
 install -d -m 0755 "$stage/dev" "$stage/conf" "$stage/home" "$stage/mnt"
 install -d -m 1777 "$stage/tmp"
 mkdir -m 700 "$stage/tmp/iso-packages"
@@ -74,7 +75,7 @@ chmod 0755 "$work/image-pkg"
 
 for file in "$inputs"/vendor/All/*.pkg; do
     case "${file##*/}" in
-        opnsense-[0-9]*|os-clamav-[0-9]*|os-squid-[0-9]*) continue ;;
+        opnsense-[0-9]*|opnsense-installer-[0-9]*|os-clamav-[0-9]*|os-squid-[0-9]*) continue ;;
     esac
     cp -p "$file" "$stage/tmp/iso-packages/"
 done
@@ -90,6 +91,10 @@ add_custom() {
     cp -p "$custom/$1.pkg" "$stage/tmp/iso-packages/"
     "$pkg" -c "$stage" add "/tmp/iso-packages/$1.pkg"
 }
+python3 "$repo/contrib/installer/build-package.py" --pkg "$pkg" \
+    --output "$custom" --work "$work/installer"
+add_custom "opnsense-installer-25.1_3"
+
 make -C "$repo" package CORE_VERSION="$version" CORE_REVISION="$revision" \
     CORE_HASH="$commit" PKG="$work/image-pkg" PLUGINCTL=/usr/bin/true \
     WRKDIR="$work/core" PKGDIR="$custom"
@@ -107,14 +112,14 @@ for dir in www/squid security/clamav net/app-identification security/icsguard se
 done
 
 "$pkg" -c "$stage" check -d -a
-"$pkg" -c "$stage" lock -y opnsense os-squid os-clamav
+"$pkg" -c "$stage" lock -y opnsense os-squid os-clamav opnsense-installer
 "$pkg" -c "$stage" query '%n %v %o' | LC_ALL=C sort > "$output/$media.packages.txt"
 "$pkg" -c "$stage" query '%v' opnsense > "$stage/usr/local/opnsense/version/pkgs"
 # pkg add is offline and does not assign a repository. Preserve the signed
 # vendor origin so installed upstream plugins retain their catalogue identity.
 for name in $("$pkg" -c "$stage" query '%n'); do
     case "$name" in
-        opnsense|os-app-identification|os-indproto|os-industrial-suite|os-clamav|os-squid) continue ;;
+        opnsense|opnsense-installer|os-app-identification|os-indproto|os-industrial-suite|os-clamav|os-squid) continue ;;
     esac
     "$pkg" -c "$stage" annotate -qyA "$name" repository OPNsense
 done

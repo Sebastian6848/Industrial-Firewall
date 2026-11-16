@@ -29,7 +29,7 @@ if [ -n "$(git -C /root/core-review status --porcelain -uno)" ]; then
 fi
 git -C /root/core-review remote set-url origin https://gitee.com/xwy6848/core.git
 git -C /root/core-review fetch origin
-git -C /root/core-review merge --ff-only "$core_revision"
+git -C /root/core-review merge --ff-only --quiet "$core_revision"
 test "$(git -C /root/core-review rev-parse HEAD)" = "$core_revision"
 plugin_tree=$(git -C /root/core-review rev-parse HEAD:plugins)
 make -C /root/core-review install CORE_VERSION=26.1.11 CORE_REVISION=6 > "$backup/core-install.log" 2>&1

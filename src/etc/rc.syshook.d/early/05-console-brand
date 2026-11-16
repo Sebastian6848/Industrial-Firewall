@@ -6,3 +6,6 @@
 printf 'Industrial Security Firewall\n' > /etc/motd.template
 # login(1) reads a cached message; the base image may already contain it.
 install -m 0644 /etc/motd.template /var/run/motd
+# getty expands %s to the kernel name in the pre-login greeting.
+# Only replace the displayed message; keep terminal capabilities intact.
+sed -i '' 's|im=[^:]*:|im=\\r\\nIndustrial Firewall (%h) (%t)\\r\\n\\r\\n:|' /etc/gettytab

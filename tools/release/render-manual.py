@@ -9,6 +9,7 @@ from playwright.async_api import async_playwright
 
 md = Path(sys.argv[1]).resolve()
 pdf = Path(sys.argv[2]).resolve()
+pdf.parent.mkdir(parents=True, exist_ok=True)
 html = pdf.with_suffix('.print.html')
 body = MarkdownIt('commonmark').enable('table').render(md.read_text())
 def remote_link(match):

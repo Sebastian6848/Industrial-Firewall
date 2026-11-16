@@ -34,9 +34,11 @@ require_once("interfaces.inc");
 require_once("util.inc");
 require_once("plugins.inc.d/openssh.inc");
 
-$version = shell_safe('opnsense-version');
+$branding = @parse_ini_file('/usr/local/opnsense/version/branding.conf') ?: [];
+$name = $branding['APPLIANCE_NAME'] ?? 'Industrial Firewall';
+$version = $branding['APPLIANCE_VERSION'] ?? trim(shell_safe('opnsense-version -v'));
 
-echo "\n*** {$config['system']['hostname']}.{$config['system']['domain']}: {$version} ***\n";
+echo "\n*** {$config['system']['hostname']}.{$config['system']['domain']}: {$name} {$version} ***\n";
 
 $iflist = legacy_config_get_interfaces(['enable' => true, 'virtual' => false]);
 $ifdetails = legacy_interfaces_details();

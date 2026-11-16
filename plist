@@ -1624,6 +1624,7 @@
 /usr/local/opnsense/site-python/tls_helper.py
 /usr/local/opnsense/site-python/watchers/__init__.py
 /usr/local/opnsense/site-python/watchers/dhcpd.py
+/usr/local/opnsense/version/branding.conf
 /usr/local/opnsense/version/core
 /usr/local/opnsense/www/api.php
 /usr/local/opnsense/www/assets/fontawesome/LICENSE.txt

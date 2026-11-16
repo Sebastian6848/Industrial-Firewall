@@ -1,3 +1,4 @@
 loader_brand="none"
 loader_logo="hourglass"
-loader_menu_title=""
+loader_menu_title="Industrial Firewall"
+boot_mute="YES"

@@ -856,7 +856,7 @@ function system_syslog_reset($verbose = false)
 
 function system_firmware_configure($verbose = false)
 {
-    service_log('Writing firmware settings:', $verbose);
+    service_log('Writing software repository settings...', $verbose);
 
     $scripts = glob('/usr/local/opnsense/scripts/firmware/repos/*');
     natsort($scripts);
@@ -872,8 +872,7 @@ function system_firmware_configure($verbose = false)
          /* offer visibility of errors only */
          pass_safe($script . '> /dev/null');
 
-        /* make a note about repo being handled */
-        service_log(' ' . preg_replace('/\..*?$/', '', $basename));
+        /* Keep repository identifiers in configuration and logs, not the boot greeting. */
     }
 
     service_log("\n");

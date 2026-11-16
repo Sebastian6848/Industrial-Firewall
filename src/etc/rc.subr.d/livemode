@@ -57,8 +57,8 @@ if (is_install_media()) {
 
         echo "\n";
 
-        /* tailored for OPNsense to occupy same width below */
-        $namex = product::getInstance()->name();
+        $branding = @parse_ini_file('/usr/local/opnsense/version/branding.conf') ?: [];
+        $namex = $branding['APPLIANCE_NAME'] ?? 'Industrial Firewall';
 
         $greeting = "Welcome!  {$namex} is running in live mode from install media.  Please\n" .
                     "login as 'root' to continue in live mode, or as 'installer' to start the\n" .
